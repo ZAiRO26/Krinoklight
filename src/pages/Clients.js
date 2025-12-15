@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { ArrowRight, Star, Clock, Users, CheckCircle2 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';

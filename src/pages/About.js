@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { ArrowRight, Users, Target, Heart, Award, Globe, Clock, Sparkles, Zap } from 'lucide-react';
+import { ArrowRight, Users, Target, Heart, Globe, Sparkles, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';

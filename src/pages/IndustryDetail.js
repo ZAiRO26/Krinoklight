@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowRight, CheckCircle2, TrendingUp, ShoppingCart, Heart, GraduationCap, Home, Leaf } from 'lucide-react';
 import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
