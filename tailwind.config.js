@@ -3,14 +3,16 @@ module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
+  darkMode: 'class',
   theme: {
     extend: {
       colors: {
+        // ===== DARK THEME (Default) =====
         // Premium Corporate Navy Palette
         navy: {
-          primary: '#023776',      // Deep Royal Blue - trust, stability
-          secondary: '#0347A2',    // Vibrant Corporate Blue - CTAs
-          dark: '#011B3D',         // Darker navy for depth
+          primary: '#023776',      // Deep Royal Blue
+          secondary: '#0347A2',    // Vibrant Corporate Blue
+          dark: '#011B3D',         // Darker navy
           light: '#0A4A8C',        // Lighter accent
         },
         accent: {
@@ -18,7 +20,7 @@ module.exports = {
           glow: '#60B8E8',         // Glow effects
         },
         neutral: {
-          slate: '#4A5660',        // Body text (softer than black)
+          slate: '#4A5660',        // Body text
           muted: '#6B7280',        // Secondary text
         },
         background: {
@@ -26,6 +28,21 @@ module.exports = {
           card: '#0A0A0A',         // Card backgrounds
           elevated: '#111111',     // Elevated surfaces
         },
+
+        // ===== LIGHT THEME =====
+        // Green/Teal Fresh Palette
+        light: {
+          primary: '#028174',      // Deep teal
+          secondary: '#0AB68B',    // Bright green
+          tertiary: '#92DE8B',     // Light green
+          accent: '#FFE3B3',       // Cream/sand accent
+          background: '#FFFFFF',   // White background
+          surface: '#F8FAF9',      // Slightly off-white
+          card: '#FFFFFF',         // Card background
+          text: '#1A1A1A',         // Primary text
+          muted: '#5A6B5C',        // Muted text
+        },
+
         // Legacy support
         freekiwebsite: {
           blue: '#023776',
@@ -37,9 +54,10 @@ module.exports = {
         }
       },
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
-        display: ['Montserrat', 'system-ui', 'sans-serif'],
-        logo: ['Montserrat', 'sans-serif'],
+        sans: ['Poppins', 'system-ui', 'sans-serif'],
+        display: ['Poppins', 'system-ui', 'sans-serif'],
+        body: ['Open Sans', 'Poppins', 'system-ui', 'sans-serif'],
+        logo: ['Poppins', 'sans-serif'],
       },
       animation: {
         'fade-in': 'fadeIn 0.5s ease-in-out',
@@ -91,7 +109,9 @@ module.exports = {
         'gradient-navy': 'linear-gradient(135deg, #040404 0%, #023776 50%, #011B3D 100%)',
         'gradient-navy-dark': 'linear-gradient(180deg, #040404 0%, #011B3D 100%)',
         'gradient-cta': 'linear-gradient(135deg, #0347A2 0%, #4BA3DA 100%)',
+        'gradient-cta-light': 'linear-gradient(135deg, #028174 0%, #0AB68B 100%)',
         'mesh-gradient': 'radial-gradient(at 40% 20%, rgba(75, 163, 218, 0.15) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(3, 71, 162, 0.2) 0px, transparent 50%), radial-gradient(at 0% 50%, rgba(2, 55, 118, 0.15) 0px, transparent 50%)',
+        'mesh-gradient-light': 'radial-gradient(at 40% 20%, rgba(2, 129, 116, 0.1) 0px, transparent 50%), radial-gradient(at 80% 0%, rgba(10, 182, 139, 0.15) 0px, transparent 50%), radial-gradient(at 0% 50%, rgba(146, 222, 139, 0.1) 0px, transparent 50%)',
       },
       backdropBlur: {
         xs: '2px',
@@ -100,7 +120,9 @@ module.exports = {
         'glow': '0 0 40px rgba(75, 163, 218, 0.3)',
         'glow-sm': '0 0 20px rgba(75, 163, 218, 0.2)',
         'glow-lg': '0 0 60px rgba(75, 163, 218, 0.4)',
+        'glow-light': '0 0 40px rgba(2, 129, 116, 0.2)',
         'navy': '0 4px 30px rgba(2, 55, 118, 0.3)',
+        'light': '0 4px 20px rgba(0, 0, 0, 0.08)',
       },
     },
   },

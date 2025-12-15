@@ -25,7 +25,7 @@ const Footer = () => {
     about: [
       { name: 'How we work', href: '/about/how-we-work' },
       { name: 'Sustainability', href: '/about/sustainability' },
-      { name: 'Working at FreekiWebsite', href: '/about/careers' },
+      { name: 'Working at VedaViks', href: '/about/careers' },
       { name: 'Job opportunities', href: '/about/jobs' },
       { name: 'Contact us', href: '/contact' },
       { name: 'Press Office', href: '/about/press' },
@@ -37,11 +37,11 @@ const Footer = () => {
   };
 
   const socialLinks = [
-    { icon: Linkedin, href: 'https://linkedin.com/company/freekiwebsite', label: 'LinkedIn' },
-    { icon: Twitter, href: 'https://twitter.com/freekiwebsite', label: 'Twitter' },
-    { icon: Facebook, href: 'https://facebook.com/freekiwebsite', label: 'Facebook' },
-    { icon: Instagram, href: 'https://instagram.com/freekiwebsite', label: 'Instagram' },
-    { icon: Youtube, href: 'https://youtube.com/freekiwebsite', label: 'YouTube' },
+    { icon: Linkedin, href: 'https://linkedin.com/company/vedaviks', label: 'LinkedIn' },
+    { icon: Twitter, href: 'https://twitter.com/vedaviks', label: 'Twitter' },
+    { icon: Facebook, href: 'https://facebook.com/vedaviks', label: 'Facebook' },
+    { icon: Instagram, href: 'https://instagram.com/vedaviks', label: 'Instagram' },
+    { icon: Youtube, href: 'https://youtube.com/vedaviks', label: 'YouTube' },
   ];
 
   const FooterLinkItem = ({ link }) => (
@@ -107,14 +107,14 @@ const Footer = () => {
                 className="w-10 h-10 bg-gradient-to-br from-navy-secondary to-accent-cyan rounded-xl flex items-center justify-center shadow-glow-sm"
                 whileHover={{ scale: 1.05, rotate: 5 }}
               >
-                <span className="font-display font-bold text-white text-lg">F</span>
+                <span className="font-display font-bold text-white text-lg">V</span>
               </motion.div>
-              <span className="font-display font-bold text-xl group-hover:text-accent-cyan transition-colors">
-                FreekiWebsite
+              <span className="logo-font text-xl group-hover:text-accent-cyan transition-colors">
+                VedaViks Media
               </span>
             </Link>
             <p className="text-neutral-slate mb-8 max-w-sm leading-relaxed">
-              We speed up AI adoption and ramp up engineering and design teams to help you lead your industry with world-class digital experiences.
+              We provide a complete suite of development and marketing services for industrial businesses. Let us handle the tech, so you can focus on growth.
             </p>
 
             {/* Social Links */}
