@@ -1,6 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Star, Clock, Users } from 'lucide-react';
+import { ArrowRight, Star, Clock, Users, CheckCircle2 } from 'lucide-react';
+import { motion } from 'framer-motion';
+import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
+import MagneticButton from '../components/MagneticButton';
+import LogoMarquee from '../components/LogoMarquee';
 
 const Clients = () => {
   const featuredCaseStudies = [
@@ -14,11 +18,7 @@ const Clients = () => {
       duration: "5 weeks",
       team: "8 people",
       image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&h=400&fit=crop",
-      results: [
-        "99% faster process completion",
-        "Delivered under budget",
-        "Improved team efficiency"
-      ]
+      results: ["99% faster process", "Under budget", "Improved efficiency"]
     },
     {
       id: 2,
@@ -30,85 +30,29 @@ const Clients = () => {
       duration: "6 weeks",
       team: "6 people",
       image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
-      results: [
-        "60% increase in user engagement",
-        "Faster content localization",
-        "Improved user experience"
-      ]
+      results: ["60% more engagement", "Faster localization", "Better UX"]
     },
     {
       id: 3,
       title: "Team extension for mobile design revamp at speed",
-      subtitle: "Seamless and consistent experience, unified payment flows, and easier in-app navigation",
+      subtitle: "Seamless experience, unified payment flows, and easier navigation",
       category: "Mobile App Redesign",
       company: "Careem",
       industry: "Transportation",
       duration: "12 weeks",
       team: "12 people",
       image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop",
-      results: [
-        "Improved user experience",
-        "Unified payment system",
-        "Enhanced navigation"
-      ]
+      results: ["Improved UX", "Unified payments", "Enhanced navigation"]
     }
   ];
 
-  const allCaseStudies = [
-    {
-      id: 4,
-      title: "Mobile app MVP in 5 weeks for a New York fintech",
-      subtitle: "New version of a financial predictions app, complete with a revamped user interface",
-      category: "Mobile MVP",
-      company: "FinTech Startup",
-      industry: "Finance",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop"
-    },
-    {
-      id: 5,
-      title: "Increased engineering efficiency and more consistent design",
-      subtitle: "Improved developer experience and more efficient engineering for the world's largest real estate franchise",
-      category: "Design system",
-      company: "Keller Williams",
-      industry: "Proptech",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop"
-    },
-    {
-      id: 6,
-      title: "Boosting content creation with GenAI from hours to seconds",
-      subtitle: "Content creation transformed into a streamlined process without compromising on quality",
-      category: "Edtech AI",
-      company: "Education Platform",
-      industry: "Education",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop"
-    },
-    {
-      id: 7,
-      title: "E-commerce platform optimization",
-      subtitle: "Performance improvements and user experience enhancements for a leading meal delivery service",
-      category: "E-commerce",
-      company: "Meal Delivery Service",
-      industry: "Commerce",
-      image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=400&h=300&fit=crop"
-    },
-    {
-      id: 8,
-      title: "Healthcare data management system",
-      subtitle: "Comprehensive patient data management and analytics platform for healthcare providers",
-      category: "Healthcare",
-      company: "Healthcare Network",
-      industry: "Healthcare",
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=400&h=300&fit=crop"
-    },
-    {
-      id: 9,
-      title: "Sustainability tracking platform",
-      subtitle: "Environmental impact monitoring and sustainability reporting system",
-      category: "Greentech",
-      company: "Environmental Organization",
-      industry: "Greentech",
-      image: "https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=400&h=300&fit=crop"
-    }
+  const clientLogos = [
+    { name: 'Microsoft', text: 'MICROSOFT' },
+    { name: 'Google', text: 'GOOGLE' },
+    { name: 'Amazon', text: 'AMAZON' },
+    { name: 'Netflix', text: 'NETFLIX' },
+    { name: 'Spotify', text: 'SPOTIFY' },
+    { name: 'Uber', text: 'UBER' },
   ];
 
   const testimonials = [
@@ -118,7 +62,7 @@ const Clients = () => {
       company: "Merck",
       quote: "Excellence and speed. It's rare to get both, and FreekiWebsite delivers.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
     },
     {
       name: "Adi Pavlovic",
@@ -126,7 +70,7 @@ const Clients = () => {
       company: "Keller Williams",
       quote: "FreekiWebsite has been the best agency we've worked with so far.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"
     },
     {
       name: "Dally Singh",
@@ -134,226 +78,236 @@ const Clients = () => {
       company: "Total Processing",
       quote: "It doesn't feel like an external team, it feels like we're just working together.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
     }
   ];
 
   const stats = [
-    { value: "500+", label: "Projects completed" },
-    { value: "50+", label: "Fortune 500 clients" },
-    { value: "95%", label: "Client satisfaction" },
-    { value: "15+", label: "Years of experience" }
+    { value: "500+", label: "Projects Completed" },
+    { value: "50+", label: "Fortune 500 Clients" },
+    { value: "95%", label: "Client Satisfaction" },
+    { value: "15+", label: "Years Experience" }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background-dark">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 to-black section-padding">
-        <div className="container-custom">
+      <section className="mesh-bg pt-32 pb-20 relative overflow-hidden">
+        <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Our <span className="gradient-text">Clients</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              Discover how we've helped companies across industries achieve remarkable results through innovative digital solutions.
-            </p>
+            <FadeUp>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-6">
+                Success Stories
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <h1 className="section-title text-white mb-6 leading-tight">
+                Our <span className="gradient-text">Clients</span>
+              </h1>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <p className="text-xl text-neutral-slate max-w-3xl mx-auto leading-relaxed">
+                Discover how we've helped companies across industries achieve remarkable results through innovative digital solutions.
+              </p>
+            </FadeUp>
           </div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-gray-900 text-white">
+      <section className="section-padding gradient-navy-bg">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-8" staggerChildren={0.1}>
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  {stat.value}
+              <AnimatedItem key={index}>
+                <div className="text-center">
+                  <motion.p
+                    className="stat-value mb-2"
+                    initial={{ scale: 0.5 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                  >
+                    {stat.value}
+                  </motion.p>
+                  <p className="text-neutral-slate font-medium">{stat.label}</p>
                 </div>
-                <p className="text-gray-300">{stat.label}</p>
-              </div>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Client Logos Marquee */}
+      <section className="py-16 bg-background-dark">
+        <div className="container-custom">
+          <p className="text-center text-sm text-neutral-slate uppercase tracking-widest mb-8 font-medium">
+            Trusted by industry leaders
+          </p>
+          <LogoMarquee logos={clientLogos} speed={30} />
         </div>
       </section>
 
       {/* Featured Case Studies */}
-      <section className="section-padding bg-black">
+      <section className="section-padding bg-background-dark">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Featured <span className="gradient-text">Case Studies</span>
-            </h2>
-          </div>
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Case Studies</p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <h2 className="section-title text-white mb-6">
+                Featured <span className="gradient-text">Projects</span>
+              </h2>
+            </AnimatedItem>
+          </AnimatedSection>
 
-          <div className="space-y-16">
-            {featuredCaseStudies.map((study) => (
-              <div key={study.id} className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                <div className="relative overflow-hidden rounded-xl">
-                  <img
-                    src={study.image}
-                    alt={study.title}
-                    className="w-full h-80 object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-20"></div>
-                </div>
-                
-                <div className="space-y-6">
-                  <div className="space-y-2">
-                    <p className="text-sm text-white font-semibold">{study.category}</p>
-                    <h3 className="text-3xl font-bold text-white">{study.title}</h3>
-                    <p className="text-lg text-gray-300">{study.subtitle}</p>
+          <div className="space-y-20">
+            {featuredCaseStudies.map((study, index) => (
+              <AnimatedSection key={study.id} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
+                <AnimatedItem className={index % 2 !== 0 ? 'lg:order-2' : ''}>
+                  <motion.div
+                    className="relative overflow-hidden rounded-2xl"
+                    whileHover={{ scale: 1.02 }}
+                  >
+                    <img
+                      src={study.image}
+                      alt={study.title}
+                      className="w-full h-80 object-cover"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent" />
+                    <div className="absolute bottom-6 left-6">
+                      <span className="inline-block px-3 py-1 bg-accent-cyan/20 text-accent-cyan text-sm font-medium rounded-full backdrop-blur-sm">
+                        {study.category}
+                      </span>
+                    </div>
+                  </motion.div>
+                </AnimatedItem>
+
+                <AnimatedItem className={`space-y-6 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
+                  <div>
+                    <h3 className="text-3xl font-bold text-white mb-3">{study.title}</h3>
+                    <p className="text-lg text-neutral-slate">{study.subtitle}</p>
                   </div>
-                  
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                        <span className="text-black font-bold text-sm">{study.company.charAt(0)}</span>
-                      </div>
-                      <div>
-                        <p className="font-semibold text-white">{study.company}</p>
-                        <p className="text-sm text-gray-400">{study.industry}</p>
-                      </div>
+
+                  <div className="grid grid-cols-3 gap-4">
+                    <div className="glass-panel p-4">
+                      <p className="font-bold text-white">{study.company}</p>
+                      <p className="text-sm text-neutral-slate">{study.industry}</p>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <Clock className="w-5 h-5 text-white" />
-                      <div>
-                        <p className="font-semibold text-white">{study.duration}</p>
-                        <p className="text-sm text-gray-400">Duration</p>
+                    <div className="glass-panel p-4">
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-accent-cyan" />
+                        <p className="font-bold text-white">{study.duration}</p>
                       </div>
+                      <p className="text-sm text-neutral-slate">Duration</p>
                     </div>
-                    <div className="flex items-center space-x-2">
-                      <Users className="w-5 h-5 text-white" />
-                      <div>
-                        <p className="font-semibold text-white">{study.team}</p>
-                        <p className="text-sm text-gray-400">Team size</p>
+                    <div className="glass-panel p-4">
+                      <div className="flex items-center gap-2">
+                        <Users className="w-4 h-4 text-accent-cyan" />
+                        <p className="font-bold text-white">{study.team}</p>
                       </div>
+                      <p className="text-sm text-neutral-slate">Team size</p>
                     </div>
                   </div>
-                  
+
                   <div>
                     <h4 className="font-semibold text-white mb-3">Key Results:</h4>
                     <ul className="space-y-2">
-                      {study.results.map((result, index) => (
-                        <li key={index} className="flex items-center text-gray-300">
-                          <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
+                      {study.results.map((result, idx) => (
+                        <li key={idx} className="flex items-center text-white/80">
+                          <CheckCircle2 className="w-4 h-4 text-accent-cyan mr-3 flex-shrink-0" />
                           {result}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  
-                  <Link 
-                    to={`/clients/case-study/${study.id}`}
-                    className="btn-primary inline-flex items-center space-x-2"
-                  >
-                    <span>Read full case study</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* All Case Studies Grid */}
-      <section className="section-padding bg-gray-900">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              More <span className="gradient-text">Success Stories</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {allCaseStudies.map((study) => (
-              <div key={study.id} className="group cursor-pointer bg-black rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-800">
-                <div className="relative overflow-hidden">
-                  <img
-                    src={study.image}
-                    alt={study.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition-all duration-300"></div>
-                </div>
-                <div className="p-6 space-y-4">
-                  <div className="space-y-2">
-                    <p className="text-sm text-white font-semibold">{study.category}</p>
-                    <h3 className="text-xl font-bold text-white group-hover:text-gray-300 transition-colors">
-                      {study.title}
-                    </h3>
-                    <p className="text-gray-400">{study.subtitle}</p>
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center space-x-2">
-                      <div className="w-6 h-6 bg-white rounded flex items-center justify-center">
-                        <span className="text-black font-bold text-xs">{study.company.charAt(0)}</span>
-                      </div>
-                      <span className="text-sm font-semibold text-white">{study.company}</span>
-                    </div>
-                    <span className="text-sm text-gray-400">{study.industry}</span>
-                  </div>
-                </div>
-              </div>
+                  <MagneticButton to={`/clients/case-study/${study.id}`} variant="cta">
+                    Read full case study
+                    <ArrowRight className="inline-block ml-2 w-4 h-4" />
+                  </MagneticButton>
+                </AnimatedItem>
+              </AnimatedSection>
             ))}
           </div>
         </div>
       </section>
 
       {/* Testimonials Section */}
-      <section className="section-padding bg-black">
+      <section className="section-padding mesh-bg">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Client <span className="gradient-text">Testimonials</span>
-            </h2>
-          </div>
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Testimonials</p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <h2 className="section-title text-white mb-6">
+                Client <span className="gradient-text">Feedback</span>
+              </h2>
+            </AnimatedItem>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerChildren={0.15}>
             {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-900 p-8 rounded-xl border border-gray-800">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-white">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-400">{testimonial.role}</p>
-                    <p className="text-sm font-semibold text-white">{testimonial.company}</p>
+              <AnimatedItem key={index}>
+                <motion.div
+                  className="glass-panel-hover p-8 h-full"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="flex items-center mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 text-amber-400 fill-current" />
+                    ))}
                   </div>
-                </div>
-                <div className="flex items-center mb-4">
-                  {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                  ))}
-                </div>
-                <p className="text-gray-300 italic">"{testimonial.quote}"</p>
-              </div>
+                  <p className="text-white/80 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
+                  <div className="flex items-center">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-accent-cyan/30"
+                    />
+                    <div>
+                      <h4 className="font-bold text-white">{testimonial.name}</h4>
+                      <p className="text-sm text-neutral-slate">{testimonial.role}</p>
+                      <p className="text-sm font-medium text-accent-cyan">{testimonial.company}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-gray-900 to-black text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to join our <span className="text-yellow-400">success stories</span>?
-          </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Let's discuss how we can help you achieve similar results for your business.
-          </p>
-          <Link to="/contact" className="btn-secondary bg-white text-black hover:bg-gray-100 text-lg px-8 py-4">
-            Start your project
-          </Link>
+      <section className="section-padding bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
+        </div>
+
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center">
+            <AnimatedItem>
+              <h2 className="section-title text-white mb-6">
+                Ready to Join Our <span className="text-background-dark">Success Stories</span>?
+              </h2>
+            </AnimatedItem>
+            <AnimatedItem>
+              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                Let's discuss how we can help you achieve similar results for your business.
+              </p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <MagneticButton to="/contact" className="bg-white text-navy-primary hover:bg-white/90">
+                Start Your Project
+                <ArrowRight className="inline-block ml-2 w-4 h-4" />
+              </MagneticButton>
+            </AnimatedItem>
+          </AnimatedSection>
         </div>
       </section>
     </div>
   );
 };
 
-export default Clients; 
+export default Clients;

@@ -1,263 +1,312 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Code, Palette, Brain, Settings, Users, Lightbulb } from 'lucide-react';
+import { ArrowRight, Code, Palette, Brain, Settings, Users, Lightbulb, CheckCircle2, Sparkles, Grid3X3 } from 'lucide-react';
+import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
+import MagneticButton from '../components/MagneticButton';
 
 const Services = () => {
   const services = [
     {
       icon: Lightbulb,
       title: "Ideation",
+      slug: "ideation",
       description: "Identify, shape and validate your product idea",
       features: [
         "Product strategy and roadmap",
         "Market research and validation",
         "MVP definition and planning",
-        "Business model canvas",
         "User research and personas"
       ],
-      image: "https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&h=400&fit=crop"
+      gradient: "from-amber-500 to-orange-500",
     },
     {
       icon: Code,
       title: "Software Development",
+      slug: "development",
       description: "Bring products to life with world-class engineering",
       features: [
         "Web and mobile development",
         "Cloud infrastructure",
         "API development and integration",
-        "DevOps and CI/CD",
-        "Quality assurance and testing"
+        "DevOps and CI/CD"
       ],
-      image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&h=400&fit=crop"
+      gradient: "from-blue-500 to-cyan-500",
     },
     {
       icon: Palette,
       title: "Design",
+      slug: "design",
       description: "Craft beautiful digital experiences across platforms",
       features: [
         "UI/UX design",
         "Design systems",
         "Prototyping and wireframing",
-        "User research and testing",
         "Brand identity design"
       ],
-      image: "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=600&h=400&fit=crop"
+      gradient: "from-pink-500 to-rose-500",
     },
     {
       icon: Brain,
-      title: "Generative AI and Data",
+      title: "Generative AI & Data",
+      slug: "ai",
       description: "Leverage AI to transform your business processes",
       features: [
         "AI strategy and implementation",
         "Machine learning models",
         "Data analytics and insights",
-        "Natural language processing",
-        "Computer vision solutions"
+        "Natural language processing"
       ],
-      image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=600&h=400&fit=crop"
+      gradient: "from-violet-500 to-purple-500",
     },
     {
       icon: Settings,
       title: "Maintenance",
+      slug: "maintenance",
       description: "Safeguard your product's quality and reliability",
       features: [
         "Application monitoring",
         "Performance optimization",
         "Security updates",
-        "Bug fixes and support",
-        "Infrastructure management"
+        "Bug fixes and support"
       ],
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=400&fit=crop"
+      gradient: "from-emerald-500 to-green-500",
     },
     {
       icon: Users,
       title: "Cooperation Models",
+      slug: "cooperation",
       description: "Choose the collaboration model that fits your needs",
       features: [
         "Dedicated teams",
-        "Project-based development",
         "Staff augmentation",
         "Technical consulting",
         "Agile development"
       ],
-      image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
+      gradient: "from-sky-500 to-blue-500",
     }
   ];
 
-  const caseStudies = [
+  const processSteps = [
     {
-      title: "AI-powered content creation for education",
-      company: "EdTech Startup",
-      result: "99% faster content creation",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop"
+      number: "01",
+      phase: "Discovery",
+      title: "Understand your vision",
+      desc: "We dive deep into your business goals, target audience, and technical requirements."
     },
     {
-      title: "Mobile app redesign for real estate",
-      company: "Keller Williams",
-      result: "60% more user engagement",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop"
+      number: "02",
+      phase: "Strategy",
+      title: "Define the roadmap",
+      desc: "Together, we create a detailed project plan with clear milestones and deliverables."
     },
     {
-      title: "R&D process automation",
-      company: "Merck",
-      result: "From 6 months to 6 hours",
-      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=300&fit=crop"
+      number: "03",
+      phase: "Design",
+      title: "Craft the experience",
+      desc: "Our designers create intuitive, beautiful interfaces that resonate with your brand."
+    },
+    {
+      number: "04",
+      phase: "Development",
+      title: "Build with excellence",
+      desc: "Our engineers bring designs to life using cutting-edge technologies."
+    },
+    {
+      number: "05",
+      phase: "Launch",
+      title: "Deploy and grow",
+      desc: "We ensure a smooth launch and provide ongoing support to help your product thrive."
     }
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background-dark">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-gray-900 to-black section-padding">
-        <div className="container-custom">
+      <section className="pt-32 pb-16 relative overflow-hidden">
+        {/* Subtle gradient background */}
+        <div className="absolute inset-0 bg-gradient-to-b from-navy-primary/20 to-transparent" />
+
+        <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-              Our <span className="gradient-text">Services</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8">
-              We provide end-to-end digital product development services to help you scale, innovate, and get ahead of the competition.
-            </p>
+            <FadeUp>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4 text-sm">
+                What We Offer
+              </p>
+            </FadeUp>
+            <FadeUp delay={0.1}>
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+                Our <span className="gradient-text">Services</span>
+              </h1>
+            </FadeUp>
+            <FadeUp delay={0.2}>
+              <p className="text-xl text-neutral-slate max-w-2xl mx-auto leading-relaxed mb-10">
+                We provide end-to-end digital product development services to help you scale, innovate, and get ahead of the competition.
+              </p>
+            </FadeUp>
           </div>
         </div>
       </section>
 
-      {/* Services Grid */}
-      <section className="section-padding bg-black">
+      {/* All Products CTA Banner */}
+      <section className="pb-16">
         <div className="container-custom">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service) => (
-              <div key={service.title} className="group cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-800">
-                <div className="p-8">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
-                      <service.icon className="w-6 h-6 text-white" />
+          <FadeUp>
+            <Link
+              to="/services/products"
+              className="group block"
+            >
+              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-navy-primary via-navy-secondary to-accent-cyan p-8 md:p-12">
+                {/* Decorative elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-1/2 -translate-x-1/2" />
+
+                <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+                  <div className="flex items-center gap-6">
+                    <div className="w-16 h-16 rounded-2xl bg-white/10 backdrop-blur-sm flex items-center justify-center">
+                      <Grid3X3 className="w-8 h-8 text-white" />
                     </div>
-                    <ArrowRight className="w-6 h-6 text-gray-600 group-hover:text-white transition-colors" />
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                        Explore All Products
+                      </h3>
+                      <p className="text-white/80 text-lg">
+                        18+ solutions for businesses, creatives & professionals
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="text-2xl font-bold text-white group-hover:text-gray-300 transition-colors mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-400 mb-6">{service.description}</p>
-                  <ul className="space-y-2">
-                    {service.features.slice(0, 2).map((feature, index) => (
-                      <li key={index} className="flex items-center text-gray-300">
-                        <div className="w-2 h-2 bg-white rounded-full mr-3"></div>
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div className="p-6 bg-black">
-                  <Link to={`/services/${service.title.toLowerCase().replace(/\s+/g, '-')}`} className="font-semibold text-white hover:text-gray-300 transition-colors inline-flex items-center space-x-2">
-                    <span>Explore {service.title}</span>
-                  </Link>
+
+                  <div className="flex items-center gap-3 text-white font-semibold text-lg group-hover:gap-4 transition-all">
+                    <span>View All Products</span>
+                    <ArrowRight className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How We Work Section */}
-      <section className="section-padding bg-gray-900">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Our <span className="gradient-text">Process</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Our agile and collaborative process ensures we deliver high-quality digital products on time and within budget.
-            </p>
-          </div>
-
-          <div className="relative">
-            <div className="hidden lg:block absolute left-1/2 -translate-x-1/2 top-8 w-1 bg-gray-700 h-full"></div>
-            
-            <div className="space-y-16 lg:space-y-0">
-              {[
-                { phase: "Discovery", title: "Understand your needs and objectives", desc: "We start by understanding your business goals and objectives." },
-                { phase: "Planning", title: "Define scope, timeline, and deliverables", desc: "We work with you to define the project scope, timeline, and deliverables." },
-                { phase: "Design", title: "Create user-centered design solutions", desc: "We design solutions that are user-centered and meet your business needs." },
-                { phase: "Development", title: "Build your product with best practices", desc: "We build your product using the latest technologies and best practices." },
-                { phase: "Launch", title: "Deploy and maintain your solution", desc: "We deploy and maintain your solution to ensure it meets your business needs." }
-              ].map((step, index) => (
-                <div key={index} className="flex flex-col lg:flex-row items-center gap-8">
-                  <div className={`lg:w-1/2 ${index % 2 !== 0 ? 'lg:order-2 lg:text-left' : 'lg:text-right'}`}>
-                    <div className="lg:inline-block lg:max-w-md">
-                      <span className="text-sm font-semibold text-yellow-400 mb-2 block">{step.phase}</span>
-                      <h3 className="text-2xl font-bold text-white mb-3">{step.title}</h3>
-                      <p className="text-gray-300">{step.desc}</p>
-                    </div>
-                  </div>
-                  <div className="relative lg:w-auto">
-                    <div className="w-16 h-16 bg-black rounded-full flex items-center justify-center mx-auto mb-4 lg:mb-0 z-10 relative border-4 border-gray-900">
-                      {index % 2 === 0 ? <div className="w-16 h-16 bg-gray-700 rounded-full flex items-center justify-center">
-                        <span className="text-white font-bold text-xl">{index + 1}</span>
-                      </div> : null}
-                    </div>
-                  </div>
-                  <div className={`lg:w-1/2 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}></div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Case Studies Section */}
-      <section className="section-padding bg-black">
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Our <span className="gradient-text">Work</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Check out some of our recent projects to see the tangible results we've delivered for our clients.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {caseStudies.map((study) => (
-              <div key={study.company} className="group cursor-pointer bg-gray-900 rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow border border-gray-800">
-                <div className="relative overflow-hidden">
-                  <img src={study.image} alt={study.title} className="w-full h-56 object-cover" />
-                  <div className="absolute inset-0 bg-black bg-opacity-30"></div>
-                </div>
-                <div className="p-6">
-                  <p className="text-sm text-yellow-400 font-semibold mb-2">{study.company}</p>
-                  <h3 className="text-2xl font-bold text-white group-hover:text-gray-300 transition-colors mb-3">
-                    {study.title}
-                  </h3>
-                  <p className="text-4xl font-bold text-white mb-1">{study.result}</p>
-                  <p className="text-gray-400">{study.resultDesc}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Link to="/clients" className="btn-primary text-lg px-8 py-4">
-              Explore more case studies
             </Link>
-          </div>
+          </FadeUp>
+        </div>
+      </section>
+
+      {/* Services Grid - Clean 3-column layout */}
+      <section className="pb-24">
+        <div className="container-custom">
+          <AnimatedSection
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            staggerChildren={0.08}
+          >
+            {services.map((service) => (
+              <AnimatedItem key={service.title}>
+                <Link to={`/services/${service.slug}`} className="group block h-full">
+                  <div className="h-full p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-accent-cyan/30 hover:bg-white/[0.04] transition-all duration-300">
+                    {/* Icon */}
+                    <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.gradient} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <service.icon className="w-7 h-7 text-white" />
+                    </div>
+
+                    {/* Title & Description */}
+                    <h3 className="text-2xl font-bold text-white group-hover:text-accent-cyan transition-colors mb-3">
+                      {service.title}
+                    </h3>
+                    <p className="text-neutral-slate mb-6 leading-relaxed">
+                      {service.description}
+                    </p>
+
+                    {/* Features */}
+                    <ul className="space-y-3 mb-8">
+                      {service.features.map((feature, index) => (
+                        <li key={index} className="flex items-start text-white/70 group-hover:text-white/90 transition-colors">
+                          <CheckCircle2 className="w-4 h-4 text-accent-cyan mr-3 mt-0.5 flex-shrink-0" />
+                          <span className="text-sm">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* CTA */}
+                    <div className="flex items-center text-accent-cyan font-medium group-hover:text-white transition-colors">
+                      <span>Learn more</span>
+                      <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </Link>
+              </AnimatedItem>
+            ))}
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Process Section - Clean timeline */}
+      <section className="py-24 bg-gradient-to-b from-navy-primary/30 to-transparent">
+        <div className="container-custom">
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4 text-sm">
+                How We Work
+              </p>
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Our <span className="gradient-text">Process</span>
+              </h2>
+              <p className="text-xl text-neutral-slate max-w-2xl mx-auto">
+                A proven methodology that delivers results on time and within budget.
+              </p>
+            </AnimatedItem>
+          </AnimatedSection>
+
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-5 gap-6" staggerChildren={0.1}>
+            {processSteps.map((step, index) => (
+              <AnimatedItem key={step.number}>
+                <div className="text-center group">
+                  {/* Step number */}
+                  <div className="relative mb-6">
+                    <div className="w-16 h-16 mx-auto rounded-full bg-accent-cyan/10 border-2 border-accent-cyan/30 flex items-center justify-center group-hover:bg-accent-cyan/20 group-hover:border-accent-cyan/50 transition-all duration-300">
+                      <span className="text-2xl font-bold text-accent-cyan">{step.number}</span>
+                    </div>
+                    {/* Connector line */}
+                    {index < processSteps.length - 1 && (
+                      <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-accent-cyan/30 to-transparent -translate-y-1/2" />
+                    )}
+                  </div>
+
+                  {/* Phase */}
+                  <p className="text-accent-cyan font-semibold text-sm mb-2">{step.phase}</p>
+
+                  {/* Title */}
+                  <h3 className="text-lg font-bold text-white mb-3">{step.title}</h3>
+
+                  {/* Description */}
+                  <p className="text-neutral-slate text-sm leading-relaxed">{step.desc}</p>
+                </div>
+              </AnimatedItem>
+            ))}
+          </AnimatedSection>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-r from-gray-900 to-black text-white">
-        <div className="container-custom text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Let's build something <span className="text-yellow-400">amazing</span> together
-          </h2>
-          <p className="text-xl mb-8 max-w-3xl mx-auto">
-            Ready to discuss your project? Get in touch with our experts for a free consultation.
-          </p>
-          <Link to="/contact" className="btn-secondary bg-white text-black hover:bg-gray-100 text-lg px-8 py-4">
-            Start a project
-          </Link>
+      <section className="py-24">
+        <div className="container-custom">
+          <FadeUp>
+            <div className="text-center max-w-3xl mx-auto">
+              <Sparkles className="w-12 h-12 text-accent-cyan mx-auto mb-6" />
+              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+                Ready to Start Your Project?
+              </h2>
+              <p className="text-xl text-neutral-slate mb-10">
+                Let's discuss how we can help bring your vision to life with our expertise.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <MagneticButton to="/contact" variant="cta">
+                  Get in Touch
+                  <ArrowRight className="inline-block ml-2 w-5 h-5" />
+                </MagneticButton>
+                <MagneticButton to="/services/products" variant="secondary">
+                  View All Products
+                </MagneticButton>
+              </div>
+            </div>
+          </FadeUp>
         </div>
       </section>
     </div>
   );
 };
 
-export default Services; 
+export default Services;

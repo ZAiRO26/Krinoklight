@@ -1,14 +1,60 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Play } from 'lucide-react';
+import { ArrowRight, Play, Code, Palette, Brain, Smartphone, Globe, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
+import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
+import MagneticButton from '../components/MagneticButton';
+import LogoMarquee from '../components/LogoMarquee';
 
 const Home = () => {
-  const trustedBy = [
-    { name: 'ikea', logo: 'IKEA' },
-    { name: 'ubs', logo: 'UBS' },
-    { name: 'volkswagen', logo: 'Volkswagen' },
-    { name: 'olx', logo: 'OLX' },
+  const trustedByLogos = [
+    { name: 'Microsoft', text: 'MICROSOFT' },
+    { name: 'Google', text: 'GOOGLE' },
+    { name: 'Amazon', text: 'AMAZON' },
+    { name: 'Netflix', text: 'NETFLIX' },
+    { name: 'Spotify', text: 'SPOTIFY' },
+    { name: 'Apple', text: 'APPLE' },
+    { name: 'Meta', text: 'META' },
+    { name: 'Uber', text: 'UBER' },
+  ];
+
+  const services = [
+    {
+      icon: Globe,
+      title: 'Web Development',
+      desc: 'Stunning, responsive websites that convert visitors into customers',
+      gradient: 'from-blue-500 to-cyan-400'
+    },
+    {
+      icon: Smartphone,
+      title: 'Mobile Apps',
+      desc: 'Native and cross-platform mobile experiences',
+      gradient: 'from-purple-500 to-pink-400'
+    },
+    {
+      icon: Brain,
+      title: 'AI Solutions',
+      desc: 'Transform your business with cutting-edge AI integration',
+      gradient: 'from-orange-500 to-yellow-400'
+    },
+    {
+      icon: Code,
+      title: 'Custom Software',
+      desc: 'Tailored solutions built for your unique challenges',
+      gradient: 'from-green-500 to-emerald-400'
+    },
+    {
+      icon: Palette,
+      title: 'UI/UX Design',
+      desc: 'Beautiful interfaces that users love to interact with',
+      gradient: 'from-pink-500 to-rose-400'
+    },
+    {
+      icon: Zap,
+      title: 'Digital Strategy',
+      desc: 'Data-driven strategies for digital transformation',
+      gradient: 'from-violet-500 to-indigo-400'
+    },
   ];
 
   const caseStudies = [
@@ -16,44 +62,29 @@ const Home = () => {
       id: 1,
       title: "Speeding up Merck's process from 6 months to 6 hours",
       subtitle: "An AI Assistant that boosts R&D delivered in five weeks and under budget",
-      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=400&h=300&fit=crop",
-      category: "R&D productivity"
+      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&h=400&fit=crop",
+      category: "R&D productivity",
+      result: "99%",
+      resultText: "Faster"
     },
     {
       id: 2,
       title: "60% more user engagement with hyper-personalization",
       subtitle: "AI PoC in under 6 weeks to test a hypothesis on hyper-localizing real estate content",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=400&h=300&fit=crop",
-      category: "AI for real estate"
+      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
+      category: "AI for real estate",
+      result: "60%",
+      resultText: "Engagement"
     },
     {
       id: 3,
       title: "Team extension for mobile design revamp at speed",
       subtitle: "Seamless and consistent experience, unified payment flows, and easier in-app navigation",
-      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=400&h=300&fit=crop",
-      category: "Mobile App Redesign"
+      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop",
+      category: "Mobile App Redesign",
+      result: "2x",
+      resultText: "Faster"
     },
-    {
-      id: 4,
-      title: "Mobile app MVP in 5 weeks for a New York fintech",
-      subtitle: "New version of a financial predictions app, complete with a revamped user interface",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=400&h=300&fit=crop",
-      category: "Mobile MVP"
-    },
-    {
-      id: 5,
-      title: "Increased engineering efficiency and more consistent design",
-      subtitle: "Improved developer experience and more efficient engineering for the world's largest real estate franchise",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop",
-      category: "Design system"
-    },
-    {
-      id: 6,
-      title: "Boosting content creation with GenAI from hours to seconds",
-      subtitle: "Content creation transformed into a streamlined process without compromising on quality",
-      image: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop",
-      category: "Edtech AI"
-    }
   ];
 
   const testimonials = [
@@ -62,296 +93,327 @@ const Home = () => {
       role: "Digital Innovation Manager",
       company: "Merck",
       quote: "Excellence and speed. It's rare to get both, and FreekiWebsite delivers.",
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=60&h=60&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
     },
     {
       name: "Adi Pavlovic",
       role: "Director of Innovation",
       company: "Keller Williams",
       quote: "FreekiWebsite has been the best agency we've worked with so far.",
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=60&h=60&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"
     },
     {
       name: "Dally Singh",
       role: "Chief Product Officer",
       company: "Total Processing",
       quote: "It doesn't feel like an external team, it feels like we're just working together.",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
     }
   ];
 
   const stats = [
-    { value: "99%", label: "faster teacher guide creation process – from 4 hours to 45 sec" },
-    { value: "2x", label: "faster invoice approval process – cut down from 4 to 2 days" },
-    { value: "60%", label: "more user engagement with hyper-personalization for a proptech" },
-    { value: "77%", label: "faster page speed for a meal delivery app" }
-  ];
-
-  const clients = [
-    { name: "Ikea", logo: "IKEA" },
-    { name: "UBS", logo: "UBS" },
-    { name: "Volkswagen", logo: "Volkswagen" },
-    { name: "Zabka", logo: "Zabka" },
-    { name: "OLX", logo: "OLX" },
-    { name: "Spendesk", logo: "Spendesk" },
-    { name: "Merck", logo: "Merck" },
-    { name: "Careem", logo: "Careem" },
-    { name: "Solaris", logo: "Solaris" },
-    { name: "Moonfare", logo: "Moonfare" },
-    { name: "Keller Williams", logo: "Keller Williams" },
-    { name: "Salzburg AG", logo: "Salzburg AG" }
+    { value: "150+", label: "Clients Worldwide" },
+    { value: "500+", label: "Projects Delivered" },
+    { value: "98%", label: "Client Satisfaction" },
+    { value: "15+", label: "Years Experience" }
   ];
 
   return (
-    <div className="min-h-screen bg-black">
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center text-center">
-        <video
-          autoPlay
-          loop
-          muted
-          className="absolute top-0 left-0 w-full h-full object-cover z-0"
-        >
-          <source src="/assets/hero-video.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        <div className="absolute top-0 left-0 w-full h-full bg-black opacity-60 z-10"></div>
-        <div className="container-custom relative z-20">
-          <div className="text-center max-w-4xl mx-auto">
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              <span className="gradient-text">Accelerate</span> digital
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-3xl mx-auto">
-              We speed up AI adoption and ramp up engineering and design teams to help you lead your industry.
-            </p>
-            
-            {/* Trusted By Section */}
-            <div className="mb-12">
-              <p className="text-sm text-gray-400 mb-4">Trusted by:</p>
-              <div className="flex flex-wrap justify-center items-center gap-8 opacity-60">
-                {trustedBy.map((company) => (
-                  <div key={company.name} className="text-2xl font-bold text-white">
-                    {company.logo}
-                  </div>
-                ))}
-              </div>
-            </div>
+    <div className="min-h-screen bg-background-dark overflow-hidden">
+      {/* Hero Section with Video Background */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Video Background */}
+        <div className="absolute inset-0 z-0">
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="w-full h-full object-cover"
+          >
+            <source src="/hero-video.mp4" type="video/mp4" />
+          </video>
+          {/* Dark overlay for readability */}
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
 
-            {/* CTA Section */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link to="/contact" className="btn-primary text-lg px-8 py-4">
-                Estimate project
-              </Link>
-              <div className="flex items-center space-x-2 text-white hover:text-gray-300 cursor-pointer">
-                <Play className="w-5 h-5" />
-                <span className="font-semibold">Watch our story</span>
+        <div className="container-custom relative z-10 pt-32 pb-20">
+          <div className="text-center max-w-5xl mx-auto">
+            <FadeUp delay={0.2}>
+              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-8 leading-tight">
+                Your Vision, <span className="gradient-text">Engineered.</span>
+              </h1>
+            </FadeUp>
+
+            <FadeUp delay={0.4}>
+              <p className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+                We provide a complete suite of development and marketing services for industrial businesses. Let us handle the tech, so you can focus on growth.
+              </p>
+            </FadeUp>
+
+            {/* CTA Buttons */}
+            <FadeUp delay={0.6}>
+              <div className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16">
+                <MagneticButton to="/contact" variant="cta">
+                  Request a quote
+                </MagneticButton>
+
+                <Link
+                  to="/services"
+                  className="flex items-center space-x-3 text-white/80 hover:text-white transition-colors group"
+                >
+                  <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-accent-cyan group-hover:shadow-glow-sm transition-all duration-300">
+                    <Play className="w-4 h-4 ml-0.5" />
+                  </div>
+                  <span className="font-medium">View Services</span>
+                </Link>
               </div>
-            </div>
+            </FadeUp>
           </div>
+
+          {/* Trusted By Logo Marquee */}
+          <FadeUp delay={1}>
+            <div className="mt-12">
+              <p className="text-center text-sm text-neutral-slate uppercase tracking-widest mb-8 font-medium">
+                Trusted by industry leaders
+              </p>
+              <LogoMarquee logos={trustedByLogos} speed={30} />
+            </div>
+          </FadeUp>
+        </div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          animate={{ y: [0, 10, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+        >
+          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+            <motion.div
+              className="w-1.5 h-3 bg-accent-cyan rounded-full"
+              animate={{ y: [0, 12, 0], opacity: [1, 0.5, 1] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </div>
+        </motion.div>
+      </section>
+
+      {/* Services Bento Grid Section */}
+      <section className="section-padding bg-background-dark relative">
+        <div className="container-custom">
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">What We Do</p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <h2 className="section-title text-white mb-6">
+                Comprehensive <span className="gradient-text">Digital Services</span>
+              </h2>
+            </AnimatedItem>
+            <AnimatedItem>
+              <p className="section-subtitle">
+                From ideation to deployment, we provide end-to-end solutions that transform your digital presence.
+              </p>
+            </AnimatedItem>
+          </AnimatedSection>
+
+          {/* Bento Grid */}
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerChildren={0.1}>
+            {services.map((service, index) => (
+              <AnimatedItem key={service.title}>
+                <motion.div
+                  className="bento-card group cursor-pointer h-full"
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className={`icon-container mb-6 bg-gradient-to-br ${service.gradient}`}>
+                    <service.icon className="w-6 h-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-accent-cyan transition-colors">
+                    {service.title}
+                  </h3>
+                  <p className="text-neutral-slate leading-relaxed">
+                    {service.desc}
+                  </p>
+                  <div className="mt-6 flex items-center text-accent-cyan opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="font-medium">Learn more</span>
+                    <ArrowRight className="w-4 h-4 ml-2" />
+                  </div>
+                </motion.div>
+              </AnimatedItem>
+            ))}
+          </AnimatedSection>
         </div>
       </section>
 
       {/* Case Studies Section */}
-      <motion.section 
-        className="section-padding bg-black"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5 }}
-      >
+      <section className="section-padding gradient-navy-bg relative">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Design, engineering & <span className="gradient-text">applied AI</span>
-            </h2>
-          </div>
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Our Work</p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <h2 className="section-title text-white mb-6">
+                Design, Engineering & <span className="gradient-text">Applied AI</span>
+              </h2>
+            </AnimatedItem>
+            <AnimatedItem>
+              <p className="section-subtitle">
+                See how we've helped industry leaders achieve exceptional results.
+              </p>
+            </AnimatedItem>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <AnimatedSection className="grid grid-cols-1 lg:grid-cols-3 gap-8" staggerChildren={0.15}>
             {caseStudies.map((study) => (
-              <div key={study.id} className="group cursor-pointer">
-                <div className="relative overflow-hidden rounded-xl mb-4">
-                  <img
-                    src={study.image}
-                    alt={study.title}
-                    className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-50 transition-all duration-300"></div>
-                </div>
-                <div className="space-y-2">
-                  <p className="text-sm text-white font-semibold">{study.category}</p>
-                  <h3 className="text-xl font-bold text-white group-hover:text-gray-300 transition-colors">
+              <AnimatedItem key={study.id}>
+                <motion.div
+                  className="group cursor-pointer"
+                  whileHover={{ y: -8 }}
+                  transition={{ duration: 0.3 }}
+                >
+                  <div className="relative overflow-hidden rounded-2xl mb-6">
+                    <img
+                      src={study.image}
+                      alt={study.title}
+                      className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-background-dark/20 to-transparent" />
+                    <div className="absolute bottom-4 left-4 right-4">
+                      <span className="inline-block px-3 py-1 bg-accent-cyan/20 text-accent-cyan text-sm font-medium rounded-full backdrop-blur-sm">
+                        {study.category}
+                      </span>
+                    </div>
+                    <div className="absolute top-4 right-4">
+                      <div className="text-right">
+                        <p className="text-3xl font-bold text-white">{study.result}</p>
+                        <p className="text-sm text-white/70">{study.resultText}</p>
+                      </div>
+                    </div>
+                  </div>
+                  <h3 className="text-xl font-bold text-white group-hover:text-accent-cyan transition-colors mb-3 line-clamp-2">
                     {study.title}
                   </h3>
-                  <p className="text-gray-400">{study.subtitle}</p>
-                </div>
-              </div>
+                  <p className="text-neutral-slate line-clamp-2">{study.subtitle}</p>
+                </motion.div>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedSection>
 
-          <div className="text-center mt-12">
-            <Link to="/clients" className="btn-secondary inline-flex items-center space-x-2">
-              <span>More case studies</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
+          <FadeUp delay={0.5}>
+            <div className="text-center mt-12">
+              <MagneticButton to="/clients" variant="secondary">
+                View all case studies
+                <ArrowRight className="inline-block ml-2 w-4 h-4" />
+              </MagneticButton>
+            </div>
+          </FadeUp>
         </div>
-      </motion.section>
-
-      {/* Services Process Section */}
-      <motion.section 
-        className="section-padding bg-gray-900"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Leverage our full digital <span className="gradient-text">product expertise</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Whether you want to consult an idea, add missing capabilities, quickly expand your team, or hand over a project – we've got you covered.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
-            {[
-              { number: "01", title: "Ideate", desc: "Identify, shape and validate your product idea" },
-              { number: "02", title: "Design", desc: "Craft beautiful digital experiences across platforms" },
-              { number: "03", title: "Develop", desc: "Bring products to life with world-class engineering" },
-              { number: "04", title: "Maintain", desc: "Safeguard your product's quality and reliability" },
-              { number: "05", title: "Scale", desc: "Gain flexibility to adjust and expand on the fly" }
-            ].map((step, index) => (
-              <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center mx-auto mb-4">
-                  <span className="text-black font-bold text-xl">{step.number}</span>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">{step.title}</h3>
-                <p className="text-gray-400">{step.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
-
-      {/* Testimonials Section */}
-      <motion.section 
-        className="section-padding bg-black"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Check out our <span className="gradient-text">clients' words</span>
-            </h2>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gray-900 p-8 rounded-xl border border-gray-800">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full mr-4"
-                  />
-                  <div>
-                    <h4 className="font-semibold text-white">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-400">{testimonial.role}</p>
-                    <p className="text-sm font-semibold text-white">{testimonial.company}</p>
-                  </div>
-                </div>
-                <p className="text-gray-300 italic">"{testimonial.quote}"</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </motion.section>
+      </section>
 
       {/* Stats Section */}
-      <motion.section 
-        className="section-padding bg-gray-900 text-white"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">
-              Enjoy <span className="gradient-text">tangible results</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Over the years we've created a unique process that delivers exceptional results with blazing-fast efficiency.
-            </p>
-          </div>
+      <section className="section-padding bg-background-dark relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-navy-primary/20 rounded-full filter blur-[150px]" />
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12" staggerChildren={0.1}>
             {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-4xl md:text-5xl font-bold text-white mb-2">
-                  {stat.value}
+              <AnimatedItem key={index}>
+                <div className="text-center">
+                  <motion.p
+                    className="stat-value mb-2"
+                    initial={{ scale: 0.5 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                  >
+                    {stat.value}
+                  </motion.p>
+                  <p className="text-neutral-slate font-medium">{stat.label}</p>
                 </div>
-                <p className="text-gray-300">{stat.label}</p>
-              </div>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
-      </motion.section>
+      </section>
 
-      {/* Clients Section */}
-      <motion.section 
-        className="section-padding bg-black"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5 }}
-      >
+      {/* Testimonials Section */}
+      <section className="section-padding mesh-bg">
         <div className="container-custom">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-              Benefit from our <span className="gradient-text">cross-industry experience</span>
-            </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              With a wide range of services, and experience in multiple industries, such as finance, retail, proptech, or healthcare, we understand your challenges.
-            </p>
-          </div>
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Client Stories</p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <h2 className="section-title text-white mb-6">
+                What Our <span className="gradient-text">Clients Say</span>
+              </h2>
+            </AnimatedItem>
+          </AnimatedSection>
 
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-            {clients.map((client, index) => (
-              <div key={index} className="text-center p-4 hover:bg-gray-900 rounded-lg transition-colors">
-                <div className="text-2xl font-bold text-white opacity-60 hover:opacity-100 transition-opacity">
-                  {client.logo}
-                </div>
-              </div>
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerChildren={0.15}>
+            {testimonials.map((testimonial, index) => (
+              <AnimatedItem key={index}>
+                <motion.div
+                  className="glass-panel-hover p-8 h-full"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="flex items-center mb-6">
+                    <img
+                      src={testimonial.avatar}
+                      alt={testimonial.name}
+                      className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-accent-cyan/30"
+                    />
+                    <div>
+                      <h4 className="font-bold text-white">{testimonial.name}</h4>
+                      <p className="text-sm text-neutral-slate">{testimonial.role}</p>
+                      <p className="text-sm font-medium text-accent-cyan">{testimonial.company}</p>
+                    </div>
+                  </div>
+                  <p className="text-white/80 italic leading-relaxed">"{testimonial.quote}"</p>
+                </motion.div>
+              </AnimatedItem>
             ))}
-          </div>
+          </AnimatedSection>
         </div>
-      </motion.section>
+      </section>
 
       {/* CTA Section */}
-      <motion.section 
-        className="section-padding bg-gradient-to-r from-gray-900 to-black text-white"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.5 }}
-      >
-        <div className="container-custom text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Build impactful products <span className="text-yellow-400">faster</span> than your competition
-          </h2>
-          <Link to="/contact" className="btn-secondary bg-white text-black hover:bg-gray-100 text-lg px-8 py-4">
-            Estimate project
-          </Link>
+      <section className="section-padding bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+        {/* Decorative elements */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full filter blur-[100px]" />
         </div>
-      </motion.section>
+
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center">
+            <AnimatedItem>
+              <h2 className="section-title text-white mb-6">
+                Ready to Build Something <br className="hidden md:block" />
+                <span className="text-background-dark">Amazing?</span>
+              </h2>
+            </AnimatedItem>
+            <AnimatedItem>
+              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                Let's discuss your project and see how we can help you achieve your digital goals.
+              </p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <MagneticButton to="/contact" variant="primary" className="bg-white text-navy-primary hover:bg-white/90 hover:shadow-lg">
+                Start Your Project Today
+                <ArrowRight className="inline-block ml-2 w-5 h-5" />
+              </MagneticButton>
+            </AnimatedItem>
+          </AnimatedSection>
+        </div>
+      </section>
     </div>
   );
 };
 
-export default Home; 
+export default Home;

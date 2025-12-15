@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +15,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const controlNavbar = () => {
-      const scrollThreshold = window.innerHeight * 0.1; // 10% of viewport height
+      const scrollThreshold = 50;
 
       if (window.scrollY > scrollThreshold) {
         setIsScrolled(true);
@@ -26,8 +27,8 @@ const Navbar = () => {
         setShowNav(true);
         return;
       }
-      
-      if (window.scrollY > lastScrollY && window.scrollY > scrollThreshold) {
+
+      if (window.scrollY > lastScrollY && window.scrollY > 200) {
         setShowNav(false);
       } else {
         setShowNav(true);
@@ -47,8 +48,6 @@ const Navbar = () => {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    // On other pages, the Link component will handle navigation,
-    // and the ScrollToTop component will scroll to the top.
   };
 
   const toggleMenu = () => setIsOpen(!isOpen);
@@ -61,10 +60,11 @@ const Navbar = () => {
   const handleMouseLeave = () => {
     dropdownTimeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
-    }, 200); // 200ms delay
+    }, 200);
   };
 
   const servicesItems = [
+    { name: 'All Products', href: '/services/products', highlight: true },
     { name: 'Ideation', href: '/services/ideation' },
     { name: 'Software Development', href: '/services/development' },
     { name: 'Design', href: '/services/design' },
@@ -102,178 +102,168 @@ const Navbar = () => {
     { name: 'Newsletters and originals', href: '/insights/newsletters' },
   ];
 
+  const dropdownVariants = {
+    hidden: {
+      opacity: 0,
+      y: 10,
+      transition: { duration: 0.2 }
+    },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.3, ease: 'easeOut' }
+    }
+  };
+
+  const NavDropdown = ({ items, isActive }) => (
+    <AnimatePresence>
+      {isActive && (
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          exit="hidden"
+          variants={dropdownVariants}
+          className="absolute top-full left-0 mt-2 w-72 glass-panel p-2 z-50 shadow-glow-sm"
+        >
+          {items.map((item) => (
+            <Link
+              key={item.name}
+              to={item.href}
+              className="block px-4 py-3 text-sm text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-all duration-200"
+              onClick={() => setActiveDropdown(null)}
+            >
+              {item.name}
+            </Link>
+          ))}
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+
   return (
-    <nav className={`fixed w-full top-0 z-50 transition-all duration-300 ease-in-out ${(isScrolled || isOpen) ? 'bg-black shadow-lg' : 'bg-transparent'} ${showNav ? 'translate-y-0' : '-translate-y-full'}`}>
+    <motion.nav
+      initial={{ y: -100 }}
+      animate={{ y: showNav ? 0 : -100 }}
+      transition={{ duration: 0.3, ease: 'easeInOut' }}
+      className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled || isOpen
+        ? 'glass-nav shadow-lg'
+        : 'bg-transparent'
+        }`}
+    >
       <div className="container-custom">
-        <div className="flex items-center h-16">
+        <div className="flex items-center h-20">
           {/* Left: Logo */}
           <div className="flex-1 flex items-center justify-start">
-            <Link to="/" className="flex items-center space-x-2" onClick={handleLogoClick}>
-              <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
-                <span className="font-logo text-black text-lg">F</span>
-              </div>
-              <span className="font-logo text-xl text-white">FreekiWebsite</span>
+            <Link to="/" className="flex items-center space-x-3 group" onClick={handleLogoClick}>
+              <motion.div
+                className="w-10 h-10 bg-gradient-to-br from-navy-secondary to-accent-cyan rounded-xl flex items-center justify-center shadow-glow-sm"
+                whileHover={{ scale: 1.05, rotate: 5 }}
+                transition={{ duration: 0.2 }}
+              >
+                <span className="font-display font-bold text-white text-lg">F</span>
+              </motion.div>
+              <span className="font-display font-bold text-xl text-white group-hover:text-accent-cyan transition-colors duration-300">
+                FreekiWebsite
+              </span>
             </Link>
           </div>
 
           {/* Center: Desktop Navigation */}
-          <div className="hidden lg:flex flex-1 justify-center items-center space-x-8">
+          <div className="hidden lg:flex flex-1 justify-center items-center space-x-1">
             {/* Services Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('services')} onMouseLeave={handleMouseLeave}>
-              <button
-                className="flex items-center space-x-1 text-white hover:text-gray-300 transition-colors"
-              >
-                <span>Services</span>
-                <ChevronDown className="w-4 h-4" />
+              <button className="flex items-center space-x-1 px-4 py-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5">
+                <span className="font-medium">Services</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'services' ? 'rotate-180' : ''}`} />
               </button>
-              {activeDropdown === 'services' && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-black border border-gray-800 shadow-xl rounded-lg py-2 z-50">
-                  {servicesItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-900"
-                      onClick={() => setActiveDropdown(null)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <NavDropdown items={servicesItems} isActive={activeDropdown === 'services'} />
             </div>
 
             {/* Industries Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('industries')} onMouseLeave={handleMouseLeave}>
-              <button
-                className="flex items-center space-x-1 text-white hover:text-gray-300 transition-colors"
-              >
-                <span>Industries</span>
-                <ChevronDown className="w-4 h-4" />
+              <button className="flex items-center space-x-1 px-4 py-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5">
+                <span className="font-medium">Industries</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'industries' ? 'rotate-180' : ''}`} />
               </button>
-              {activeDropdown === 'industries' && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-black border border-gray-800 shadow-xl rounded-lg py-2 z-50">
-                  {industriesItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-900"
-                      onClick={() => setActiveDropdown(null)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <NavDropdown items={industriesItems} isActive={activeDropdown === 'industries'} />
             </div>
 
             {/* Clients Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('clients')} onMouseLeave={handleMouseLeave}>
-              <button
-                className="flex items-center space-x-1 text-white hover:text-gray-300 transition-colors"
-              >
-                <span>Clients</span>
-                <ChevronDown className="w-4 h-4" />
+              <button className="flex items-center space-x-1 px-4 py-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5">
+                <span className="font-medium">Clients</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'clients' ? 'rotate-180' : ''}`} />
               </button>
-              {activeDropdown === 'clients' && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-black border border-gray-800 shadow-xl rounded-lg py-2 z-50">
-                  {clientsItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-900"
-                      onClick={() => setActiveDropdown(null)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <NavDropdown items={clientsItems} isActive={activeDropdown === 'clients'} />
             </div>
 
             {/* About Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('about')} onMouseLeave={handleMouseLeave}>
-              <button
-                className="flex items-center space-x-1 text-white hover:text-gray-300 transition-colors whitespace-nowrap"
-              >
-                <span>About us</span>
-                <ChevronDown className="w-4 h-4" />
+              <button className="flex items-center space-x-1 px-4 py-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5 whitespace-nowrap">
+                <span className="font-medium">About us</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`} />
               </button>
-              {activeDropdown === 'about' && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-black border border-gray-800 shadow-xl rounded-lg py-2 z-50">
-                  {aboutItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-900"
-                      onClick={() => setActiveDropdown(null)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <NavDropdown items={aboutItems} isActive={activeDropdown === 'about'} />
             </div>
 
             {/* Insights Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('insights')} onMouseLeave={handleMouseLeave}>
-              <button
-                className="flex items-center space-x-1 text-white hover:text-gray-300 transition-colors"
-              >
-                <span>Insights</span>
-                <ChevronDown className="w-4 h-4" />
+              <button className="flex items-center space-x-1 px-4 py-2 text-white/80 hover:text-white transition-colors rounded-lg hover:bg-white/5">
+                <span className="font-medium">Insights</span>
+                <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'insights' ? 'rotate-180' : ''}`} />
               </button>
-              {activeDropdown === 'insights' && (
-                <div className="absolute top-full left-0 mt-2 w-64 bg-black border border-gray-800 shadow-xl rounded-lg py-2 z-50">
-                  {insightsItems.map((item) => (
-                    <Link
-                      key={item.name}
-                      to={item.href}
-                      className="block px-4 py-2 text-sm text-white hover:bg-gray-900"
-                      onClick={() => setActiveDropdown(null)}
-                    >
-                      {item.name}
-                    </Link>
-                  ))}
-                </div>
-              )}
+              <NavDropdown items={insightsItems} isActive={activeDropdown === 'insights'} />
             </div>
           </div>
-          
+
           {/* Right: CTA Button (Desktop) + Mobile Menu Button */}
-          <div className="flex-1 flex items-center justify-end">
-             <div className="hidden lg:block">
-                <Link to="/contact" className="btn-get-in-touch">
-                  Get in touch
-                </Link>
-             </div>
+          <div className="flex-1 flex items-center justify-end space-x-4">
+            <div className="hidden lg:block">
+              <Link
+                to="/contact"
+                className="btn-get-in-touch inline-flex items-center space-x-2"
+              >
+                <span>Get in touch</span>
+              </Link>
+            </div>
             {/* Mobile menu button */}
             <div className="lg:hidden">
               <button
                 onClick={toggleMenu}
-                className="text-white hover:text-gray-300"
+                className="w-10 h-10 flex items-center justify-center rounded-lg bg-white/5 text-white hover:bg-white/10 transition-colors"
               >
-                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+                {isOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
               </button>
             </div>
           </div>
         </div>
 
         {/* Mobile Navigation */}
-        {isOpen && (
-          <div className="lg:hidden bg-black border-t border-gray-800">
-            <div className="px-2 pt-2 pb-3 space-y-1">
-              <Link to="/services" className="block px-3 py-2 text-white hover:bg-gray-900">Services</Link>
-              <Link to="/industries" className="block px-3 py-2 text-white hover:bg-gray-900">Industries</Link>
-              <Link to="/clients" className="block px-3 py-2 text-white hover:bg-gray-900">Clients</Link>
-              <Link to="/about" className="block px-3 py-2 text-white hover:bg-gray-900">About us</Link>
-              <Link to="/insights" className="block px-3 py-2 text-white hover:bg-gray-900">Insights</Link>
-              <Link to="/contact" className="block px-3 py-2 text-white hover:bg-gray-900">Get in touch</Link>
-            </div>
-          </div>
-        )}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.3 }}
+              className="lg:hidden overflow-hidden"
+            >
+              <div className="py-4 space-y-1 border-t border-white/10">
+                <Link to="/services" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onClick={() => setIsOpen(false)}>Services</Link>
+                <Link to="/industries" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onClick={() => setIsOpen(false)}>Industries</Link>
+                <Link to="/clients" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onClick={() => setIsOpen(false)}>Clients</Link>
+                <Link to="/about" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onClick={() => setIsOpen(false)}>About us</Link>
+                <Link to="/insights" className="block px-4 py-3 text-white/80 hover:text-white hover:bg-white/5 rounded-lg transition-colors" onClick={() => setIsOpen(false)}>Insights</Link>
+                <div className="pt-4">
+                  <Link to="/contact" className="btn-cta block text-center" onClick={() => setIsOpen(false)}>Get in touch</Link>
+                </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
-    </nav>
+    </motion.nav>
   );
 };
 
-export default Navbar; 
+export default Navbar;
