@@ -48,7 +48,7 @@ const Footer = () => {
     <motion.li whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
       <Link
         to={link.href}
-        className="text-neutral-slate hover:text-accent-cyan transition-colors text-sm flex items-center group"
+        className="text-white/60 hover:text-primary transition-colors text-sm flex items-center group"
       >
         <span>{link.name}</span>
         <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -60,8 +60,8 @@ const Footer = () => {
     <footer className="bg-background-dark text-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-navy-primary/20 rounded-full filter blur-[150px]" />
-        <div className="absolute top-0 right-0 w-64 h-64 bg-accent-cyan/10 rounded-full filter blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full filter blur-[150px]" />
+        <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full filter blur-[100px]" />
       </div>
 
       {/* Newsletter Section */}
@@ -72,17 +72,17 @@ const Footer = () => {
               <h3 className="text-2xl md:text-3xl font-bold font-display mb-2">
                 Stay ahead of the curve
               </h3>
-              <p className="text-neutral-slate">
+              <p className="text-white/60">
                 Subscribe to our newsletter for industry insights and updates.
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full lg:w-auto">
               <div className="relative">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-slate" />
+                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-white/40" />
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full sm:w-80 pl-12 pr-4 py-3 bg-white/5 border border-white/10 rounded-xl text-white placeholder-neutral-slate focus:outline-none focus:border-accent-cyan transition-colors"
+                  className="w-full sm:w-80 pl-12 pr-4 py-3 bg-surface border border-white/10 rounded-xl text-white placeholder-white/40 focus:outline-none focus:border-primary transition-colors"
                 />
               </div>
               <motion.button
@@ -104,16 +104,16 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center space-x-3 mb-6 group">
               <motion.div
-                className="w-10 h-10 bg-gradient-to-br from-navy-secondary to-accent-cyan rounded-xl flex items-center justify-center shadow-glow-sm"
+                className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20"
                 whileHover={{ scale: 1.05, rotate: 5 }}
               >
-                <span className="font-display font-bold text-white text-lg">V</span>
+                <span className="font-display font-bold text-primary text-lg">V</span>
               </motion.div>
-              <span className="logo-font text-xl group-hover:text-accent-cyan transition-colors">
+              <span className="logo-font text-xl group-hover:text-primary transition-colors">
                 VedaViks Media
               </span>
             </Link>
-            <p className="text-neutral-slate mb-8 max-w-sm leading-relaxed">
+            <p className="text-white/60 mb-8 max-w-sm leading-relaxed">
               We provide a complete suite of development and marketing services for industrial businesses. Let us handle the tech, so you can focus on growth.
             </p>
 
@@ -125,28 +125,13 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center text-neutral-slate hover:text-accent-cyan hover:border-accent-cyan/50 hover:bg-accent-cyan/10 transition-all duration-300"
+                  className="w-10 h-10 rounded-lg bg-surface border border-white/10 flex items-center justify-center text-white/60 hover:text-black hover:bg-primary hover:border-primary transition-all duration-300"
                   aria-label={social.label}
                   whileHover={{ y: -3 }}
                 >
                   <social.icon className="w-4 h-4" />
                 </motion.a>
               ))}
-            </div>
-
-            {/* Newsletter Subscription */}
-            <div className="mt-6">
-              <h4 className="font-semibold mb-2">Subscribe to our newsletter</h4>
-              <form className="flex gap-2" onSubmit={(e) => e.preventDefault()}>
-                <input
-                  type="email"
-                  required
-                  placeholder="Your email"
-                  className="flex-1 bg-gray-900 border border-gray-800 rounded-md px-3 py-2 text-white placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-gray-700"
-                />
-                <button type="submit" className="btn-secondary px-4 py-2">Subscribe</button>
-              </form>
-              <p className="text-xs text-gray-400 mt-2">We’ll send occasional updates. Unsubscribe anytime.</p>
             </div>
           </div>
 
@@ -190,22 +175,22 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-neutral-slate">
-              <span>© 2024 FreekiWebsite. All rights reserved.</span>
-              <Link to="/privacy" className="hover:text-accent-cyan transition-colors">
+            <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-white/40">
+              <span>© {new Date().getFullYear()} VedaViks Media. All rights reserved.</span>
+              <Link to="/privacy" className="hover:text-primary transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="hover:text-accent-cyan transition-colors">
+              <Link to="/terms" className="hover:text-primary transition-colors">
                 Terms of Service
               </Link>
-              <Link to="/cookies" className="hover:text-accent-cyan transition-colors">
+              <Link to="/cookies" className="hover:text-primary transition-colors">
                 Cookie Policy
               </Link>
             </div>
-            <div className="text-sm text-neutral-slate flex items-center gap-2">
+            <div className="text-sm text-white/40 flex items-center gap-2">
               Made with
               <motion.span
-                className="text-accent-cyan"
+                className="text-primary"
                 animate={{ scale: [1, 1.2, 1] }}
                 transition={{ duration: 1, repeat: Infinity }}
               >

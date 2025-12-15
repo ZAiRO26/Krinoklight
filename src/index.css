@@ -4,248 +4,92 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===== CSS CUSTOM PROPERTIES FOR THEMING ===== */
-:root {
-  /* Dark Theme (Default) */
-  --color-bg-primary: #040404;
-  --color-bg-secondary: #0A0A0A;
-  --color-bg-elevated: #111111;
-  --color-text-primary: #ffffff;
-  --color-text-secondary: #94a3b8;
-  --color-text-muted: #6b7280;
-  --color-accent: #4BA3DA;
-  --color-accent-secondary: #0347A2;
-  --color-border: rgba(255, 255, 255, 0.1);
-  --color-card-bg: rgba(255, 255, 255, 0.02);
-  --gradient-cta: linear-gradient(135deg, #0347A2 0%, #4BA3DA 100%);
-  --gradient-text: linear-gradient(135deg, #4BA3DA 0%, #60B8E8 50%, #4BA3DA 100%);
-}
-
-/* Light Theme */
-html.light {
-  --color-bg-primary: #FFFFFF;
-  --color-bg-secondary: #F8FAF9;
-  --color-bg-elevated: #FFFFFF;
-  --color-text-primary: #1A1A1A;
-  --color-text-secondary: #4A5660;
-  --color-text-muted: #5A6B5C;
-  --color-accent: #028174;
-  --color-accent-secondary: #0AB68B;
-  --color-border: rgba(0, 0, 0, 0.1);
-  --color-card-bg: rgba(0, 0, 0, 0.02);
-  --gradient-cta: linear-gradient(135deg, #028174 0%, #0AB68B 100%);
-  --gradient-text: linear-gradient(135deg, #028174 0%, #0AB68B 50%, #92DE8B 100%);
-}
-
 @layer base {
   html {
     scroll-behavior: smooth;
+    background-color: #000000;
   }
 
   body {
-    font-family: 'Poppins', system-ui, sans-serif;
-    line-height: 1.6;
-    background-color: var(--color-bg-primary);
-    color: var(--color-text-primary);
+    @apply bg-background-dark text-white font-body antialiased;
     overflow-x: hidden;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
-  /* Respect user preferences for reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-
-    *,
-    *::before,
-    *::after {
-      animation-duration: 0.01ms !important;
-      animation-iteration-count: 1 !important;
-      transition-duration: 0.01ms !important;
-      scroll-behavior: auto !important;
-    }
-  }
-
-  /* Performance optimization for animated elements */
-  .gpu-accelerate {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-    perspective: 1000px;
-  }
-
-  /* Custom scrollbar - Dark Theme */
-  html.dark ::-webkit-scrollbar {
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
     width: 8px;
   }
 
-  html.dark ::-webkit-scrollbar-track {
-    background: #040404;
+  ::-webkit-scrollbar-track {
+    @apply bg-background-dark;
   }
 
-  html.dark ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #023776, #4BA3DA);
+  ::-webkit-scrollbar-thumb {
+    background-color: #FCDA69;
     border-radius: 4px;
   }
 
-  html.dark ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #0347A2, #60B8E8);
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #E5C558;
   }
 
-  /* Custom scrollbar - Light Theme */
-  html.light ::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  html.light ::-webkit-scrollbar-track {
-    background: #F8FAF9;
-  }
-
-  html.light ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #028174, #0AB68B);
-    border-radius: 4px;
-  }
-
-  html.light ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #0AB68B, #92DE8B);
+  ::selection {
+    background-color: rgba(252, 218, 105, 0.3);
+    color: #FCDA69;
   }
 }
 
 @layer components {
 
-  /* Premium Buttons - Theme Aware */
+  /* Buttons */
   .btn-primary {
-    @apply px-8 py-4 rounded-xl font-semibold transition-all duration-300 active:scale-95;
-    background: var(--color-accent-secondary);
-    color: white;
-  }
-
-  .btn-primary:hover {
-    background: var(--color-accent);
-    box-shadow: 0 0 30px rgba(75, 163, 218, 0.3);
-  }
-
-  html.light .btn-primary:hover {
-    box-shadow: 0 0 30px rgba(2, 129, 116, 0.3);
+    @apply px-8 py-4 bg-primary text-black font-semibold rounded-xl transition-all duration-300 hover:bg-primary-hover transform hover:-translate-y-1 hover:shadow-glow;
   }
 
   .btn-secondary {
-    @apply bg-transparent px-8 py-4 rounded-xl font-semibold transition-all duration-300 active:scale-95;
-    color: var(--color-text-primary);
-    border: 2px solid var(--color-border);
-  }
-
-  .btn-secondary:hover {
-    border-color: var(--color-accent);
-    color: var(--color-accent);
+    @apply px-8 py-4 bg-transparent border-2 border-primary text-primary font-semibold rounded-xl transition-all duration-300 hover:bg-primary hover:text-black transform hover:-translate-y-1;
   }
 
   .btn-cta {
-    @apply relative overflow-hidden text-white px-8 py-4 rounded-xl font-bold transition-all duration-300 hover:scale-105 active:scale-95;
-    background: var(--gradient-cta);
-  }
-
-  .btn-cta:hover {
-    box-shadow: 0 0 50px rgba(75, 163, 218, 0.4);
-  }
-
-  html.light .btn-cta:hover {
-    box-shadow: 0 0 50px rgba(2, 129, 116, 0.4);
-  }
-
-  .btn-cta::before {
-    content: '';
-    @apply absolute inset-0 bg-white/20 translate-x-[-100%] skew-x-12 transition-transform duration-500;
-  }
-
-  .btn-cta:hover::before {
-    @apply translate-x-[100%];
+    @apply px-6 py-3 bg-primary text-black font-semibold rounded-lg transition-all duration-300 hover:bg-primary-hover hover:shadow-glow transform hover:scale-105;
   }
 
   .btn-get-in-touch {
-    @apply px-6 py-2.5 rounded-full font-semibold transition-all duration-300 active:scale-95;
-    background: var(--color-accent-secondary);
-    color: white;
+    @apply px-6 py-2.5 bg-primary text-black font-bold rounded-lg transition-all duration-300 hover:bg-primary-hover hover:shadow-glow hover:-translate-y-0.5;
   }
 
-  .btn-get-in-touch:hover {
-    background: var(--color-accent);
-  }
-
-  /* Layout */
-  .section-padding {
-    @apply py-20 md:py-32 px-4;
-  }
-
-  .container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-  }
-
-  /* Glassmorphism - Theme Aware */
+  /* Cards & Panels - Matte/Solid Style */
   .glass-panel {
-    background: var(--color-card-bg);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--color-border);
-    @apply rounded-2xl;
+    @apply bg-background-card border border-white/10 backdrop-blur-none;
   }
 
   .bento-card {
-    background: var(--color-card-bg);
-    backdrop-filter: blur(20px);
-    border: 1px solid var(--color-border);
-    @apply rounded-2xl p-8 transition-all duration-300;
+    @apply relative overflow-hidden rounded-3xl p-8 bg-background-card border border-white/10 transition-all duration-500 hover:border-primary/50;
   }
 
-  .bento-card:hover {
-    border-color: var(--color-accent);
-    box-shadow: 0 0 40px rgba(75, 163, 218, 0.15);
+  /* Text Styles */
+  .text-gradient {
+    @apply text-white;
+    /* Removed gradient text for matte look */
   }
 
-  html.light .bento-card:hover {
-    box-shadow: 0 0 40px rgba(2, 129, 116, 0.15);
+  .text-gradient-primary {
+    @apply text-primary;
   }
 
-  /* Background variations */
-  .mesh-bg {
-    background-color: var(--color-bg-primary);
-    background-image: radial-gradient(at 40% 20%, rgba(75, 163, 218, 0.1) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, rgba(3, 71, 162, 0.15) 0px, transparent 50%);
-  }
-
-  html.light .mesh-bg {
-    background-image: radial-gradient(at 40% 20%, rgba(2, 129, 116, 0.08) 0px, transparent 50%),
-      radial-gradient(at 80% 0%, rgba(10, 182, 139, 0.1) 0px, transparent 50%);
-  }
-
-  .gradient-navy-bg {
-    background: linear-gradient(135deg, #011B3D 0%, #023776 50%, #0347A2 100%);
-  }
-
-  html.light .gradient-navy-bg {
-    background: linear-gradient(135deg, #028174 0%, #0AB68B 50%, #92DE8B 100%);
-  }
-
-  /* Typography */
-  .section-title {
-    @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
+  .logo-font {
     font-family: 'Poppins', sans-serif;
+    letter-spacing: -0.02em;
+    font-weight: 700;
   }
 
-  .section-subtitle {
-    @apply text-lg md:text-xl leading-relaxed;
-    font-family: 'Open Sans', 'Poppins', sans-serif;
-    color: var(--color-text-secondary);
+  /* Section Styles */
+  .container-custom {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
   }
 
-  .gradient-text {
-    background: var(--gradient-text);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-
-  /* Icon container */
-  .icon-container {
-    @apply w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg;
+  .section-padding {
+    @apply py-20 lg:py-32;
   }
 
   /* Interactive elements */
@@ -254,94 +98,50 @@ html.light {
   }
 
   .shadow-glow {
-    box-shadow: 0 0 40px rgba(75, 163, 218, 0.3);
-  }
-
-  html.light .shadow-glow {
-    box-shadow: 0 0 40px rgba(2, 129, 116, 0.3);
+    box-shadow: 0 0 20px rgba(252, 218, 105, 0.15);
   }
 
   .shadow-glow-sm {
-    box-shadow: 0 0 20px rgba(75, 163, 218, 0.2);
-  }
-
-  html.light .shadow-glow-sm {
-    box-shadow: 0 0 20px rgba(2, 129, 116, 0.2);
+    box-shadow: 0 0 10px rgba(252, 218, 105, 0.1);
   }
 
   .shadow-glow-lg {
-    box-shadow: 0 0 60px rgba(75, 163, 218, 0.4);
+    box-shadow: 0 0 40px rgba(252, 218, 105, 0.2);
   }
 
-  html.light .shadow-glow-lg {
-    box-shadow: 0 0 60px rgba(2, 129, 116, 0.4);
+  /* Mesh Background Replacement (Solid/Matte) */
+  .mesh-bg {
+    @apply bg-background-dark;
+    background-image:
+      radial-gradient(at 0% 0%, rgba(252, 218, 105, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(252, 218, 105, 0.05) 0px, transparent 50%);
   }
 
-  /* Scroll target offset for sticky navbar */
-  .scroll-target {
-    scroll-margin-top: 100px;
+  .gradient-navy-bg {
+    @apply bg-background-dark;
+    background-image: linear-gradient(180deg, #000000 0%, #111111 100%);
   }
 
-  /* Theme-aware text colors */
-  .text-theme-primary {
-    color: var(--color-text-primary);
-  }
-
-  .text-theme-secondary {
-    color: var(--color-text-secondary);
-  }
-
-  .text-theme-muted {
-    color: var(--color-text-muted);
-  }
-
-  .text-theme-accent {
-    color: var(--color-accent);
-  }
-
-  /* Theme-aware backgrounds */
-  .bg-theme-primary {
-    background-color: var(--color-bg-primary);
-  }
-
-  .bg-theme-secondary {
-    background-color: var(--color-bg-secondary);
-  }
-
-  .bg-theme-card {
-    background-color: var(--color-card-bg);
+  /* Icon container */
+  .icon-container {
+    @apply w-14 h-14 rounded-2xl flex items-center justify-center shadow-lg bg-surface border border-white/5;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-
-  /* Smooth theme transition */
-  .theme-transition {
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-  }
+/* Utilities */
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-/* Logo Font */
-.logo-font {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+.text-shadow-glow {
+  text-shadow: 0 0 20px rgba(252, 218, 105, 0.3);
 }
 
-/* CSS Animation for Marquee */
-@keyframes marquee {
-  0% {
-    transform: translateX(0%);
-  }
-
-  100% {
-    transform: translateX(-50%);
-  }
+/* Animations included in tailwind config */
+.animate-float-slow {
+  animation: float 8s ease-in-out infinite;
 }
 
 .animate-marquee {
-  animation: marquee 25s linear infinite;
+  animation: scroll 40s linear infinite;
 }
