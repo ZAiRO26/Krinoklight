@@ -12,6 +12,7 @@ import Clients from './pages/Clients';
 import CaseStudyDetail from './pages/CaseStudyDetail';
 import About from './pages/About';
 import Insights from './pages/Insights';
+import Packages from './pages/Packages';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -49,6 +50,7 @@ function App() {
               <Route path="/insights" element={<Insights />} />
               <Route path="/insights/blog" element={<Insights />} />
               <Route path="/insights/newsletters" element={<Insights />} />
+              <Route path="/insights/packages" element={<Packages />} />
               <Route path="/contact" element={<Contact />} />
 
               {/* Legal Pages */}

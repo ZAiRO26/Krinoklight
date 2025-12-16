@@ -100,6 +100,7 @@ const Navbar = () => {
   const insightsItems = [
     { name: 'Blog', href: '/insights/blog' },
     { name: 'Newsletters and originals', href: '/insights/newsletters' },
+    { name: 'Packages', href: '/insights/packages', highlight: true },
   ];
 
   const dropdownVariants = {
