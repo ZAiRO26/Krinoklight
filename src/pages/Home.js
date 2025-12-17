@@ -12,31 +12,37 @@ const Home = () => {
       icon: Globe,
       title: 'Web Development',
       desc: 'Stunning, responsive websites that convert visitors into customers',
+      href: '/services/development',
     },
     {
       icon: Smartphone,
       title: 'Mobile Apps',
       desc: 'Native and cross-platform mobile experiences',
+      href: '/services/development',
     },
     {
       icon: Brain,
       title: 'AI Solutions',
       desc: 'Transform your business with cutting-edge AI integration',
+      href: '/services/ai',
     },
     {
       icon: Code,
       title: 'Custom Software',
       desc: 'Tailored solutions built for your unique challenges',
+      href: '/services/development',
     },
     {
       icon: Palette,
       title: 'UI/UX Design',
       desc: 'Beautiful interfaces that users love to interact with',
+      href: '/services/design',
     },
     {
       icon: Zap,
       title: 'Digital Strategy',
       desc: 'Data-driven strategies for digital transformation',
+      href: '/services/ideation',
     },
   ];
 
@@ -89,13 +95,6 @@ const Home = () => {
       description: "Owns content, social, and digital campaigns.",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=face"
     }
-  ];
-
-  const stats = [
-    { value: "150+", label: "Clients Worldwide" },
-    { value: "500+", label: "Projects Delivered" },
-    { value: "98%", label: "Client Satisfaction" },
-    { value: "15+", label: "Years Experience" }
   ];
 
   return (
@@ -194,25 +193,27 @@ const Home = () => {
           <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerChildren={0.1}>
             {services.map((service, index) => (
               <AnimatedItem key={service.title}>
-                <motion.div
-                  className="bento-card group cursor-pointer h-full"
-                  whileHover={{ scale: 1.02 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="icon-container mb-6 bg-primary/10 border border-primary/30">
-                    <service.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
-                    {service.title}
-                  </h3>
-                  <p className="text-white/60 leading-relaxed">
-                    {service.desc}
-                  </p>
-                  <div className="mt-6 flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="font-medium">Learn more</span>
-                    <ArrowRight className="w-4 h-4 ml-2" />
-                  </div>
-                </motion.div>
+                <Link to={service.href}>
+                  <motion.div
+                    className="bento-card group cursor-pointer h-full"
+                    whileHover={{ scale: 1.02 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    <div className="icon-container mb-6 bg-primary/10 border border-primary/30">
+                      <service.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-white/60 leading-relaxed">
+                      {service.desc}
+                    </p>
+                    <div className="mt-6 flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <span className="font-medium">Learn more</span>
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </div>
+                  </motion.div>
+                </Link>
               </AnimatedItem>
             ))}
           </AnimatedSection>
@@ -282,35 +283,6 @@ const Home = () => {
               </MagneticButton>
             </div>
           </FadeUp>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="section-padding bg-background-dark relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full filter blur-[150px]" />
-        </div>
-
-        <div className="container-custom relative z-10">
-          <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12" staggerChildren={0.1}>
-            {stats.map((stat, index) => (
-              <AnimatedItem key={index}>
-                <div className="text-center">
-                  <motion.p
-                    className="stat-value mb-2"
-                    initial={{ scale: 0.5 }}
-                    whileInView={{ scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                  >
-                    {stat.value}
-                  </motion.p>
-                  <p className="text-white/60 font-medium">{stat.label}</p>
-                </div>
-              </AnimatedItem>
-            ))}
-          </AnimatedSection>
         </div>
       </section>
 

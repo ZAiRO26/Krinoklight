@@ -19,7 +19,7 @@ const Contact = () => {
       country: "United States",
       address: "350 Fifth Avenue, Suite 4800",
       phone: "+1 212 555 0123",
-      email: "newyork@freekiwebsite.com",
+      email: "newyork@vedaviksmedia.com",
       hours: "9 AM - 6 PM EST",
     },
     {
@@ -27,7 +27,7 @@ const Contact = () => {
       country: "United Kingdom",
       address: "1 Canada Square, Canary Wharf",
       phone: "+44 20 7946 0958",
-      email: "london@freekiwebsite.com",
+      email: "london@vedaviksmedia.com",
       hours: "9 AM - 5 PM GMT",
     },
     {
@@ -35,7 +35,7 @@ const Contact = () => {
       country: "Singapore",
       address: "1 Raffles Place, Tower 2",
       phone: "+65 6123 4567",
-      email: "singapore@freekiwebsite.com",
+      email: "singapore@vedaviksmedia.com",
       hours: "9 AM - 6 PM SGT",
     }
   ];

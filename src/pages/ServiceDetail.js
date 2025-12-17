@@ -520,7 +520,7 @@ const ServiceDetail = () => {
                         <AnimatedItem>
                             <h2 className="section-title text-white mb-6">
                                 Ready to Get Started with{' '}
-                                <span className="text-background-dark">{svc.title}</span>?
+                                <span className="text-gradient">{svc.title}</span>?
                             </h2>
                         </AnimatedItem>
                         <AnimatedItem>

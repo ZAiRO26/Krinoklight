@@ -223,7 +223,7 @@ const IndustryDetail = () => {
                         <AnimatedItem>
                             <h2 className="section-title text-white mb-6">
                                 Let's Build for{' '}
-                                <span className="text-background-dark">{ind.title}</span>
+                                <span className="text-gradient">{ind.title}</span>
                             </h2>
                         </AnimatedItem>
                         <AnimatedItem>

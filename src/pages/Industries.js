@@ -200,7 +200,7 @@ const Industries = () => {
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
                 Let's Build the Future of Your Industry{' '}
-                <span className="text-background-dark">Together</span>
+                <span className="text-gradient">Together</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>

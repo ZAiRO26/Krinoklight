@@ -1,7 +1,9 @@
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import PageTransition from './components/PageTransition';
 import Home from './pages/Home';
 import Services from './pages/Services';
 import Products from './pages/Products';
@@ -23,6 +25,46 @@ import ScrollToTopButton from './components/ScrollToTopButton';
 import WhatsAppFloatingButton from './components/WhatsAppFloatingButton';
 import SmoothScroll from './components/SmoothScroll';
 
+// Animated Routes component for page transitions
+function AnimatedRoutes() {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <Routes location={location} key={location.pathname}>
+        {/* Main Pages */}
+        <Route path="/" element={<PageTransition><Home /></PageTransition>} />
+        <Route path="/services" element={<PageTransition><Services /></PageTransition>} />
+        <Route path="/services/products" element={<PageTransition><Products /></PageTransition>} />
+        <Route path="/services/:slug" element={<PageTransition><ServiceDetail /></PageTransition>} />
+        <Route path="/industries" element={<PageTransition><Industries /></PageTransition>} />
+        <Route path="/industries/:slug" element={<PageTransition><IndustryDetail /></PageTransition>} />
+        <Route path="/clients" element={<PageTransition><Clients /></PageTransition>} />
+        <Route path="/clients/case-studies" element={<PageTransition><Clients /></PageTransition>} />
+        <Route path="/clients/projects" element={<PageTransition><Clients /></PageTransition>} />
+        <Route path="/clients/case-study/:id" element={<PageTransition><CaseStudyDetail /></PageTransition>} />
+        <Route path="/about" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/about/how-we-work" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/about/sustainability" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/about/careers" element={<PageTransition><About /></PageTransition>} />
+        <Route path="/insights" element={<PageTransition><Insights /></PageTransition>} />
+        <Route path="/insights/blog" element={<PageTransition><Insights /></PageTransition>} />
+        <Route path="/insights/newsletters" element={<PageTransition><Insights /></PageTransition>} />
+        <Route path="/insights/packages" element={<PageTransition><Packages /></PageTransition>} />
+        <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
+
+        {/* Legal Pages */}
+        <Route path="/privacy" element={<PageTransition><Privacy /></PageTransition>} />
+        <Route path="/terms" element={<PageTransition><Terms /></PageTransition>} />
+        <Route path="/cookies" element={<PageTransition><Cookies /></PageTransition>} />
+
+        {/* 404 */}
+        <Route path="*" element={<PageTransition><NotFound /></PageTransition>} />
+      </Routes>
+    </AnimatePresence>
+  );
+}
+
 function App() {
   return (
     <Router>
@@ -31,36 +73,7 @@ function App() {
         <div className="min-h-screen bg-background-dark text-white">
           <Navbar />
           <main>
-            <Routes>
-              {/* Main Pages */}
-              <Route path="/" element={<Home />} />
-              <Route path="/services" element={<Services />} />
-              <Route path="/services/products" element={<Products />} />
-              <Route path="/services/:slug" element={<ServiceDetail />} />
-              <Route path="/industries" element={<Industries />} />
-              <Route path="/industries/:slug" element={<IndustryDetail />} />
-              <Route path="/clients" element={<Clients />} />
-              <Route path="/clients/case-studies" element={<Clients />} />
-              <Route path="/clients/projects" element={<Clients />} />
-              <Route path="/clients/case-study/:id" element={<CaseStudyDetail />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/about/how-we-work" element={<About />} />
-              <Route path="/about/sustainability" element={<About />} />
-              <Route path="/about/careers" element={<About />} />
-              <Route path="/insights" element={<Insights />} />
-              <Route path="/insights/blog" element={<Insights />} />
-              <Route path="/insights/newsletters" element={<Insights />} />
-              <Route path="/insights/packages" element={<Packages />} />
-              <Route path="/contact" element={<Contact />} />
-
-              {/* Legal Pages */}
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/cookies" element={<Cookies />} />
-
-              {/* 404 */}
-              <Route path="*" element={<NotFound />} />
-            </Routes>
+            <AnimatedRoutes />
           </main>
           <Footer />
           <WhatsAppFloatingButton />

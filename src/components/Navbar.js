@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [activeDropdown, setActiveDropdown] = useState(null);
+  const [mobileAccordion, setMobileAccordion] = useState(null);
   const dropdownTimeoutRef = useRef(null);
 
   const [showNav, setShowNav] = useState(true);
@@ -249,14 +250,145 @@ const Navbar = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="lg:hidden overflow-hidden"
+              className="lg:hidden overflow-hidden max-h-[80vh] overflow-y-auto"
             >
               <div className="py-4 space-y-1 border-t border-white/10">
-                <Link to="/services" className="block px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5" onClick={() => setIsOpen(false)}>Services</Link>
-                <Link to="/industries" className="block px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5" onClick={() => setIsOpen(false)}>Industries</Link>
-                <Link to="/clients" className="block px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5" onClick={() => setIsOpen(false)}>Clients</Link>
-                <Link to="/about" className="block px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5" onClick={() => setIsOpen(false)}>About us</Link>
-                <Link to="/insights" className="block px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5" onClick={() => setIsOpen(false)}>Insights</Link>
+                {/* Services Accordion */}
+                <div>
+                  <button
+                    onClick={() => setMobileAccordion(mobileAccordion === 'services' ? null : 'services')}
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5"
+                  >
+                    <span>Services</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'services' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileAccordion === 'services' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 space-y-1 overflow-hidden"
+                      >
+                        {servicesItems.map((item, idx) => (
+                          <Link key={idx} to={item.href} className={`block px-4 py-2 rounded-lg text-sm transition-colors ${item.highlight ? 'text-primary font-medium' : 'text-white/60'} hover:text-white hover:bg-white/5`} onClick={() => setIsOpen(false)}>
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Industries Accordion */}
+                <div>
+                  <button
+                    onClick={() => setMobileAccordion(mobileAccordion === 'industries' ? null : 'industries')}
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5"
+                  >
+                    <span>Industries</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'industries' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileAccordion === 'industries' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 space-y-1 overflow-hidden"
+                      >
+                        {industriesItems.map((item, idx) => (
+                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors" onClick={() => setIsOpen(false)}>
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Clients Accordion */}
+                <div>
+                  <button
+                    onClick={() => setMobileAccordion(mobileAccordion === 'clients' ? null : 'clients')}
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5"
+                  >
+                    <span>Clients</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'clients' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileAccordion === 'clients' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 space-y-1 overflow-hidden"
+                      >
+                        {clientsItems.map((item, idx) => (
+                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors" onClick={() => setIsOpen(false)}>
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* About Accordion */}
+                <div>
+                  <button
+                    onClick={() => setMobileAccordion(mobileAccordion === 'about' ? null : 'about')}
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5"
+                  >
+                    <span>About us</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'about' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileAccordion === 'about' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 space-y-1 overflow-hidden"
+                      >
+                        {aboutItems.map((item, idx) => (
+                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-white/60 hover:text-white hover:bg-white/5 transition-colors" onClick={() => setIsOpen(false)}>
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* Insights Accordion */}
+                <div>
+                  <button
+                    onClick={() => setMobileAccordion(mobileAccordion === 'insights' ? null : 'insights')}
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-white/80 hover:text-white hover:bg-white/5"
+                  >
+                    <span>Insights</span>
+                    <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'insights' ? 'rotate-180' : ''}`} />
+                  </button>
+                  <AnimatePresence>
+                    {mobileAccordion === 'insights' && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="pl-4 space-y-1 overflow-hidden"
+                      >
+                        {insightsItems.map((item, idx) => (
+                          <Link key={idx} to={item.href} className={`block px-4 py-2 rounded-lg text-sm transition-colors ${item.highlight ? 'text-primary font-medium' : 'text-white/60'} hover:text-white hover:bg-white/5`} onClick={() => setIsOpen(false)}>
+                            {item.name}
+                          </Link>
+                        ))}
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+
+                {/* CTA Button */}
                 <div className="pt-4">
                   <Link to="/contact" className="btn-cta block text-center" onClick={() => setIsOpen(false)}>Get in touch</Link>
                 </div>

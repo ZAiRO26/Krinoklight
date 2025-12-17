@@ -59,7 +59,7 @@ const Clients = () => {
       name: "Mark Greiner",
       role: "Digital Innovation Manager",
       company: "Merck",
-      quote: "Excellence and speed. It's rare to get both, and FreekiWebsite delivers.",
+      quote: "Excellence and speed. It's rare to get both, and VedaViks Media delivers.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
     },
@@ -67,7 +67,7 @@ const Clients = () => {
       name: "Adi Pavlovic",
       role: "Director of Innovation",
       company: "Keller Williams",
-      quote: "FreekiWebsite has been the best agency we've worked with so far.",
+      quote: "VedaViks Media has been the best agency we've worked with so far.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"
     },
@@ -288,7 +288,7 @@ const Clients = () => {
           <AnimatedSection className="text-center">
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Ready to Join Our <span className="text-background-dark">Success Stories</span>?
+                Ready to Join Our <span className="text-gradient">Success Stories</span>?
               </h2>
             </AnimatedItem>
             <AnimatedItem>

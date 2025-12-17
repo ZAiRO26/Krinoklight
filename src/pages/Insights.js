@@ -125,7 +125,7 @@ const Insights = () => {
             </FadeUp>
             <FadeUp delay={0.1}>
               <h1 className="section-title text-white mb-6 leading-tight">
-                FreekiWebsite <span className="gradient-text">Insights</span>
+                VedaViks Media <span className="gradient-text">Insights</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
@@ -361,7 +361,7 @@ const Insights = () => {
           <AnimatedSection className="text-center">
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Share Your <span className="text-background-dark">Insights</span>
+                Share Your <span className="text-gradient">Insights</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
