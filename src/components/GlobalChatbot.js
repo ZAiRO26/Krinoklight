@@ -3,6 +3,146 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { MessageCircle, X, Send, Minimize2, Maximize2, Bot } from 'lucide-react';
 
+// Typewriter Hook - Variable speed character rendering
+const useTypewriter = (text, isActive) => {
+    const [displayedText, setDisplayedText] = useState('');
+    const [isTyping, setIsTyping] = useState(false);
+
+    useEffect(() => {
+        if (!isActive || !text) {
+            setDisplayedText(text || '');
+            setIsTyping(false);
+            return;
+        }
+
+        setDisplayedText('');
+        setIsTyping(true);
+        let currentIndex = 0;
+
+        const typeNextChar = () => {
+            if (currentIndex < text.length) {
+                const char = text[currentIndex];
+                setDisplayedText(text.slice(0, currentIndex + 1));
+                currentIndex++;
+
+                // Variable speed: slower after punctuation
+                let delay = Math.random() * 30 + 20; // 20-50ms base
+                if (['.', '!', '?'].includes(char)) {
+                    delay = 400; // 400ms pause after punctuation
+                } else if ([',', ';', ':'].includes(char)) {
+                    delay = 150; // 150ms pause after comma
+                }
+
+                setTimeout(typeNextChar, delay);
+            } else {
+                setIsTyping(false);
+            }
+        };
+
+        // Start typing after a small delay
+        const startTimeout = setTimeout(typeNextChar, 50);
+
+        return () => {
+            clearTimeout(startTimeout);
+            setIsTyping(false);
+        };
+    }, [text, isActive]);
+
+    return { displayedText, isTyping };
+};
+
+// Typing Indicator Component
+const TypingIndicator = () => (
+    <div className="flex items-center space-x-1 px-4 py-3">
+        <span className="text-gray-400 text-sm">Alex is typing</span>
+        <div className="flex space-x-1">
+            {[0, 1, 2].map((i) => (
+                <motion.div
+                    key={i}
+                    className="w-1.5 h-1.5 bg-purple-400 rounded-full"
+                    animate={{
+                        y: [0, -6, 0],
+                        opacity: [0.5, 1, 0.5]
+                    }}
+                    transition={{
+                        duration: 0.6,
+                        repeat: Infinity,
+                        delay: i * 0.15
+                    }}
+                />
+            ))}
+        </div>
+    </div>
+);
+
+// Message Component with Typewriter Effect
+const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
+    const isAssistant = message.role === 'assistant';
+    const isSystem = message.role === 'system';
+
+    // Only apply typewriter to latest assistant message
+    const shouldType = isAssistant && isLatest;
+    const { displayedText, isTyping } = useTypewriter(message.content, shouldType);
+
+    useEffect(() => {
+        if (shouldType && !isTyping && displayedText === message.content) {
+            onTypingComplete?.();
+        }
+    }, [isTyping, displayedText, message.content, shouldType, onTypingComplete]);
+
+    // Render the content
+    const content = shouldType ? displayedText : message.content;
+
+    // Simple markdown rendering
+    const renderMarkdown = (text) => {
+        if (!text) return null;
+        return text.split('\n').map((line, i) => {
+            // Bold
+            line = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+            // Italic
+            line = line.replace(/\*(.+?)\*/g, '<em>$1</em>');
+            // Bullet points
+            if (line.startsWith('- ') || line.startsWith('• ')) {
+                return <li key={i} dangerouslySetInnerHTML={{ __html: line.substring(2) }} />;
+            }
+            return <p key={i} dangerouslySetInnerHTML={{ __html: line }} className="mb-1" />;
+        });
+    };
+
+    if (isSystem) {
+        return (
+            <div className="flex justify-center my-2">
+                <span className="text-xs text-gray-500 bg-gray-800/50 px-3 py-1 rounded-full">
+                    {content}
+                </span>
+            </div>
+        );
+    }
+
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className={`flex ${isAssistant ? 'justify-start' : 'justify-end'} mb-3`}
+        >
+            <div
+                className={`max-w-[85%] px-4 py-3 rounded-2xl ${isAssistant
+                        ? 'bg-gray-800/80 text-gray-100 rounded-tl-sm'
+                        : 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-tr-sm'
+                    }`}
+            >
+                <div className="text-sm leading-relaxed">
+                    {renderMarkdown(content)}
+                </div>
+                {/* Typing cursor */}
+                {shouldType && isTyping && (
+                    <span className="inline-block w-0.5 h-4 bg-purple-400 ml-0.5 animate-pulse" />
+                )}
+            </div>
+        </motion.div>
+    );
+};
+
 const GlobalChatbot = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -13,38 +153,37 @@ const GlobalChatbot = () => {
     const [messages, setMessages] = useState([]);
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const [isThinking, setIsThinking] = useState(false);
     const [hasAutoOpened, setHasAutoOpened] = useState(false);
+    const [isTypingMessage, setIsTypingMessage] = useState(false);
 
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
     const idleTimerRef = useRef(null);
 
-    // API endpoint - supports development and production modes
+    // API endpoint
     const getApiUrl = () => {
-        // If env variable is set, use it (for production Vercel URL)
         if (process.env.REACT_APP_CHATBOT_API) {
             return process.env.REACT_APP_CHATBOT_API;
         }
-        // Development: use local Express server
         const hostname = window.location.hostname;
         if (hostname === 'localhost' || hostname === '127.0.0.1') {
             return 'http://localhost:4000';
         }
-        // Network access: use same hostname with port 4000
         return `http://${hostname}:4000`;
     };
     const API_URL = getApiUrl();
 
-    // Scroll to bottom of messages
+    // Scroll to bottom
     const scrollToBottom = () => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
 
     useEffect(() => {
         scrollToBottom();
-    }, [messages]);
+    }, [messages, isThinking]);
 
-    // Auto-open after 10 seconds idle (only once per session)
+    // Auto-open after 10 seconds idle
     useEffect(() => {
         if (hasAutoOpened || isOpen) return;
 
@@ -55,16 +194,14 @@ const GlobalChatbot = () => {
                 if (!isOpen && !hasAutoOpened) {
                     setIsOpen(true);
                     setHasAutoOpened(true);
-                    // Add proactive greeting
                     setMessages([{
                         role: 'assistant',
-                        content: `Hey! 👋 I'm Alex from VedaViks. I noticed you're checking out our ${getPageName(location.pathname)} page. Need any help finding what you're looking for?`
+                        content: `Welcome to the future. I'm Alex. Are you here to launch a quick store, or looking to automate your entire business with AI?`
                     }]);
                 }
-            }, 10000); // 10 seconds
+            }, 10000);
         };
 
-        // Reset timer on user activity
         const events = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart'];
         events.forEach(event => document.addEventListener(event, resetTimer));
         resetTimer();
@@ -73,50 +210,24 @@ const GlobalChatbot = () => {
             events.forEach(event => document.removeEventListener(event, resetTimer));
             if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
         };
-    }, [isOpen, hasAutoOpened, location.pathname]);
+    }, [isOpen, hasAutoOpened]);
 
-    // Get friendly page name
-    const getPageName = (path) => {
-        const pageNames = {
-            '/': 'home',
-            '/services': 'services',
-            '/insights/packages': 'packages',
-            '/contact': 'contact',
-            '/about': 'about',
-            '/industries': 'industries',
-            '/clients': 'clients'
-        };
-        return pageNames[path] || 'website';
-    };
-
-    // Handle tool calls from AI
+    // Handle tool calls
     const handleToolCall = useCallback((toolData) => {
-        console.log('🔧 Tool call received:', toolData);
+        console.log('🔧 Tool call:', toolData);
 
         if (toolData.tool === 'navigateToPage' && toolData.path) {
-            // Add navigation message
             setMessages(prev => [...prev, {
                 role: 'system',
-                content: `🔗 Navigating to ${toolData.path}...`
+                content: `🔗 Taking you to ${toolData.path}...`
             }]);
-
-            // Navigate after brief delay
-            setTimeout(() => {
-                navigate(toolData.path);
-            }, 500);
-        }
-
-        if (toolData.tool === 'emailTranscript') {
-            setMessages(prev => [...prev, {
-                role: 'system',
-                content: '✅ Your information has been saved! Our team will reach out soon.'
-            }]);
+            setTimeout(() => navigate(toolData.path), 800);
         }
     }, [navigate]);
 
-    // Send message to backend (supports both streaming and JSON responses)
+    // Send message
     const sendMessage = async () => {
-        if (!inputValue.trim() || isLoading) return;
+        if (!inputValue.trim() || isLoading || isTypingMessage) return;
 
         const userMessage = { role: 'user', content: inputValue.trim() };
         const updatedMessages = [...messages, userMessage];
@@ -124,8 +235,13 @@ const GlobalChatbot = () => {
         setMessages(updatedMessages);
         setInputValue('');
         setIsLoading(true);
+        setIsThinking(true);
 
         try {
+            // Random thinking delay (800-1500ms)
+            const thinkingDelay = Math.random() * 700 + 800;
+            await new Promise(resolve => setTimeout(resolve, thinkingDelay));
+
             const response = await fetch(`${API_URL}/api/chat`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -134,83 +250,41 @@ const GlobalChatbot = () => {
                 })
             });
 
-            if (!response.ok) {
-                throw new Error('Failed to get response');
-            }
+            setIsThinking(false);
 
-            // Check content type to determine response format
-            const contentType = response.headers.get('content-type');
+            if (!response.ok) throw new Error('Failed to get response');
 
-            if (contentType && contentType.includes('application/json')) {
-                // Handle JSON response (Vercel serverless)
-                const data = await response.json();
+            const data = await response.json();
 
-                // Add assistant message
-                setMessages(prev => [...prev, {
-                    role: 'assistant',
-                    content: data.response || data.message || "I'm having trouble responding right now."
-                }]);
+            // Start typing animation
+            setIsTypingMessage(true);
 
-                // Handle tool call if present
-                if (data.tool) {
-                    handleToolCall(data.tool);
-                }
-            } else {
-                // Handle streaming response (Express backend)
-                const reader = response.body.getReader();
-                const decoder = new TextDecoder();
-                let assistantMessage = '';
+            // Add assistant message
+            setMessages(prev => [...prev, {
+                role: 'assistant',
+                content: data.response || "Let me think about that..."
+            }]);
 
-                // Add empty assistant message to stream into
-                setMessages(prev => [...prev, { role: 'assistant', content: '' }]);
-
-                while (true) {
-                    const { done, value } = await reader.read();
-                    if (done) break;
-
-                    const chunk = decoder.decode(value, { stream: true });
-
-                    // Check for tool calls
-                    if (chunk.includes('__TOOL__')) {
-                        const toolMatch = chunk.match(/__TOOL__(.+?)__TOOL__/);
-                        if (toolMatch) {
-                            try {
-                                const toolData = JSON.parse(toolMatch[1]);
-                                handleToolCall(toolData);
-                            } catch (e) {
-                                console.error('Tool parse error:', e);
-                            }
-                            const cleanChunk = chunk.replace(/__TOOL__.+?__TOOL__/g, '');
-                            if (cleanChunk) {
-                                assistantMessage += cleanChunk;
-                            }
-                        }
-                    } else {
-                        assistantMessage += chunk;
-                    }
-
-                    // Update the last message with streamed content
-                    // eslint-disable-next-line no-loop-func
-                    setMessages(prev => {
-                        const newMessages = [...prev];
-                        newMessages[newMessages.length - 1] = {
-                            role: 'assistant',
-                            content: assistantMessage
-                        };
-                        return newMessages;
-                    });
-                }
+            // Handle tool call
+            if (data.tool) {
+                setTimeout(() => handleToolCall(data.tool), 500);
             }
 
         } catch (error) {
             console.error('Chat error:', error);
+            setIsThinking(false);
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: "Sorry, I'm having trouble connecting right now. Please try again or contact us directly at contact@vedaviksmedia.com"
+                content: "Connection hiccup. Drop me an email at contact@vedaviksmedia.com and let's continue there."
             }]);
         } finally {
             setIsLoading(false);
         }
+    };
+
+    // Handle typing complete
+    const handleTypingComplete = () => {
+        setIsTypingMessage(false);
     };
 
     // Handle Enter key
@@ -225,36 +299,16 @@ const GlobalChatbot = () => {
     const toggleChat = () => {
         setIsOpen(!isOpen);
         if (!isOpen && messages.length === 0) {
-            // Initial greeting
             setMessages([{
                 role: 'assistant',
-                content: "Hey! 👋 I'm Alex from VedaViks Media. How can I help you build something amazing today?"
+                content: "Welcome to the future. I'm Alex from VedaViks. Are you here to build a store, or looking to automate your business with AI?"
             }]);
         }
     };
 
-    // Simple markdown rendering
-    const renderMarkdown = (text) => {
-        if (!text) return null;
-
-        return text
-            .split('\n')
-            .map((line, i) => {
-                // Bold
-                line = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-                // Italic
-                line = line.replace(/\*(.+?)\*/g, '<em>$1</em>');
-                // Bullet points
-                if (line.startsWith('- ') || line.startsWith('• ')) {
-                    return <li key={i} dangerouslySetInnerHTML={{ __html: line.substring(2) }} />;
-                }
-                return <p key={i} dangerouslySetInnerHTML={{ __html: line }} className="mb-1" />;
-            });
-    };
-
     return (
         <>
-            {/* Chat Toggle Button */}
+            {/* Chat Button */}
             <AnimatePresence>
                 {!isOpen && (
                     <motion.button
@@ -262,14 +316,13 @@ const GlobalChatbot = () => {
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0, opacity: 0 }}
                         whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
+                        whileTap={{ scale: 0.95 }}
                         onClick={toggleChat}
-                        className="fixed bottom-6 right-6 z-50 w-16 h-16 rounded-full bg-gradient-to-br from-primary to-purple-700 text-white shadow-lg shadow-primary/30 flex items-center justify-center"
-                        style={{ boxShadow: '0 0 30px rgba(139, 92, 246, 0.4)' }}
+                        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-lg shadow-purple-500/30 flex items-center justify-center group"
                     >
-                        <MessageCircle className="w-7 h-7" />
+                        <MessageCircle className="w-6 h-6 text-white" />
                         {/* Pulse animation */}
-                        <span className="absolute w-full h-full rounded-full bg-primary animate-ping opacity-20" />
+                        <span className="absolute w-full h-full rounded-full bg-purple-500 animate-ping opacity-30" />
                     </motion.button>
                 )}
             </AnimatePresence>
@@ -278,44 +331,47 @@ const GlobalChatbot = () => {
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: 100, scale: 0.8 }}
+                        initial={{ opacity: 0, y: 20, scale: 0.95 }}
                         animate={{
                             opacity: 1,
                             y: 0,
                             scale: 1,
                             height: isMinimized ? 'auto' : '500px'
                         }}
-                        exit={{ opacity: 0, y: 100, scale: 0.8 }}
+                        exit={{ opacity: 0, y: 20, scale: 0.95 }}
                         transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-                        className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-3rem)] bg-surface rounded-2xl shadow-2xl border border-white/10 overflow-hidden flex flex-col"
-                        style={{ boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.5), 0 0 40px rgba(139, 92, 246, 0.2)' }}
+                        className="fixed bottom-6 right-6 z-50 w-[380px] max-w-[calc(100vw-2rem)] bg-gradient-to-b from-gray-900 to-gray-950 rounded-2xl shadow-2xl shadow-purple-900/20 border border-gray-800/50 overflow-hidden flex flex-col"
                     >
                         {/* Header */}
-                        <div className="bg-gradient-to-r from-[#023776] to-[#034694] px-4 py-3 flex items-center justify-between">
-                            <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center">
-                                    <Bot className="w-5 h-5 text-white" />
+                        <div className="flex items-center justify-between px-4 py-3 bg-gray-800/50 border-b border-gray-700/50">
+                            <div className="flex items-center space-x-3">
+                                <div className="relative">
+                                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                                        <Bot className="w-5 h-5 text-white" />
+                                    </div>
+                                    <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-gray-900" />
                                 </div>
                                 <div>
                                     <h3 className="text-white font-semibold text-sm">Alex (VedaViks AI)</h3>
-                                    <div className="flex items-center gap-1.5">
-                                        <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
-                                        <span className="text-white/70 text-xs">Online</span>
-                                    </div>
+                                    <span className="text-green-400 text-xs">● Online</span>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center space-x-1">
                                 <button
                                     onClick={() => setIsMinimized(!isMinimized)}
-                                    className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                                    className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
                                 >
-                                    {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
+                                    {isMinimized ? (
+                                        <Maximize2 className="w-4 h-4 text-gray-400" />
+                                    ) : (
+                                        <Minimize2 className="w-4 h-4 text-gray-400" />
+                                    )}
                                 </button>
                                 <button
                                     onClick={() => setIsOpen(false)}
-                                    className="w-8 h-8 rounded-lg hover:bg-white/10 flex items-center justify-center text-white/70 hover:text-white transition-colors"
+                                    className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
                                 >
-                                    <X className="w-4 h-4" />
+                                    <X className="w-4 h-4 text-gray-400" />
                                 </button>
                             </div>
                         </div>
@@ -323,52 +379,25 @@ const GlobalChatbot = () => {
                         {/* Messages */}
                         {!isMinimized && (
                             <>
-                                <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-background-dark">
+                                <div className="flex-1 overflow-y-auto p-4 space-y-1 scrollbar-thin scrollbar-thumb-gray-700 scrollbar-track-transparent">
                                     {messages.map((message, index) => (
-                                        <motion.div
+                                        <MessageBubble
                                             key={index}
-                                            initial={{ opacity: 0, y: 10 }}
-                                            animate={{ opacity: 1, y: 0 }}
-                                            className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
-                                        >
-                                            <div
-                                                className={`max-w-[85%] rounded-2xl px-4 py-2.5 ${message.role === 'user'
-                                                    ? 'bg-primary text-white rounded-br-md'
-                                                    : message.role === 'system'
-                                                        ? 'bg-accent-cyan/20 text-accent-cyan text-sm italic'
-                                                        : 'bg-surface border border-white/10 text-white/90 rounded-bl-md'
-                                                    }`}
-                                            >
-                                                <div className="text-sm leading-relaxed">
-                                                    {renderMarkdown(message.content)}
-                                                </div>
-                                            </div>
-                                        </motion.div>
+                                            message={message}
+                                            isLatest={index === messages.length - 1}
+                                            onTypingComplete={handleTypingComplete}
+                                        />
                                     ))}
 
-                                    {/* Loading indicator */}
-                                    {isLoading && (
-                                        <motion.div
-                                            initial={{ opacity: 0 }}
-                                            animate={{ opacity: 1 }}
-                                            className="flex justify-start"
-                                        >
-                                            <div className="bg-surface border border-white/10 rounded-2xl rounded-bl-md px-4 py-3">
-                                                <div className="flex gap-1.5">
-                                                    <span className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: '0ms' }} />
-                                                    <span className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: '150ms' }} />
-                                                    <span className="w-2 h-2 rounded-full bg-primary animate-bounce" style={{ animationDelay: '300ms' }} />
-                                                </div>
-                                            </div>
-                                        </motion.div>
-                                    )}
+                                    {/* Thinking indicator */}
+                                    {isThinking && <TypingIndicator />}
 
                                     <div ref={messagesEndRef} />
                                 </div>
 
                                 {/* Input */}
-                                <div className="p-3 border-t border-white/10 bg-surface">
-                                    <div className="flex gap-2">
+                                <div className="p-3 border-t border-gray-800/50 bg-gray-900/50">
+                                    <div className="flex items-center space-x-2">
                                         <input
                                             ref={inputRef}
                                             type="text"
@@ -376,16 +405,18 @@ const GlobalChatbot = () => {
                                             onChange={(e) => setInputValue(e.target.value)}
                                             onKeyPress={handleKeyPress}
                                             placeholder="Ask Alex anything..."
-                                            className="flex-1 bg-background-dark border border-white/10 rounded-xl px-4 py-2.5 text-white placeholder-white/40 focus:outline-none focus:border-primary/50 text-sm"
-                                            disabled={isLoading}
+                                            disabled={isLoading || isTypingMessage}
+                                            className="flex-1 bg-gray-800/50 border border-gray-700/50 rounded-xl px-4 py-2.5 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-purple-500/50 transition-colors disabled:opacity-50"
                                         />
-                                        <button
+                                        <motion.button
+                                            whileHover={{ scale: 1.05 }}
+                                            whileTap={{ scale: 0.95 }}
                                             onClick={sendMessage}
-                                            disabled={!inputValue.trim() || isLoading}
-                                            className="w-10 h-10 rounded-xl bg-primary hover:bg-primary/80 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center text-white transition-colors"
+                                            disabled={!inputValue.trim() || isLoading || isTypingMessage}
+                                            className="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
-                                            <Send className="w-4 h-4" />
-                                        </button>
+                                            <Send className="w-4 h-4 text-white" />
+                                        </motion.button>
                                     </div>
                                 </div>
                             </>
