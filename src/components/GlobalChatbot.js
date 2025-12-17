@@ -26,12 +26,12 @@ const useTypewriter = (text, isActive) => {
                 setDisplayedText(text.slice(0, currentIndex + 1));
                 currentIndex++;
 
-                // Variable speed
-                let delay = Math.random() * 25 + 15; // 15-40ms base (faster)
+                // Fast typing speed
+                let delay = Math.random() * 10 + 5; // 5-15ms per char (FAST)
                 if (['.', '!', '?'].includes(char)) {
-                    delay = 250; // Shorter pause
+                    delay = 80; // Quick pause
                 } else if ([',', ';', ':'].includes(char)) {
-                    delay = 100;
+                    delay = 40;
                 }
 
                 timeoutId = setTimeout(typeNextChar, delay);
@@ -260,8 +260,8 @@ const GlobalChatbot = () => {
         setIsThinking(true);
 
         try {
-            // Shorter thinking delay (500-1000ms)
-            const thinkingDelay = Math.random() * 500 + 500;
+            // Quick thinking delay (200-400ms)
+            const thinkingDelay = Math.random() * 200 + 200;
             await new Promise(resolve => setTimeout(resolve, thinkingDelay));
 
             const response = await fetch(`${API_URL}/api/chat`, {
