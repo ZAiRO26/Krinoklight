@@ -89,7 +89,7 @@ const NavLink = ({ path, children }) => {
 };
 
 // Message Component with Typewriter Effect
-const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
+const MessageBubble = ({ message, isLatest }) => {
     const isAssistant = message.role === 'assistant';
     const isSystem = message.role === 'system';
     const isNavigation = message.role === 'navigation';
@@ -97,12 +97,6 @@ const MessageBubble = ({ message, isLatest, onTypingComplete }) => {
     // Only apply typewriter to latest assistant message
     const shouldType = isAssistant && isLatest;
     const { displayedText, isTyping } = useTypewriter(message.content, shouldType);
-
-    useEffect(() => {
-        if (shouldType && !isTyping && displayedText === message.content) {
-            onTypingComplete?.();
-        }
-    }, [isTyping, displayedText, message.content, shouldType, onTypingComplete]);
 
     const content = shouldType ? displayedText : message.content;
 
@@ -215,7 +209,7 @@ const GlobalChatbot = () => {
                     setHasAutoOpened(true);
                     setMessages([{
                         role: 'assistant',
-                        content: `Hey there! 👋 I'm Alex from VedaViks. What brings you here today?`
+                        content: `Hi there! 👋 I'm Alex from VedaViks Media. How can I help you today?`
                     }]);
                 }
             }, 10000);
@@ -284,9 +278,6 @@ const GlobalChatbot = () => {
 
             const data = await response.json();
 
-            // Start typing animation
-            setIsTypingMessage(true);
-
             // Add assistant message
             setMessages(prev => [...prev, {
                 role: 'assistant',
@@ -310,11 +301,6 @@ const GlobalChatbot = () => {
         }
     };
 
-    // Handle typing complete - re-enable input
-    const handleTypingComplete = useCallback(() => {
-        setIsTypingMessage(false);
-    }, []);
-
     // Handle Enter key
     const handleKeyPress = (e) => {
         if (e.key === 'Enter' && !e.shiftKey) {
@@ -329,7 +315,7 @@ const GlobalChatbot = () => {
         if (!isOpen && messages.length === 0) {
             setMessages([{
                 role: 'assistant',
-                content: "Hey there! 👋 I'm Alex from VedaViks. What can I help you with today?"
+                content: "Hi there! 👋 I'm Alex, your assistant at VedaViks Media. How can I help you today?"
             }]);
         }
     };
@@ -415,7 +401,6 @@ const GlobalChatbot = () => {
                                             key={index}
                                             message={message}
                                             isLatest={index === messages.length - 1 && message.role === 'assistant'}
-                                            onTypingComplete={handleTypingComplete}
                                         />
                                     ))}
 
