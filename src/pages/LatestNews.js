@@ -8,7 +8,7 @@ const LatestNews = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // API endpoint - uses same backend as chatbot
+    // API endpoint - uses Vercel API in production, localhost:4000 for dev
     const getApiUrl = () => {
         if (process.env.REACT_APP_CHATBOT_API) {
             return process.env.REACT_APP_CHATBOT_API;
@@ -17,7 +17,8 @@ const LatestNews = () => {
         if (hostname === 'localhost' || hostname === '127.0.0.1') {
             return 'http://localhost:4000';
         }
-        return `http://${hostname}:4000`;
+        // Production: use Vercel-deployed chatbot API
+        return 'https://vedaviks-chatbot-api.vercel.app';
     };
 
     const fetchNews = useCallback(async () => {
