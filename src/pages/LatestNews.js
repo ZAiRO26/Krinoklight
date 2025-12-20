@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { ExternalLink, Clock, Sparkles, RefreshCw, Star, TrendingUp } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection, { FadeUp } from '../components/AnimatedSection';
@@ -20,7 +20,7 @@ const LatestNews = () => {
         return `http://${hostname}:4000`;
     };
 
-    const fetchNews = async () => {
+    const fetchNews = useCallback(async () => {
         setLoading(true);
         setError(null);
         try {
@@ -72,11 +72,11 @@ const LatestNews = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         fetchNews();
-    }, []);
+    }, [fetchNews]);
 
     const formatDate = (dateString) => {
         const date = new Date(dateString);
