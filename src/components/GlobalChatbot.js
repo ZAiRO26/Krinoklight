@@ -169,6 +169,7 @@ const GlobalChatbot = () => {
     const [isLoading, setIsLoading] = useState(false);
     const [isThinking, setIsThinking] = useState(false);
     const [hasAutoOpened, setHasAutoOpened] = useState(false);
+    const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
 
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
@@ -268,7 +269,8 @@ const GlobalChatbot = () => {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    messages: updatedMessages.filter(m => m.role === 'user' || m.role === 'assistant')
+                    messages: updatedMessages.filter(m => m.role === 'user' || m.role === 'assistant'),
+                    sessionId: sessionId
                 })
             });
 
@@ -276,18 +278,29 @@ const GlobalChatbot = () => {
 
             if (!response.ok) throw new Error('Failed to get response');
 
-            const data = await response.json();
+            // Handle streaming text response
+            const contentType = response.headers.get('content-type');
+            let assistantContent = '';
+
+            if (contentType && contentType.includes('application/json')) {
+                // JSON response (from Vercel API)
+                const data = await response.json();
+                assistantContent = data.response || "Let me think about that...";
+
+                // Handle tool call
+                if (data.tool) {
+                    setTimeout(() => handleToolCall(data.tool), 300);
+                }
+            } else {
+                // Streaming text response (from local backend)
+                assistantContent = await response.text();
+            }
 
             // Add assistant message
             setMessages(prev => [...prev, {
                 role: 'assistant',
-                content: data.response || "Let me think about that..."
+                content: assistantContent || "Let me think about that..."
             }]);
-
-            // Handle tool call (now shows clickable link, doesn't auto-navigate)
-            if (data.tool) {
-                setTimeout(() => handleToolCall(data.tool), 300);
-            }
 
         } catch (error) {
             console.error('Chat error:', error);

@@ -19,6 +19,7 @@ import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Cookies from './pages/Cookies';
+import LatestNews from './pages/LatestNews';
 import NotFound from './pages/NotFound';
 import ScrollToTop from './components/ScrollToTop';
 import ScrollToTopButton from './components/ScrollToTopButton';
@@ -52,6 +53,7 @@ function AnimatedRoutes() {
         <Route path="/insights/blog" element={<PageTransition><Insights /></PageTransition>} />
         <Route path="/insights/newsletters" element={<PageTransition><Insights /></PageTransition>} />
         <Route path="/insights/packages" element={<PageTransition><Packages /></PageTransition>} />
+        <Route path="/latest-news" element={<PageTransition><LatestNews /></PageTransition>} />
         <Route path="/contact" element={<PageTransition><Contact /></PageTransition>} />
 
         {/* Legal Pages */}

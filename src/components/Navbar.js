@@ -99,6 +99,7 @@ const Navbar = () => {
   ];
 
   const insightsItems = [
+    { name: 'Latest News', href: '/latest-news', highlight: true },
     { name: 'Blog', href: '/insights/blog' },
     { name: 'Newsletters and originals', href: '/insights/newsletters' },
     { name: 'Packages', href: '/insights/packages', highlight: true },
