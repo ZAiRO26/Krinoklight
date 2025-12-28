@@ -68,7 +68,6 @@ const FloatingNav = () => {
                 { name: 'Newsletters', href: '/insights/newsletters' },
             ]
         },
-        { name: 'Contact', href: '/contact' },
     ];
 
     const handleLogoClick = (e) => {
@@ -90,7 +89,7 @@ const FloatingNav = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="fixed top-0 left-0 right-0 z-50 px-6 py-4"
+                className="fixed top-0 left-0 right-0 z-50 px-6 py-6"
             >
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
                     {/* Logo */}
