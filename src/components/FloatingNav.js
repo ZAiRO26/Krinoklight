@@ -1,15 +1,38 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 /**
  * FloatingNav - Desktop header with dropdowns, mobile hamburger menu
+ * Auto-hides on scroll down, shows on scroll up
  */
 const FloatingNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const [isVisible, setIsVisible] = useState(true);
+    const [lastScrollY, setLastScrollY] = useState(0);
     const location = useLocation();
+
+    // Auto-hide header on scroll
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            // Show header when at top or scrolling up
+            if (currentScrollY < 100 || currentScrollY < lastScrollY) {
+                setIsVisible(true);
+            } else {
+                // Hide header when scrolling down
+                setIsVisible(false);
+            }
+
+            setLastScrollY(currentScrollY);
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, [lastScrollY]);
 
     // Navigation structure with subpages - Complete list matching Footer
     const navLinks = [
@@ -84,11 +107,14 @@ const FloatingNav = () => {
 
     return (
         <>
-            {/* Fixed Header Bar */}
+            {/* Fixed Header Bar - Auto-hide on scroll */}
             <motion.header
                 initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5 }}
+                animate={{
+                    opacity: isVisible ? 1 : 0,
+                    y: isVisible ? 0 : -100
+                }}
+                transition={{ duration: 0.3, ease: 'easeInOut' }}
                 className="fixed top-0 left-0 right-0 z-50 px-6 py-6"
             >
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
