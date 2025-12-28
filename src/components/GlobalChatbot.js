@@ -211,7 +211,7 @@ const GlobalChatbot = () => {
                     setHasAutoOpened(true);
                     setMessages([{
                         role: 'assistant',
-                        content: `Hi there! 👋 I'm Alex from CodeTazos. How can I help you today?`
+                        content: `Hi there! 👋 I'm Alex from Krinok. How can I help you today?`
                     }]);
                 }
             }, 10000);
@@ -329,7 +329,7 @@ const GlobalChatbot = () => {
         if (!isOpen && messages.length === 0) {
             setMessages([{
                 role: 'assistant',
-                content: "Hi there! 👋 I'm Alex, your assistant at CodeTazos. How can I help you today?"
+                content: "Hi there! 👋 I'm Alex, your assistant at Krinok. How can I help you today?"
             }]);
         }
     };
@@ -382,7 +382,7 @@ const GlobalChatbot = () => {
                                     <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-gray-900" />
                                 </div>
                                 <div>
-                                    <h3 className="text-white font-semibold text-sm">Alex (CodeTazos AI)</h3>
+                                    <h3 className="text-white font-semibold text-sm">Alex (Krinok AI)</h3>
                                     <span className="text-green-400 text-xs">● Online</span>
                                 </div>
                             </div>

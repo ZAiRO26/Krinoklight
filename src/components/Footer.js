@@ -25,7 +25,7 @@ const Footer = () => {
     about: [
       { name: 'How we work', href: '/about/how-we-work' },
       { name: 'Sustainability', href: '/about/sustainability' },
-      { name: 'Working at CodeTazos', href: '/about/careers' },
+      { name: 'Working at Krinok', href: '/about/careers' },
       { name: 'Job opportunities', href: '/about/jobs' },
       { name: 'Contact us', href: '/contact' },
       { name: 'Press Office', href: '/about/press' },
@@ -107,10 +107,10 @@ const Footer = () => {
                 className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20"
                 whileHover={{ scale: 1.05, rotate: 5 }}
               >
-                <span className="font-display font-bold text-primary text-lg">C</span>
+                <span className="font-display font-bold text-primary text-lg">K</span>
               </motion.div>
               <span className="logo-font text-xl group-hover:text-primary transition-colors">
-                CodeTazos
+                Krinok
               </span>
             </Link>
             <p className="text-white/60 mb-8 max-w-sm leading-relaxed">
@@ -176,7 +176,7 @@ const Footer = () => {
         <div className="border-t border-white/10 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-white/40">
-              <span>© {new Date().getFullYear()} CodeTazos. All rights reserved.</span>
+              <span>© {new Date().getFullYear()} Krinok. All rights reserved.</span>
               <Link to="/privacy" className="hover:text-primary transition-colors">
                 Privacy Policy
               </Link>

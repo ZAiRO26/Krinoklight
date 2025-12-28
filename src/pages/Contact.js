@@ -19,7 +19,7 @@ const Contact = () => {
       country: "United States",
       address: "350 Fifth Avenue, Suite 4800",
       phone: "+1 212 555 0123",
-      email: "newyork@codetazos.com",
+      email: "newyork@Krinok.com",
       hours: "9 AM - 6 PM EST",
     },
     {
@@ -27,7 +27,7 @@ const Contact = () => {
       country: "United Kingdom",
       address: "1 Canada Square, Canary Wharf",
       phone: "+44 20 7946 0958",
-      email: "london@codetazos.com",
+      email: "london@Krinok.com",
       hours: "9 AM - 5 PM GMT",
     },
     {
@@ -35,7 +35,7 @@ const Contact = () => {
       country: "Singapore",
       address: "1 Raffles Place, Tower 2",
       phone: "+65 6123 4567",
-      email: "singapore@codetazos.com",
+      email: "singapore@Krinok.com",
       hours: "9 AM - 6 PM SGT",
     }
   ];
@@ -45,22 +45,22 @@ const Contact = () => {
       icon: Briefcase,
       title: "Business Inquiries",
       description: "Let's talk about your project and how we can help you grow.",
-      contact: "hello@codetazos.com",
-      link: "mailto:hello@codetazos.com",
+      contact: "hello@Krinok.com",
+      link: "mailto:hello@Krinok.com",
     },
     {
       icon: Users,
       title: "Careers",
       description: "Join our team of talented professionals and shape the future.",
-      contact: "careers@codetazos.com",
-      link: "mailto:careers@codetazos.com",
+      contact: "careers@Krinok.com",
+      link: "mailto:careers@Krinok.com",
     },
     {
       icon: Megaphone,
       title: "Media & Press",
       description: "For all media inquiries, please get in touch with our team.",
-      contact: "press@codetazos.com",
-      link: "mailto:press@codetazos.com",
+      contact: "press@Krinok.com",
+      link: "mailto:press@Krinok.com",
     }
   ];
 

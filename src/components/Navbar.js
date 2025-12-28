@@ -91,11 +91,11 @@ const Navbar = () => {
   const aboutItems = [
     { name: 'How we work', href: '/about/how-we-work' },
     { name: 'Sustainability', href: '/about/sustainability' },
-    { name: 'Working at CodeTazos', href: '/about/careers' },
+    { name: 'Working at Krinok', href: '/about/careers' },
     { name: 'Job opportunities', href: '/about/jobs' },
     { name: 'Contact us', href: '/contact' },
     { name: 'Press Office', href: '/about/press' },
-    { name: 'Refer CodeTazos', href: '/about/refer' },
+    { name: 'Refer Krinok', href: '/about/refer' },
   ];
 
   const insightsItems = [
@@ -166,7 +166,7 @@ const Navbar = () => {
                 <span className="font-display font-bold text-white text-lg">C</span>
               </motion.div>
               <span className="logo-font text-xl transition-colors duration-300 text-white group-hover:text-accent-cyan">
-                CodeTazos
+                Krinok
               </span>
             </Link>
           </div>

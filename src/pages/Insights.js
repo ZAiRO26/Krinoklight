@@ -125,7 +125,7 @@ const Insights = () => {
             </FadeUp>
             <FadeUp delay={0.1}>
               <h1 className="section-title text-white mb-6 leading-tight">
-                VedaViks Media <span className="gradient-text">Insights</span>
+                Krinok <span className="gradient-text">Insights</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>

@@ -51,10 +51,10 @@ const FloatingNav = () => {
                         whileHover={{ scale: 1.1, rotate: 5 }}
                         transition={{ duration: 0.2 }}
                     >
-                        <span className="font-bold text-white text-xl">C</span>
+                        <span className="font-bold text-white text-xl">K</span>
                     </motion.div>
                     <span className="text-xl font-medium text-white opacity-80 group-hover:opacity-100 transition-opacity hidden sm:block">
-                        CodeTazos
+                        Krinok
                     </span>
                 </Link>
             </motion.div>
