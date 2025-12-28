@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -190,26 +190,28 @@
     background-image: linear-gradient(135deg, #6366F1 0%, #8B5CF6 50%, #38BDF8 100%);
   }
 
-  /* Premium Headline - SERIF (Playfair Display) */
+  /* Premium Headline - SERIF (Cormorant Garamond) */
   .headline-serif {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 400;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
     line-height: 1.1;
+    text-transform: uppercase;
   }
 
   .headline-serif-bold {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 700;
-    letter-spacing: -0.02em;
+    letter-spacing: 0.02em;
     line-height: 1.05;
+    text-transform: uppercase;
   }
 
   .headline-serif-italic {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-style: italic;
     font-weight: 400;
-    letter-spacing: -0.01em;
+    letter-spacing: 0.01em;
   }
 
   /* Body Text - SANS (Inter) */
@@ -226,18 +228,20 @@
     letter-spacing: -0.01em;
   }
 
-  /* Section Titles - Large Cinematic */
+  /* Section Titles - Large Cinematic Editorial */
   .section-title {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-    font-family: 'Playfair Display', serif;
-    letter-spacing: -0.02em;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
   }
 
   .section-title-xl {
     @apply text-5xl md:text-7xl lg:text-8xl leading-none;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Cormorant Garamond', Georgia, serif;
     font-weight: 400;
-    letter-spacing: -0.03em;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
   }
 
   .section-subtitle {

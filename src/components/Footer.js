@@ -31,6 +31,8 @@ const Footer = () => {
       { name: 'Press Office', href: '/about/press' },
     ],
     insights: [
+      { name: 'Hot News', href: '/latest-news' },
+      { name: 'Packages', href: '/insights/packages' },
       { name: 'Blog', href: '/insights/blog' },
       { name: 'Newsletters and originals', href: '/insights/newsletters' },
     ],
@@ -102,15 +104,9 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
           {/* Company Info */}
           <div className="lg:col-span-2">
-            <Link to="/" className="flex items-center space-x-3 mb-6 group">
-              <motion.div
-                className="w-10 h-10 bg-primary/10 rounded-xl flex items-center justify-center border border-primary/20"
-                whileHover={{ scale: 1.05, rotate: 5 }}
-              >
-                <span className="font-display font-bold text-primary text-lg">K</span>
-              </motion.div>
-              <span className="logo-font text-xl group-hover:text-primary transition-colors">
-                Krinok
+            <Link to="/" className="mb-6 group inline-block">
+              <span className="text-lg font-medium text-white/90 tracking-[0.2em] uppercase group-hover:text-white transition-colors">
+                KRINOK
               </span>
             </Link>
             <p className="text-white/60 mb-8 max-w-sm leading-relaxed">
