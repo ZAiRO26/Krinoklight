@@ -61,20 +61,7 @@ function RealisticMoon({ mousePosition, isMobileDevice }) {
     );
 }
 
-// Subtle atmospheric haze (no ugly ring)
-function MoonGlow() {
-    return (
-        <mesh>
-            <sphereGeometry args={[2.35, 32, 32]} />
-            <meshBasicMaterial
-                color="#8888cc"
-                transparent
-                opacity={0.03}
-                side={THREE.BackSide}
-            />
-        </mesh>
-    );
-}
+
 
 // Glowing particle comets (no lines!)
 function GlowingComets({ count = 5, mousePosition }) {
@@ -186,8 +173,7 @@ function Scene({ mousePosition, isMobileDevice }) {
                 <RealisticMoon mousePosition={mousePosition} isMobileDevice={isMobileDevice} />
             </React.Suspense>
 
-            {/* Subtle glow */}
-            <MoonGlow />
+
 
             {/* Glowing comets (no ugly lines) */}
             <GlowingComets count={isMobileDevice ? 3 : 5} mousePosition={mousePosition} />
