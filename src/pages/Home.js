@@ -102,25 +102,25 @@ const Home = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background-dark overflow-hidden">
-      {/* Hero Section with WebGL 3D Background */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Organic Blue Noise Sphere - Original posh design */}
+    <div className="min-h-screen bg-slate-50 overflow-hidden">
+      {/* Hero Section with WebGL 3D Background - Hybrid Light Theme */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
+        {/* Organic Blue Noise Sphere - Full Visibility on Light Background */}
         <div className="absolute inset-0 z-0">
           <Suspense fallback={
-            <div className="w-full h-full bg-gradient-to-br from-background-dark via-blue-900/20 to-background-dark" />
+            <div className="w-full h-full bg-white" />
           }>
             <NoiseSphereHero />
           </Suspense>
-          {/* Gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background-dark/30 via-transparent to-background-dark/90" />
+          {/* Gradient overlay for text readability - Light Theme Fade */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/90" />
         </div>
 
         <div className="container-custom relative z-10 pt-32 pb-20">
           <div className="text-center max-w-5xl mx-auto">
             <FadeUp delay={0.2}>
-              <h1 className="section-title-xl text-white mb-8">
-                Your <span className="headline-serif-italic text-primary">Vision,</span>
+              <h1 className="section-title-xl text-white mb-8 drop-shadow-lg">
+                Your <span className="headline-serif-italic text-indigo-400">Vision,</span>
                 <br />
                 <SplitText
                   className="headline-serif-bold"
@@ -135,7 +135,7 @@ const Home = () => {
             </FadeUp>
 
             <FadeUp delay={0.4}>
-              <p className="text-body text-xl md:text-2xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
+              <p className="text-body text-xl md:text-2xl text-slate-100 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md font-medium">
                 We provide a complete suite of development and marketing services for industrial businesses. Let us handle the tech, so you can focus on growth.
               </p>
             </FadeUp>
@@ -149,12 +149,12 @@ const Home = () => {
 
                 <Link
                   to="/services"
-                  className="flex items-center space-x-3 text-white/80 hover:text-white transition-colors group"
+                  className="flex items-center space-x-3 text-slate-300 hover:text-white transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-full border-2 border-white/20 flex items-center justify-center group-hover:border-primary group-hover:shadow-glow-sm transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full border-2 border-slate-300/30 flex items-center justify-center group-hover:border-white group-hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300">
                     <Play className="w-4 h-4 ml-0.5" />
                   </div>
-                  <span className="font-medium">View Services</span>
+                  <span className="font-medium drop-shadow-md">View Services</span>
                 </Link>
               </div>
             </FadeUp>
@@ -170,9 +170,9 @@ const Home = () => {
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
         >
-          <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2">
+          <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center pt-2">
             <motion.div
-              className="w-1.5 h-3 bg-primary rounded-full"
+              className="w-1.5 h-3 bg-indigo-600 rounded-full"
               animate={{ y: [0, 12, 0], opacity: [1, 0.5, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
@@ -181,19 +181,19 @@ const Home = () => {
       </section>
 
       {/* Services Bento Grid Section */}
-      <section className="py-24 lg:py-32 bg-background-dark relative">
+      <section className="py-24 lg:py-32 bg-slate-50 relative">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-primary font-medium tracking-widest uppercase mb-4">What We Do</p>
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">What We Do</p>
             </AnimatedItem>
             <AnimatedItem>
-              <h2 className="section-title text-white mb-6">
-                Comprehensive <span className="text-primary">Digital Services</span>
+              <h2 className="section-title text-slate-900 mb-6">
+                Comprehensive <span className="text-indigo-600">Digital Services</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="section-subtitle mx-auto">
+              <p className="section-subtitle mx-auto text-slate-600">
                 From ideation to deployment, we provide end-to-end solutions that transform your digital presence.
               </p>
             </AnimatedItem>
@@ -205,20 +205,20 @@ const Home = () => {
               <Card3DReveal key={service.title}>
                 <Link to={service.href} className="h-full block">
                   <motion.div
-                    className="bento-card group cursor-pointer h-full flex flex-col"
+                    className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-200 h-full flex flex-col group cursor-pointer transition-all duration-300"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="icon-container mb-6 bg-primary/10 border border-primary/30">
-                      <service.icon className="w-6 h-6 text-primary" />
+                    <div className="icon-container mb-6 bg-indigo-50 border border-indigo-100 text-indigo-600">
+                      <service.icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-white/60 leading-relaxed flex-grow">
+                    <p className="text-slate-600 leading-relaxed flex-grow">
                       {service.desc}
                     </p>
-                    <div className="mt-6 flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="mt-6 flex items-center text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="font-medium">Learn more</span>
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
@@ -231,19 +231,19 @@ const Home = () => {
       </section>
 
       {/* Case Studies Section */}
-      <section className="py-24 lg:py-32 gradient-navy-bg relative">
+      <section className="py-24 lg:py-32 bg-white relative">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-primary font-medium tracking-widest uppercase mb-4">Our Work</p>
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Our Work</p>
             </AnimatedItem>
             <AnimatedItem>
-              <h2 className="section-title text-white mb-6">
-                Design, Engineering & <span className="text-primary">Applied AI</span>
+              <h2 className="section-title text-slate-900 mb-6">
+                Design, Engineering & <span className="text-indigo-600">Applied AI</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="section-subtitle mx-auto">
+              <p className="section-subtitle mx-auto text-slate-600">
                 See how we've helped industry leaders achieve exceptional results.
               </p>
             </AnimatedItem>
@@ -257,30 +257,30 @@ const Home = () => {
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
+                  <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3] shadow-md border border-slate-100">
                     <img
                       src={study.image}
                       alt={study.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-background-dark/20 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
                     <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-primary/20 text-primary text-sm font-medium rounded-full backdrop-blur-sm">
+                      <span className="inline-block px-3 py-1 bg-white/90 text-indigo-600 text-sm font-medium rounded-full backdrop-blur-sm shadow-sm">
                         {study.category}
                       </span>
                     </div>
                     <div className="absolute top-4 right-4">
                       <div className="text-right">
-                        <p className="text-3xl font-bold text-white">{study.result}</p>
-                        <p className="text-sm text-white/70">{study.resultText}</p>
+                        <p className="text-3xl font-bold text-white drop-shadow-md">{study.result}</p>
+                        <p className="text-sm text-white/90 font-medium drop-shadow-sm">{study.resultText}</p>
                       </div>
                     </div>
                   </div>
                   <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-3 line-clamp-2">
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-3 line-clamp-2">
                       {study.title}
                     </h3>
-                    <p className="text-white/60 line-clamp-2">{study.subtitle}</p>
+                    <p className="text-slate-600 line-clamp-2">{study.subtitle}</p>
                   </div>
                 </motion.div>
               </AnimatedItem>
@@ -299,22 +299,22 @@ const Home = () => {
       </section>
 
       {/* Meet Our Team Section */}
-      <section className="py-24 lg:py-32 bg-background-dark relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden">
         {/* Floating decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <FloatingElement className="absolute top-20 left-10" delay={0} amplitude={20}>
-            <div className="w-32 h-32 bg-primary/5 rounded-full blur-2xl" />
+            <div className="w-32 h-32 bg-indigo-200/20 rounded-full blur-2xl" />
           </FloatingElement>
           <FloatingElement className="absolute bottom-20 right-10" delay={1} amplitude={15}>
-            <div className="w-48 h-48 bg-secondary/5 rounded-full blur-3xl" />
+            <div className="w-48 h-48 bg-purple-200/20 rounded-full blur-3xl" />
           </FloatingElement>
         </div>
 
         <div className="container-custom relative z-10">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <h2 className="section-title text-white mb-6">
-                Meet our <span className="text-gradient">Team</span>
+              <h2 className="section-title text-slate-900 mb-6">
+                Meet our <span className="text-indigo-600">Team</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -323,11 +323,11 @@ const Home = () => {
             {teamMembers.map((member, index) => (
               <AnimatedItem key={index} direction="scale">
                 <motion.div
-                  className="glass-panel-hover p-8 h-full rounded-2xl group cursor-pointer"
+                  className="bg-white p-8 h-full rounded-2xl group cursor-pointer border border-slate-200 shadow-sm"
                   whileHover={{
                     y: -10,
                     scale: 1.02,
-                    boxShadow: '0 25px 50px rgba(139, 92, 246, 0.15)'
+                    boxShadow: '0 25px 50px rgba(79, 70, 229, 0.15)'
                   }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
@@ -335,16 +335,16 @@ const Home = () => {
                     <motion.img
                       src={member.avatar}
                       alt={member.name}
-                      className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-primary/30 group-hover:border-primary transition-colors duration-300"
+                      className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-slate-100 group-hover:border-indigo-500 transition-colors duration-300"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     />
                     <div>
-                      <h4 className="font-bold text-white text-lg group-hover:text-primary transition-colors duration-300">{member.name}</h4>
-                      <p className="text-sm text-primary font-medium">{member.role}</p>
+                      <h4 className="font-bold text-slate-900 text-lg group-hover:text-indigo-600 transition-colors duration-300">{member.name}</h4>
+                      <p className="text-sm text-indigo-500 font-medium">{member.role}</p>
                     </div>
                   </div>
-                  <p className="text-text-secondary leading-relaxed">{member.description}</p>
+                  <p className="text-slate-600 leading-relaxed">{member.description}</p>
                 </motion.div>
               </AnimatedItem>
             ))}
@@ -353,23 +353,23 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-surface via-surface-light to-primary/20 relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(123,143,163,0.15)_0%,_transparent_50%)]" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-primary/10 rounded-full filter blur-[100px]" />
+          <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(123,143,163,0.05)_0%,_transparent_50%)]" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-100/30 rounded-full filter blur-[100px]" />
         </div>
 
         <div className="container-custom relative z-10">
           <AnimatedSection className="text-center">
             <AnimatedItem>
-              <h2 className="section-title text-text-primary mb-6">
+              <h2 className="section-title text-slate-900 mb-6">
                 Ready to Build Something <br className="hidden md:block" />
-                <span className="text-primary">Amazing?</span>
+                <span className="text-indigo-600">Amazing?</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-xl text-text-secondary mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto">
                 Let's discuss your project and see how we can help you achieve your digital goals.
               </p>
             </AnimatedItem>

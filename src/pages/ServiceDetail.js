@@ -407,10 +407,10 @@ const ServiceDetail = () => {
 
     if (!svc) {
         return (
-            <div className="min-h-screen bg-background-dark flex items-center justify-center">
+            <div className="min-h-screen bg-white flex items-center justify-center">
                 <div className="text-center">
-                    <h1 className="text-4xl font-bold text-white mb-4">Service Not Found</h1>
-                    <p className="text-neutral-slate mb-8">The service you're looking for doesn't exist.</p>
+                    <h1 className="text-4xl font-bold text-slate-900 mb-4">Service Not Found</h1>
+                    <p className="text-slate-600 mb-8">The service you're looking for doesn't exist.</p>
                     <MagneticButton to="/services" variant="cta">
                         Browse All Services
                         <ArrowRight className="inline-block ml-2 w-4 h-4" />
@@ -423,12 +423,12 @@ const ServiceDetail = () => {
     const Icon = svc.icon;
 
     return (
-        <div className="min-h-screen bg-background-dark">
+        <div className="min-h-screen bg-white">
             {/* Hero Section */}
-            <section className="mesh-bg pt-32 pb-20 relative overflow-hidden">
+            <section className="bg-white pt-32 pb-20 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
                     <motion.div
-                        className="absolute top-1/3 right-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full filter blur-[120px]"
+                        className="absolute top-1/3 right-1/4 w-96 h-96 bg-indigo-100/50 rounded-full filter blur-[120px]"
                         animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
                         transition={{ duration: 10, repeat: Infinity }}
                     />
@@ -437,20 +437,20 @@ const ServiceDetail = () => {
                 <div className="container-custom relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <FadeUp>
-                            <div className={`icon-container mx-auto mb-6 bg-gradient-to-br ${svc.gradient}`}>
-                                <Icon className="w-8 h-8 text-white" />
+                            <div className="w-16 h-16 mx-auto mb-6 bg-indigo-50 rounded-2xl flex items-center justify-center shadow-sm">
+                                <Icon className="w-8 h-8 text-indigo-600" />
                             </div>
                         </FadeUp>
                         <FadeUp delay={0.1}>
-                            <h1 className="section-title text-white mb-4">{svc.title}</h1>
+                            <h1 className="section-title text-slate-900 mb-4">{svc.title}</h1>
                         </FadeUp>
                         <FadeUp delay={0.2}>
-                            <p className="text-xl text-neutral-slate mb-8">{svc.subtitle}</p>
+                            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">{svc.subtitle}</p>
                         </FadeUp>
                         <FadeUp delay={0.3}>
                             <div className="flex flex-wrap justify-center gap-3 mb-8">
                                 {svc.highlights.map((h) => (
-                                    <span key={h} className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm">
+                                    <span key={h} className="px-4 py-2 rounded-full bg-slate-100 border border-slate-200 text-slate-700 text-sm font-medium">
                                         {h}
                                     </span>
                                 ))}
@@ -467,11 +467,11 @@ const ServiceDetail = () => {
             </section>
 
             {/* Features Grid */}
-            <section className="section-padding bg-background-dark">
+            <section className="section-padding bg-slate-50">
                 <div className="container-custom">
                     <AnimatedSection className="text-center mb-16">
                         <AnimatedItem>
-                            <h2 className="section-title text-white">
+                            <h2 className="section-title text-slate-900">
                                 What's <span className="gradient-text">Included</span>
                             </h2>
                         </AnimatedItem>
@@ -484,10 +484,10 @@ const ServiceDetail = () => {
                                     className="glass-panel p-6 flex items-start gap-4"
                                     whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(75, 163, 218, 0.2)' }}
                                 >
-                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-accent-cyan to-navy-secondary flex items-center justify-center flex-shrink-0">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center flex-shrink-0 shadow-md">
                                         <CheckCircle2 className="w-5 h-5 text-white" />
                                     </div>
-                                    <p className="text-white/90 text-lg">{feature}</p>
+                                    <p className="text-slate-700 text-lg font-medium">{feature}</p>
                                 </motion.div>
                             </AnimatedItem>
                         ))}
@@ -506,30 +506,31 @@ const ServiceDetail = () => {
                     viewport={{ once: true }}
                     transition={{ duration: 1.5 }}
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-white via-white/50 to-transparent" />
             </section>
 
             {/* CTA Section */}
-            <section className="section-padding bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+            <section className="py-24 lg:py-32 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
+                    <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(123,143,163,0.05)_0%,_transparent_50%)]" />
+                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-100/30 rounded-full filter blur-[100px]" />
                 </div>
 
                 <div className="container-custom relative z-10">
                     <AnimatedSection className="text-center">
                         <AnimatedItem>
-                            <h2 className="section-title text-white mb-6">
+                            <h2 className="section-title text-slate-900 mb-6">
                                 Ready to Get Started with{' '}
-                                <span className="text-gradient">{svc.title}</span>?
+                                <span className="text-indigo-600 font-extrabold underline decoration-indigo-300 decoration-4 underline-offset-4">{svc.title}</span>?
                             </h2>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                            <p className="text-xl text-slate-600 mb-10 max-w-2xl mx-auto font-medium">
                                 Speak with our experts to plan a tailored engagement and timeline.
                             </p>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <MagneticButton to="/contact" className="bg-white text-navy-primary hover:bg-white/90">
+                            <MagneticButton to="/contact" variant="cta">
                                 Start Your Project
                                 <ArrowRight className="inline-block ml-2 w-4 h-4" />
                             </MagneticButton>

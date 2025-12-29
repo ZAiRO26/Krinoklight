@@ -77,12 +77,12 @@ const Industries = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background-dark">
+    <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <section className="mesh-bg pt-32 pb-20 relative overflow-hidden">
+      <section className="bg-white pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
-            className="absolute top-1/3 right-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full filter blur-[120px]"
+            className="absolute top-1/3 right-1/4 w-96 h-96 bg-indigo-100/50 rounded-full filter blur-[120px]"
             animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
             transition={{ duration: 10, repeat: Infinity }}
           />
@@ -91,17 +91,17 @@ const Industries = () => {
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <FadeUp>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-6">
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-6">
                 Industry Expertise
               </p>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <h1 className="section-title text-white mb-6 leading-tight">
-                Industries We <span className="gradient-text">Serve</span>
+              <h1 className="section-title text-slate-900 mb-6 leading-tight">
+                Industries We <span className="text-indigo-600">Serve</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <p className="text-xl text-neutral-slate max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                 We leverage deep industry knowledge to deliver tailored digital solutions that drive growth and innovation across sectors.
               </p>
             </FadeUp>
@@ -110,21 +110,21 @@ const Industries = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-24 lg:py-32 gradient-navy-bg relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-indigo-600 relative overflow-hidden">
         <div className="container-custom relative z-10">
           <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-8" staggerChildren={0.1}>
             {stats.map((stat, index) => (
               <AnimatedItem key={index}>
                 <div className="text-center">
                   <motion.p
-                    className="stat-value mb-2"
+                    className="stat-value mb-2 text-white"
                     initial={{ scale: 0.5 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                   >
                     {stat.value}
                   </motion.p>
-                  <p className="text-neutral-slate font-medium">{stat.label}</p>
+                  <p className="text-indigo-100 font-medium">{stat.label}</p>
                 </div>
               </AnimatedItem>
             ))}
@@ -133,43 +133,43 @@ const Industries = () => {
       </section>
 
       {/* Industries Grid */}
-      <section className="py-24 lg:py-32 bg-background-dark">
+      <section className="py-24 lg:py-32 bg-slate-50">
         <div className="container-custom">
           <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerChildren={0.1}>
             {industries.map((industry) => (
               <AnimatedItem key={industry.title}>
                 <motion.div
-                  className="group cursor-pointer bento-card h-full flex flex-col"
+                  className="group cursor-pointer bg-white p-6 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all h-full flex flex-col"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <div className="relative overflow-hidden rounded-xl mb-6 -mx-2 -mt-2 aspect-[4/3]">
+                  <div className="relative overflow-hidden rounded-xl mb-6 -mx-2 -mt-2 aspect-[4/3] shadow-md">
                     <img
                       src={industry.image}
                       alt={industry.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent" />
-                    <div className="absolute top-4 right-4 glass-panel px-3 py-1.5">
-                      <p className="text-lg font-bold text-white">{industry.result}</p>
-                      <p className="text-xs text-accent-cyan">{industry.resultLabel}</p>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-lg shadow-sm">
+                      <p className="text-lg font-bold text-indigo-600">{industry.result}</p>
+                      <p className="text-xs text-slate-600">{industry.resultLabel}</p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-4 mb-4">
-                    <div className={`icon-container bg-gradient-to-br ${industry.gradient}`}>
+                    <div className={`icon-container bg-gradient-to-br ${industry.gradient} shadow-sm`}>
                       <industry.icon className="w-5 h-5 text-white" />
                     </div>
-                    <h3 className="text-2xl font-bold text-white group-hover:text-accent-cyan transition-colors">
+                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
                       {industry.title}
                     </h3>
                   </div>
 
-                  <p className="text-neutral-slate mb-4">{industry.description}</p>
+                  <p className="text-slate-600 mb-4">{industry.description}</p>
 
                   <ul className="space-y-2 mb-6 flex-grow">
                     {industry.features.slice(0, 3).map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-white/70 text-sm">
-                        <CheckCircle2 className="w-4 h-4 text-accent-cyan mr-2 flex-shrink-0" />
+                      <li key={idx} className="flex items-center text-slate-500 text-sm">
+                        <CheckCircle2 className="w-4 h-4 text-indigo-500 mr-2 flex-shrink-0" />
                         {feature}
                       </li>
                     ))}
@@ -177,7 +177,7 @@ const Industries = () => {
 
                   <Link
                     to={`/industries/${industry.title.toLowerCase()}`}
-                    className="inline-flex items-center text-accent-cyan font-medium hover:text-white transition-colors mt-auto"
+                    className="inline-flex items-center text-indigo-600 font-medium hover:text-indigo-700 transition-colors mt-auto"
                   >
                     <span>Learn more</span>
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -190,7 +190,7 @@ const Industries = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-900 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
         </div>
@@ -200,16 +200,16 @@ const Industries = () => {
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
                 Let's Build the Future of Your Industry{' '}
-                <span className="text-gradient">Together</span>
+                <span className="text-indigo-200">Together</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
                 Contact us to learn how our industry expertise can benefit your business.
               </p>
             </AnimatedItem>
             <AnimatedItem>
-              <MagneticButton to="/contact" className="bg-white text-navy-primary hover:bg-white/90">
+              <MagneticButton to="/contact" className="bg-white text-indigo-900 hover:bg-white/90">
                 Get in Touch
                 <ArrowRight className="inline-block ml-2 w-4 h-4" />
               </MagneticButton>

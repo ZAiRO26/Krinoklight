@@ -89,23 +89,23 @@ const Clients = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background-dark">
+    <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <section className="mesh-bg pt-32 pb-20 relative overflow-hidden">
+      <section className="bg-white pt-32 pb-20 relative overflow-hidden">
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <FadeUp>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-6">
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-6">
                 Success Stories
               </p>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <h1 className="section-title text-white mb-6 leading-tight">
-                Our <span className="gradient-text">Clients</span>
+              <h1 className="section-title text-slate-900 mb-6 leading-tight">
+                Our <span className="text-indigo-600">Clients</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <p className="text-xl text-neutral-slate max-w-3xl mx-auto leading-relaxed">
+              <p className="text-xl text-slate-600 max-w-3xl mx-auto leading-relaxed">
                 Discover how we've helped companies across industries achieve remarkable results through innovative digital solutions.
               </p>
             </FadeUp>
@@ -114,21 +114,21 @@ const Clients = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding gradient-navy-bg">
+      <section className="section-padding bg-indigo-600">
         <div className="container-custom">
           <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-8" staggerChildren={0.1}>
             {stats.map((stat, index) => (
               <AnimatedItem key={index}>
                 <div className="text-center">
                   <motion.p
-                    className="stat-value mb-2"
+                    className="stat-value mb-2 text-white"
                     initial={{ scale: 0.5 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
                   >
                     {stat.value}
                   </motion.p>
-                  <p className="text-neutral-slate font-medium">{stat.label}</p>
+                  <p className="text-indigo-100 font-medium">{stat.label}</p>
                 </div>
               </AnimatedItem>
             ))}
@@ -137,9 +137,9 @@ const Clients = () => {
       </section>
 
       {/* Client Logos Marquee */}
-      <section className="py-16 bg-background-dark">
+      <section className="py-16 bg-white border-y border-slate-100">
         <div className="container-custom">
-          <p className="text-center text-sm text-neutral-slate uppercase tracking-widest mb-8 font-medium">
+          <p className="text-center text-sm text-slate-500 uppercase tracking-widest mb-8 font-medium">
             Trusted by industry leaders
           </p>
           <LogoMarquee logos={clientLogos} speed={30} />
@@ -147,15 +147,15 @@ const Clients = () => {
       </section>
 
       {/* Featured Case Studies */}
-      <section className="section-padding bg-background-dark">
+      <section className="section-padding bg-slate-50">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Case Studies</p>
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Case Studies</p>
             </AnimatedItem>
             <AnimatedItem>
-              <h2 className="section-title text-white mb-6">
-                Featured <span className="gradient-text">Projects</span>
+              <h2 className="section-title text-slate-900 mb-6">
+                Featured <span className="text-indigo-600">Projects</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -165,7 +165,7 @@ const Clients = () => {
               <AnimatedSection key={study.id} className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${index % 2 !== 0 ? 'lg:flex-row-reverse' : ''}`}>
                 <AnimatedItem className={index % 2 !== 0 ? 'lg:order-2' : ''}>
                   <motion.div
-                    className="relative overflow-hidden rounded-2xl"
+                    className="relative overflow-hidden rounded-2xl shadow-lg border border-slate-200"
                     whileHover={{ scale: 1.02 }}
                   >
                     <img
@@ -173,9 +173,9 @@ const Clients = () => {
                       alt={study.title}
                       className="w-full h-80 object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-background-dark/80 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80" />
                     <div className="absolute bottom-6 left-6">
-                      <span className="inline-block px-3 py-1 bg-accent-cyan/20 text-accent-cyan text-sm font-medium rounded-full backdrop-blur-sm">
+                      <span className="inline-block px-3 py-1 bg-white/90 text-indigo-600 text-sm font-medium rounded-full backdrop-blur-sm shadow-sm">
                         {study.category}
                       </span>
                     </div>
@@ -184,37 +184,37 @@ const Clients = () => {
 
                 <AnimatedItem className={`space-y-6 ${index % 2 !== 0 ? 'lg:order-1' : ''}`}>
                   <div>
-                    <h3 className="text-3xl font-bold text-white mb-3">{study.title}</h3>
-                    <p className="text-lg text-neutral-slate">{study.subtitle}</p>
+                    <h3 className="text-3xl font-bold text-slate-900 mb-3">{study.title}</h3>
+                    <p className="text-lg text-slate-600">{study.subtitle}</p>
                   </div>
 
                   <div className="grid grid-cols-3 gap-4">
-                    <div className="glass-panel p-4">
-                      <p className="font-bold text-white">{study.company}</p>
-                      <p className="text-sm text-neutral-slate">{study.industry}</p>
+                    <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                      <p className="font-bold text-slate-900 truncate">{study.company}</p>
+                      <p className="text-xs text-slate-500 truncate">{study.industry}</p>
                     </div>
-                    <div className="glass-panel p-4">
-                      <div className="flex items-center gap-2">
-                        <Clock className="w-4 h-4 text-accent-cyan" />
-                        <p className="font-bold text-white">{study.duration}</p>
+                    <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                      <div className="flex items-center justify-center gap-1">
+                        <Clock className="w-3 h-3 text-indigo-600" />
+                        <p className="font-bold text-slate-900 text-sm">{study.duration}</p>
                       </div>
-                      <p className="text-sm text-neutral-slate">Duration</p>
+                      <p className="text-xs text-slate-500">Duration</p>
                     </div>
-                    <div className="glass-panel p-4">
-                      <div className="flex items-center gap-2">
-                        <Users className="w-4 h-4 text-accent-cyan" />
-                        <p className="font-bold text-white">{study.team}</p>
+                    <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
+                      <div className="flex items-center justify-center gap-1">
+                        <Users className="w-3 h-3 text-indigo-600" />
+                        <p className="font-bold text-slate-900 text-sm">{study.team}</p>
                       </div>
-                      <p className="text-sm text-neutral-slate">Team size</p>
+                      <p className="text-xs text-slate-500">Team</p>
                     </div>
                   </div>
 
                   <div>
-                    <h4 className="font-semibold text-white mb-3">Key Results:</h4>
+                    <h4 className="font-semibold text-slate-900 mb-3">Key Results:</h4>
                     <ul className="space-y-2">
                       {study.results.map((result, idx) => (
-                        <li key={idx} className="flex items-center text-white/80">
-                          <CheckCircle2 className="w-4 h-4 text-accent-cyan mr-3 flex-shrink-0" />
+                        <li key={idx} className="flex items-center text-slate-600">
+                          <CheckCircle2 className="w-4 h-4 text-indigo-600 mr-3 flex-shrink-0" />
                           {result}
                         </li>
                       ))}
@@ -233,15 +233,15 @@ const Clients = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="section-padding mesh-bg">
+      <section className="section-padding bg-white">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-accent-cyan font-medium tracking-widest uppercase mb-4">Testimonials</p>
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Testimonials</p>
             </AnimatedItem>
             <AnimatedItem>
-              <h2 className="section-title text-white mb-6">
-                Client <span className="gradient-text">Feedback</span>
+              <h2 className="section-title text-slate-900 mb-6">
+                Client <span className="text-indigo-600">Feedback</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -250,25 +250,25 @@ const Clients = () => {
             {testimonials.map((testimonial, index) => (
               <AnimatedItem key={index}>
                 <motion.div
-                  className="glass-panel-hover p-8 h-full"
+                  className="bg-slate-50 p-8 h-full rounded-2xl border border-slate-100 shadow-sm hover:shadow-md transition-all"
                   whileHover={{ y: -5 }}
                 >
                   <div className="flex items-center mb-4">
                     {[...Array(testimonial.rating)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-amber-400 fill-current" />
+                      <Star key={i} className="w-4 h-4 text-amber-500 fill-current" />
                     ))}
                   </div>
-                  <p className="text-white/80 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
+                  <p className="text-slate-600 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
                   <div className="flex items-center">
                     <img
                       src={testimonial.avatar}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-accent-cyan/30"
+                      className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-indigo-200"
                     />
                     <div>
-                      <h4 className="font-bold text-white">{testimonial.name}</h4>
-                      <p className="text-sm text-neutral-slate">{testimonial.role}</p>
-                      <p className="text-sm font-medium text-accent-cyan">{testimonial.company}</p>
+                      <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
+                      <p className="text-sm text-slate-500">{testimonial.role}</p>
+                      <p className="text-sm font-medium text-indigo-600">{testimonial.company}</p>
                     </div>
                   </div>
                 </motion.div>
@@ -279,7 +279,7 @@ const Clients = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-900 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
         </div>
@@ -288,16 +288,16 @@ const Clients = () => {
           <AnimatedSection className="text-center">
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Ready to Join Our <span className="text-gradient">Success Stories</span>?
+                Ready to Join Our <span className="text-indigo-200">Success Stories</span>?
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
                 Let's discuss how we can help you achieve similar results for your business.
               </p>
             </AnimatedItem>
             <AnimatedItem>
-              <MagneticButton to="/contact" className="bg-white text-navy-primary hover:bg-white/90">
+              <MagneticButton to="/contact" className="bg-white text-indigo-900 hover:bg-white/90">
                 Start Your Project
                 <ArrowRight className="inline-block ml-2 w-4 h-4" />
               </MagneticButton>

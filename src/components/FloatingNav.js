@@ -130,7 +130,7 @@ const FloatingNav = () => {
                         className="group"
                     >
                         <motion.span
-                            className="text-xl font-medium text-white/90 tracking-[0.25em] uppercase group-hover:text-white transition-colors logo-font"
+                            className="text-xl font-medium text-slate-900 tracking-[0.25em] uppercase hover:text-indigo-600 transition-colors logo-font"
                             whileHover={{ scale: 1.02 }}
                         >
                             KRINOK
@@ -150,8 +150,8 @@ const FloatingNav = () => {
                                     to={link.href}
                                     className={`flex items-center gap-1 text-sm font-medium tracking-wide transition-colors
                                         ${location.pathname.startsWith(link.href)
-                                            ? 'text-white'
-                                            : 'text-white/60 hover:text-white'
+                                            ? 'text-indigo-600'
+                                            : 'text-slate-600 hover:text-indigo-600'
                                         }`}
                                 >
                                     {link.name}
@@ -168,13 +168,13 @@ const FloatingNav = () => {
                                             animate={{ opacity: 1, y: 0 }}
                                             exit={{ opacity: 0, y: 10 }}
                                             transition={{ duration: 0.2 }}
-                                            className="absolute top-full left-0 mt-2 py-2 min-w-[200px] rounded-xl backdrop-blur-xl bg-black/80 border border-white/10 shadow-xl"
+                                            className="absolute top-full left-0 mt-2 py-2 min-w-[200px] rounded-xl backdrop-blur-xl bg-white/90 border border-slate-200 shadow-xl shadow-slate-200/50"
                                         >
                                             {link.subpages.map((subpage) => (
                                                 <Link
                                                     key={subpage.name}
                                                     to={subpage.href}
-                                                    className="block px-4 py-2 text-sm text-white/70 hover:text-white hover:bg-white/5 transition-colors"
+                                                    className="block px-4 py-2 text-sm text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors"
                                                 >
                                                     {subpage.name}
                                                 </Link>
@@ -197,7 +197,7 @@ const FloatingNav = () => {
                     {/* Mobile Menu Button - Only visible on mobile/tablet */}
                     <motion.button
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="lg:hidden w-12 h-12 rounded-xl flex items-center justify-center backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-colors"
+                        className="lg:hidden w-12 h-12 rounded-xl flex items-center justify-center backdrop-blur-md bg-white/50 border border-slate-200 text-slate-900 hover:bg-white/80 transition-colors"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                     >
@@ -215,7 +215,7 @@ const FloatingNav = () => {
                         exit="closed"
                         variants={menuVariants}
                         transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-                        className="fixed inset-0 z-40 backdrop-blur-xl bg-black/95 flex items-center justify-center lg:hidden"
+                        className="fixed inset-0 z-40 backdrop-blur-xl bg-white/95 flex items-center justify-center lg:hidden"
                     >
                         <nav className="flex flex-col items-center space-y-4 max-h-[80vh] overflow-y-auto py-8">
                             {navLinks.map((link, i) => (
@@ -231,8 +231,8 @@ const FloatingNav = () => {
                                             onClick={() => setIsMenuOpen(false)}
                                             className={`text-3xl md:text-4xl font-light tracking-tight transition-all block
                                                 ${location.pathname.startsWith(link.href)
-                                                    ? 'text-white'
-                                                    : 'text-white/50 hover:text-white'
+                                                    ? 'text-indigo-600'
+                                                    : 'text-slate-500 hover:text-slate-900'
                                                 }`}
                                         >
                                             {link.name}
@@ -252,7 +252,7 @@ const FloatingNav = () => {
                                                     key={subpage.name}
                                                     to={subpage.href}
                                                     onClick={() => setIsMenuOpen(false)}
-                                                    className="text-sm text-white/40 hover:text-white/70 transition-colors px-2"
+                                                    className="text-sm text-slate-400 hover:text-indigo-600 transition-colors px-2"
                                                 >
                                                     {subpage.name}
                                                 </Link>
@@ -273,7 +273,7 @@ const FloatingNav = () => {
                             <Link
                                 to="/contact"
                                 onClick={() => setIsMenuOpen(false)}
-                                className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-medium hover:opacity-90 transition-opacity"
+                                className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-medium hover:opacity-90 transition-opacity"
                             >
                                 Get in Touch
                             </Link>

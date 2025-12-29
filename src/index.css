@@ -12,37 +12,38 @@
 @layer base {
   html {
     scroll-behavior: smooth;
-    background-color: #09090B;
+    background-color: #FFFFFF;
   }
 
   body {
-    @apply bg-background-dark text-text-primary font-body antialiased;
+    @apply bg-white text-slate-900 font-body antialiased;
     overflow-x: hidden;
     line-height: 1.75;
-    /* Premium line-height */
   }
 
-  /* Custom Scrollbar - Electric Indigo */
+  /* Custom Scrollbar - Minimalist Grey/Indigo */
   ::-webkit-scrollbar {
     width: 10px;
   }
 
   ::-webkit-scrollbar-track {
-    background-color: #09090B;
+    background-color: #F8FAFC;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: linear-gradient(180deg, #6366F1 0%, #4F46E5 100%);
+    background-color: #CBD5E1;
     border-radius: 5px;
+    border: 2px solid #F8FAFC;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(180deg, #818CF8 0%, #6366F1 100%);
+    background-color: #94A3B8;
   }
 
   ::selection {
-    background-color: rgba(99, 102, 241, 0.4);
-    color: #FAFAFA;
+    background-color: #E0E7FF;
+    /* Light Indigo */
+    color: #312E81;
   }
 
   /* Premium Typography Defaults */
@@ -52,12 +53,8 @@
   h4,
   h5,
   h6 {
-    @apply font-display;
+    @apply font-display text-slate-900;
     letter-spacing: -0.02em;
-  }
-
-  p {
-    line-height: 1.75;
   }
 }
 
@@ -66,7 +63,10 @@
   /* ===== BUTTONS - Premium Gradient System ===== */
 
   .btn-primary {
-    @apply px-8 py-4 font-semibold rounded-2xl transition-all duration-500 transform;
+    padding: 1rem 2rem;
+    font-weight: 600;
+    border-radius: 1rem;
+    transition: all 500ms;
     background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
     color: white;
     box-shadow: 0 4px 20px rgba(99, 102, 241, 0.3);
@@ -79,16 +79,26 @@
   }
 
   .btn-secondary {
-    @apply px-8 py-4 bg-transparent border-2 border-primary/40 text-primary font-semibold rounded-2xl transition-all duration-500;
+    padding: 1rem 2rem;
+    background-color: transparent;
+    border: 2px solid rgba(99, 102, 241, 0.4);
+    color: #6366F1;
+    font-weight: 600;
+    border-radius: 1rem;
+    transition: all 500ms;
   }
 
   .btn-secondary:hover {
-    @apply bg-primary/10 border-primary;
+    background-color: rgba(99, 102, 241, 0.1);
+    border-color: #6366F1;
     transform: translateY(-3px);
   }
 
   .btn-cta {
-    @apply px-8 py-4 font-bold rounded-2xl transition-all duration-500;
+    padding: 1rem 2rem;
+    font-weight: 700;
+    border-radius: 1rem;
+    transition: all 500ms;
     background: linear-gradient(135deg, #6366F1 0%, #38BDF8 100%);
     color: white;
     box-shadow: 0 4px 24px rgba(99, 102, 241, 0.35);
@@ -112,43 +122,28 @@
     box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
   }
 
-  /* ===== GLASSMORPHISM PANELS - Premium Blur ===== */
+  /* ===== GLASSMORPHISM PANELS - Light Frost ===== */
 
   .glass-panel {
-    @apply rounded-3xl backdrop-blur-xl;
-    background: linear-gradient(135deg,
-        rgba(18, 18, 24, 0.8) 0%,
-        rgba(9, 9, 11, 0.9) 100%);
-    border: 1px solid rgba(99, 102, 241, 0.1);
+    @apply rounded-3xl backdrop-blur-xl border border-white/50 bg-white/70 shadow-lg shadow-slate-200/50;
   }
 
   .glass-panel:hover {
-    border-color: rgba(99, 102, 241, 0.3);
-    box-shadow: 0 0 40px rgba(99, 102, 241, 0.1);
+    @apply border-indigo-100 bg-white/80 shadow-xl shadow-indigo-100/50;
   }
 
   .glass-panel-hover {
-    @apply rounded-3xl backdrop-blur-lg transition-all duration-500;
-    background: linear-gradient(135deg,
-        rgba(18, 18, 24, 0.85) 0%,
-        rgba(9, 9, 11, 0.95) 100%);
-    border: 1px solid rgba(99, 102, 241, 0.08);
+    @apply rounded-3xl backdrop-blur-lg transition-all duration-500 border border-white/60 bg-white/60 shadow-md shadow-slate-200/40;
   }
 
   .glass-panel-hover:hover {
-    border-color: rgba(99, 102, 241, 0.35);
-    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4), 0 0 40px rgba(99, 102, 241, 0.15);
-    transform: translateY(-4px);
+    @apply border-indigo-200 bg-white/90 shadow-2xl shadow-indigo-100/60 transform -translate-y-1;
   }
 
-  /* ===== BENTO CARDS - Luxury Padding ===== */
+  /* ===== BENTO CARDS - Clean White Surface ===== */
 
   .bento-card {
-    @apply relative overflow-hidden rounded-3xl p-10 lg:p-12 backdrop-blur-lg transition-all duration-500;
-    background: linear-gradient(135deg,
-        rgba(18, 18, 24, 0.9) 0%,
-        rgba(9, 9, 11, 0.95) 100%);
-    border: 1px solid rgba(99, 102, 241, 0.08);
+    @apply relative overflow-hidden rounded-3xl p-10 lg:p-12 transition-all duration-500 bg-white border border-slate-100 shadow-xl shadow-slate-200/40;
   }
 
   .bento-card::before {
@@ -158,15 +153,14 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.6), transparent);
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.3), transparent);
+    /* Indigo accent line */
     opacity: 0;
     transition: opacity 0.5s;
   }
 
   .bento-card:hover {
-    border-color: rgba(99, 102, 241, 0.4);
-    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.5), 0 0 50px rgba(99, 102, 241, 0.12);
-    transform: translateY(-6px);
+    @apply border-indigo-100 shadow-2xl shadow-indigo-100/50 -translate-y-2;
   }
 
   .bento-card:hover::before {
@@ -247,7 +241,8 @@
   .section-subtitle {
     @apply text-lg md:text-xl;
     font-family: 'Inter', sans-serif;
-    color: rgba(250, 250, 250, 0.6);
+    color: #475569;
+    /* Slate 600 */
     line-height: 1.8;
     max-width: 48rem;
   }
@@ -273,25 +268,23 @@
     @apply py-20 lg:py-32;
   }
 
-  /* ===== ICON CONTAINERS ===== */
+  /* ===== ICON CONTAINERS - Light Theme ===== */
 
   .icon-container {
-    @apply w-16 h-16 rounded-2xl flex items-center justify-center backdrop-blur-sm;
-    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(56, 189, 248, 0.08) 100%);
-    border: 1px solid rgba(99, 102, 241, 0.25);
+    @apply w-16 h-16 rounded-2xl flex items-center justify-center bg-indigo-50 border border-indigo-100 text-indigo-600;
   }
 
-  /* ===== BACKGROUNDS ===== */
+  /* ===== BACKGROUNDS - Light Theme ===== */
 
   .mesh-bg {
-    background-color: #09090B;
+    background-color: #FFFFFF;
     background-image:
-      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
-      radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.08) 0px, transparent 50%);
+      radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.05) 0px, transparent 50%),
+      radial-gradient(at 100% 100%, rgba(56, 189, 248, 0.05) 0px, transparent 50%);
   }
 
   .gradient-navy-bg {
-    background: linear-gradient(180deg, #09090B 0%, #121218 100%);
+    background: linear-gradient(180deg, #F8FAFC 0%, #F1F5F9 100%);
   }
 
   /* ===== GLOW EFFECTS ===== */

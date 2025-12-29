@@ -95,15 +95,14 @@ const LatestNews = () => {
             transition={{ duration: 0.5, delay: index * 0.08 }}
             className={`relative group ${article.featured ? 'md:col-span-2' : ''}`}
         >
-            <div className="h-full bg-gradient-to-br from-white/5 to-white/[0.02] backdrop-blur-xl 
-                      border border-white/10 rounded-2xl overflow-hidden
-                      hover:border-purple-500/30 hover:shadow-2xl hover:shadow-purple-500/10
+            <div className="h-full bg-white border border-slate-200 rounded-2xl overflow-hidden
+                      hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/10
                       transition-all duration-500 hover:-translate-y-1">
 
                 {/* Featured Badge */}
                 {article.featured && (
-                    <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-gradient-to-r from-purple-600 to-pink-600 
-                          rounded-full text-xs font-semibold flex items-center gap-1">
+                    <div className="absolute top-4 left-4 z-10 px-3 py-1 bg-gradient-to-r from-indigo-600 to-violet-600 
+                          rounded-full text-xs font-semibold flex items-center gap-1 text-white shadow-md">
                         <Star className="w-3 h-3" />
                         Featured
                     </div>
@@ -115,8 +114,8 @@ const LatestNews = () => {
                     {/* Text Content */}
                     <div className="flex-1 p-6">
                         {/* Source & Date */}
-                        <div className="flex items-center gap-3 text-sm text-gray-400 mb-3">
-                            <span className="px-2 py-1 bg-purple-500/20 text-purple-300 rounded-md text-xs font-medium uppercase tracking-wide">
+                        <div className="flex items-center gap-3 text-sm text-slate-400 mb-3">
+                            <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-md text-xs font-medium uppercase tracking-wide">
                                 {article.source}
                             </span>
                             <span className="flex items-center gap-1">
@@ -132,34 +131,33 @@ const LatestNews = () => {
                             rel="noopener noreferrer"
                             className="group/link"
                         >
-                            <h3 className={`font-bold text-white mb-3 group-hover/link:text-purple-400 
+                            <h3 className={`font-bold text-slate-900 mb-3 group-hover/link:text-indigo-600 
                                  transition-colors leading-tight ${article.featured ? 'text-2xl' : 'text-lg'}`}>
                                 {article.title}
                                 <ExternalLink className="w-4 h-4 ml-2 inline opacity-0 group-hover/link:opacity-100 
-                                             transition-opacity text-purple-400" />
+                                             transition-opacity text-indigo-500" />
                             </h3>
                         </a>
 
                         {/* AI Summary */}
-                        <p className="text-gray-300 mb-4 leading-relaxed text-sm">
+                        <p className="text-slate-600 mb-4 leading-relaxed text-sm">
                             {article.summary}
                         </p>
 
                         {/* Business Angle - Styled Differently */}
-                        <div className="p-3 bg-gradient-to-r from-purple-500/10 to-pink-500/10 
-                                border-l-4 border-purple-500 rounded-r-lg mb-3">
+                        <div className="p-3 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg mb-3">
                             <div className="flex items-start gap-2">
-                                <TrendingUp className="w-4 h-4 mt-0.5 text-purple-400 flex-shrink-0" />
-                                <p className="text-xs text-purple-200 italic">
-                                    <span className="font-semibold text-purple-300">Why this matters: </span>
+                                <TrendingUp className="w-4 h-4 mt-0.5 text-indigo-600 flex-shrink-0" />
+                                <p className="text-xs text-indigo-900 italic">
+                                    <span className="font-semibold text-indigo-700">Why this matters: </span>
                                     {article.businessAngle}
                                 </p>
                             </div>
                         </div>
 
                         {/* Curated Tag */}
-                        <div className="flex items-center gap-2 text-xs text-gray-500">
-                            <Sparkles className="w-3.5 h-3.5 text-purple-400" />
+                        <div className="flex items-center gap-2 text-xs text-slate-500">
+                            <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
                             <span>Curated by Krinok AI</span>
                         </div>
                     </div>
@@ -180,8 +178,7 @@ const LatestNews = () => {
                                 }}
                             />
                             {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent 
-                                           md:bg-gradient-to-l md:from-black/30 md:to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
                         </div>
                     )}
                 </div>
@@ -190,7 +187,7 @@ const LatestNews = () => {
     );
 
     return (
-        <div className="min-h-screen bg-gradient-to-b from-[#0a0a0f] via-[#0d0d15] to-[#0a0a0f]">
+        <div className="min-h-screen bg-slate-50">
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 overflow-hidden">
                 {/* Background Effects */}
@@ -208,11 +205,10 @@ const LatestNews = () => {
                                     <Sparkles className="w-4 h-4" />
                                     AI-Curated News Feed
                                 </div>
-                                <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r 
-                               from-white via-purple-200 to-pink-200 bg-clip-text text-transparent">
+                                <h1 className="text-5xl md:text-6xl font-bold mb-6 text-slate-900">
                                     Latest News
                                 </h1>
-                                <p className="text-xl text-gray-400 leading-relaxed max-w-2xl mx-auto">
+                                <p className="text-xl text-slate-600 leading-relaxed max-w-2xl mx-auto">
                                     Stay ahead with AI-curated tech, AI, and business news. Summaries and business
                                     insights are generated by our in-house AI stack—the same tech we use to build
                                     custom agents for clients.
@@ -231,23 +227,20 @@ const LatestNews = () => {
                         <button
                             onClick={fetchNews}
                             disabled={loading}
-                            className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 
-                         border border-white/10 rounded-lg text-gray-300 text-sm
-                         transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+                            className="flex items-center gap-2 px-4 py-2 bg-white hover:bg-slate-50 
+                          border border-slate-200 rounded-lg text-slate-600 text-sm shadow-sm
+                          transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                             <RefreshCw className={`w-4 h-4 ${loading ? 'animate-spin' : ''}`} />
                             {loading ? 'Refreshing...' : 'Refresh News'}
                         </button>
                     </div>
 
-                    {/* Loading State */}
-                    {loading && news.length === 0 && (
-                        <div className="flex flex-col items-center justify-center py-20">
-                            <div className="w-12 h-12 border-2 border-purple-500 border-t-transparent 
+                    <div className="flex flex-col items-center justify-center py-20">
+                        <div className="w-12 h-12 border-2 border-indigo-600 border-t-transparent 
                               rounded-full animate-spin mb-4" />
-                            <p className="text-gray-400">Loading latest news...</p>
-                        </div>
-                    )}
+                        <p className="text-slate-500">Loading latest news...</p>
+                    </div>
 
                     {/* Error State */}
                     {error && (
@@ -282,12 +275,12 @@ const LatestNews = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-20 border-t border-white/5">
+            <section className="py-20 border-t border-slate-200 bg-white">
                 <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-3xl font-bold mb-4 text-white">
+                    <h2 className="text-3xl font-bold mb-4 text-slate-900">
                         Want AI Like This for Your Business?
                     </h2>
-                    <p className="text-gray-400 mb-8 max-w-xl mx-auto">
+                    <p className="text-slate-600 mb-8 max-w-xl mx-auto">
                         The same AI technology that powers this news curation can be customized
                         for your business. Chatbots, automation, content generation—we build it all.
                     </p>

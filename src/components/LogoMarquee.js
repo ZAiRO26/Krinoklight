@@ -28,8 +28,8 @@ const LogoMarquee = ({
     return (
         <div className={`relative overflow-hidden ${className}`}>
             {/* Gradient masks for fade effect */}
-            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background-dark to-transparent z-10 pointer-events-none" />
-            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background-dark to-transparent z-10 pointer-events-none" />
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
 
             {/* CSS animated marquee - GPU accelerated */}
             <div
@@ -48,10 +48,10 @@ const LogoMarquee = ({
                             <img
                                 src={logo.image}
                                 alt={logo.name}
-                                className="h-8 md:h-10 w-auto object-contain grayscale opacity-50 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
+                                className="h-8 md:h-10 w-auto object-contain grayscale opacity-40 hover:grayscale-0 hover:opacity-100 transition-all duration-300"
                             />
                         ) : (
-                            <span className="text-2xl md:text-3xl font-bold font-display text-white/40 hover:text-white/80 transition-colors duration-300 whitespace-nowrap tracking-wider">
+                            <span className="text-2xl md:text-3xl font-bold font-display text-slate-300 hover:text-slate-600 transition-colors duration-300 whitespace-nowrap tracking-wider">
                                 {logo.text || logo.name}
                             </span>
                         )}
@@ -66,7 +66,7 @@ const LogoMarquee = ({
 export const TrustedBySection = ({ logos = [], title = "Trusted by industry leaders" }) => {
     return (
         <div className="py-12 md:py-16">
-            <p className="text-center text-sm text-neutral-slate uppercase tracking-widest mb-8 font-medium">
+            <p className="text-center text-sm text-slate-500 uppercase tracking-widest mb-8 font-medium">
                 {title}
             </p>
             <LogoMarquee logos={logos} />

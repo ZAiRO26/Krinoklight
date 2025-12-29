@@ -136,17 +136,17 @@ const fragmentShader = `
         // Create gradient based on displacement and position
         float mixStrength = (vDisplacement + 0.5) * 0.9;
         
-        // Beautiful blue gradient - consistent colors
+        // LIGHT THEME PALETTE: Silver / Mist Blue / Indigo
         vec3 color = mix(uColorA, uColorB, smoothstep(0.0, 0.5, mixStrength));
         color = mix(color, uColorC, smoothstep(0.4, 1.0, mixStrength));
         
-        // Subtle rim lighting for posh look
+        // Specular highlight / Rim lighting - Darker for contrast on white
         float rim = 1.0 - dot(vNormal, vec3(0.0, 0.0, 1.0));
         rim = smoothstep(0.35, 1.0, rim);
-        color += rim * 0.2;
+        color -= rim * 0.15; // Darken edges for definition
         
         // Soft alpha for edges
-        float alpha = 0.92 + vDisplacement * 0.05;
+        float alpha = 0.95 + vDisplacement * 0.05;
         
         gl_FragColor = vec4(color, alpha);
     }
@@ -157,14 +157,14 @@ function NoiseSphere({ mousePosition, isMobileDevice }) {
     const meshRef = useRef();
     const materialRef = useRef();
 
-    // Create shader material - locked blue palette
+    // Create shader material - LIGHT THEME (Silver/Blue)
     const uniforms = useMemo(() => ({
         uTime: { value: 0 },
         uStrength: { value: 0.45 },
         uMouse: { value: new THREE.Vector2(0, 0) },
-        uColorA: { value: new THREE.Color('#162850') },  // Richer navy blue
-        uColorB: { value: new THREE.Color('#4477bb') },  // More vibrant blue
-        uColorC: { value: new THREE.Color('#88bbee') },  // Brighter blue highlight
+        uColorA: { value: new THREE.Color('#0f172a') },  // Slate 900 (Deep Base)
+        uColorB: { value: new THREE.Color('#3b82f6') },  // Blue 500 (Vibrant Blue)
+        uColorC: { value: new THREE.Color('#60a5fa') },  // Blue 400 (Highlight)
     }), []);
 
     useFrame((state, delta) => {
@@ -209,12 +209,11 @@ function NoiseSphere({ mousePosition, isMobileDevice }) {
 function AmbientGlow() {
     return (
         <mesh position={[0, 0, -2]}>
-            <planeGeometry args={[15, 15]} />
+            <planeGeometry args={[20, 20]} />
             <meshBasicMaterial
-                color="#1e3a5f"
+                color="#cbd5e1" // Slate 300 - darker for visibility on white
                 transparent
-                opacity={0.3}
-                blending={THREE.AdditiveBlending}
+                opacity={0.5}
             />
         </mesh>
     );
@@ -224,17 +223,18 @@ function AmbientGlow() {
 function Scene({ mousePosition, isMobileDevice }) {
     return (
         <>
-            <color attach="background" args={['#030712']} />
+            {/* Transparent/White background to blend with Light Theme */}
+            <color attach="background" args={['#ffffff']} />
 
-            {/* Soft lighting */}
-            <ambientLight intensity={0.3} />
-            <pointLight position={[5, 5, 5]} intensity={0.5} color="#3b82f6" />
-            <pointLight position={[-5, -5, 5]} intensity={0.3} color="#1e40af" />
+            {/* Soft lighting for depth */}
+            <ambientLight intensity={0.7} />
+            <pointLight position={[10, 10, 10]} intensity={0.8} color="#ffffff" />
+            <pointLight position={[-10, -10, 10]} intensity={0.5} color="#cbd5e1" />
 
             {/* Main noise sphere */}
             <NoiseSphere mousePosition={mousePosition} isMobileDevice={isMobileDevice} />
 
-            {/* Background glow */}
+            {/* Background glow - ambient light for the sphere to sit in */}
             <AmbientGlow />
         </>
     );

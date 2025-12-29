@@ -5,49 +5,49 @@ module.exports = {
   ],
   theme: {
     extend: {
-      colors: {
-        // ========================================
-        // PREMIUM DESIGN SYSTEM - Electric Indigo
-        // Inspired by Linear, Stripe, Vercel
-        // ========================================
-        primary: {
-          DEFAULT: '#6366F1',  // Electric Indigo
-          hover: '#818CF8',
-          light: '#A5B4FC',
-          dark: '#4F46E5',
-          muted: '#4338CA',
-        },
-        secondary: {
-          DEFAULT: '#38BDF8',  // Aurora Blue
-          hover: '#7DD3FC',
-          dark: '#0EA5E9',
-        },
-        background: {
-          dark: '#09090B',     // True dark (richer)
-          DEFAULT: '#09090B',
-          card: '#121218',     // Elevated surface
-          elevated: '#18181F',
-        },
-        surface: {
-          DEFAULT: '#121218',
-          hover: '#1A1A22',
-          light: '#222230',
-          border: '#27272A',
-        },
-        accent: {
-          indigo: '#6366F1',   // Primary accent
-          violet: '#8B5CF6',   // Secondary accent
-          sky: '#38BDF8',      // Tertiary accent
-          rose: '#FB7185',     // Highlight
-          emerald: '#34D399',  // Success
-          amber: '#FBBF24',    // Warning
-        },
-        text: {
-          primary: '#FAFAFA',
-          secondary: '#A1A1AA',
-          muted: '#71717A',
-        },
+      // ========================================
+      // POSH LIGHT THEME - Premium Enterprise
+      // Inspired by Stripe, Linear Light
+      // ========================================
+      primary: {
+        DEFAULT: '#6366F1',  // Electric Indigo (Keep as accent)
+        hover: '#4F46E5',    // Darker on hover
+        light: '#E0E7FF',    // Very light indigo for backgrounds
+        dark: '#4338CA',
+        muted: '#818CF8',
       },
+      secondary: {
+        DEFAULT: '#0EA5E9',  // Sky Blue
+        hover: '#0284C7',
+        light: '#E0F2FE',
+      },
+      background: {
+        dark: '#FFFFFF',     // Main background -> WHITE
+        DEFAULT: '#FFFFFF',
+        card: '#F8FAFC',     // Elevated surface -> Slate 50
+        elevated: '#F1F5F9', // Higher elevation -> Slate 100
+      },
+      surface: {
+        DEFAULT: '#FFFFFF',
+        hover: '#F8FAFC',
+        light: '#F1F5F9',
+        border: '#E2E8F0',   // Light grey border
+      },
+      accent: {
+        indigo: '#6366F1',
+        violet: '#8B5CF6',
+        sky: '#0EA5E9',
+        rose: '#F43F5E',
+        emerald: '#10B981',
+        amber: '#F59E0B',
+        slate: '#475569',
+      },
+      text: {
+        primary: '#0F172A',   // Slate 900 (Almost Black)
+        secondary: '#475569', // Slate 600
+        muted: '#94A3B8',     // Slate 400
+      },
+
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['"Space Grotesk"', 'system-ui', 'sans-serif'],

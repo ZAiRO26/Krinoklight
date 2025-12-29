@@ -5,10 +5,10 @@ const CaseStudyDetail = () => {
     // For now, redirect to clients page
     // In a real implementation, this would fetch case study data based on the ID
     return (
-        <div className="min-h-screen bg-background-dark flex items-center justify-center">
+        <div className="min-h-screen bg-white flex items-center justify-center">
             <div className="text-center">
-                <h1 className="text-4xl font-bold text-white mb-4">Case Study Coming Soon</h1>
-                <p className="text-neutral-slate mb-8">We're working on detailed case study pages.</p>
+                <h1 className="text-4xl font-bold text-slate-900 mb-4">Case Study Coming Soon</h1>
+                <p className="text-slate-600 mb-8">We're working on detailed case study pages.</p>
                 <Link
                     to="/clients"
                     className="btn-cta inline-flex items-center gap-2"

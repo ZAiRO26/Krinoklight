@@ -114,26 +114,26 @@ const Services = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-background-dark">
+    <div className="min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <section className="pt-32 pb-16 relative overflow-hidden">
+      <section className="pt-32 pb-16 relative overflow-hidden bg-white">
         {/* Subtle gradient background */}
-        <div className="absolute inset-0 bg-primary/5" />
+        <div className="absolute inset-0 bg-gradient-to-br from-indigo-50 to-white/50" />
 
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <FadeUp>
-              <p className="text-primary font-medium tracking-widest uppercase mb-4 text-sm">
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4 text-sm">
                 What We Offer
               </p>
             </FadeUp>
             <FadeUp delay={0.1}>
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                Our <span className="text-primary">Services</span>
+              <h1 className="text-5xl md:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                Our <span className="text-indigo-600">Services</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
-              <p className="text-xl text-white/60 max-w-2xl mx-auto leading-relaxed mb-10">
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed mb-10">
                 We provide end-to-end digital product development services to help you scale, innovate, and get ahead of the competition.
               </p>
             </FadeUp>
@@ -149,27 +149,27 @@ const Services = () => {
               to="/services/products"
               className="group block"
             >
-              <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-surface-light to-primary/30 border border-primary/20 p-8 md:p-12">
+              <div className="relative overflow-hidden rounded-2xl bg-white border border-indigo-100 shadow-xl shadow-indigo-100 p-8 md:p-12 transition-all hover:shadow-2xl hover:shadow-indigo-200 hover:-translate-y-1">
                 {/* Decorative elements */}
-                <div className="absolute top-0 right-0 w-64 h-64 bg-primary/10 rounded-full -translate-y-1/2 translate-x-1/2" />
-                <div className="absolute bottom-0 left-0 w-48 h-48 bg-primary/10 rounded-full translate-y-1/2 -translate-x-1/2" />
+                <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-50 rounded-full -translate-y-1/2 translate-x-1/2" />
+                <div className="absolute bottom-0 left-0 w-48 h-48 bg-indigo-50 rounded-full translate-y-1/2 -translate-x-1/2" />
 
                 <div className="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
                   <div className="flex items-center gap-6">
-                    <div className="w-16 h-16 rounded-2xl bg-primary/20 backdrop-blur-sm flex items-center justify-center border border-primary/30">
-                      <Grid3X3 className="w-8 h-8 text-primary" />
+                    <div className="w-16 h-16 rounded-2xl bg-indigo-100 flex items-center justify-center text-indigo-600">
+                      <Grid3X3 className="w-8 h-8" />
                     </div>
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-text-primary mb-2">
+                      <h3 className="text-2xl md:text-3xl font-bold text-slate-900 mb-2">
                         Explore All Products
                       </h3>
-                      <p className="text-text-secondary text-lg">
+                      <p className="text-slate-600 text-lg">
                         18+ solutions for businesses, creatives & professionals
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 text-primary font-semibold text-lg group-hover:gap-4 transition-all">
+                  <div className="flex items-center gap-3 text-indigo-600 font-semibold text-lg group-hover:gap-4 transition-all">
                     <span>View All Products</span>
                     <ArrowRight className="w-6 h-6 transform group-hover:translate-x-1 transition-transform" />
                   </div>
@@ -190,32 +190,32 @@ const Services = () => {
             {services.map((service) => (
               <AnimatedItem key={service.title}>
                 <Link to={`/services/${service.slug}`} className="group block h-full">
-                  <div className="h-full p-8 rounded-2xl bg-surface border border-white/10 hover:border-primary/30 hover:bg-surface-hover transition-all duration-300 flex flex-col">
+                  <div className="h-full p-8 rounded-2xl bg-white border border-slate-200 hover:border-indigo-500 hover:shadow-xl hover:shadow-indigo-100 transition-all duration-300 flex flex-col">
                     {/* Icon */}
-                    <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
-                      <service.icon className="w-7 h-7 text-primary" />
+                    <div className="w-14 h-14 rounded-xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                      <service.icon className="w-7 h-7 text-indigo-600" />
                     </div>
 
                     {/* Title & Description */}
-                    <h3 className="text-2xl font-bold text-white group-hover:text-primary transition-colors mb-3">
+                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-3">
                       {service.title}
                     </h3>
-                    <p className="text-white/60 mb-6 leading-relaxed">
+                    <p className="text-slate-600 mb-6 leading-relaxed">
                       {service.description}
                     </p>
 
                     {/* Features - grows to fill space */}
                     <ul className="space-y-3 mb-8 flex-grow">
                       {service.features.map((feature, index) => (
-                        <li key={index} className="flex items-start text-white/70 group-hover:text-white/90 transition-colors">
-                          <CheckCircle2 className="w-4 h-4 text-primary mr-3 mt-0.5 flex-shrink-0" />
+                        <li key={index} className="flex items-start text-slate-500 group-hover:text-slate-700 transition-colors">
+                          <CheckCircle2 className="w-4 h-4 text-indigo-500 mr-3 mt-0.5 flex-shrink-0" />
                           <span className="text-sm">{feature}</span>
                         </li>
                       ))}
                     </ul>
 
                     {/* CTA - always at bottom */}
-                    <div className="flex items-center text-primary font-medium group-hover:text-white transition-colors mt-auto">
+                    <div className="flex items-center text-indigo-600 font-medium mt-auto">
                       <span>Learn more</span>
                       <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -228,17 +228,17 @@ const Services = () => {
       </section>
 
       {/* Process Section - Clean timeline */}
-      <section className="py-24 bg-surface">
+      <section className="py-24 bg-white border-t border-slate-100">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-primary font-medium tracking-widest uppercase mb-4 text-sm">
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4 text-sm">
                 How We Work
               </p>
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
-                Our <span className="text-primary">Process</span>
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
+                Our <span className="text-indigo-600">Process</span>
               </h2>
-              <p className="text-xl text-white/60 max-w-2xl mx-auto">
+              <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                 A proven methodology that delivers results on time and within budget.
               </p>
             </AnimatedItem>
@@ -250,23 +250,23 @@ const Services = () => {
                 <div className="text-center group">
                   {/* Step number */}
                   <div className="relative mb-6">
-                    <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center group-hover:bg-primary/20 group-hover:border-primary/50 transition-all duration-300">
-                      <span className="text-2xl font-bold text-primary">{step.number}</span>
+                    <div className="w-16 h-16 mx-auto rounded-full bg-indigo-50 border-2 border-indigo-100 flex items-center justify-center group-hover:bg-indigo-100 group-hover:border-indigo-300 transition-all duration-300">
+                      <span className="text-2xl font-bold text-indigo-600">{step.number}</span>
                     </div>
                     {/* Connector line */}
                     {index < processSteps.length - 1 && (
-                      <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-primary/30 to-transparent -translate-y-1/2" />
+                      <div className="hidden md:block absolute top-1/2 left-full w-full h-0.5 bg-gradient-to-r from-indigo-100 to-transparent -translate-y-1/2" />
                     )}
                   </div>
 
                   {/* Phase */}
-                  <p className="text-primary font-semibold text-sm mb-2">{step.phase}</p>
+                  <p className="text-indigo-600 font-semibold text-sm mb-2">{step.phase}</p>
 
                   {/* Title */}
-                  <h3 className="text-lg font-bold text-white mb-3">{step.title}</h3>
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">{step.title}</h3>
 
                   {/* Description */}
-                  <p className="text-white/60 text-sm leading-relaxed">{step.desc}</p>
+                  <p className="text-slate-600 text-sm leading-relaxed">{step.desc}</p>
                 </div>
               </AnimatedItem>
             ))}
@@ -279,11 +279,11 @@ const Services = () => {
         <div className="container-custom">
           <FadeUp>
             <div className="text-center max-w-3xl mx-auto">
-              <Sparkles className="w-12 h-12 text-primary mx-auto mb-6" />
-              <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+              <Sparkles className="w-12 h-12 text-indigo-600 mx-auto mb-6" />
+              <h2 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 Ready to Start Your Project?
               </h2>
-              <p className="text-xl text-white/60 mb-10">
+              <p className="text-xl text-slate-600 mb-10">
                 Let's discuss how we can help bring your vision to life with our expertise.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">

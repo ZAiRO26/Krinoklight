@@ -187,27 +187,27 @@ const Products = () => {
     const allProducts = categories.flatMap(cat => cat.products);
 
     return (
-        <div className="min-h-screen bg-background-dark">
+        <div className="min-h-screen bg-slate-50">
             {/* Hero Section */}
-            <section className="mesh-bg pt-32 pb-20 relative overflow-hidden">
+            <section className="bg-white pt-32 pb-20 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-accent-cyan/20 rounded-full filter blur-[120px]" />
+                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-indigo-100/50 rounded-full filter blur-[120px]" />
                 </div>
 
                 <div className="container-custom relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <FadeUp>
-                            <p className="text-accent-cyan font-medium tracking-widest uppercase mb-6">
+                            <p className="text-indigo-600 font-medium tracking-widest uppercase mb-6">
                                 Our Products & Services
                             </p>
                         </FadeUp>
                         <FadeUp delay={0.1}>
-                            <h1 className="section-title text-white mb-6 leading-tight">
-                                <span className="gradient-text">{allProducts.length}+</span> Solutions for Every Client
+                            <h1 className="section-title text-slate-900 mb-6 leading-tight">
+                                <span className="text-indigo-600">{allProducts.length}+</span> Solutions for Every Client
                             </h1>
                         </FadeUp>
                         <FadeUp delay={0.2}>
-                            <p className="text-xl text-neutral-slate max-w-2xl mx-auto leading-relaxed">
+                            <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
                                 From entrepreneurs to enterprises, we have the perfect digital solution for your needs. Explore our comprehensive range of products and services.
                             </p>
                         </FadeUp>
@@ -219,15 +219,15 @@ const Products = () => {
             {categories.map((category, catIndex) => (
                 <section
                     key={category.name}
-                    className={`section-padding ${catIndex % 2 === 0 ? 'bg-background-dark' : 'bg-background-card'}`}
+                    className={`section-padding ${catIndex % 2 === 0 ? 'bg-slate-50' : 'bg-white'}`}
                 >
                     <div className="container-custom">
                         <AnimatedSection className="mb-12">
                             <AnimatedItem>
-                                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
                                     {category.name}
                                 </h2>
-                                <p className="text-neutral-slate text-lg">{category.description}</p>
+                                <p className="text-slate-600 text-lg">{category.description}</p>
                             </AnimatedItem>
                         </AnimatedSection>
 
@@ -238,32 +238,32 @@ const Products = () => {
                                         to={`/services/${product.id}`}
                                         className="group block h-full"
                                     >
-                                        <div className="glass-panel p-6 h-full flex flex-col transition-all duration-300 hover:border-accent-cyan/30 hover:shadow-lg hover:shadow-accent-cyan/10">
+                                        <div className="bg-white p-6 h-full flex flex-col rounded-2xl border border-slate-200 transition-all duration-300 hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-1">
                                             {/* Icon */}
-                                            <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center mb-4`}>
+                                            <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center mb-4 shadow-sm`}>
                                                 <product.icon className="w-6 h-6 text-white" />
                                             </div>
 
                                             {/* Title & Description */}
-                                            <h3 className="text-xl font-bold text-white group-hover:text-accent-cyan transition-colors mb-2">
+                                            <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-2">
                                                 {product.title}
                                             </h3>
-                                            <p className="text-neutral-slate text-sm mb-4 flex-grow">
+                                            <p className="text-slate-600 text-sm mb-4 flex-grow">
                                                 {product.description}
                                             </p>
 
                                             {/* Features */}
                                             <ul className="space-y-2 mb-4">
                                                 {product.features.map((feature, idx) => (
-                                                    <li key={idx} className="flex items-center text-white/70 text-sm">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-accent-cyan mr-2" />
+                                                    <li key={idx} className="flex items-center text-slate-500 text-sm">
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2" />
                                                         {feature}
                                                     </li>
                                                 ))}
                                             </ul>
 
                                             {/* CTA */}
-                                            <div className="flex items-center text-accent-cyan font-medium group-hover:text-white transition-colors">
+                                            <div className="flex items-center text-indigo-600 font-medium group-hover:text-indigo-700 transition-colors">
                                                 <span>Learn more</span>
                                                 <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
                                             </div>
@@ -277,7 +277,7 @@ const Products = () => {
             ))}
 
             {/* CTA Section */}
-            <section className="section-padding bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+            <section className="section-padding bg-gradient-to-br from-indigo-900 via-indigo-800 to-indigo-900 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
                 </div>
@@ -290,12 +290,12 @@ const Products = () => {
                             </h2>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto">
+                            <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
                                 We build custom solutions for unique business challenges. Let's discuss your project.
                             </p>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <MagneticButton to="/contact" className="bg-white text-navy-primary hover:bg-white/90">
+                            <MagneticButton to="/contact" className="bg-white text-indigo-900 hover:bg-white/90">
                                 Get a Custom Quote
                                 <ArrowRight className="inline-block ml-2 w-4 h-4" />
                             </MagneticButton>

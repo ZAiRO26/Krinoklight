@@ -6,11 +6,11 @@ import MagneticButton from '../components/MagneticButton';
 
 const NotFound = () => {
     return (
-        <div className="min-h-screen bg-background-dark flex items-center justify-center relative overflow-hidden">
+        <div className="min-h-screen bg-white flex items-center justify-center relative overflow-hidden">
             {/* Background decoration */}
             <div className="absolute inset-0 pointer-events-none">
                 <motion.div
-                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-navy-primary/30 rounded-full filter blur-[120px]"
+                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-200/40 rounded-full filter blur-[120px]"
                     animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
                     transition={{ duration: 8, repeat: Infinity }}
                 />
@@ -35,7 +35,7 @@ const NotFound = () => {
                     </motion.div>
 
                     <motion.h1
-                        className="text-3xl md:text-4xl font-bold text-white mb-4"
+                        className="text-3xl md:text-4xl font-bold text-slate-900 mb-4"
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.2 }}
@@ -44,7 +44,7 @@ const NotFound = () => {
                     </motion.h1>
 
                     <motion.p
-                        className="text-lg text-neutral-slate mb-10"
+                        className="text-lg text-slate-600 mb-10"
                         initial={{ y: 20, opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         transition={{ delay: 0.3 }}
@@ -71,18 +71,18 @@ const NotFound = () => {
                     </motion.div>
 
                     <motion.div
-                        className="mt-16 pt-8 border-t border-white/10"
+                        className="mt-16 pt-8 border-t border-slate-200"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         transition={{ delay: 0.6 }}
                     >
-                        <p className="text-neutral-slate mb-4">Popular pages you might be looking for:</p>
+                        <p className="text-slate-500 mb-4">Popular pages you might be looking for:</p>
                         <div className="flex flex-wrap justify-center gap-4">
                             {['Services', 'About', 'Contact', 'Clients'].map((page) => (
                                 <Link
                                     key={page}
                                     to={`/${page.toLowerCase()}`}
-                                    className="text-accent-cyan hover:text-white transition-colors flex items-center gap-1"
+                                    className="text-indigo-600 hover:text-indigo-800 transition-colors flex items-center gap-1"
                                 >
                                     {page}
                                     <ArrowRight className="w-3 h-3" />

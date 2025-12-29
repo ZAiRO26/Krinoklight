@@ -76,7 +76,7 @@ function App() {
       <SmoothScroll>
         <ImmersiveBackground>
           <ScrollToTop />
-          <div className="min-h-screen text-white">
+          <div className="min-h-screen">
             <FloatingNav />
             <main>
               <AnimatedRoutes />

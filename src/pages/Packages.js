@@ -23,17 +23,17 @@ const Packages = () => {
         >
             <div
                 className={`relative w-12 h-7 rounded-full transition-all duration-300 ${enabled
-                    ? 'bg-gradient-to-r from-primary to-secondary shadow-glow-sm'
-                    : 'bg-surface-light'
+                    ? 'bg-gradient-to-r from-indigo-500 to-indigo-600 shadow-inner'
+                    : 'bg-slate-200'
                     }`}
             >
                 <motion.div
-                    className="absolute top-1 w-5 h-5 bg-white rounded-full shadow-lg"
+                    className="absolute top-1 w-5 h-5 bg-white rounded-full shadow-sm"
                     animate={{ left: enabled ? '24px' : '4px' }}
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
             </div>
-            <span className={`text-sm font-medium transition-colors ${enabled ? 'text-primary' : 'text-text-secondary'}`}>
+            <span className={`text-sm font-medium transition-colors ${enabled ? 'text-indigo-600' : 'text-slate-600'}`}>
                 {label}
             </span>
         </button>
@@ -55,10 +55,10 @@ const Packages = () => {
     // Feature Item Component
     const FeatureItem = ({ children }) => (
         <li className="flex items-start gap-3">
-            <div className="w-5 h-5 rounded-full bg-gradient-to-r from-emerald-400 to-cyan-400 flex items-center justify-center flex-shrink-0 mt-0.5 shadow-[0_0_10px_rgba(52,211,153,0.4)]">
-                <Check className="w-3 h-3 text-white" strokeWidth={3} />
+            <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0 mt-0.5 text-indigo-600">
+                <Check className="w-3 h-3" strokeWidth={3} />
             </div>
-            <span className="text-text-secondary">{children}</span>
+            <span className="text-slate-600 font-medium">{children}</span>
         </li>
     );
 
@@ -80,8 +80,8 @@ const Packages = () => {
         <motion.div
             className={`relative rounded-3xl p-8 h-full flex flex-col
         ${featured
-                    ? 'bg-gradient-to-b from-primary/10 to-surface/80 border-2 border-primary/40'
-                    : 'bg-white/5 border border-white/10'
+                    ? 'bg-white border-2 border-indigo-500 shadow-2xl shadow-indigo-100'
+                    : 'bg-white border border-slate-200 shadow-xl shadow-slate-200/50'
                 }
         backdrop-blur-lg
       `}
@@ -100,7 +100,7 @@ const Packages = () => {
             {/* Featured Badge */}
             {featured && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
-                    <div className="bg-gradient-to-r from-primary to-secondary px-6 py-1.5 rounded-full text-sm font-semibold text-white shadow-glow-sm">
+                    <div className="bg-indigo-600 px-6 py-1.5 rounded-full text-sm font-bold text-white shadow-lg shadow-indigo-200">
                         Most Popular
                     </div>
                 </div>
@@ -109,29 +109,28 @@ const Packages = () => {
             {/* Tier Badge */}
             <div className="flex items-center gap-3 mb-6">
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${featured
-                    ? 'bg-gradient-to-r from-primary/30 to-secondary/30 border border-primary/40'
-                    : 'bg-surface-light border border-white/10'
+                    ? 'bg-indigo-50'
+                    : 'bg-slate-50 border border-slate-100'
                     }`}>
-                    <Icon className={`w-6 h-6 ${featured ? 'text-primary' : 'text-secondary'}`} />
+                    <Icon className={`w-6 h-6 ${featured ? 'text-indigo-600' : 'text-slate-500'}`} />
                 </div>
                 <div>
-                    <p className="text-xs uppercase tracking-wider text-text-muted font-medium">{tier}</p>
-                    <h3 className="text-xl font-bold text-white">{title}</h3>
+                    <p className="text-xs uppercase tracking-wider text-slate-500 font-bold">{tier}</p>
+                    <h3 className="text-xl font-bold text-slate-900">{title}</h3>
                 </div>
             </div>
 
             {/* Subtitle */}
-            <p className="text-text-secondary text-sm mb-6">{subtitle}</p>
+            <p className="text-slate-600 text-sm mb-6 leading-relaxed">{subtitle}</p>
 
-            {/* Price */}
             <div className="mb-8">
                 <div className="flex items-baseline gap-2">
-                    <span className="text-4xl font-bold font-display text-white">
+                    <span className="text-4xl font-bold font-display text-slate-900">
                         {typeof price === 'number' ? <AnimatedPrice value={price} suffix={priceSuffix} /> : price}
                     </span>
                 </div>
                 {priceNote && (
-                    <p className="text-sm text-text-muted mt-1">{priceNote}</p>
+                    <p className="text-sm text-slate-500 mt-1 font-medium">{priceNote}</p>
                 )}
             </div>
 
@@ -144,14 +143,14 @@ const Packages = () => {
 
             {/* Add-ons Section */}
             {addons && addons.length > 0 && (
-                <div className="border-t border-white/10 pt-6 mb-6">
-                    <p className="text-sm font-semibold text-white mb-4 flex items-center gap-2">
+                <div className="border-t border-slate-200 pt-6 mb-6">
+                    <p className="text-sm font-bold text-slate-900 mb-4 flex items-center gap-2">
                         <Sparkles className="w-4 h-4 text-primary" />
                         Power Add-ons
                     </p>
                     <div className="space-y-4">
                         {addons.map((addon, index) => (
-                            <div key={index} className="bg-surface/50 rounded-xl p-4 border border-white/5">
+                            <div key={index} className="bg-slate-50 rounded-xl p-4 border border-slate-200">
                                 <div className="flex items-center justify-between mb-2">
                                     <Toggle
                                         enabled={addon.enabled}
@@ -167,8 +166,8 @@ const Packages = () => {
                                             exit={{ opacity: 0, height: 0 }}
                                             className="mt-3 pl-15"
                                         >
-                                            <p className="text-xs text-text-muted mb-2">{addon.description}</p>
-                                            <p className="text-sm font-semibold text-primary">{addon.price}</p>
+                                            <p className="text-xs text-slate-500 mb-2">{addon.description}</p>
+                                            <p className="text-sm font-bold text-indigo-600">{addon.price}</p>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
@@ -195,7 +194,7 @@ const Packages = () => {
     );
 
     return (
-        <div className="min-h-screen bg-background-dark overflow-hidden">
+        <div className="min-h-screen bg-white overflow-hidden">
             {/* Hero Section */}
             <section className="relative pt-32 pb-20 overflow-hidden">
                 {/* Background Effects */}
@@ -210,13 +209,13 @@ const Packages = () => {
                             <p className="text-primary font-medium tracking-widest uppercase mb-4">Pricing</p>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-white mb-6">
+                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-slate-900 mb-6">
                                 Tailored Solutions for Every{' '}
-                                <span className="text-gradient">Stage of Growth</span>
+                                <span className="text-indigo-600">Stage of Growth</span>
                             </h1>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <p className="text-xl text-text-secondary max-w-2xl mx-auto">
+                            <p className="text-xl text-slate-600 max-w-2xl mx-auto">
                                 From rapid store launches to enterprise AI automation—choose the package that matches your ambition.
                             </p>
                         </AnimatedItem>
@@ -324,25 +323,25 @@ const Packages = () => {
             </section>
 
             {/* Trust Indicators */}
-            <section className="section-padding bg-surface/30">
+            <section className="section-padding bg-slate-50">
                 <div className="container-custom">
                     <AnimatedSection className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
                         <AnimatedItem>
                             <div className="p-8">
-                                <div className="text-4xl font-bold text-gradient mb-2">150+</div>
-                                <p className="text-text-secondary">Projects Delivered</p>
+                                <div className="text-4xl font-bold text-indigo-600 mb-2">150+</div>
+                                <p className="text-slate-600 font-medium">Projects Delivered</p>
                             </div>
                         </AnimatedItem>
                         <AnimatedItem>
                             <div className="p-8">
-                                <div className="text-4xl font-bold text-gradient mb-2">98%</div>
-                                <p className="text-text-secondary">Client Satisfaction</p>
+                                <div className="text-4xl font-bold text-indigo-600 mb-2">98%</div>
+                                <p className="text-slate-600 font-medium">Client Satisfaction</p>
                             </div>
                         </AnimatedItem>
                         <AnimatedItem>
                             <div className="p-8">
-                                <div className="text-4xl font-bold text-gradient mb-2">15+</div>
-                                <p className="text-text-secondary">Years Combined Experience</p>
+                                <div className="text-4xl font-bold text-indigo-600 mb-2">15+</div>
+                                <p className="text-slate-600 font-medium">Years Combined Experience</p>
                             </div>
                         </AnimatedItem>
                     </AnimatedSection>
@@ -353,7 +352,7 @@ const Packages = () => {
             <section className="section-padding">
                 <div className="container-custom max-w-3xl">
                     <FadeUp>
-                        <h2 className="text-3xl font-bold text-center text-white mb-12">
+                        <h2 className="text-3xl font-bold text-center text-slate-900 mb-12">
                             Frequently Asked Questions
                         </h2>
                     </FadeUp>
@@ -378,9 +377,9 @@ const Packages = () => {
                             }
                         ].map((faq, index) => (
                             <FadeUp key={index} delay={index * 0.1}>
-                                <div className="bg-surface/50 backdrop-blur-sm border border-white/10 rounded-xl p-6">
-                                    <h3 className="font-semibold text-white mb-2">{faq.q}</h3>
-                                    <p className="text-text-secondary text-sm">{faq.a}</p>
+                                <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-6 hover:shadow-md transition-shadow">
+                                    <h3 className="font-bold text-slate-900 mb-2">{faq.q}</h3>
+                                    <p className="text-slate-600 text-sm leading-relaxed">{faq.a}</p>
                                 </div>
                             </FadeUp>
                         ))}
@@ -389,7 +388,7 @@ const Packages = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="section-padding bg-gradient-to-br from-surface via-surface-light to-primary/20 relative overflow-hidden">
+            <section className="section-padding bg-slate-50 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 right-0 w-96 h-96 bg-primary/10 rounded-full blur-3xl" />
                 </div>
@@ -397,12 +396,12 @@ const Packages = () => {
                 <div className="container-custom relative z-10">
                     <AnimatedSection className="text-center max-w-2xl mx-auto">
                         <AnimatedItem>
-                            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+                            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">
                                 Not Sure Which Package is Right for You?
                             </h2>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <p className="text-xl text-text-secondary mb-8">
+                            <p className="text-xl text-slate-600 mb-8">
                                 Let's have a quick chat. We'll understand your needs and recommend the perfect solution.
                             </p>
                         </AnimatedItem>
