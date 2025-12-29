@@ -6,8 +6,8 @@ import AnimatedSection, { AnimatedItem, FadeUp, FloatingElement, Card3DReveal } 
 import MagneticButton from '../components/MagneticButton';
 import SplitText from '../components/SplitText';
 
-// Lazy load Space Hero component for performance
-const SpaceHero = lazy(() => import('../components/SpaceHero'));
+// Lazy load Noise Sphere Hero (Original organic blue noise sphere with GLSL)
+const NoiseSphereHero = lazy(() => import('../components/NoiseSphereHero'));
 
 const Home = () => {
 
@@ -105,15 +105,15 @@ const Home = () => {
     <div className="min-h-screen bg-background-dark overflow-hidden">
       {/* Hero Section with WebGL 3D Background */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Space Hero 3D Background */}
+        {/* Organic Blue Noise Sphere - Original posh design */}
         <div className="absolute inset-0 z-0">
           <Suspense fallback={
-            <div className="w-full h-full bg-gradient-to-br from-background-dark via-purple-900/20 to-background-dark" />
+            <div className="w-full h-full bg-gradient-to-br from-background-dark via-blue-900/20 to-background-dark" />
           }>
-            <SpaceHero />
+            <NoiseSphereHero />
           </Suspense>
           {/* Gradient overlay for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-b from-background-dark/40 via-transparent to-background-dark/80" />
+          <div className="absolute inset-0 bg-gradient-to-b from-background-dark/30 via-transparent to-background-dark/90" />
         </div>
 
         <div className="container-custom relative z-10 pt-32 pb-20">
