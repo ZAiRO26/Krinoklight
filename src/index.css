@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,500&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -192,7 +192,7 @@
 
   /* Premium Headline - SERIF (Cormorant Garamond) */
   .headline-serif {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     letter-spacing: 0.02em;
     line-height: 1.1;
@@ -200,7 +200,7 @@
   }
 
   .headline-serif-bold {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
     letter-spacing: 0.02em;
     line-height: 1.05;
@@ -208,7 +208,7 @@
   }
 
   .headline-serif-italic {
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-style: italic;
     font-weight: 400;
     letter-spacing: 0.01em;
@@ -231,14 +231,14 @@
   /* Section Titles - Large Cinematic Editorial */
   .section-title {
     @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: 'Space Grotesk', sans-serif;
     letter-spacing: 0.02em;
     text-transform: uppercase;
   }
 
   .section-title-xl {
     @apply text-5xl md:text-7xl lg:text-8xl leading-none;
-    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-family: 'Space Grotesk', sans-serif;
     font-weight: 400;
     letter-spacing: 0.03em;
     text-transform: uppercase;
@@ -253,9 +253,9 @@
   }
 
   .logo-font {
-    font-family: 'Inter', sans-serif;
-    letter-spacing: -0.02em;
-    font-weight: 700;
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: 0.25em;
+    font-weight: 500;
   }
 
   /* ===== LUXURY LAYOUT SPACING ===== */
@@ -265,8 +265,8 @@
   }
 
   .section-padding {
-    @apply py-28 lg:py-44;
-    /* 112-176px - Luxury whitespace */
+    @apply py-24 lg:py-32;
+    /* 96-128px - Clean professional whitespace */
   }
 
   .section-padding-sm {

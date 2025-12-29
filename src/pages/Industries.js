@@ -110,7 +110,7 @@ const Industries = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding gradient-navy-bg relative overflow-hidden">
+      <section className="py-24 lg:py-32 gradient-navy-bg relative overflow-hidden">
         <div className="container-custom relative z-10">
           <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-8" staggerChildren={0.1}>
             {stats.map((stat, index) => (
@@ -133,20 +133,20 @@ const Industries = () => {
       </section>
 
       {/* Industries Grid */}
-      <section className="section-padding bg-background-dark">
+      <section className="py-24 lg:py-32 bg-background-dark">
         <div className="container-custom">
           <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerChildren={0.1}>
             {industries.map((industry) => (
               <AnimatedItem key={industry.title}>
                 <motion.div
-                  className="group cursor-pointer bento-card h-full"
+                  className="group cursor-pointer bento-card h-full flex flex-col"
                   whileHover={{ scale: 1.02 }}
                 >
-                  <div className="relative overflow-hidden rounded-xl mb-6 -mx-2 -mt-2">
+                  <div className="relative overflow-hidden rounded-xl mb-6 -mx-2 -mt-2 aspect-[4/3]">
                     <img
                       src={industry.image}
                       alt={industry.title}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background-dark via-background-dark/20 to-transparent" />
                     <div className="absolute top-4 right-4 glass-panel px-3 py-1.5">
@@ -166,7 +166,7 @@ const Industries = () => {
 
                   <p className="text-neutral-slate mb-4">{industry.description}</p>
 
-                  <ul className="space-y-2 mb-6">
+                  <ul className="space-y-2 mb-6 flex-grow">
                     {industry.features.slice(0, 3).map((feature, idx) => (
                       <li key={idx} className="flex items-center text-white/70 text-sm">
                         <CheckCircle2 className="w-4 h-4 text-accent-cyan mr-2 flex-shrink-0" />
@@ -177,7 +177,7 @@ const Industries = () => {
 
                   <Link
                     to={`/industries/${industry.title.toLowerCase()}`}
-                    className="inline-flex items-center text-accent-cyan font-medium hover:text-white transition-colors"
+                    className="inline-flex items-center text-accent-cyan font-medium hover:text-white transition-colors mt-auto"
                   >
                     <span>Learn more</span>
                     <ArrowRight className="w-4 h-4 ml-2" />
@@ -190,7 +190,7 @@ const Industries = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-navy-primary via-navy-secondary to-accent-cyan relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(255,255,255,0.1)_0%,_transparent_50%)]" />
         </div>

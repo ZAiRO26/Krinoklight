@@ -135,7 +135,7 @@ const Home = () => {
             </FadeUp>
 
             <FadeUp delay={0.4}>
-              <p className="text-body text-xl md:text-2xl text-white/60 mb-12 max-w-3xl mx-auto leading-relaxed">
+              <p className="text-body text-xl md:text-2xl text-white/60 mb-12 max-w-2xl mx-auto leading-relaxed">
                 We provide a complete suite of development and marketing services for industrial businesses. Let us handle the tech, so you can focus on growth.
               </p>
             </FadeUp>
@@ -181,7 +181,7 @@ const Home = () => {
       </section>
 
       {/* Services Bento Grid Section */}
-      <section className="section-padding bg-background-dark relative">
+      <section className="py-24 lg:py-32 bg-background-dark relative">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
@@ -193,7 +193,7 @@ const Home = () => {
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="section-subtitle">
+              <p className="section-subtitle mx-auto">
                 From ideation to deployment, we provide end-to-end solutions that transform your digital presence.
               </p>
             </AnimatedItem>
@@ -203,9 +203,9 @@ const Home = () => {
           <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" staggerChildren={0.1}>
             {services.map((service, index) => (
               <Card3DReveal key={service.title}>
-                <Link to={service.href}>
+                <Link to={service.href} className="h-full block">
                   <motion.div
-                    className="bento-card group cursor-pointer h-full"
+                    className="bento-card group cursor-pointer h-full flex flex-col"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
@@ -215,7 +215,7 @@ const Home = () => {
                     <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-primary transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-white/60 leading-relaxed">
+                    <p className="text-white/60 leading-relaxed flex-grow">
                       {service.desc}
                     </p>
                     <div className="mt-6 flex items-center text-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300">
@@ -231,7 +231,7 @@ const Home = () => {
       </section>
 
       {/* Case Studies Section */}
-      <section className="section-padding gradient-navy-bg relative">
+      <section className="py-24 lg:py-32 gradient-navy-bg relative">
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
@@ -243,7 +243,7 @@ const Home = () => {
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="section-subtitle">
+              <p className="section-subtitle mx-auto">
                 See how we've helped industry leaders achieve exceptional results.
               </p>
             </AnimatedItem>
@@ -253,15 +253,15 @@ const Home = () => {
             {caseStudies.map((study) => (
               <AnimatedItem key={study.id}>
                 <motion.div
-                  className="group cursor-pointer"
+                  className="group cursor-pointer h-full flex flex-col"
                   whileHover={{ y: -8 }}
                   transition={{ duration: 0.3 }}
                 >
-                  <div className="relative overflow-hidden rounded-2xl mb-6">
+                  <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3]">
                     <img
                       src={study.image}
                       alt={study.title}
-                      className="w-full h-56 object-cover group-hover:scale-110 transition-transform duration-700"
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-background-dark/90 via-background-dark/20 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
@@ -276,17 +276,19 @@ const Home = () => {
                       </div>
                     </div>
                   </div>
-                  <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-3 line-clamp-2">
-                    {study.title}
-                  </h3>
-                  <p className="text-white/60 line-clamp-2">{study.subtitle}</p>
+                  <div className="flex-grow">
+                    <h3 className="text-xl font-bold text-white group-hover:text-primary transition-colors mb-3 line-clamp-2">
+                      {study.title}
+                    </h3>
+                    <p className="text-white/60 line-clamp-2">{study.subtitle}</p>
+                  </div>
                 </motion.div>
               </AnimatedItem>
             ))}
           </AnimatedSection>
 
           <FadeUp delay={0.5}>
-            <div className="text-center mt-12">
+            <div className="text-center mt-16">
               <MagneticButton to="/clients" variant="secondary">
                 View all case studies
                 <ArrowRight className="inline-block ml-2 w-4 h-4" />
@@ -297,7 +299,7 @@ const Home = () => {
       </section>
 
       {/* Meet Our Team Section */}
-      <section className="section-padding bg-background-dark relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-background-dark relative overflow-hidden">
         {/* Floating decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <FloatingElement className="absolute top-20 left-10" delay={0} amplitude={20}>
@@ -351,7 +353,7 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-surface via-surface-light to-primary/20 relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-surface via-surface-light to-primary/20 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(123,143,163,0.15)_0%,_transparent_50%)]" />

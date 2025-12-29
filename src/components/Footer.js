@@ -105,7 +105,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link to="/" className="mb-6 group inline-block">
-              <span className="text-lg font-medium text-white/90 tracking-[0.2em] uppercase group-hover:text-white transition-colors">
+              <span className="text-lg font-medium text-white/90 tracking-[0.25em] uppercase group-hover:text-white transition-colors logo-font">
                 KRINOK
               </span>
             </Link>

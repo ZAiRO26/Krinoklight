@@ -175,16 +175,12 @@ const GlobalChatbot = () => {
     const inputRef = useRef(null);
     const idleTimerRef = useRef(null);
 
-    // API endpoint
+    // API endpoint - ALWAYS use Vercel Groq API (no more Ollama localhost!)
     const getApiUrl = () => {
         if (process.env.REACT_APP_CHATBOT_API) {
             return process.env.REACT_APP_CHATBOT_API;
         }
-        const hostname = window.location.hostname;
-        if (hostname === 'localhost' || hostname === '127.0.0.1') {
-            return 'http://localhost:4000';
-        }
-        // Production: use Vercel-deployed chatbot API
+        // Always use Vercel-deployed Groq API
         return 'https://vedaviks-chatbot-api.vercel.app';
     };
     const API_URL = getApiUrl();

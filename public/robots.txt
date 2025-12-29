@@ -1,4 +1,14 @@
+# SEO robots.txt for Krinok
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+# Disallow internal paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /static/
+
+# Sitemap location
+Sitemap: https://krinok.netlify.app/sitemap.xml
+
+# Crawl-delay for responsible crawling
+Crawl-delay: 1

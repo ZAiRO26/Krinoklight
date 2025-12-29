@@ -190,7 +190,7 @@ const Services = () => {
             {services.map((service) => (
               <AnimatedItem key={service.title}>
                 <Link to={`/services/${service.slug}`} className="group block h-full">
-                  <div className="h-full p-8 rounded-2xl bg-surface border border-white/10 hover:border-primary/30 hover:bg-surface-hover transition-all duration-300">
+                  <div className="h-full p-8 rounded-2xl bg-surface border border-white/10 hover:border-primary/30 hover:bg-surface-hover transition-all duration-300 flex flex-col">
                     {/* Icon */}
                     <div className="w-14 h-14 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
                       <service.icon className="w-7 h-7 text-primary" />
@@ -204,8 +204,8 @@ const Services = () => {
                       {service.description}
                     </p>
 
-                    {/* Features */}
-                    <ul className="space-y-3 mb-8">
+                    {/* Features - grows to fill space */}
+                    <ul className="space-y-3 mb-8 flex-grow">
                       {service.features.map((feature, index) => (
                         <li key={index} className="flex items-start text-white/70 group-hover:text-white/90 transition-colors">
                           <CheckCircle2 className="w-4 h-4 text-primary mr-3 mt-0.5 flex-shrink-0" />
@@ -214,8 +214,8 @@ const Services = () => {
                       ))}
                     </ul>
 
-                    {/* CTA */}
-                    <div className="flex items-center text-primary font-medium group-hover:text-white transition-colors">
+                    {/* CTA - always at bottom */}
+                    <div className="flex items-center text-primary font-medium group-hover:text-white transition-colors mt-auto">
                       <span>Learn more</span>
                       <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
                     </div>
