@@ -33,10 +33,10 @@ const About = () => {
   ];
 
   const teamStats = [
-    { value: "800+", label: "Team Members" },
+    { value: "20+", label: "Team Members" },
     { value: "15+", label: "Years Experience" },
-    { value: "50+", label: "Countries Served" },
-    { value: "500+", label: "Projects Completed" }
+    { value: "20+", label: "Countries Served" },
+    { value: "50+", label: "Projects Completed" }
   ];
 
   const culture = [
@@ -281,77 +281,6 @@ const About = () => {
               </AnimatedSection>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Awards Section */}
-      <section className="section-padding bg-slate-50">
-        <div className="container-custom">
-          <AnimatedSection className="text-center mb-16">
-            <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Recognition</p>
-            </AnimatedItem>
-            <AnimatedItem>
-              <h2 className="section-title text-slate-900 mb-6">
-                Awards & <span className="text-indigo-600">Achievements</span>
-              </h2>
-            </AnimatedItem>
-          </AnimatedSection>
-
-          <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" staggerChildren={0.1}>
-            {awards.map((award, index) => (
-              <AnimatedItem key={index}>
-                <motion.div
-                  className="bg-white p-8 text-center rounded-2xl shadow-sm border border-slate-200 hover:shadow-lg hover:border-indigo-200 transition-all"
-                  whileHover={{ y: -5 }}
-                >
-                  <div className="text-3xl font-bold text-indigo-600 mb-3">{award.year}</div>
-                  <h3 className="font-bold text-slate-900 mb-2">{award.title}</h3>
-                  <p className="text-slate-500 text-sm">{award.organization}</p>
-                </motion.div>
-              </AnimatedItem>
-            ))}
-          </AnimatedSection>
-        </div>
-      </section>
-
-      {/* Team Testimonials */}
-      <section className="section-padding bg-white relative">
-        <div className="container-custom">
-          <AnimatedSection className="text-center mb-16">
-            <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Our People</p>
-            </AnimatedItem>
-            <AnimatedItem>
-              <h2 className="section-title text-slate-900 mb-6">
-                Meet the <span className="text-indigo-600">Team</span>
-              </h2>
-            </AnimatedItem>
-          </AnimatedSection>
-
-          <AnimatedSection className="grid grid-cols-1 md:grid-cols-3 gap-8" staggerChildren={0.15}>
-            {testimonials.map((testimonial, index) => (
-              <AnimatedItem key={index}>
-                <motion.div
-                  className="bg-slate-50 p-8 h-full rounded-2xl border border-slate-100"
-                  whileHover={{ y: -5, boxShadow: '0 10px 30px rgba(0,0,0,0.05)' }}
-                >
-                  <div className="flex items-center mb-6">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-14 h-14 rounded-full object-cover mr-4 border-2 border-indigo-200"
-                    />
-                    <div>
-                      <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
-                      <p className="text-sm text-indigo-600">{testimonial.role}</p>
-                    </div>
-                  </div>
-                  <p className="text-slate-600 italic leading-relaxed">"{testimonial.quote}"</p>
-                </motion.div>
-              </AnimatedItem>
-            ))}
-          </AnimatedSection>
         </div>
       </section>
 

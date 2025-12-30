@@ -9,39 +9,51 @@ const Clients = () => {
   const featuredCaseStudies = [
     {
       id: 1,
-      title: "Speeding up Merck's process from 6 months to 6 hours",
-      subtitle: "An AI Assistant that boosts R&D delivered in five weeks and under budget",
-      category: "R&D productivity",
-      company: "Merck",
-      industry: "Healthcare",
-      duration: "5 weeks",
-      team: "8 people",
-      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&h=400&fit=crop",
-      results: ["99% faster process", "Under budget", "Improved efficiency"]
+      title: "AI Sports Director",
+      subtitle: "An automated multi-camera directing system that uses gaze and motion detection to switch angles during live streams. Generates real-time highlights.",
+      category: "Computer Vision",
+      company: "Internal Project",
+      industry: "Sports Tech",
+      duration: "8 weeks",
+      team: "4 people",
+      image: "/ai-sports-director.png",
+      results: ["100% Autonomous", "Real-time switching", "AI-powered highlights"]
     },
     {
       id: 2,
-      title: "60% more user engagement with hyper-personalization",
-      subtitle: "AI PoC in under 6 weeks to test a hypothesis on hyper-localizing real estate content",
-      category: "AI for real estate",
-      company: "Keller Williams",
-      industry: "Proptech",
+      title: "LinkedIn Growth Agent",
+      subtitle: "An AI agent that automates LinkedIn outreach and content scheduling. It creates personalized carousel posts and manages lead generation workflows autonomously.",
+      category: "GenAI Automation",
+      company: "Internal Project",
+      industry: "Marketing Tech",
       duration: "6 weeks",
-      team: "6 people",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
-      results: ["60% more engagement", "Faster localization", "Better UX"]
+      team: "3 people",
+      image: "/linkedin-growth-agent.png",
+      results: ["10x Faster Reach", "Autonomous posting", "Lead generation"]
     },
     {
       id: 3,
-      title: "Team extension for mobile design revamp at speed",
-      subtitle: "Seamless experience, unified payment flows, and easier navigation",
-      category: "Mobile App Redesign",
-      company: "Careem",
-      industry: "Transportation",
+      title: "Immersive Client Platforms (KEZRON)",
+      subtitle: "A high-end, animated web platform for client KEZRON, featuring 3D interactions and integrated AI automations for business logic and lead tracking.",
+      category: "Web Development",
+      company: "KEZRON",
+      industry: "Enterprise",
       duration: "12 weeks",
-      team: "12 people",
-      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop",
-      results: ["Improved UX", "Unified payments", "Enhanced navigation"]
+      team: "5 people",
+      image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80",
+      results: ["Cinematic UX", "3D interactions", "AI automations"]
+    },
+    {
+      id: 4,
+      title: "Dual Sync Audio App",
+      subtitle: "A mobile app for dual Bluetooth speaker syncing with AI-driven volume optimization and predictive audio leveling.",
+      category: "Mobile Development",
+      company: "Internal Project",
+      industry: "Audio Tech",
+      duration: "10 weeks",
+      team: "4 people",
+      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+      results: ["Zero Latency", "AI volume optimization", "Dual speaker sync"]
     }
   ];
 
@@ -49,8 +61,8 @@ const Clients = () => {
     { name: 'Microsoft', text: 'MICROSOFT' },
     { name: 'Google', text: 'GOOGLE' },
     { name: 'Amazon', text: 'AMAZON' },
-    { name: 'Netflix', text: 'NETFLIX' },
-    { name: 'Spotify', text: 'SPOTIFY' },
+    { name: 'Shopify', text: 'SHOPIFY' },
+    { name: 'Shopaccino', text: 'SHOPACCINO' },
     { name: 'Uber', text: 'UBER' },
   ];
 
@@ -58,32 +70,29 @@ const Clients = () => {
     {
       name: "Mark Greiner",
       role: "Digital Innovation Manager",
-      company: "Merck",
+      company: "Kezron",
       quote: "Excellence and speed. It's rare to get both, and Krinok delivers.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=face"
+      rating: 5
     },
     {
       name: "Adi Pavlovic",
       role: "Director of Innovation",
       company: "Keller Williams",
       quote: "Krinok has been the best agency we've worked with so far.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=80&h=80&fit=crop&crop=face"
+      rating: 5
     },
     {
-      name: "Dally Singh",
+      name: "Mohd. Zabiullah",
       role: "Chief Product Officer",
-      company: "Total Processing",
+      company: "Luqi Harvest",
       quote: "It doesn't feel like an external team, it feels like we're just working together.",
-      rating: 5,
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=face"
+      rating: 5
     }
   ];
 
   const stats = [
-    { value: "500+", label: "Projects Completed" },
-    { value: "50+", label: "Fortune 500 Clients" },
+    { value: "50+", label: "Projects Completed" },
+    { value: "20+", label: "Clients Globally" },
     { value: "95%", label: "Client Satisfaction" },
     { value: "15+", label: "Years Experience" }
   ];
@@ -140,7 +149,7 @@ const Clients = () => {
       <section className="py-16 bg-white border-y border-slate-100">
         <div className="container-custom">
           <p className="text-center text-sm text-slate-500 uppercase tracking-widest mb-8 font-medium">
-            Trusted by industry leaders
+            Partners with industry leaders
           </p>
           <LogoMarquee logos={clientLogos} speed={30} />
         </div>
@@ -259,17 +268,10 @@ const Clients = () => {
                     ))}
                   </div>
                   <p className="text-slate-600 italic mb-6 leading-relaxed">"{testimonial.quote}"</p>
-                  <div className="flex items-center">
-                    <img
-                      src={testimonial.avatar}
-                      alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover mr-4 border-2 border-indigo-200"
-                    />
-                    <div>
-                      <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
-                      <p className="text-sm text-slate-500">{testimonial.role}</p>
-                      <p className="text-sm font-medium text-indigo-600">{testimonial.company}</p>
-                    </div>
+                  <div>
+                    <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
+                    <p className="text-sm text-slate-500">{testimonial.role}</p>
+                    <p className="text-sm font-medium text-indigo-600">{testimonial.company}</p>
                   </div>
                 </motion.div>
               </AnimatedItem>

@@ -6,11 +6,59 @@ import MagneticButton from '../components/MagneticButton';
 
 const Contact = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState(null);
   const [openFaq, setOpenFaq] = useState(null);
 
-  const handleSubmit = (e) => {
+  // API endpoint - uses Vercel API in production
+  const getApiUrl = () => {
+    if (process.env.REACT_APP_CHATBOT_API) {
+      return process.env.REACT_APP_CHATBOT_API;
+    }
+    const hostname = window.location.hostname;
+    if (hostname === 'localhost' || hostname === '127.0.0.1') {
+      return 'http://localhost:4000';
+    }
+    return 'https://vedaviks-chatbot-api.vercel.app';
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    const formData = new FormData(e.target);
+    const data = {
+      fullName: formData.get('fullName'),
+      email: formData.get('email'),
+      company: formData.get('company'),
+      phone: formData.get('phone'),
+      service: formData.get('service'),
+      message: formData.get('message')
+    };
+
+    try {
+      const response = await fetch(`${getApiUrl()}/api/send-email`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setFormSubmitted(true);
+      } else {
+        setSubmitError(result.error || 'Failed to send message. Please try again.');
+      }
+    } catch (error) {
+      console.error('Contact form error:', error);
+      setSubmitError('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const offices = [
@@ -283,10 +331,34 @@ const Contact = () => {
                 </div>
 
                 <div className="text-center pt-4">
-                  <MagneticButton variant="cta">
-                    Send Message
-                    <ArrowRight className="inline-block ml-2 w-4 h-4" />
-                  </MagneticButton>
+                  {submitError && (
+                    <div className="bg-red-50 text-red-600 px-4 py-3 rounded-xl mb-4 text-sm font-medium border border-red-100">
+                      {submitError}
+                    </div>
+                  )}
+
+                  <div className="flex justify-center">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className={`relative overflow-hidden rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 group px-8 py-4 ${isSubmitting
+                        ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
+                        : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-1'
+                        }`}
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin"></div>
+                          Sending...
+                        </>
+                      ) : (
+                        <>
+                          Send Message
+                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                        </>
+                      )}
+                    </button>
+                  </div>
                 </div>
               </motion.form>
             )}
@@ -294,50 +366,73 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Offices Section */}
-      <section className="section-padding bg-white">
-        <div className="container-custom">
-          <AnimatedSection className="text-center mb-16">
+      {/* Map Section */}
+      <section className="section-padding bg-white relative overflow-hidden">
+        {/* Background Elements */}
+        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
+
+        <div className="container-custom relative z-10">
+          <AnimatedSection className="text-center mb-12">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Global Presence</p>
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Visit Us</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Our <span className="text-indigo-600">Offices</span>
+                Our <span className="text-indigo-600">Location</span>
               </h2>
+            </AnimatedItem>
+            <AnimatedItem>
+              <p className="text-slate-600 max-w-2xl mx-auto">
+                Stop by our office for a cup of coffee and a chat about your next big idea.
+              </p>
             </AnimatedItem>
           </AnimatedSection>
 
-          <AnimatedSection className="grid grid-cols-1 md:grid-cols-3 gap-6" staggerChildren={0.1}>
-            {offices.map((office, index) => (
-              <AnimatedItem key={index}>
-                <motion.div
-                  className="bg-white rounded-2xl p-8 h-full border border-slate-200 shadow-lg"
-                  whileHover={{ y: -5, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)' }}
-                >
-                  <h3 className="text-2xl font-bold text-slate-900 mb-1">{office.city}</h3>
-                  <p className="text-indigo-600 mb-6">{office.country}</p>
-                  <div className="space-y-4">
-                    <div className="flex items-start space-x-3">
-                      <MapPin className="w-5 h-5 text-indigo-500 mt-0.5 flex-shrink-0" />
-                      <p className="text-slate-600">{office.address}</p>
+          <AnimatedSection>
+            <AnimatedItem>
+              <motion.div
+                className="w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-indigo-100 border-4 border-white relative group"
+                whileHover={{ scale: 1.002 }}
+                transition={{ duration: 0.4 }}
+              >
+                <iframe
+                  src="https://maps.google.com/maps?q=28.704724161745172,77.14844126859242&z=15&output=embed"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0, filter: 'grayscale(0.1) contrast(1.1)' }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Krinok Office Location"
+                  className="group-hover:filter-none transition-all duration-500"
+                ></iframe>
+
+                {/* Optional Overlay Card */}
+                <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/50 max-w-xs transform transition-transform hover:scale-105 duration-300">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                      <MapPin className="w-5 h-5 text-white" />
                     </div>
-                    <div className="flex items-center space-x-3">
-                      <Phone className="w-5 h-5 text-indigo-500 flex-shrink-0" />
-                      <p className="text-slate-600">{office.phone}</p>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Mail className="w-5 h-5 text-indigo-500 flex-shrink-0" />
-                      <p className="text-slate-600">{office.email}</p>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <Clock className="w-5 h-5 text-indigo-500 flex-shrink-0" />
-                      <p className="text-slate-600">{office.hours}</p>
+                    <div>
+                      <h4 className="font-bold text-slate-900 mb-1">New Delhi HQ</h4>
+                      <p className="text-sm text-slate-600 leading-relaxed mb-3">
+                        Pitampura, New Delhi<br />
+                        India 110034
+                      </p>
+                      <a
+                        href="https://maps.app.goo.gl/2qmdpBz5rTrDX7hu6"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 uppercase tracking-wide"
+                      >
+                        Get Directions <ArrowRight className="w-3 h-3" />
+                      </a>
                     </div>
                   </div>
-                </motion.div>
-              </AnimatedItem>
-            ))}
+                </div>
+              </motion.div>
+            </AnimatedItem>
           </AnimatedSection>
         </div>
       </section>

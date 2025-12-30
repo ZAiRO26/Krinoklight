@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Play, Code, Palette, Brain, Smartphone, Globe, Zap } from 'lucide-react';
+import { ArrowRight, Play, Code, Palette, Brain, Smartphone, Globe, Zap, Building2, ShoppingCart, Heart, Film, Home as HomeIcon, Truck, Droplets, Scale, GraduationCap, Landmark, Lightbulb, FileSearch, Settings, TestTube, Rocket, Headphones, Database, Layers, CreditCard, Cpu, Link2, Box } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection, { AnimatedItem, FadeUp, FloatingElement, Card3DReveal } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
@@ -53,31 +53,40 @@ const Home = () => {
   const caseStudies = [
     {
       id: 1,
-      title: "Speeding up Merck's process from 6 months to 6 hours",
-      subtitle: "An AI Assistant that boosts R&D delivered in five weeks and under budget",
-      image: "https://images.unsplash.com/photo-1576086213369-97a306d36557?w=600&h=400&fit=crop",
-      category: "R&D productivity",
-      result: "99%",
-      resultText: "Faster"
+      title: "AI Sports Director",
+      subtitle: "An automated multi-camera directing system that uses gaze and motion detection to switch angles during live streams. Generates real-time highlights.",
+      image: "/ai-sports-director.png",
+      tags: ["Computer Vision", "Python", "Real-time"],
+      result: "100%",
+      resultText: "Autonomous"
     },
     {
       id: 2,
-      title: "60% more user engagement with hyper-personalization",
-      subtitle: "AI PoC in under 6 weeks to test a hypothesis on hyper-localizing real estate content",
-      image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=600&h=400&fit=crop",
-      category: "AI for real estate",
-      result: "60%",
-      resultText: "Engagement"
+      title: "LinkedIn Growth Agent",
+      subtitle: "An AI agent that automates LinkedIn outreach and content scheduling. It creates personalized carousel posts and manages lead generation workflows autonomously.",
+      image: "/linkedin-growth-agent.png",
+      tags: ["GenAI", "n8n", "LangChain"],
+      result: "10x",
+      resultText: "Faster Reach"
     },
     {
       id: 3,
-      title: "Team extension for mobile design revamp at speed",
-      subtitle: "Seamless and consistent experience, unified payment flows, and easier in-app navigation",
-      image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=600&h=400&fit=crop",
-      category: "Mobile App Redesign",
-      result: "2x",
-      resultText: "Faster"
+      title: "Immersive Client Platforms (KEZRON)",
+      subtitle: "A high-end, animated web platform for client KEZRON, featuring 3D interactions and integrated AI automations for business logic and lead tracking.",
+      image: "https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80",
+      tags: ["React", "Tailwind", "Motion"],
+      result: "Cinematic",
+      resultText: "UX"
     },
+    {
+      id: 4,
+      title: "Dual Sync Audio App",
+      subtitle: "A mobile app for dual Bluetooth speaker syncing with AI-driven volume optimization and predictive audio leveling.",
+      image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+      tags: ["Android", "Embedded", "AI Analytics"],
+      result: "Zero",
+      resultText: "Latency"
+    }
   ];
 
   const teamMembers = [
@@ -97,7 +106,7 @@ const Home = () => {
       name: "Priya Sharma",
       role: "Digital & Social Media Lead",
       description: "Owns content, social, and digital campaigns.",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=120&h=120&fit=crop&crop=face"
+      avatar: "/team-priya.jpg"
     }
   ];
 
@@ -113,7 +122,8 @@ const Home = () => {
             <NoiseSphereHero />
           </Suspense>
           {/* Gradient overlay for text readability - Light Theme Fade */}
-          <div className="absolute inset-0 bg-gradient-to-b from-white/30 via-transparent to-white/90" />
+          {/* Gradient overlay for text readability - Minimal Fade for Sphere Visibility */}
+          <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/10 pointer-events-none" />
         </div>
 
         <div className="container-custom relative z-10 pt-32 pb-20">
@@ -249,38 +259,53 @@ const Home = () => {
             </AnimatedItem>
           </AnimatedSection>
 
-          <AnimatedSection className="grid grid-cols-1 lg:grid-cols-3 gap-8" staggerChildren={0.15}>
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 gap-8" staggerChildren={0.15}>
             {caseStudies.map((study) => (
               <AnimatedItem key={study.id}>
                 <motion.div
-                  className="group cursor-pointer h-full flex flex-col"
+                  className="group cursor-pointer h-full flex flex-col rounded-3xl overflow-hidden bg-white border border-slate-200 hover:border-indigo-300 transition-all duration-500 shadow-lg hover:shadow-xl"
                   whileHover={{ y: -8 }}
-                  transition={{ duration: 0.3 }}
                 >
-                  <div className="relative overflow-hidden rounded-2xl mb-6 aspect-[4/3] shadow-md border border-slate-100">
+                  {/* Image Section */}
+                  <div className="relative h-56 overflow-hidden">
                     <img
                       src={study.image}
                       alt={study.title}
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
-                    <div className="absolute bottom-4 left-4 right-4">
-                      <span className="inline-block px-3 py-1 bg-white/90 text-indigo-600 text-sm font-medium rounded-full backdrop-blur-sm shadow-sm">
-                        {study.category}
-                      </span>
-                    </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent" />
+
+                    {/* Impact Stat Badge - Top Right */}
                     <div className="absolute top-4 right-4">
-                      <div className="text-right">
-                        <p className="text-3xl font-bold text-white drop-shadow-md">{study.result}</p>
-                        <p className="text-sm text-white/90 font-medium drop-shadow-sm">{study.resultText}</p>
+                      <div className="bg-white/90 backdrop-blur-md border border-slate-200 px-4 py-2 rounded-xl text-center min-w-[100px] shadow-md">
+                        <p className="text-xl font-bold text-indigo-600 leading-none mb-1">{study.result}</p>
+                        <p className="text-xs text-slate-500 font-medium uppercase tracking-wide">{study.resultText}</p>
                       </div>
                     </div>
                   </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-3 line-clamp-2">
+
+                  {/* Content Section - Light Theme */}
+                  <div className="p-8 flex-grow flex flex-col bg-white">
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {study.tags.map((tag, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-medium rounded-full border border-indigo-100">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+
+                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-4 leading-tight">
                       {study.title}
                     </h3>
-                    <p className="text-slate-600 line-clamp-2">{study.subtitle}</p>
+
+                    <p className="text-slate-600 leading-relaxed text-sm flex-grow">
+                      {study.subtitle}
+                    </p>
+
+                    <div className="mt-6 pt-6 border-t border-slate-100 flex items-center text-indigo-600 opacity-80 group-hover:opacity-100 transition-opacity">
+                      <span className="font-medium text-sm">View details</span>
+                      <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                    </div>
                   </div>
                 </motion.div>
               </AnimatedItem>
@@ -295,6 +320,167 @@ const Home = () => {
               </MagneticButton>
             </div>
           </FadeUp>
+        </div>
+      </section>
+
+      {/* Industries We Serve Section */}
+      <section className="py-24 lg:py-32 bg-white relative">
+        <div className="container-custom">
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Who We Help</p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <h2 className="section-title text-slate-900 mb-6">
+                Industries We <span className="text-indigo-600">Serve</span>
+              </h2>
+            </AnimatedItem>
+          </AnimatedSection>
+
+          <AnimatedSection className="grid grid-cols-2 md:grid-cols-5 gap-6 lg:gap-8" staggerChildren={0.08}>
+            {[
+              { icon: Building2, label: 'Finance' },
+              { icon: ShoppingCart, label: 'E-commerce' },
+              { icon: Heart, label: 'Healthcare' },
+              { icon: Film, label: 'Entertainment' },
+              { icon: HomeIcon, label: 'Real Estate' },
+              { icon: Truck, label: 'Supply Chain' },
+              { icon: Droplets, label: 'Oil & Gas' },
+              { icon: Scale, label: 'Legal' },
+              { icon: GraduationCap, label: 'Education' },
+              { icon: Landmark, label: 'Government' },
+            ].map((industry, index) => (
+              <AnimatedItem key={index}>
+                <motion.div
+                  className="flex flex-col items-center p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-indigo-200 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+                  whileHover={{ y: -5 }}
+                >
+                  <industry.icon className="w-10 h-10 text-indigo-600 mb-4 group-hover:scale-110 transition-transform" />
+                  <span className="text-slate-700 font-medium text-sm text-center">{industry.label}</span>
+                </motion.div>
+              </AnimatedItem>
+            ))}
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Our Execution Process Section */}
+      <section className="py-24 lg:py-32 bg-slate-50 relative overflow-hidden">
+        <div className="container-custom">
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">How We Work</p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <h2 className="section-title text-slate-900 mb-6">
+                Our Execution <span className="text-indigo-600">Process</span>
+              </h2>
+            </AnimatedItem>
+          </AnimatedSection>
+
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerChildren={0.1}>
+            {[
+              { icon: Lightbulb, title: 'Discovery Workshop', desc: 'We collaborate intensively to understand your vision, challenges, and goals. This lays the foundation for success.', step: '01' },
+              { icon: FileSearch, title: 'Strategy & Solution Design', desc: 'Our architects design scalable solutions, refine requirements, and create detailed technical blueprints.', step: '02' },
+              { icon: Settings, title: 'Development', desc: 'Agile sprints with transparent progress tracking. We build iteratively with your feedback at every stage.', step: '03' },
+              { icon: TestTube, title: 'Testing & QA', desc: 'Rigorous testing including unit, integration, and user acceptance testing to ensure quality and reliability.', step: '04' },
+              { icon: Rocket, title: 'Launch & Maintenance', desc: 'Seamless deployment with zero downtime. We provide ongoing maintenance and support post-launch.', step: '05' },
+              { icon: Headphones, title: 'Support & Customer Service', desc: 'Dedicated support team available for troubleshooting, updates, and continuous improvement.', step: '06' },
+            ].map((process, index) => (
+              <AnimatedItem key={index}>
+                <motion.div
+                  className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all duration-300 h-full group relative"
+                  whileHover={{ y: -8 }}
+                >
+                  <div className="absolute top-6 right-6 text-4xl font-bold text-indigo-100 group-hover:text-indigo-200 transition-colors">
+                    {process.step}
+                  </div>
+                  <process.icon className="w-12 h-12 text-indigo-600 mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                    {process.title}
+                  </h3>
+                  <p className="text-slate-600 text-sm leading-relaxed">
+                    {process.desc}
+                  </p>
+                </motion.div>
+              </AnimatedItem>
+            ))}
+          </AnimatedSection>
+        </div>
+      </section>
+
+      {/* Tools & Tech Stack Section */}
+      <section className="py-24 lg:py-32 bg-white relative">
+        <div className="container-custom">
+          <AnimatedSection className="text-center mb-16">
+            <AnimatedItem>
+              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Our Expertise</p>
+            </AnimatedItem>
+            <AnimatedItem>
+              <h2 className="section-title text-slate-900 mb-6">
+                Tools & Tech <span className="text-indigo-600">Stack</span>
+              </h2>
+            </AnimatedItem>
+          </AnimatedSection>
+
+          <AnimatedSection className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" staggerChildren={0.1}>
+            {[
+              {
+                category: 'Frontend',
+                icon: Layers,
+                techs: ['React', 'Angular', 'Vue.js', 'Next.js', 'Tailwind', 'TypeScript']
+              },
+              {
+                category: 'Payment Gateway',
+                icon: CreditCard,
+                techs: ['Stripe', 'Razorpay', 'PayPal', 'Square', 'Shopify Pay']
+              },
+              {
+                category: 'Database',
+                icon: Database,
+                techs: ['PostgreSQL', 'MongoDB', 'MySQL', 'Redis', 'Firebase']
+              },
+              {
+                category: 'Mobile',
+                icon: Smartphone,
+                techs: ['React Native', 'Flutter', 'Swift', 'Kotlin', 'Ionic']
+              },
+              {
+                category: 'Blockchain',
+                icon: Link2,
+                techs: ['Ethereum', 'Solidity', 'Web3.js', 'Hardhat', 'IPFS']
+              },
+              {
+                category: 'Emerging Tech',
+                icon: Cpu,
+                techs: ['AI/ML', 'Computer Vision', 'AR/VR', 'IoT', 'Edge Computing']
+              },
+            ].map((stack, index) => (
+              <AnimatedItem key={index}>
+                <motion.div
+                  className="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:bg-white hover:shadow-lg transition-all duration-300 h-full group"
+                  whileHover={{ y: -5 }}
+                >
+                  <div className="flex items-center mb-6">
+                    <stack.icon className="w-10 h-10 text-indigo-600 mr-4 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                      {stack.category}
+                    </h3>
+                  </div>
+                  <div className="flex flex-wrap gap-2">
+                    {stack.techs.map((tech, idx) => (
+                      <span
+                        key={idx}
+                        className="px-3 py-1.5 bg-white text-slate-600 text-sm rounded-full border border-slate-200 hover:border-indigo-300 hover:text-indigo-600 transition-colors"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+                </motion.div>
+              </AnimatedItem>
+            ))}
+          </AnimatedSection>
         </div>
       </section>
 

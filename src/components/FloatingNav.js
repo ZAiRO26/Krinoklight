@@ -77,7 +77,6 @@ const FloatingNav = () => {
                 { name: 'How We Work', href: '/about/how-we-work' },
                 { name: 'Sustainability', href: '/about/sustainability' },
                 { name: 'Careers', href: '/about/careers' },
-                { name: 'Job Opportunities', href: '/about/jobs' },
                 { name: 'Press Office', href: '/about/press' },
             ]
         },
