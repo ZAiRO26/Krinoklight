@@ -42,7 +42,7 @@ const industriesData = {
         icon: Heart,
         title: 'Healthcare',
         subtitle: 'Digital health solutions built for safety, speed, and scale.',
-        heroImage: 'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=1200&h=600&fit=crop',
+        heroImage: 'https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=1200&h=600&fit=crop',
         highlights: ['Telemedicine', 'Patient apps', 'Compliance'],
         gradient: 'from-rose-500 to-pink-500',
         features: [

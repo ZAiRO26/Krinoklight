@@ -32,7 +32,7 @@ const Industries = () => {
       title: "Healthcare",
       description: "Digital health and medical technology",
       features: ["Telemedicine platforms", "Health monitoring apps", "Patient management", "Healthcare analytics"],
-      image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?w=600&h=400&fit=crop",
+      image: "https://images.unsplash.com/photo-1530497610245-94d3c16cda28?w=600&h=400&fit=crop",
       gradient: "from-rose-500 to-pink-500",
       result: "99%",
       resultLabel: "Faster processes"
