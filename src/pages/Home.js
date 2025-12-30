@@ -146,7 +146,7 @@ const Home = () => {
 
             <FadeUp delay={0.4}>
               <p className="text-body text-xl md:text-2xl text-slate-100 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md font-medium">
-                We provide a complete suite of development and marketing services for industrial businesses. Let us handle the tech, so you can focus on growth.
+                We provide a complete suite of development and marketing services for all businesses. Let us handle the tech, so you can focus on growth.
               </p>
             </FadeUp>
 
