@@ -6,7 +6,7 @@ import { useMediaQuery } from '../hooks/useMediaQuery';
  * Uses pure CSS gradients for maximum performance (no Canvas pixel manipulation)
  */
 const ImmersiveBackground = ({ children }) => {
-    const isMobile = useMediaQuery('(max-width: 768px)');
+    const isMobile = useMediaQuery('(max-width: 1024px)');
 
     return (
         <div className="relative min-h-screen">

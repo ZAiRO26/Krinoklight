@@ -249,7 +249,7 @@ export default function NoiseSphereHero({ className = '' }) {
         setIsMobileDevice(isMobile());
     }, []);
 
-    if (isMobileDevice) return null;
+
 
 
     // Mouse/touch tracking with smooth values
@@ -275,6 +275,7 @@ export default function NoiseSphereHero({ className = '' }) {
             window.removeEventListener('touchmove', handleTouchMove);
         };
     }, []);
+
 
     return (
         <div className={`absolute inset-0 ${className}`}>
