@@ -93,7 +93,6 @@ const Navbar = () => {
     { name: 'Sustainability', href: '/about/sustainability' },
     { name: 'Working at Krinok', href: '/about/careers' },
     { name: 'Contact us', href: '/contact' },
-    { name: 'Press Office', href: '/about/press' },
     { name: 'Refer Krinok', href: '/about/refer' },
   ];
 

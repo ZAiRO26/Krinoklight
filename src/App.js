@@ -16,7 +16,6 @@ import About from './pages/About';
 import HowWeWork from './pages/HowWeWork';
 import Sustainability from './pages/Sustainability';
 import Careers from './pages/Careers';
-import Press from './pages/Press';
 import Insights from './pages/Insights';
 import Packages from './pages/Packages';
 import Contact from './pages/Contact';
@@ -55,7 +54,6 @@ function AnimatedRoutes() {
         <Route path="/about/how-we-work" element={<CinematicTransition><HowWeWork /></CinematicTransition>} />
         <Route path="/about/sustainability" element={<CinematicTransition><Sustainability /></CinematicTransition>} />
         <Route path="/about/careers" element={<CinematicTransition><Careers /></CinematicTransition>} />
-        <Route path="/about/press" element={<CinematicTransition><Press /></CinematicTransition>} />
         <Route path="/insights" element={<CinematicTransition><Insights /></CinematicTransition>} />
         <Route path="/insights/blog" element={<CinematicTransition><Insights /></CinematicTransition>} />
         <Route path="/insights/newsletters" element={<CinematicTransition><Insights /></CinematicTransition>} />
