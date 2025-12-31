@@ -132,7 +132,10 @@ const Home = () => {
         <div className="container-custom relative z-10 pt-32 pb-20">
           <div className="text-center max-w-5xl mx-auto">
             <FadeUp delay={0.2}>
-              <h1 className="section-title-xl text-white mb-8 drop-shadow-lg">
+              <h1
+                className="section-title-xl text-white mb-8"
+                style={{ textShadow: '0 10px 30px rgba(0,0,0,0.3)' }}
+              >
                 Your <span className="headline-serif-italic text-blue-400">Vision,</span>
                 <br />
                 <SplitText
@@ -148,7 +151,7 @@ const Home = () => {
             </FadeUp>
 
             <FadeUp delay={0.4}>
-              <p className="text-body text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md font-medium">
+              <p className="text-body text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-lg font-semibold">
                 We provide a complete suite of development and marketing services for all businesses. Let us handle the tech, so you can focus on growth.
               </p>
             </FadeUp>
