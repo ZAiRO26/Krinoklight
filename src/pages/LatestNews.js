@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { ExternalLink, Clock, Sparkles, RefreshCw, Star, TrendingUp } from 'lucide-react';
+import { ExternalLink, Clock, Sparkles, RefreshCw, Star, TrendingUp, ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import AnimatedSection, { FadeUp } from '../components/AnimatedSection';
 
@@ -269,16 +269,16 @@ const LatestNews = () => {
             <section className="relative pt-32 pb-20 overflow-hidden">
                 {/* Background Effects */}
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-                    <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-pink-500/10 rounded-full blur-3xl" />
+                    <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
+                    <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-cyan-500/10 rounded-full blur-3xl" />
                 </div>
 
                 <div className="container mx-auto px-6 relative z-10">
                     <AnimatedSection>
                         <FadeUp>
                             <div className="text-center max-w-4xl mx-auto">
-                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-purple-500/10 
-                                border border-purple-500/30 rounded-full text-purple-300 text-sm mb-6">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 
+                                border border-blue-500/30 rounded-full text-blue-600 text-sm mb-6">
                                     <Sparkles className="w-4 h-4" />
                                     AI-Curated News Feed
                                 </div>
@@ -337,8 +337,8 @@ const LatestNews = () => {
                             <p className="text-gray-400 text-lg">No news articles available at the moment.</p>
                             <button
                                 onClick={fetchNews}
-                                className="mt-4 px-6 py-3 bg-purple-600 hover:bg-purple-700 rounded-lg 
-                           text-white font-medium transition-colors"
+                                className="mt-4 px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg 
+                           text-white font-medium transition-colors shadow-lg shadow-blue-500/20"
                             >
                                 Try Again
                             </button>
@@ -360,11 +360,11 @@ const LatestNews = () => {
                     <a
                         href="/contact"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r 
-                       from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 
-                       rounded-xl text-white font-semibold transition-all hover:scale-105"
+                       from-blue-600 to-cyan-500 hover:from-blue-700 hover:to-cyan-600 
+                       rounded-xl text-white font-semibold transition-all hover:scale-105 shadow-lg shadow-blue-500/25"
                     >
                         Let's Build Together
-                        <Sparkles className="w-5 h-5" />
+                        <ArrowRight className="w-5 h-5 ml-2" />
                     </a>
                 </div>
             </section>
