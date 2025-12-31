@@ -39,7 +39,7 @@ const Footer = () => {
 
   const socialLinks = [
     { icon: Linkedin, href: 'https://www.linkedin.com/company/krinok/', label: 'LinkedIn' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/ravi-saxena-95090326/', label: 'Ravi Saxena' },
     { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61585833633573', label: 'Facebook' },
     { icon: Instagram, href: 'https://www.instagram.com/krinok.dev/', label: 'Instagram' },
     { icon: Youtube, href: 'https://www.youtube.com/@krinok.devlopment', label: 'YouTube' },
