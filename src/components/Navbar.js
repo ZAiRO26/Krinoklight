@@ -147,7 +147,7 @@ const Navbar = () => {
       initial={{ y: -100 }}
       animate={{ y: showNav ? 0 : -100 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
-      className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled || isOpen
+      className={`fixed w-full top-0 z-[9999] transition-all duration-500 ${isScrolled || isOpen
         ? 'bg-white backdrop-blur-xl shadow-lg border-b border-slate-200'
         : 'bg-white'
         }`}
