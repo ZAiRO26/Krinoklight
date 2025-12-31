@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Briefcase, Users, Megaphone, ChevronDown, ArrowRight, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, Briefcase, Users, Megaphone, ChevronDown, ArrowRight, Send, Facebook, Instagram, Linkedin, Twitter, Youtube } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
@@ -186,164 +186,237 @@ const Contact = () => {
         </div>
       </section>
 
-      {/* Contact Form Section */}
+      {/* Two-Column Contact Section */}
       <section className="section-padding bg-slate-50">
-        <div className="container-custom max-w-4xl mx-auto">
-          <AnimatedSection className="text-center mb-12">
-            <AnimatedItem>
-              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Send a Message</p>
-            </AnimatedItem>
-            <AnimatedItem>
-              <h2 className="section-title text-slate-900 mb-4">
-                Start Your <span className="text-blue-600">Project</span>
-              </h2>
-            </AnimatedItem>
-            <AnimatedItem>
-              <p className="text-slate-600">
-                Fill out the form below and we'll get back to you as soon as possible.
-              </p>
-            </AnimatedItem>
-          </AnimatedSection>
+        <div className="container-custom">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
 
-          <AnimatePresence mode="wait">
-            {formSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                className="bg-white rounded-2xl shadow-xl p-12 text-center border border-slate-100"
-              >
-                <motion.div
-                  className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600"
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ delay: 0.2, type: "spring" }}
-                >
-                  <Send className="w-8 h-8" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-slate-900 mb-4">Thank you!</h3>
-                <p className="text-slate-600 mb-8">
-                  Your message has been sent successfully. We will be in touch shortly.
+            {/* Left Column - Contact Info */}
+            <AnimatedSection className="space-y-8">
+              <AnimatedItem>
+                <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                  Get In <span className="text-blue-600">Touch</span>
+                </h2>
+                <p className="text-slate-600 text-lg">
+                  We'd love to hear from you. Get in touch and let's create something amazing together.
                 </p>
-                <MagneticButton onClick={() => setFormSubmitted(false)} variant="secondary">
-                  Send another message
-                </MagneticButton>
-              </motion.div>
-            ) : (
-              <motion.form
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                onSubmit={handleSubmit}
-                className="bg-white rounded-2xl shadow-xl p-8 md:p-12 space-y-6 border border-slate-100"
-              >
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="fullName" className="block text-sm font-medium text-slate-700 mb-2">Full Name *</label>
-                    <input
-                      type="text"
-                      id="fullName"
-                      name="fullName"
-                      required
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                      placeholder="John Doe"
-                    />
+              </AnimatedItem>
+
+              {/* Corporate Office */}
+              <AnimatedItem>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <MapPin className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Email Address *</label>
-                    <input
-                      type="email"
-                      id="email"
-                      name="email"
-                      required
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                      placeholder="john@company.com"
-                    />
+                    <h3 className="font-bold text-slate-900 mb-1">Corporate Office</h3>
+                    <p className="text-slate-600 text-sm">
+                      KRINOK TECHNOLOGIES<br />
+                      Pitampura, New Delhi<br />
+                      India - 110034
+                    </p>
                   </div>
                 </div>
+              </AnimatedItem>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2">Company Name</label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                      placeholder="Your Company"
-                    />
+              {/* Customer Support */}
+              <AnimatedItem>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Phone className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                      placeholder="+1 (555) 000-0000"
-                    />
+                    <h3 className="font-bold text-slate-900 mb-1">Customer Support & Sales</h3>
+                    <p className="text-slate-600 text-sm">+91 98765 43210</p>
                   </div>
                 </div>
+              </AnimatedItem>
 
-                <div>
-                  <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-2">How can we help you?</label>
-                  <select
-                    id="service"
-                    name="service"
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+              {/* Email */}
+              <AnimatedItem>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Mail className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">Email</h3>
+                    <p className="text-slate-600 text-sm">
+                      Support and Sales: <a href="mailto:contact@krinok.com" className="text-blue-600 hover:underline">contact@krinok.com</a>
+                    </p>
+                  </div>
+                </div>
+              </AnimatedItem>
+
+              {/* Business Hours */}
+              <AnimatedItem>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+                    <Clock className="w-6 h-6 text-blue-600" />
+                  </div>
+                  <div>
+                    <h3 className="font-bold text-slate-900 mb-1">Business Hours</h3>
+                    <p className="text-slate-600 text-sm">
+                      Monday-Friday: 9 AM IST - 6 PM IST<br />
+                      Saturday and Sunday: Holiday
+                    </p>
+                  </div>
+                </div>
+              </AnimatedItem>
+
+              {/* Social Media */}
+              <AnimatedItem>
+                <div className="pt-4 border-t border-slate-200">
+                  <h3 className="font-bold text-slate-900 mb-4">Follow Us on Social Media</h3>
+                  <div className="flex flex-wrap gap-3">
+                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-blue-500 hover:text-blue-600 transition-colors">
+                      <Facebook className="w-4 h-4" />
+                      <span className="text-sm">Facebook</span>
+                    </a>
+                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-pink-500 hover:text-pink-600 transition-colors">
+                      <Instagram className="w-4 h-4" />
+                      <span className="text-sm">Instagram</span>
+                    </a>
+                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-blue-700 hover:text-blue-700 transition-colors">
+                      <Linkedin className="w-4 h-4" />
+                      <span className="text-sm">LinkedIn</span>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-sky-500 hover:text-sky-500 transition-colors">
+                      <Twitter className="w-4 h-4" />
+                      <span className="text-sm">X</span>
+                    </a>
+                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-red-500 hover:text-red-600 transition-colors">
+                      <Youtube className="w-4 h-4" />
+                      <span className="text-sm">YouTube</span>
+                    </a>
+                  </div>
+                </div>
+              </AnimatedItem>
+            </AnimatedSection>
+
+            {/* Right Column - Contact Form */}
+            <AnimatePresence mode="wait">
+              {formSubmitted ? (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  className="bg-white rounded-2xl shadow-xl p-12 text-center border border-slate-100"
+                >
+                  <motion.div
+                    className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6 text-green-600"
+                    initial={{ scale: 0 }}
+                    animate={{ scale: 1 }}
+                    transition={{ delay: 0.2, type: "spring" }}
                   >
-                    <option value="" className="bg-white">Select a service</option>
-                    <option value="ai" className="bg-white">AI Solutions</option>
-                    <option value="design" className="bg-white">UI/UX Design</option>
-                    <option value="web" className="bg-white">Web Development</option>
-                    <option value="mobile" className="bg-white">Mobile Development</option>
-                    <option value="consulting" className="bg-white">Digital Consulting</option>
-                    <option value="other" className="bg-white">Other</option>
-                  </select>
-                </div>
+                    <Send className="w-8 h-8" />
+                  </motion.div>
+                  <h3 className="text-2xl font-bold text-slate-900 mb-4">Thank you!</h3>
+                  <p className="text-slate-600 mb-8">
+                    Your message has been sent successfully. We will be in touch shortly.
+                  </p>
+                  <MagneticButton onClick={() => setFormSubmitted(false)} variant="secondary">
+                    Send another message
+                  </MagneticButton>
+                </motion.div>
+              ) : (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="bg-white rounded-2xl shadow-xl p-8 md:p-10 border border-slate-100"
+                >
+                  <h3 className="text-2xl font-bold text-slate-900 mb-6">Send Us A Message</h3>
 
-                <div>
-                  <label htmlFor="budget" className="block text-sm font-medium text-slate-700 mb-2">Estimated Budget</label>
-                  <select
-                    id="budget"
-                    name="budget"
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
-                  >
-                    <option value="" className="bg-white">Select a budget range</option>
-                    <option value="25-50" className="bg-white">$25k - $50k</option>
-                    <option value="50-100" className="bg-white">$50k - $100k</option>
-                    <option value="100-200" className="bg-white">$100k - $200k</option>
-                    <option value="200+" className="bg-white">$200k+</option>
-                    <option value="unsure" className="bg-white">Not sure yet</option>
-                  </select>
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">Your Message *</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    required
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none"
-                    placeholder="Tell us about your project..."
-                  ></textarea>
-                </div>
-
-                <div className="text-center pt-4">
-                  {submitError && (
-                    <div className="bg-red-50 text-red-600 px-4 py-3 rounded-xl mb-4 text-sm font-medium border border-red-100">
-                      {submitError}
+                  <form onSubmit={handleSubmit} className="space-y-5">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div>
+                        <label htmlFor="fullName" className="block text-sm font-medium text-slate-700 mb-2">Name *</label>
+                        <input
+                          type="text"
+                          id="fullName"
+                          name="fullName"
+                          required
+                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                          placeholder="John Doe"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="email" className="block text-sm font-medium text-slate-700 mb-2">Email *</label>
+                        <input
+                          type="email"
+                          id="email"
+                          name="email"
+                          required
+                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                          placeholder="john@company.com"
+                        />
+                      </div>
                     </div>
-                  )}
 
-                  <div className="flex justify-center">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                      <div>
+                        <label htmlFor="phone" className="block text-sm font-medium text-slate-700 mb-2">Phone Number</label>
+                        <input
+                          type="tel"
+                          id="phone"
+                          name="phone"
+                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                          placeholder="+91 98765 43210"
+                        />
+                      </div>
+                      <div>
+                        <label htmlFor="company" className="block text-sm font-medium text-slate-700 mb-2">Company Name</label>
+                        <input
+                          type="text"
+                          id="company"
+                          name="company"
+                          className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                          placeholder="Your Company"
+                        />
+                      </div>
+                    </div>
+
+                    <div>
+                      <label htmlFor="service" className="block text-sm font-medium text-slate-700 mb-2">Purpose of Contact</label>
+                      <select
+                        id="service"
+                        name="service"
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
+                      >
+                        <option value="" className="bg-white">Select Purpose</option>
+                        <option value="ai" className="bg-white">AI Solutions</option>
+                        <option value="design" className="bg-white">UI/UX Design</option>
+                        <option value="web" className="bg-white">Web Development</option>
+                        <option value="mobile" className="bg-white">Mobile Development</option>
+                        <option value="marketing" className="bg-white">Digital Marketing</option>
+                        <option value="consulting" className="bg-white">Consulting</option>
+                        <option value="other" className="bg-white">Other</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label htmlFor="message" className="block text-sm font-medium text-slate-700 mb-2">Message *</label>
+                      <textarea
+                        id="message"
+                        name="message"
+                        rows="4"
+                        required
+                        className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none"
+                        placeholder="Please describe your requirements..."
+                      ></textarea>
+                    </div>
+
+                    {submitError && (
+                      <div className="bg-red-50 text-red-600 px-4 py-3 rounded-xl text-sm font-medium border border-red-100">
+                        {submitError}
+                      </div>
+                    )}
+
                     <button
                       type="submit"
                       disabled={isSubmitting}
-                      className={`relative overflow-hidden rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 group px-8 py-4 ${isSubmitting
+                      className={`w-full rounded-xl font-bold transition-all duration-300 flex items-center justify-center gap-2 py-4 ${isSubmitting
                         ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
-                        : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200 hover:-translate-y-1'
+                        : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200'
                         }`}
                     >
                       {isSubmitting ? (
@@ -354,15 +427,15 @@ const Contact = () => {
                       ) : (
                         <>
                           Send Message
-                          <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                          <ArrowRight className="w-4 h-4" />
                         </>
                       )}
                     </button>
-                  </div>
-                </div>
-              </motion.form>
-            )}
-          </AnimatePresence>
+                  </form>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
         </div>
       </section>
 
