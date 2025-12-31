@@ -206,14 +206,42 @@ This project is configured for easy deployment on Netlify:
 4. **Deploy**:
    - Netlify will automatically deploy on every push to main branch
 
-### Manual Deployment
+### Hostinger Deployment (Recommended)
+
+This project uses a dedicated `hostinger` branch containing only built static files for deployment.
+
+#### Quick Deploy
+
+```bash
+npm run deploy:hostinger
+```
+
+This command will:
+1. Install dependencies (`npm ci`)
+2. Build the production bundle (`npm run build`)
+3. Create/update the `hostinger` branch with only built files
+4. Push to GitHub
+
+#### Hostinger hPanel Setup
+
+1. **Clear public_html**: Delete all files in `/public_html` via File Manager
+2. **Connect Git**:
+   - Go to hPanel → Git
+   - Repository: `https://github.com/ZAiRO26/Krinoklight.git`
+   - Branch: `hostinger`
+   - Install path: `/public_html`
+3. **Deploy**: Click "Deploy" and wait for completion
+
+#### Manual Deployment
+
+If you prefer to deploy manually:
 
 1. **Build the project**:
    ```bash
    npm run build
    ```
 
-2. **Deploy the `build` folder** to your hosting provider
+2. **Upload the `build` folder** contents to `/public_html` via FTP or File Manager
 
 ## 📁 Project Structure
 
