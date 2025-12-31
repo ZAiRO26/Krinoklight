@@ -212,8 +212,8 @@ const Contact = () => {
                     <h3 className="font-bold text-slate-900 mb-1">Corporate Office</h3>
                     <p className="text-slate-600 text-sm">
                       KRINOK TECHNOLOGIES<br />
-                      Pitampura, New Delhi<br />
-                      India - 110034
+                      289-D, Near MP Mall, Pitampura<br />
+                      New Delhi, India - 110034
                     </p>
                   </div>
                 </div>
@@ -227,7 +227,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="font-bold text-slate-900 mb-1">Customer Support & Sales</h3>
-                    <p className="text-slate-600 text-sm">+91 98765 43210</p>
+                    <p className="text-slate-600 text-sm">+91 9354785960</p>
                   </div>
                 </div>
               </AnimatedItem>
