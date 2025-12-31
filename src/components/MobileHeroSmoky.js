@@ -51,7 +51,7 @@ const MobileHeroSmoky = () => {
                 <motion.div
                     className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] opacity-40"
                     style={{
-                        background: 'radial-gradient(circle at center, #4f46e5 0%, transparent 60%)',
+                        background: 'radial-gradient(circle at center, #60a5fa 0%, transparent 60%)',
                         filter: 'blur(90px)',
                     }}
                     animate={{

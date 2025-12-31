@@ -132,8 +132,8 @@ const Home = () => {
         <div className="container-custom relative z-10 pt-32 pb-20">
           <div className="text-center max-w-5xl mx-auto">
             <FadeUp delay={0.2}>
-              <h1 className="section-title-xl text-slate-900 mb-8 drop-shadow-sm">
-                Your <span className="headline-serif-italic text-blue-600">Vision,</span>
+              <h1 className="section-title-xl text-white mb-8 drop-shadow-lg">
+                Your <span className="headline-serif-italic text-blue-400">Vision,</span>
                 <br />
                 <SplitText
                   className="headline-serif-bold"
@@ -148,7 +148,7 @@ const Home = () => {
             </FadeUp>
 
             <FadeUp delay={0.4}>
-              <p className="text-body text-xl md:text-2xl text-slate-600 mb-12 max-w-2xl mx-auto leading-relaxed font-medium">
+              <p className="text-body text-xl md:text-2xl text-white/90 mb-12 max-w-2xl mx-auto leading-relaxed drop-shadow-md font-medium">
                 We provide a complete suite of development and marketing services for all businesses. Let us handle the tech, so you can focus on growth.
               </p>
             </FadeUp>
@@ -162,12 +162,12 @@ const Home = () => {
 
                 <Link
                   to="/services"
-                  className="flex items-center space-x-3 text-slate-600 hover:text-blue-600 transition-colors group"
+                  className="flex items-center space-x-3 text-slate-300 hover:text-white transition-colors group"
                 >
-                  <div className="w-10 h-10 rounded-full border-2 border-slate-600/30 flex items-center justify-center group-hover:border-blue-600 group-hover:shadow-[0_0_20px_rgba(37,99,235,0.1)] transition-all duration-300">
+                  <div className="w-10 h-10 rounded-full border-2 border-slate-300/30 flex items-center justify-center group-hover:border-white group-hover:shadow-[0_0_20px_rgba(255,255,255,0.3)] transition-all duration-300">
                     <Play className="w-4 h-4 ml-0.5" />
                   </div>
-                  <span className="font-medium">View Services</span>
+                  <span className="font-medium drop-shadow-md">View Services</span>
                 </Link>
               </div>
             </FadeUp>

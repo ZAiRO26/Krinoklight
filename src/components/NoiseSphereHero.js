@@ -162,7 +162,7 @@ function NoiseSphere({ mousePosition, isMobileDevice }) {
         uTime: { value: 0 },
         uStrength: { value: 0.45 },
         uMouse: { value: new THREE.Vector2(0, 0) },
-        uColorA: { value: new THREE.Color('#0f172a') },  // Slate 900 (Deep Base)
+        uColorA: { value: new THREE.Color('#1d4ed8') },  // Blue 700 (Lighter than Slate 900)
         uColorB: { value: new THREE.Color('#3b82f6') },  // Blue 500 (Vibrant Blue)
         uColorC: { value: new THREE.Color('#60a5fa') },  // Blue 400 (Highlight)
     }), []);
@@ -211,9 +211,9 @@ function AmbientGlow() {
         <mesh position={[0, 0, -2]}>
             <planeGeometry args={[20, 20]} />
             <meshBasicMaterial
-                color="#cbd5e1" // Slate 300 - darker for visibility on white
+                color="#60a5fa" // Blue 400 - matches highlight for consistency
                 transparent
-                opacity={0.5}
+                opacity={0.3}
             />
         </mesh>
     );
