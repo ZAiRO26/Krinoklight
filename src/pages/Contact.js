@@ -276,7 +276,7 @@ const Contact = () => {
                       <Instagram className="w-4 h-4" />
                       <span className="text-sm">Instagram</span>
                     </a>
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-blue-700 hover:text-blue-700 transition-colors">
+                    <a href="https://www.linkedin.com/company/krinok/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-blue-700 hover:text-blue-700 transition-colors">
                       <Linkedin className="w-4 h-4" />
                       <span className="text-sm">LinkedIn</span>
                     </a>
