@@ -15,11 +15,14 @@ const BUILD_DIR = 'build';
 const DEPLOY_BRANCH = 'hostinger';
 const TEMP_DIR = '.deploy-temp';
 
+// Store original directory
+const PROJECT_ROOT = process.cwd();
+
 // Helper to run commands
 function run(cmd, options = {}) {
     console.log(`\n> ${cmd}`);
     try {
-        execSync(cmd, { stdio: 'inherit', ...options });
+        execSync(cmd, { stdio: 'inherit', cwd: PROJECT_ROOT, ...options });
     } catch (error) {
         console.error(`Command failed: ${cmd}`);
         process.exit(1);
@@ -29,7 +32,7 @@ function run(cmd, options = {}) {
 // Helper to run commands and get output
 function runOutput(cmd) {
     try {
-        return execSync(cmd, { encoding: 'utf8' }).trim();
+        return execSync(cmd, { encoding: 'utf8', cwd: PROJECT_ROOT }).trim();
     } catch {
         return '';
     }
@@ -77,51 +80,46 @@ if (!remoteUrl) {
 }
 console.log(`📍 Remote: ${remoteUrl}`);
 
-// Step 3: Install dependencies
-console.log('\n📦 Step 1/5: Installing dependencies...');
-run('npm ci');
-
-// Step 4: Build the project
-console.log('\n🔨 Step 2/5: Building production bundle...');
+// Step 3: Build the project
+console.log('\n🔨 Step 1/4: Building production bundle...');
 run('npm run build');
 
 // Verify build exists
-if (!fs.existsSync(BUILD_DIR) || !fs.existsSync(path.join(BUILD_DIR, 'index.html'))) {
+const buildPath = path.join(PROJECT_ROOT, BUILD_DIR);
+const indexPath = path.join(buildPath, 'index.html');
+if (!fs.existsSync(buildPath) || !fs.existsSync(indexPath)) {
     console.error('Error: Build failed - no index.html found in build/');
     process.exit(1);
 }
 console.log('✅ Build successful!');
 
-// Step 5: Prepare temp directory
-console.log('\n📁 Step 3/5: Preparing deployment files...');
-removeDir(TEMP_DIR);
-fs.mkdirSync(TEMP_DIR);
+// Step 4: Prepare temp directory
+console.log('\n📁 Step 2/4: Preparing deployment files...');
+const tempPath = path.join(PROJECT_ROOT, TEMP_DIR);
+removeDir(tempPath);
+fs.mkdirSync(tempPath);
 
 // Copy build contents to temp
-copyDir(BUILD_DIR, TEMP_DIR);
+copyDir(buildPath, tempPath);
+console.log('   Files copied to temp directory');
 
-// Count files
-const fileCount = execSync(`find "${TEMP_DIR}" -type f | wc -l`, { encoding: 'utf8', shell: true }).trim();
-console.log(`   Copied ${fileCount || 'all'} files to temp directory`);
+// Step 5: Initialize git in temp and commit
+console.log('\n🔧 Step 3/4: Committing build to hostinger branch...');
 
-// Step 6: Initialize git in temp and commit
-console.log('\n🔧 Step 4/5: Committing build to hostinger branch...');
-process.chdir(TEMP_DIR);
-
-run('git init');
-run('git checkout -b ' + DEPLOY_BRANCH);
-run('git add -A');
+// Run git commands in temp directory
+execSync('git init', { cwd: tempPath, stdio: 'inherit' });
+execSync(`git checkout -b ${DEPLOY_BRANCH}`, { cwd: tempPath, stdio: 'inherit' });
+execSync('git add -A', { cwd: tempPath, stdio: 'inherit' });
 
 const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-run(`git commit -m "Deploy: ${timestamp}"`);
+execSync(`git commit -m "Deploy: ${timestamp}"`, { cwd: tempPath, stdio: 'inherit' });
 
-// Step 7: Force push to hostinger branch
-console.log('\n🚀 Step 5/5: Pushing to hostinger branch...');
-run(`git push "${remoteUrl}" ${DEPLOY_BRANCH} --force`);
+// Step 6: Force push to hostinger branch
+console.log('\n🚀 Step 4/4: Pushing to hostinger branch...');
+execSync(`git push "${remoteUrl}" ${DEPLOY_BRANCH} --force`, { cwd: tempPath, stdio: 'inherit' });
 
 // Cleanup
-process.chdir('..');
-removeDir(TEMP_DIR);
+removeDir(tempPath);
 
 console.log('\n╔════════════════════════════════════════════╗');
 console.log('║  ✅ Deployment Complete!                   ║');
