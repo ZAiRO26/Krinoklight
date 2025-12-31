@@ -8,7 +8,7 @@ Disallow: /_next/
 Disallow: /static/
 
 # Sitemap location
-Sitemap: https://krinok.netlify.app/sitemap.xml
+Sitemap: https://www.krinok.com/sitemap.xml
 
 # Crawl-delay for responsible crawling
 Crawl-delay: 1

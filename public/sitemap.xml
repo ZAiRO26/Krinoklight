@@ -2,78 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Pages -->
   <url>
-    <loc>https://krinok.netlify.app/</loc>
+    <loc>https://www.krinok.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://krinok.netlify.app/contact</loc>
+    <loc>https://www.krinok.com/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
 
   <!-- Services -->
   <url>
-    <loc>https://krinok.netlify.app/services</loc>
+    <loc>https://www.krinok.com/services</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url><loc>https://krinok.netlify.app/services/app-development</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/services/social-media-marketing</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/services/meta-instagram-ads</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/services/instagram-virtual-avatars</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/services/virtual-ai-product-photography</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/services/ecommerce</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/services/idea-to-go-live</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/services/products</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/services/app-development</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/services/social-media-marketing</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/services/meta-instagram-ads</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/services/instagram-virtual-avatars</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/services/virtual-ai-product-photography</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/services/ecommerce</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/services/idea-to-go-live</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/services/products</loc><priority>0.8</priority></url>
 
   <!-- Industries -->
   <url>
-    <loc>https://krinok.netlify.app/industries</loc>
+    <loc>https://www.krinok.com/industries</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
-  <url><loc>https://krinok.netlify.app/industries/finance</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/industries/commerce</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/industries/healthcare</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/industries/education</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/industries/proptech</loc><priority>0.8</priority></url>
-  <url><loc>https://krinok.netlify.app/industries/greentech</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/industries/finance</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/industries/commerce</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/industries/healthcare</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/industries/education</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/industries/proptech</loc><priority>0.8</priority></url>
+  <url><loc>https://www.krinok.com/industries/greentech</loc><priority>0.8</priority></url>
 
   <!-- Clients -->
   <url>
-    <loc>https://krinok.netlify.app/clients</loc>
+    <loc>https://www.krinok.com/clients</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://krinok.netlify.app/clients/case-studies</loc><priority>0.7</priority></url>
-  <url><loc>https://krinok.netlify.app/clients/projects</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/clients/case-studies</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/clients/projects</loc><priority>0.7</priority></url>
 
   <!-- About -->
   <url>
-    <loc>https://krinok.netlify.app/about</loc>
+    <loc>https://www.krinok.com/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://krinok.netlify.app/about/how-we-work</loc><priority>0.7</priority></url>
-  <url><loc>https://krinok.netlify.app/about/sustainability</loc><priority>0.7</priority></url>
-  <url><loc>https://krinok.netlify.app/about/careers</loc><priority>0.7</priority></url>
-  <url><loc>https://krinok.netlify.app/about/jobs</loc><priority>0.7</priority></url>
-  <url><loc>https://krinok.netlify.app/about/press</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/about/how-we-work</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/about/sustainability</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/about/careers</loc><priority>0.7</priority></url>
 
   <!-- Insights -->
   <url>
-    <loc>https://krinok.netlify.app/insights</loc>
+    <loc>https://www.krinok.com/insights</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
-  <url><loc>https://krinok.netlify.app/insights/blog</loc><priority>0.7</priority></url>
-  <url><loc>https://krinok.netlify.app/insights/newsletters</loc><priority>0.7</priority></url>
-  <url><loc>https://krinok.netlify.app/insights/packages</loc><priority>0.7</priority></url>
-  <url><loc>https://krinok.netlify.app/latest-news</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/insights/blog</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/insights/newsletters</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/insights/packages</loc><priority>0.7</priority></url>
+  <url><loc>https://www.krinok.com/latest-news</loc><priority>0.7</priority></url>
 
   <!-- Legal -->
-  <url><loc>https://krinok.netlify.app/privacy</loc><priority>0.5</priority></url>
-  <url><loc>https://krinok.netlify.app/terms</loc><priority>0.5</priority></url>
-  <url><loc>https://krinok.netlify.app/cookies</loc><priority>0.5</priority></url>
+  <url><loc>https://www.krinok.com/privacy</loc><priority>0.5</priority></url>
+  <url><loc>https://www.krinok.com/terms</loc><priority>0.5</priority></url>
+  <url><loc>https://www.krinok.com/cookies</loc><priority>0.5</priority></url>
 </urlset>
