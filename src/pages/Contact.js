@@ -268,7 +268,7 @@ const Contact = () => {
                 <div className="pt-4 border-t border-slate-200">
                   <h3 className="font-bold text-slate-900 mb-4">Follow Us on Social Media</h3>
                   <div className="flex flex-wrap gap-3">
-                    <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-blue-500 hover:text-blue-600 transition-colors">
+                    <a href="https://www.facebook.com/profile.php?id=61585833633573" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-blue-500 hover:text-blue-600 transition-colors">
                       <Facebook className="w-4 h-4" />
                       <span className="text-sm">Facebook</span>
                     </a>
