@@ -284,7 +284,7 @@ const Contact = () => {
                       <Twitter className="w-4 h-4" />
                       <span className="text-sm">X</span>
                     </a>
-                    <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-red-500 hover:text-red-600 transition-colors">
+                    <a href="https://www.youtube.com/@krinok.devlopment" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-red-500 hover:text-red-600 transition-colors">
                       <Youtube className="w-4 h-4" />
                       <span className="text-sm">YouTube</span>
                     </a>

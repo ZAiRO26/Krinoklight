@@ -42,7 +42,7 @@ const Footer = () => {
     { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61585833633573', label: 'Facebook' },
     { icon: Instagram, href: 'https://www.instagram.com/krinok.dev/', label: 'Instagram' },
-    { icon: Youtube, href: '#', label: 'YouTube' },
+    { icon: Youtube, href: 'https://www.youtube.com/@krinok.devlopment', label: 'YouTube' },
   ];
 
   const FooterLinkItem = ({ link }) => (
