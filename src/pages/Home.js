@@ -1,4 +1,5 @@
 import React, { Suspense, lazy } from 'react';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Play, Code, Palette, Brain, Smartphone, Globe, Zap, Building2, ShoppingCart, Heart, Film, Home as HomeIcon, Truck, Droplets, Scale, GraduationCap, Landmark, Lightbulb, FileSearch, Settings, TestTube, Rocket, Headphones, Database, Layers, CreditCard, Cpu, Link2, Box } from 'lucide-react';
 import { motion } from 'framer-motion';
@@ -8,8 +9,11 @@ import SplitText from '../components/SplitText';
 
 // Lazy load Noise Sphere Hero (Original organic blue noise sphere with GLSL)
 const NoiseSphereHero = lazy(() => import('../components/NoiseSphereHero'));
+const MobileHeroSmoky = lazy(() => import('../components/MobileHeroSmoky'));
 
 const Home = () => {
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
 
   const services = [
     {
@@ -114,15 +118,14 @@ const Home = () => {
     <div className="min-h-screen bg-slate-50 overflow-hidden">
       {/* Hero Section with WebGL 3D Background - Hybrid Light Theme */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
-        {/* Organic Blue Noise Sphere - Full Visibility on Light Background */}
+        {/* Organic Blue Noise Sphere for Desktop / Smoky Effect for Mobile */}
         <div className="absolute inset-0 z-0">
           <Suspense fallback={
             <div className="w-full h-full bg-white" />
           }>
-            <NoiseSphereHero />
+            {isMobile ? <MobileHeroSmoky /> : <NoiseSphereHero />}
           </Suspense>
           {/* Gradient overlay for text readability - Light Theme Fade */}
-          {/* Gradient overlay for text readability - Minimal Fade for Sphere Visibility */}
           <div className="absolute inset-0 bg-gradient-to-b from-white/10 via-transparent to-white/10 pointer-events-none" />
         </div>
 

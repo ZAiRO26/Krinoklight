@@ -168,12 +168,10 @@ const GlobalChatbot = () => {
     const [inputValue, setInputValue] = useState('');
     const [isLoading, setIsLoading] = useState(false);
     const [isThinking, setIsThinking] = useState(false);
-    const [hasAutoOpened, setHasAutoOpened] = useState(false);
     const [sessionId] = useState(() => `session_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`);
 
     const messagesEndRef = useRef(null);
     const inputRef = useRef(null);
-    const idleTimerRef = useRef(null);
 
     // API endpoint - ALWAYS use Vercel Groq API (no more Ollama localhost!)
     const getApiUrl = () => {
@@ -194,34 +192,7 @@ const GlobalChatbot = () => {
         scrollToBottom();
     }, [messages, isThinking]);
 
-    // Auto-open after 10 seconds idle
-    useEffect(() => {
-        if (hasAutoOpened || isOpen) return;
-
-        const resetTimer = () => {
-            if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
-
-            idleTimerRef.current = setTimeout(() => {
-                if (!isOpen && !hasAutoOpened) {
-                    setIsOpen(true);
-                    setHasAutoOpened(true);
-                    setMessages([{
-                        role: 'assistant',
-                        content: `Hi there! 👋 I'm Alex from Krinok. How can I help you today?`
-                    }]);
-                }
-            }, 10000);
-        };
-
-        const events = ['mousedown', 'mousemove', 'keydown', 'scroll', 'touchstart'];
-        events.forEach(event => document.addEventListener(event, resetTimer));
-        resetTimer();
-
-        return () => {
-            events.forEach(event => document.removeEventListener(event, resetTimer));
-            if (idleTimerRef.current) clearTimeout(idleTimerRef.current);
-        };
-    }, [isOpen, hasAutoOpened]);
+    // Auto-open logic removed to prevent unwanted popups on load/refresh
 
     // Handle tool calls - show clickable link instead of auto-navigating
     const handleToolCall = useCallback((toolData) => {

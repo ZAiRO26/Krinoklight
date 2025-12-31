@@ -199,7 +199,7 @@ const FloatingNav = () => {
                         {/* CTA Button */}
                         <Link
                             to="/contact"
-                            className="px-5 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-medium hover:opacity-90 transition-opacity"
+                            className="px-5 py-2 rounded-full bg-gradient-to-r from-blue-600 to-cyan-500 text-white text-sm font-medium hover:opacity-90 transition-opacity"
                         >
                             Get in Touch
                         </Link>

@@ -249,6 +249,9 @@ export default function NoiseSphereHero({ className = '' }) {
         setIsMobileDevice(isMobile());
     }, []);
 
+    if (isMobileDevice) return null;
+
+
     // Mouse/touch tracking with smooth values
     useEffect(() => {
         const handleMouseMove = (e) => {
