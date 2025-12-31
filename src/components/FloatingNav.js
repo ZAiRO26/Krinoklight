@@ -11,13 +11,17 @@ const FloatingNav = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
     const [isVisible, setIsVisible] = useState(true);
+    const [isScrolled, setIsScrolled] = useState(false);
     const [lastScrollY, setLastScrollY] = useState(0);
     const location = useLocation();
 
-    // Auto-hide header on scroll
+    // Auto-hide header on scroll + track scroll position for background
     useEffect(() => {
         const handleScroll = () => {
             const currentScrollY = window.scrollY;
+
+            // Track if user has scrolled past threshold (50px)
+            setIsScrolled(currentScrollY > 50);
 
             // Show header when at top or scrolling up
             if (currentScrollY < 100 || currentScrollY < lastScrollY) {
@@ -119,8 +123,11 @@ const FloatingNav = () => {
                     damping: 20,
                     mass: 0.8
                 }}
-                className={`fixed top-0 left-0 right-0 z-[9999] px-6 py-4 bg-white shadow-sm border-b border-slate-100 ${!isVisible ? 'pointer-events-none' : ''}`}
-                style={{ backgroundColor: '#FFFFFF' }}
+                className={`fixed top-0 left-0 right-0 z-[9999] px-6 py-4 transition-all duration-300 ${isScrolled
+                        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-slate-200'
+                        : 'bg-transparent'
+                    } ${!isVisible ? 'pointer-events-none' : ''}`}
+                style={isScrolled ? { backgroundColor: 'rgba(255, 255, 255, 0.95)' } : {}}
             >
                 <div className="max-w-7xl mx-auto flex items-center justify-between">
                     {/* Logo */}
