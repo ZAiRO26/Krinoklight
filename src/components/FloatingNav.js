@@ -23,11 +23,16 @@ const FloatingNav = () => {
             // Track if user has scrolled past threshold (50px)
             setIsScrolled(currentScrollY > 50);
 
-            // Show header when at top or scrolling up
-            if (currentScrollY < 100 || currentScrollY < lastScrollY) {
+            // Always show navbar at top of page
+            if (currentScrollY < 50) {
                 setIsVisible(true);
-            } else {
-                // Hide header when scrolling down
+            }
+            // Show immediately when scrolling UP (any amount)
+            else if (currentScrollY < lastScrollY) {
+                setIsVisible(true);
+            }
+            // Hide when scrolling DOWN past threshold
+            else if (currentScrollY > lastScrollY && currentScrollY > 150) {
                 setIsVisible(false);
             }
 
@@ -119,13 +124,13 @@ const FloatingNav = () => {
                 }}
                 transition={{
                     type: 'spring',
-                    stiffness: 80,
-                    damping: 20,
-                    mass: 0.8
+                    stiffness: 400,
+                    damping: 30,
+                    mass: 0.5
                 }}
                 className={`fixed top-0 left-0 right-0 z-[9999] px-6 py-4 transition-all duration-300 ${isScrolled
-                        ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-slate-200'
-                        : 'bg-transparent'
+                    ? 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-slate-200'
+                    : 'bg-transparent'
                     } ${!isVisible ? 'pointer-events-none' : ''}`}
                 style={isScrolled ? { backgroundColor: 'rgba(255, 255, 255, 0.95)' } : {}}
             >
