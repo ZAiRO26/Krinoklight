@@ -112,14 +112,14 @@
 
   .btn-get-in-touch {
     @apply px-6 py-3 font-bold rounded-xl transition-all duration-500;
-    background: linear-gradient(135deg, #6366F1 0%, #4F46E5 100%);
+    background: linear-gradient(135deg, #2563EB 0%, #1D4ED8 100%);
     color: white;
   }
 
   .btn-get-in-touch:hover {
-    background: linear-gradient(135deg, #818CF8 0%, #6366F1 100%);
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
     transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 8px 32px rgba(37, 99, 235, 0.4);
   }
 
   /* ===== GLASSMORPHISM PANELS - Light Frost ===== */
