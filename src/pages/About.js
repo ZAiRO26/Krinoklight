@@ -304,7 +304,7 @@ const About = () => {
             </AnimatedItem>
             <AnimatedItem>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <MagneticButton to="/about/careers" className="bg-white text-navy-primary hover:bg-white/90">
+                <MagneticButton to="/about/careers" className="!bg-white !text-blue-900 !bg-none shadow-xl shadow-white/10 hover:shadow-white/20">
                   View Careers
                   <ArrowRight className="inline-block ml-2 w-4 h-4" />
                 </MagneticButton>

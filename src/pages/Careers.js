@@ -246,7 +246,7 @@ const Careers = () => {
                             </p>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <MagneticButton to="/contact" className="bg-white text-blue-600 hover:bg-white/90">
+                            <MagneticButton to="/contact" className="!bg-white !text-blue-600 !bg-none shadow-xl shadow-white/10 hover:shadow-white/20">
                                 Send Your Resume
                                 <ArrowRight className="inline-block ml-2 w-4 h-4" />
                             </MagneticButton>
