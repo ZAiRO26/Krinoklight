@@ -213,7 +213,7 @@ const Insights = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-5 py-2 rounded-full font-medium text-sm transition-all duration-300
                   ${selectedCategory === category
-                    ? 'bg-gradient-to-r from-indigo-600 to-indigo-500 text-white shadow-lg shadow-indigo-200'
+                    ? 'bg-gradient-to-r from-blue-600 to-blue-500 text-white shadow-lg shadow-blue-200'
                     : 'bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-900'
                   }`}
                 whileHover={{ scale: 1.05 }}
@@ -270,7 +270,7 @@ const Insights = () => {
                       </div>
                     </div>
 
-                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-indigo-600 transition-colors line-clamp-2">
+                    <h3 className="text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors line-clamp-2">
                       {post.title}
                     </h3>
                     <p className="text-slate-600 text-sm line-clamp-2">{post.excerpt}</p>
@@ -282,7 +282,7 @@ const Insights = () => {
                       </div>
                       <Link
                         to={`/insights/blog/${post.id}`}
-                        className="text-indigo-600 hover:text-indigo-800 font-medium text-sm flex items-center gap-1 transition-colors"
+                        className="text-blue-600 hover:text-indigo-800 font-medium text-sm flex items-center gap-1 transition-colors"
                       >
                         Read more
                         <ArrowRight className="w-3 h-3" />
@@ -331,8 +331,8 @@ const Insights = () => {
                   className="glass-panel p-8 h-full flex flex-col"
                   whileHover={{ y: -5, boxShadow: '0 0 40px rgba(75, 163, 218, 0.2)' }}
                 >
-                  <div className="icon-container mb-6 bg-indigo-50">
-                    <BookOpen className="w-5 h-5 text-indigo-600" />
+                  <div className="icon-container mb-6 bg-blue-50">
+                    <BookOpen className="w-5 h-5 text-blue-600" />
                   </div>
                   <h3 className="text-xl font-bold text-slate-900 mb-3">{newsletter.title}</h3>
                   <p className="text-slate-600 mb-6 flex-grow">{newsletter.description}</p>
@@ -361,11 +361,11 @@ const Insights = () => {
           <AnimatedSection className="text-center">
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Share Your <span className="text-indigo-200">Insights</span>
+                Share Your <span className="text-blue-200">Insights</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
                 Have a story to tell? We're always looking for guest contributors and thought leaders.
               </p>
             </AnimatedItem>

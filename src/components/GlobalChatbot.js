@@ -146,7 +146,7 @@ const MessageBubble = ({ message, isLatest }) => {
             <div
                 className={`max-w-[85%] px-4 py-3 rounded-2xl ${isAssistant
                     ? 'bg-gray-800/80 text-gray-100 rounded-tl-sm'
-                    : 'bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-tr-sm'
+                    : 'bg-gradient-to-r from-purple-600 to-blue-600 text-white rounded-tr-sm'
                     }`}
             >
                 <div className="text-sm leading-relaxed">
@@ -345,7 +345,7 @@ const GlobalChatbot = () => {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={toggleChat}
-                        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-full shadow-lg shadow-purple-500/30 flex items-center justify-center group"
+                        className="fixed bottom-6 right-6 z-50 w-14 h-14 bg-gradient-to-r from-purple-600 to-blue-600 rounded-full shadow-lg shadow-purple-500/30 flex items-center justify-center group"
                     >
                         <MessageCircle className="w-6 h-6 text-white" />
                         <span className="absolute w-full h-full rounded-full bg-purple-500 animate-ping opacity-30" />
@@ -372,7 +372,7 @@ const GlobalChatbot = () => {
                         <div className="flex items-center justify-between px-4 py-3 bg-gray-800/50 border-b border-gray-700/50">
                             <div className="flex items-center space-x-3">
                                 <div className="relative">
-                                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-indigo-600 rounded-xl flex items-center justify-center">
+                                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center">
                                         <Bot className="w-5 h-5 text-white" />
                                     </div>
                                     <span className="absolute bottom-0 right-0 w-3 h-3 bg-green-500 rounded-full border-2 border-gray-900" />
@@ -437,7 +437,7 @@ const GlobalChatbot = () => {
                                             whileTap={{ scale: 0.95 }}
                                             onClick={sendMessage}
                                             disabled={!inputValue.trim() || isInputDisabled}
-                                            className="w-10 h-10 bg-gradient-to-r from-purple-600 to-indigo-600 rounded-xl flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
+                                            className="w-10 h-10 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             <Send className="w-4 h-4 text-white" />
                                         </motion.button>

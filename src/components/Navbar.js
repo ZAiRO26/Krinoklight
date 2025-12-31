@@ -131,7 +131,7 @@ const Navbar = () => {
             <Link
               key={item.name}
               to={item.href}
-              className="block px-4 py-3 text-sm rounded-lg transition-all duration-200 text-slate-600 hover:text-indigo-600 hover:bg-indigo-50"
+              className="block px-4 py-3 text-sm rounded-lg transition-all duration-200 text-slate-600 hover:text-blue-600 hover:bg-blue-50"
               onClick={() => setActiveDropdown(null)}
             >
               {item.name}
@@ -148,8 +148,8 @@ const Navbar = () => {
       animate={{ y: showNav ? 0 : -100 }}
       transition={{ duration: 0.3, ease: 'easeInOut' }}
       className={`fixed w-full top-0 z-50 transition-all duration-500 ${isScrolled || isOpen
-        ? 'bg-white/90 backdrop-blur-xl shadow-lg border-b border-slate-200'
-        : 'bg-transparent'
+        ? 'bg-white backdrop-blur-xl shadow-lg border-b border-slate-200'
+        : 'bg-white'
         }`}
     >
       <div className="container-custom">
@@ -158,13 +158,13 @@ const Navbar = () => {
           <div className="flex-1 flex items-center justify-start">
             <Link to="/" className="flex items-center space-x-3 group" onClick={handleLogoClick}>
               <motion.div
-                className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg bg-indigo-600 text-white"
+                className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg bg-blue-600 text-white"
                 whileHover={{ scale: 1.05, rotate: 5 }}
                 transition={{ duration: 0.2 }}
               >
                 <span className="font-display font-bold text-lg">C</span>
               </motion.div>
-              <span className="logo-font text-xl transition-colors duration-300 text-slate-900 group-hover:text-indigo-600">
+              <span className="logo-font text-xl transition-colors duration-300 text-slate-900 group-hover:text-blue-600">
                 Krinok
               </span>
             </Link>
@@ -174,7 +174,7 @@ const Navbar = () => {
           <div className="hidden lg:flex flex-1 justify-center items-center space-x-1">
             {/* Services Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('services')} onMouseLeave={handleMouseLeave}>
-              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
+              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50/50">
                 <span className="font-medium">Services</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'services' ? 'rotate-180' : ''}`} />
               </button>
@@ -183,7 +183,7 @@ const Navbar = () => {
 
             {/* Industries Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('industries')} onMouseLeave={handleMouseLeave}>
-              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
+              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50/50">
                 <span className="font-medium">Industries</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'industries' ? 'rotate-180' : ''}`} />
               </button>
@@ -192,7 +192,7 @@ const Navbar = () => {
 
             {/* Clients Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('clients')} onMouseLeave={handleMouseLeave}>
-              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
+              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50/50">
                 <span className="font-medium">Clients</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'clients' ? 'rotate-180' : ''}`} />
               </button>
@@ -201,7 +201,7 @@ const Navbar = () => {
 
             {/* About Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('about')} onMouseLeave={handleMouseLeave}>
-              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg whitespace-nowrap text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
+              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg whitespace-nowrap text-slate-600 hover:text-blue-600 hover:bg-blue-50/50">
                 <span className="font-medium">About us</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'about' ? 'rotate-180' : ''}`} />
               </button>
@@ -210,7 +210,7 @@ const Navbar = () => {
 
             {/* Insights Dropdown */}
             <div className="relative" onMouseEnter={() => handleMouseEnter('insights')} onMouseLeave={handleMouseLeave}>
-              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
+              <button className="flex items-center space-x-1 px-4 py-2 transition-colors rounded-lg text-slate-600 hover:text-blue-600 hover:bg-blue-50/50">
                 <span className="font-medium">Insights</span>
                 <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${activeDropdown === 'insights' ? 'rotate-180' : ''}`} />
               </button>
@@ -257,7 +257,7 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => setMobileAccordion(mobileAccordion === 'services' ? null : 'services')}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-indigo-600 hover:bg-indigo-50"
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-blue-600 hover:bg-blue-50"
                   >
                     <span>Services</span>
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'services' ? 'rotate-180' : ''}`} />
@@ -271,7 +271,7 @@ const Navbar = () => {
                         className="pl-4 space-y-1 overflow-hidden"
                       >
                         {servicesItems.map((item, idx) => (
-                          <Link key={idx} to={item.href} className={`block px-4 py-2 rounded-lg text-sm transition-colors ${item.highlight ? 'text-indigo-600 font-medium' : 'text-slate-600'} hover:text-indigo-600 hover:bg-indigo-50`} onClick={() => setIsOpen(false)}>
+                          <Link key={idx} to={item.href} className={`block px-4 py-2 rounded-lg text-sm transition-colors ${item.highlight ? 'text-blue-600 font-medium' : 'text-slate-600'} hover:text-blue-600 hover:bg-blue-50`} onClick={() => setIsOpen(false)}>
                             {item.name}
                           </Link>
                         ))}
@@ -284,7 +284,7 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => setMobileAccordion(mobileAccordion === 'industries' ? null : 'industries')}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-indigo-600 hover:bg-indigo-50"
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-blue-600 hover:bg-blue-50"
                   >
                     <span>Industries</span>
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'industries' ? 'rotate-180' : ''}`} />
@@ -298,7 +298,7 @@ const Navbar = () => {
                         className="pl-4 space-y-1 overflow-hidden"
                       >
                         {industriesItems.map((item, idx) => (
-                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors" onClick={() => setIsOpen(false)}>
+                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors" onClick={() => setIsOpen(false)}>
                             {item.name}
                           </Link>
                         ))}
@@ -311,7 +311,7 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => setMobileAccordion(mobileAccordion === 'clients' ? null : 'clients')}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-indigo-600 hover:bg-indigo-50"
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-blue-600 hover:bg-blue-50"
                   >
                     <span>Clients</span>
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'clients' ? 'rotate-180' : ''}`} />
@@ -325,7 +325,7 @@ const Navbar = () => {
                         className="pl-4 space-y-1 overflow-hidden"
                       >
                         {clientsItems.map((item, idx) => (
-                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors" onClick={() => setIsOpen(false)}>
+                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors" onClick={() => setIsOpen(false)}>
                             {item.name}
                           </Link>
                         ))}
@@ -338,7 +338,7 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => setMobileAccordion(mobileAccordion === 'about' ? null : 'about')}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-indigo-600 hover:bg-indigo-50"
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-blue-600 hover:bg-blue-50"
                   >
                     <span>About us</span>
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'about' ? 'rotate-180' : ''}`} />
@@ -352,7 +352,7 @@ const Navbar = () => {
                         className="pl-4 space-y-1 overflow-hidden"
                       >
                         {aboutItems.map((item, idx) => (
-                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-slate-600 hover:text-indigo-600 hover:bg-indigo-50 transition-colors" onClick={() => setIsOpen(false)}>
+                          <Link key={idx} to={item.href} className="block px-4 py-2 rounded-lg text-sm text-slate-600 hover:text-blue-600 hover:bg-blue-50 transition-colors" onClick={() => setIsOpen(false)}>
                             {item.name}
                           </Link>
                         ))}
@@ -365,7 +365,7 @@ const Navbar = () => {
                 <div>
                   <button
                     onClick={() => setMobileAccordion(mobileAccordion === 'insights' ? null : 'insights')}
-                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-indigo-600 hover:bg-indigo-50"
+                    className="flex items-center justify-between w-full px-4 py-3 rounded-lg transition-colors text-slate-700 hover:text-blue-600 hover:bg-blue-50"
                   >
                     <span>Insights</span>
                     <ChevronDown className={`w-4 h-4 transition-transform duration-200 ${mobileAccordion === 'insights' ? 'rotate-180' : ''}`} />
@@ -379,7 +379,7 @@ const Navbar = () => {
                         className="pl-4 space-y-1 overflow-hidden"
                       >
                         {insightsItems.map((item, idx) => (
-                          <Link key={idx} to={item.href} className={`block px-4 py-2 rounded-lg text-sm transition-colors ${item.highlight ? 'text-indigo-600 font-medium' : 'text-slate-600'} hover:text-indigo-600 hover:bg-indigo-50`} onClick={() => setIsOpen(false)}>
+                          <Link key={idx} to={item.href} className={`block px-4 py-2 rounded-lg text-sm transition-colors ${item.highlight ? 'text-blue-600 font-medium' : 'text-slate-600'} hover:text-blue-600 hover:bg-blue-50`} onClick={() => setIsOpen(false)}>
                             {item.name}
                           </Link>
                         ))}

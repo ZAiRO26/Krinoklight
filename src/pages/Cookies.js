@@ -9,13 +9,13 @@ const Cookies = () => {
             {/* Hero Section */}
             <section className="bg-white pt-32 pb-16 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-indigo-100/50 rounded-full filter blur-[120px]" />
+                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-100/50 rounded-full filter blur-[120px]" />
                 </div>
                 <div className="container-custom relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <FadeUp>
-                            <div className="bg-indigo-50 border border-indigo-100 p-3 rounded-xl inline-block mb-6">
-                                <Cookie className="w-6 h-6 text-indigo-600" />
+                            <div className="bg-blue-50 border border-blue-100 p-3 rounded-xl inline-block mb-6">
+                                <Cookie className="w-6 h-6 text-blue-600" />
                             </div>
                         </FadeUp>
                         <FadeUp delay={0.1}>
@@ -68,7 +68,7 @@ const Cookies = () => {
                         <h2 className="text-2xl font-bold text-slate-900 mb-6">Contact Us</h2>
                         <p className="text-slate-600">
                             If you have any questions about our Cookie Policy, please contact us at{' '}
-                            <a href="mailto:privacy@Krinok.com" className="text-indigo-600 hover:text-indigo-800 transition-colors">
+                            <a href="mailto:privacy@Krinok.com" className="text-blue-600 hover:text-indigo-800 transition-colors">
                                 privacy@Krinok.com
                             </a>
                         </p>

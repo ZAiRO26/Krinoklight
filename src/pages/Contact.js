@@ -137,7 +137,7 @@ const Contact = () => {
       <section className="bg-white pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
-            className="absolute top-1/4 right-1/4 w-96 h-96 bg-indigo-100/50 rounded-full filter blur-[120px]"
+            className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-100/50 rounded-full filter blur-[120px]"
             animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
             transition={{ duration: 10, repeat: Infinity }}
           />
@@ -146,13 +146,13 @@ const Contact = () => {
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <FadeUp>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-6">
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-6">
                 Get In Touch
               </p>
             </FadeUp>
             <FadeUp delay={0.1}>
               <h1 className="section-title text-slate-900 mb-6 leading-tight">
-                Contact <span className="text-indigo-600">Us</span>
+                Contact <span className="text-blue-600">Us</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
@@ -168,17 +168,17 @@ const Contact = () => {
               <AnimatedItem key={index}>
                 <motion.a
                   href={method.link}
-                  className="block p-8 rounded-2xl bg-white border border-slate-200 text-center h-full group hover:shadow-xl hover:shadow-indigo-100 transition-all duration-300"
+                  className="block p-8 rounded-2xl bg-white border border-slate-200 text-center h-full group hover:shadow-xl hover:shadow-blue-100 transition-all duration-300"
                   whileHover={{ scale: 1.02, y: -5 }}
                 >
-                  <div className="icon-container mx-auto mb-6 bg-indigo-50 border border-indigo-100 text-indigo-600">
+                  <div className="icon-container mx-auto mb-6 bg-blue-50 border border-blue-100 text-blue-600">
                     <method.icon className="w-6 h-6" />
                   </div>
-                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-indigo-600 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors">
                     {method.title}
                   </h3>
                   <p className="text-slate-600 mb-4">{method.description}</p>
-                  <p className="text-indigo-600 font-medium">{method.contact}</p>
+                  <p className="text-blue-600 font-medium">{method.contact}</p>
                 </motion.a>
               </AnimatedItem>
             ))}
@@ -191,11 +191,11 @@ const Contact = () => {
         <div className="container-custom max-w-4xl mx-auto">
           <AnimatedSection className="text-center mb-12">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Send a Message</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Send a Message</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-4">
-                Start Your <span className="text-indigo-600">Project</span>
+                Start Your <span className="text-blue-600">Project</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
@@ -245,7 +245,7 @@ const Contact = () => {
                       id="fullName"
                       name="fullName"
                       required
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                       placeholder="John Doe"
                     />
                   </div>
@@ -256,7 +256,7 @@ const Contact = () => {
                       id="email"
                       name="email"
                       required
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                       placeholder="john@company.com"
                     />
                   </div>
@@ -269,7 +269,7 @@ const Contact = () => {
                       type="text"
                       id="company"
                       name="company"
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                       placeholder="Your Company"
                     />
                   </div>
@@ -279,7 +279,7 @@ const Contact = () => {
                       type="tel"
                       id="phone"
                       name="phone"
-                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                      className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                       placeholder="+1 (555) 000-0000"
                     />
                   </div>
@@ -290,7 +290,7 @@ const Contact = () => {
                   <select
                     id="service"
                     name="service"
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                   >
                     <option value="" className="bg-white">Select a service</option>
                     <option value="ai" className="bg-white">AI Solutions</option>
@@ -307,7 +307,7 @@ const Contact = () => {
                   <select
                     id="budget"
                     name="budget"
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors"
                   >
                     <option value="" className="bg-white">Select a budget range</option>
                     <option value="25-50" className="bg-white">$25k - $50k</option>
@@ -325,7 +325,7 @@ const Contact = () => {
                     name="message"
                     rows="5"
                     required
-                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-colors resize-none"
+                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-colors resize-none"
                     placeholder="Tell us about your project..."
                   ></textarea>
                 </div>
@@ -343,7 +343,7 @@ const Contact = () => {
                       disabled={isSubmitting}
                       className={`relative overflow-hidden rounded-full font-bold transition-all duration-300 flex items-center justify-center gap-2 group px-8 py-4 ${isSubmitting
                         ? 'bg-slate-300 text-slate-500 cursor-not-allowed'
-                        : 'bg-indigo-600 text-white hover:bg-indigo-700 hover:shadow-lg hover:shadow-indigo-200 hover:-translate-y-1'
+                        : 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-lg hover:shadow-blue-200 hover:-translate-y-1'
                         }`}
                     >
                       {isSubmitting ? (
@@ -369,17 +369,17 @@ const Contact = () => {
       {/* Map Section */}
       <section className="section-padding bg-white relative overflow-hidden">
         {/* Background Elements */}
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
+        <div className="absolute top-0 right-0 w-96 h-96 bg-blue-50/50 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-purple-50/50 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2" />
 
         <div className="container-custom relative z-10">
           <AnimatedSection className="text-center mb-12">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Visit Us</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Visit Us</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Our <span className="text-indigo-600">Location</span>
+                Our <span className="text-blue-600">Location</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
@@ -392,7 +392,7 @@ const Contact = () => {
           <AnimatedSection>
             <AnimatedItem>
               <motion.div
-                className="w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-indigo-100 border-4 border-white relative group"
+                className="w-full h-[500px] rounded-3xl overflow-hidden shadow-2xl shadow-blue-100 border-4 border-white relative group"
                 whileHover={{ scale: 1.002 }}
                 transition={{ duration: 0.4 }}
               >
@@ -411,7 +411,7 @@ const Contact = () => {
                 {/* Optional Overlay Card */}
                 <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 bg-white/90 backdrop-blur-md p-6 rounded-2xl shadow-lg border border-white/50 max-w-xs transform transition-transform hover:scale-105 duration-300">
                   <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 bg-indigo-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
+                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center flex-shrink-0 shadow-md">
                       <MapPin className="w-5 h-5 text-white" />
                     </div>
                     <div>
@@ -424,7 +424,7 @@ const Contact = () => {
                         href="https://maps.app.goo.gl/2qmdpBz5rTrDX7hu6"
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 uppercase tracking-wide"
+                        className="text-xs font-bold text-blue-600 hover:text-indigo-800 flex items-center gap-1 uppercase tracking-wide"
                       >
                         Get Directions <ArrowRight className="w-3 h-3" />
                       </a>
@@ -442,11 +442,11 @@ const Contact = () => {
         <div className="container-custom max-w-4xl mx-auto">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">FAQ</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">FAQ</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Frequently Asked <span className="text-indigo-600">Questions</span>
+                Frequently Asked <span className="text-blue-600">Questions</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -467,7 +467,7 @@ const Contact = () => {
                       animate={{ rotate: openFaq === index ? 180 : 0 }}
                       transition={{ duration: 0.3 }}
                     >
-                      <ChevronDown className="w-5 h-5 text-indigo-500 flex-shrink-0" />
+                      <ChevronDown className="w-5 h-5 text-blue-500 flex-shrink-0" />
                     </motion.div>
                   </button>
                   <AnimatePresence>
@@ -492,7 +492,7 @@ const Contact = () => {
       </section>
 
       {/* Final CTA Section */}
-      <section className="section-padding bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_bottom_right,_rgba(123,143,163,0.05)_0%,_transparent_50%)]" />
         </div>
@@ -502,7 +502,7 @@ const Contact = () => {
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
                 Have a Project in Mind?{' '}
-                <span className="text-indigo-600">Let's Talk.</span>
+                <span className="text-blue-600">Let's Talk.</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>

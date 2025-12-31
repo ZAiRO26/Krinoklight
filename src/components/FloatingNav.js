@@ -129,7 +129,7 @@ const FloatingNav = () => {
                         className="group"
                     >
                         <motion.span
-                            className="text-xl font-medium text-slate-900 tracking-[0.25em] uppercase hover:text-indigo-600 transition-colors logo-font"
+                            className="text-xl font-medium text-slate-900 tracking-[0.25em] uppercase hover:text-blue-600 transition-colors logo-font"
                             whileHover={{ scale: 1.02 }}
                         >
                             KRINOK
@@ -149,8 +149,8 @@ const FloatingNav = () => {
                                     to={link.href}
                                     className={`flex items-center gap-1 text-sm font-medium tracking-wide transition-colors
                                         ${location.pathname.startsWith(link.href)
-                                            ? 'text-indigo-600'
-                                            : 'text-slate-600 hover:text-indigo-600'
+                                            ? 'text-blue-600'
+                                            : 'text-slate-600 hover:text-blue-600'
                                         }`}
                                 >
                                     {link.name}
@@ -173,7 +173,7 @@ const FloatingNav = () => {
                                                 <Link
                                                     key={subpage.name}
                                                     to={subpage.href}
-                                                    className="block px-4 py-2 text-sm text-slate-600 hover:text-indigo-600 hover:bg-slate-50 transition-colors"
+                                                    className="block px-4 py-2 text-sm text-slate-600 hover:text-blue-600 hover:bg-slate-50 transition-colors"
                                                 >
                                                     {subpage.name}
                                                 </Link>
@@ -187,7 +187,7 @@ const FloatingNav = () => {
                         {/* CTA Button */}
                         <Link
                             to="/contact"
-                            className="px-5 py-2 rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white text-sm font-medium hover:opacity-90 transition-opacity"
+                            className="px-5 py-2 rounded-full bg-gradient-to-r from-blue-500 to-purple-600 text-white text-sm font-medium hover:opacity-90 transition-opacity"
                         >
                             Get in Touch
                         </Link>
@@ -230,7 +230,7 @@ const FloatingNav = () => {
                                             onClick={() => setIsMenuOpen(false)}
                                             className={`text-3xl md:text-4xl font-light tracking-tight transition-all block
                                                 ${location.pathname.startsWith(link.href)
-                                                    ? 'text-indigo-600'
+                                                    ? 'text-blue-600'
                                                     : 'text-slate-500 hover:text-slate-900'
                                                 }`}
                                         >
@@ -251,7 +251,7 @@ const FloatingNav = () => {
                                                     key={subpage.name}
                                                     to={subpage.href}
                                                     onClick={() => setIsMenuOpen(false)}
-                                                    className="text-sm text-slate-400 hover:text-indigo-600 transition-colors px-2"
+                                                    className="text-sm text-slate-400 hover:text-blue-600 transition-colors px-2"
                                                 >
                                                     {subpage.name}
                                                 </Link>
@@ -272,7 +272,7 @@ const FloatingNav = () => {
                             <Link
                                 to="/contact"
                                 onClick={() => setIsMenuOpen(false)}
-                                className="px-8 py-4 rounded-full bg-gradient-to-r from-indigo-600 to-blue-500 text-white font-medium hover:opacity-90 transition-opacity"
+                                className="px-8 py-4 rounded-full bg-gradient-to-r from-blue-600 to-blue-500 text-white font-medium hover:opacity-90 transition-opacity"
                             >
                                 Get in Touch
                             </Link>

@@ -307,7 +307,7 @@ const servicesData = {
         subtitle: 'Present your expertise and consulting services.',
         heroImage: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?w=1200&h=600&fit=crop',
         highlights: ['Case studies', 'ROI stories', 'Resource library'],
-        gradient: 'from-blue-600 to-indigo-600',
+        gradient: 'from-blue-600 to-blue-600',
         features: [
             'Service pillars and outcomes',
             'Lead magnets and CTAs',
@@ -355,7 +355,7 @@ const servicesData = {
         subtitle: 'Engaging digital personas for campaigns and brand storytelling.',
         heroImage: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&h=600&fit=crop',
         highlights: ['Avatar design', 'Content pipelines', 'Brand storytelling'],
-        gradient: 'from-violet-500 to-indigo-500',
+        gradient: 'from-violet-500 to-blue-500',
         features: [
             'Avatar concept and design',
             'Behavior scripts and voice',
@@ -428,7 +428,7 @@ const ServiceDetail = () => {
             <section className="bg-white pt-32 pb-20 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
                     <motion.div
-                        className="absolute top-1/3 right-1/4 w-96 h-96 bg-indigo-100/50 rounded-full filter blur-[120px]"
+                        className="absolute top-1/3 right-1/4 w-96 h-96 bg-blue-100/50 rounded-full filter blur-[120px]"
                         animate={{ x: [0, -30, 0], y: [0, 20, 0] }}
                         transition={{ duration: 10, repeat: Infinity }}
                     />
@@ -437,8 +437,8 @@ const ServiceDetail = () => {
                 <div className="container-custom relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <FadeUp>
-                            <div className="w-16 h-16 mx-auto mb-6 bg-indigo-50 rounded-2xl flex items-center justify-center shadow-sm">
-                                <Icon className="w-8 h-8 text-indigo-600" />
+                            <div className="w-16 h-16 mx-auto mb-6 bg-blue-50 rounded-2xl flex items-center justify-center shadow-sm">
+                                <Icon className="w-8 h-8 text-blue-600" />
                             </div>
                         </FadeUp>
                         <FadeUp delay={0.1}>
@@ -484,7 +484,7 @@ const ServiceDetail = () => {
                                     className="glass-panel p-6 flex items-start gap-4"
                                     whileHover={{ scale: 1.02, boxShadow: '0 0 40px rgba(75, 163, 218, 0.2)' }}
                                 >
-                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-500 flex items-center justify-center flex-shrink-0 shadow-md">
+                                    <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center flex-shrink-0 shadow-md">
                                         <CheckCircle2 className="w-5 h-5 text-white" />
                                     </div>
                                     <p className="text-slate-700 text-lg font-medium">{feature}</p>
@@ -510,10 +510,10 @@ const ServiceDetail = () => {
             </section>
 
             {/* CTA Section */}
-            <section className="py-24 lg:py-32 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden">
+            <section className="py-24 lg:py-32 bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
                     <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(123,143,163,0.05)_0%,_transparent_50%)]" />
-                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-100/30 rounded-full filter blur-[100px]" />
+                    <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full filter blur-[100px]" />
                 </div>
 
                 <div className="container-custom relative z-10">
@@ -521,7 +521,7 @@ const ServiceDetail = () => {
                         <AnimatedItem>
                             <h2 className="section-title text-slate-900 mb-6">
                                 Ready to Get Started with{' '}
-                                <span className="text-indigo-600 font-extrabold underline decoration-indigo-300 decoration-4 underline-offset-4">{svc.title}</span>?
+                                <span className="text-blue-600 font-extrabold underline decoration-blue-300 decoration-4 underline-offset-4">{svc.title}</span>?
                             </h2>
                         </AnimatedItem>
                         <AnimatedItem>

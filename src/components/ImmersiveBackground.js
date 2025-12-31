@@ -19,7 +19,7 @@ const ImmersiveBackground = ({ children }) => {
                 <div
                     className="absolute w-[600px] h-[600px] rounded-full opacity-60 animate-blob-1"
                     style={{
-                        background: 'radial-gradient(circle, rgba(224, 231, 255, 0.8) 0%, transparent 70%)', // indigo-100
+                        background: 'radial-gradient(circle, rgba(224, 231, 255, 0.8) 0%, transparent 70%)', // blue-100
                         left: '10%',
                         top: '20%',
                         filter: 'blur(60px)',

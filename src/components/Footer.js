@@ -49,7 +49,7 @@ const Footer = () => {
     <motion.li whileHover={{ x: 4 }} transition={{ duration: 0.2 }}>
       <Link
         to={link.href}
-        className="text-slate-500 hover:text-indigo-600 transition-colors text-sm flex items-center group"
+        className="text-slate-500 hover:text-blue-600 transition-colors text-sm flex items-center group"
       >
         <span>{link.name}</span>
         <ArrowUpRight className="w-3 h-3 ml-1 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -61,7 +61,7 @@ const Footer = () => {
     <footer className="bg-slate-50 text-slate-900 relative overflow-hidden border-t border-slate-200">
       {/* Background decoration */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-indigo-50/50 rounded-full filter blur-[150px]" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-blue-50/50 rounded-full filter blur-[150px]" />
         <div className="absolute top-0 right-0 w-64 h-64 bg-sky-50/50 rounded-full filter blur-[100px]" />
       </div>
 
@@ -83,7 +83,7 @@ const Footer = () => {
                 <input
                   type="email"
                   placeholder="Enter your email"
-                  className="w-full sm:w-80 pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-indigo-500 transition-colors shadow-sm"
+                  className="w-full sm:w-80 pl-12 pr-4 py-3 bg-white border border-slate-200 rounded-xl text-slate-900 placeholder-slate-400 focus:outline-none focus:border-blue-500 transition-colors shadow-sm"
                 />
               </div>
               <motion.button
@@ -104,7 +104,7 @@ const Footer = () => {
           {/* Company Info */}
           <div className="lg:col-span-2">
             <Link to="/" className="mb-6 group inline-block">
-              <span className="text-lg font-medium text-slate-900 tracking-[0.25em] uppercase hover:text-indigo-600 transition-colors logo-font">
+              <span className="text-lg font-medium text-slate-900 tracking-[0.25em] uppercase hover:text-blue-600 transition-colors logo-font">
                 KRINOK
               </span>
             </Link>
@@ -120,7 +120,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-white hover:bg-indigo-600 hover:border-indigo-600 transition-all duration-300 shadow-sm"
+                  className="w-10 h-10 rounded-lg bg-white border border-slate-200 flex items-center justify-center text-slate-400 hover:text-white hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 shadow-sm"
                   aria-label={social.label}
                   whileHover={{ y: -3 }}
                 >
@@ -172,13 +172,13 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <div className="flex flex-wrap items-center justify-center md:justify-start gap-x-6 gap-y-2 text-sm text-slate-500">
               <span>© {new Date().getFullYear()} Krinok. All rights reserved.</span>
-              <Link to="/privacy" className="hover:text-indigo-600 transition-colors">
+              <Link to="/privacy" className="hover:text-blue-600 transition-colors">
                 Privacy Policy
               </Link>
-              <Link to="/terms" className="hover:text-indigo-600 transition-colors">
+              <Link to="/terms" className="hover:text-blue-600 transition-colors">
                 Terms of Service
               </Link>
-              <Link to="/cookies" className="hover:text-indigo-600 transition-colors">
+              <Link to="/cookies" className="hover:text-blue-600 transition-colors">
                 Cookie Policy
               </Link>
             </div>

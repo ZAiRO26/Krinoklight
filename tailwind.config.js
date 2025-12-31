@@ -6,20 +6,20 @@ module.exports = {
   theme: {
     extend: {
       // ========================================
-      // POSH LIGHT THEME - Premium Enterprise
-      // Inspired by Stripe, Linear Light
+      // PROFESSIONAL BLUE THEME - Enterprise
+      // Inspired by Stripe, Linear, Salesforce
       // ========================================
       primary: {
-        DEFAULT: '#6366F1',  // Electric Indigo (Keep as accent)
-        hover: '#4F46E5',    // Darker on hover
-        light: '#E0E7FF',    // Very light indigo for backgrounds
-        dark: '#4338CA',
-        muted: '#818CF8',
+        DEFAULT: '#2563EB',  // Blue 600 - Professional Blue
+        hover: '#1D4ED8',    // Blue 700 - Darker on hover
+        light: '#DBEAFE',    // Blue 100 - Light backgrounds
+        dark: '#1E40AF',     // Blue 800
+        muted: '#3B82F6',    // Blue 500
       },
       secondary: {
-        DEFAULT: '#0EA5E9',  // Sky Blue
-        hover: '#0284C7',
-        light: '#E0F2FE',
+        DEFAULT: '#06B6D4',  // Cyan 500 - Accent
+        hover: '#0891B2',    // Cyan 600
+        light: '#CFFAFE',    // Cyan 100
       },
       background: {
         dark: '#FFFFFF',     // Main background -> WHITE
@@ -34,9 +34,9 @@ module.exports = {
         border: '#E2E8F0',   // Light grey border
       },
       accent: {
-        indigo: '#6366F1',
-        violet: '#8B5CF6',
-        sky: '#0EA5E9',
+        blue: '#2563EB',     // Primary blue
+        cyan: '#06B6D4',     // Secondary cyan  
+        sky: '#0EA5E9',      // Sky blue for gradients
         rose: '#F43F5E',
         emerald: '#10B981',
         amber: '#F59E0B',

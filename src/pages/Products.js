@@ -63,7 +63,7 @@ const Products = () => {
                     title: 'Virtual Avatars',
                     description: 'Engaging digital personas for campaigns',
                     features: ['Avatar design', 'Content pipelines', 'Brand storytelling'],
-                    gradient: 'from-violet-500 to-indigo-500',
+                    gradient: 'from-violet-500 to-blue-500',
                 },
                 {
                     id: 'virtual-ai-product-photography',
@@ -131,7 +131,7 @@ const Products = () => {
                     title: 'Business Consultants',
                     description: 'Present your expertise and consulting services',
                     features: ['Case studies', 'ROI stories', 'Resource library'],
-                    gradient: 'from-blue-600 to-indigo-600',
+                    gradient: 'from-blue-600 to-blue-600',
                 },
                 {
                     id: 'investment-consultants',
@@ -191,19 +191,19 @@ const Products = () => {
             {/* Hero Section */}
             <section className="bg-white pt-32 pb-20 relative overflow-hidden">
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-indigo-100/50 rounded-full filter blur-[120px]" />
+                    <div className="absolute top-1/4 right-1/4 w-96 h-96 bg-blue-100/50 rounded-full filter blur-[120px]" />
                 </div>
 
                 <div className="container-custom relative z-10">
                     <div className="text-center max-w-4xl mx-auto">
                         <FadeUp>
-                            <p className="text-indigo-600 font-medium tracking-widest uppercase mb-6">
+                            <p className="text-blue-600 font-medium tracking-widest uppercase mb-6">
                                 Our Products & Services
                             </p>
                         </FadeUp>
                         <FadeUp delay={0.1}>
                             <h1 className="section-title text-slate-900 mb-6 leading-tight">
-                                <span className="text-indigo-600">{allProducts.length}+</span> Solutions for Every Client
+                                <span className="text-blue-600">{allProducts.length}+</span> Solutions for Every Client
                             </h1>
                         </FadeUp>
                         <FadeUp delay={0.2}>
@@ -238,14 +238,14 @@ const Products = () => {
                                         to={`/services/${product.id}`}
                                         className="group block h-full"
                                     >
-                                        <div className="bg-white p-6 h-full flex flex-col rounded-2xl border border-slate-200 transition-all duration-300 hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/10 hover:-translate-y-1">
+                                        <div className="bg-white p-6 h-full flex flex-col rounded-2xl border border-slate-200 transition-all duration-300 hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1">
                                             {/* Icon */}
                                             <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${product.gradient} flex items-center justify-center mb-4 shadow-sm`}>
                                                 <product.icon className="w-6 h-6 text-white" />
                                             </div>
 
                                             {/* Title & Description */}
-                                            <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-2">
+                                            <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-2">
                                                 {product.title}
                                             </h3>
                                             <p className="text-slate-600 text-sm mb-4 flex-grow">
@@ -256,14 +256,14 @@ const Products = () => {
                                             <ul className="space-y-2 mb-4">
                                                 {product.features.map((feature, idx) => (
                                                     <li key={idx} className="flex items-center text-slate-500 text-sm">
-                                                        <div className="w-1.5 h-1.5 rounded-full bg-indigo-500 mr-2" />
+                                                        <div className="w-1.5 h-1.5 rounded-full bg-blue-500 mr-2" />
                                                         {feature}
                                                     </li>
                                                 ))}
                                             </ul>
 
                                             {/* CTA */}
-                                            <div className="flex items-center text-indigo-600 font-medium group-hover:text-indigo-700 transition-colors">
+                                            <div className="flex items-center text-blue-600 font-medium group-hover:text-blue-700 transition-colors">
                                                 <span>Learn more</span>
                                                 <ArrowRight className="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" />
                                             </div>
@@ -290,7 +290,7 @@ const Products = () => {
                             </h2>
                         </AnimatedItem>
                         <AnimatedItem>
-                            <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
+                            <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
                                 We build custom solutions for unique business challenges. Let's discuss your project.
                             </p>
                         </AnimatedItem>

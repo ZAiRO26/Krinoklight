@@ -94,7 +94,7 @@ const About = () => {
       <section className="bg-white pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <motion.div
-            className="absolute top-1/3 left-1/4 w-96 h-96 bg-indigo-100/50 rounded-full filter blur-[120px]"
+            className="absolute top-1/3 left-1/4 w-96 h-96 bg-blue-100/50 rounded-full filter blur-[120px]"
             animate={{ x: [0, 30, 0], y: [0, -20, 0] }}
             transition={{ duration: 10, repeat: Infinity }}
           />
@@ -103,13 +103,13 @@ const About = () => {
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <FadeUp>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-6">
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-6">
                 Who We Are
               </p>
             </FadeUp>
             <FadeUp delay={0.1}>
               <h1 className="section-title text-slate-900 mb-6 leading-tight">
-                About <span className="text-indigo-600">Krinok</span>
+                About <span className="text-blue-600">Krinok</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
@@ -127,11 +127,11 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <AnimatedSection>
               <AnimatedItem>
-                <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Our Mission</p>
+                <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Our Mission</p>
               </AnimatedItem>
               <AnimatedItem>
                 <h2 className="section-title text-slate-900 mb-6">
-                  Transforming <span className="text-indigo-600">Ideas</span> Into Reality
+                  Transforming <span className="text-blue-600">Ideas</span> Into Reality
                 </h2>
               </AnimatedItem>
               <AnimatedItem>
@@ -158,7 +158,7 @@ const About = () => {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.3 }}
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500 to-purple-500 rounded-2xl transform rotate-3 opacity-20" />
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl transform rotate-3 opacity-20" />
                 <img
                   src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=600&h=400&fit=crop"
                   alt="Krinok team"
@@ -171,7 +171,7 @@ const About = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-indigo-600 relative overflow-hidden">
+      <section className="section-padding bg-blue-600 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-white/10 rounded-full filter blur-[150px]" />
         </div>
@@ -190,7 +190,7 @@ const About = () => {
                   >
                     {stat.value}
                   </motion.p>
-                  <p className="text-indigo-100 font-medium">{stat.label}</p>
+                  <p className="text-blue-100 font-medium">{stat.label}</p>
                 </div>
               </AnimatedItem>
             ))}
@@ -203,11 +203,11 @@ const About = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">What Drives Us</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">What Drives Us</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Our <span className="text-indigo-600">Values</span>
+                Our <span className="text-blue-600">Values</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
@@ -241,11 +241,11 @@ const About = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Life at Krinok</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Life at Krinok</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Our <span className="text-indigo-600">Culture</span>
+                Our <span className="text-blue-600">Culture</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -258,7 +258,7 @@ const About = () => {
               >
                 <AnimatedItem className={index % 2 === 1 ? 'lg:order-2' : ''}>
                   <div className="flex items-center gap-4 mb-4">
-                    <div className="icon-container bg-indigo-50 border border-indigo-100 text-indigo-600">
+                    <div className="icon-container bg-blue-50 border border-blue-100 text-blue-600">
                       <item.icon className="w-5 h-5" />
                     </div>
                     <h3 className="text-2xl font-bold text-slate-900">{item.title}</h3>
@@ -294,11 +294,11 @@ const About = () => {
           <AnimatedSection className="text-center">
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Join Our <span className="text-indigo-200">Team</span>
+                Join Our <span className="text-blue-200">Team</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
                 We're always looking for talented individuals who share our passion for technology and innovation.
               </p>
             </AnimatedItem>

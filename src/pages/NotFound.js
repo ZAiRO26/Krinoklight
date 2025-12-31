@@ -10,7 +10,7 @@ const NotFound = () => {
             {/* Background decoration */}
             <div className="absolute inset-0 pointer-events-none">
                 <motion.div
-                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-indigo-200/40 rounded-full filter blur-[120px]"
+                    className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-200/40 rounded-full filter blur-[120px]"
                     animate={{ x: [0, 50, 0], y: [0, 30, 0] }}
                     transition={{ duration: 8, repeat: Infinity }}
                 />
@@ -82,7 +82,7 @@ const NotFound = () => {
                                 <Link
                                     key={page}
                                     to={`/${page.toLowerCase()}`}
-                                    className="text-indigo-600 hover:text-indigo-800 transition-colors flex items-center gap-1"
+                                    className="text-blue-600 hover:text-indigo-800 transition-colors flex items-center gap-1"
                                 >
                                     {page}
                                     <ArrowRight className="w-3 h-3" />

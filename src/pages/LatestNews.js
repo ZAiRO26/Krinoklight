@@ -173,12 +173,12 @@ const LatestNews = () => {
             className={`relative group ${article.featured ? 'md:col-span-2' : ''}`}
         >
             <div className="h-full bg-white border border-slate-200 rounded-2xl overflow-hidden
-                      hover:border-indigo-500/30 hover:shadow-xl hover:shadow-indigo-500/10
+                      hover:border-blue-500/30 hover:shadow-xl hover:shadow-blue-500/10
                       transition-all duration-500 hover:-translate-y-1">
 
                 {/* Featured Badge */}
                 {article.featured && (
-                    <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-gradient-to-r from-indigo-600 to-violet-600 
+                    <div className="absolute top-4 right-4 z-10 px-3 py-1 bg-gradient-to-r from-blue-600 to-cyan-500 
                           rounded-full text-xs font-semibold flex items-center gap-1 text-white shadow-md">
                         <Star className="w-3 h-3" />
                         Featured
@@ -192,7 +192,7 @@ const LatestNews = () => {
                     <div className="flex-1 p-6">
                         {/* Source & Date */}
                         <div className="flex items-center gap-3 text-sm text-slate-400 mb-3">
-                            <span className="px-2 py-1 bg-indigo-50 text-indigo-600 rounded-md text-xs font-medium uppercase tracking-wide">
+                            <span className="px-2 py-1 bg-blue-50 text-blue-600 rounded-md text-xs font-medium uppercase tracking-wide">
                                 {article.source}
                             </span>
                             <span className="flex items-center gap-1">
@@ -208,11 +208,11 @@ const LatestNews = () => {
                             rel="noopener noreferrer"
                             className="group/link"
                         >
-                            <h3 className={`font-bold text-slate-900 mb-3 group-hover/link:text-indigo-600 
+                            <h3 className={`font-bold text-slate-900 mb-3 group-hover/link:text-blue-600 
                                  transition-colors leading-tight ${article.featured ? 'text-2xl' : 'text-lg'}`}>
                                 {article.title}
                                 <ExternalLink className="w-4 h-4 ml-2 inline opacity-0 group-hover/link:opacity-100 
-                                             transition-opacity text-indigo-500" />
+                                             transition-opacity text-blue-500" />
                             </h3>
                         </a>
 
@@ -222,11 +222,11 @@ const LatestNews = () => {
                         </p>
 
                         {/* Business Angle - Styled Differently */}
-                        <div className="p-3 bg-indigo-50 border-l-4 border-indigo-500 rounded-r-lg mb-3">
+                        <div className="p-3 bg-blue-50 border-l-4 border-blue-500 rounded-r-lg mb-3">
                             <div className="flex items-start gap-2">
-                                <TrendingUp className="w-4 h-4 mt-0.5 text-indigo-600 flex-shrink-0" />
+                                <TrendingUp className="w-4 h-4 mt-0.5 text-blue-600 flex-shrink-0" />
                                 <p className="text-xs text-indigo-900 italic">
-                                    <span className="font-semibold text-indigo-700">Why this matters: </span>
+                                    <span className="font-semibold text-blue-700">Why this matters: </span>
                                     {article.businessAngle}
                                 </p>
                             </div>
@@ -234,7 +234,7 @@ const LatestNews = () => {
 
                         {/* Curated Tag */}
                         <div className="flex items-center gap-2 text-xs text-slate-500">
-                            <Sparkles className="w-3.5 h-3.5 text-indigo-500" />
+                            <Sparkles className="w-3.5 h-3.5 text-blue-500" />
                             <span>Curated by Krinok AI</span>
                         </div>
                     </div>
@@ -316,7 +316,7 @@ const LatestNews = () => {
                     {/* Loading State */}
                     {loading && (
                         <div className="flex flex-col items-center justify-center py-20">
-                            <div className="w-12 h-12 border-2 border-indigo-600 border-t-transparent 
+                            <div className="w-12 h-12 border-2 border-blue-600 border-t-transparent 
                                   rounded-full animate-spin mb-4" />
                             <p className="text-slate-500">Loading latest news...</p>
                         </div>

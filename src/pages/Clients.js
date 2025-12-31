@@ -104,13 +104,13 @@ const Clients = () => {
         <div className="container-custom relative z-10">
           <div className="text-center max-w-4xl mx-auto">
             <FadeUp>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-6">
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-6">
                 Success Stories
               </p>
             </FadeUp>
             <FadeUp delay={0.1}>
               <h1 className="section-title text-slate-900 mb-6 leading-tight">
-                Our <span className="text-indigo-600">Clients</span>
+                Our <span className="text-blue-600">Clients</span>
               </h1>
             </FadeUp>
             <FadeUp delay={0.2}>
@@ -123,7 +123,7 @@ const Clients = () => {
       </section>
 
       {/* Stats Section */}
-      <section className="section-padding bg-indigo-600">
+      <section className="section-padding bg-blue-600">
         <div className="container-custom">
           <AnimatedSection className="grid grid-cols-2 md:grid-cols-4 gap-8" staggerChildren={0.1}>
             {stats.map((stat, index) => (
@@ -137,7 +137,7 @@ const Clients = () => {
                   >
                     {stat.value}
                   </motion.p>
-                  <p className="text-indigo-100 font-medium">{stat.label}</p>
+                  <p className="text-blue-100 font-medium">{stat.label}</p>
                 </div>
               </AnimatedItem>
             ))}
@@ -160,11 +160,11 @@ const Clients = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Case Studies</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Case Studies</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Featured <span className="text-indigo-600">Projects</span>
+                Featured <span className="text-blue-600">Projects</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -184,7 +184,7 @@ const Clients = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-80" />
                     <div className="absolute bottom-6 left-6">
-                      <span className="inline-block px-3 py-1 bg-white/90 text-indigo-600 text-sm font-medium rounded-full backdrop-blur-sm shadow-sm">
+                      <span className="inline-block px-3 py-1 bg-white/90 text-blue-600 text-sm font-medium rounded-full backdrop-blur-sm shadow-sm">
                         {study.category}
                       </span>
                     </div>
@@ -204,14 +204,14 @@ const Clients = () => {
                     </div>
                     <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
                       <div className="flex items-center justify-center gap-1">
-                        <Clock className="w-3 h-3 text-indigo-600" />
+                        <Clock className="w-3 h-3 text-blue-600" />
                         <p className="font-bold text-slate-900 text-sm">{study.duration}</p>
                       </div>
                       <p className="text-xs text-slate-500">Duration</p>
                     </div>
                     <div className="bg-white p-4 rounded-xl shadow-sm border border-slate-200 text-center">
                       <div className="flex items-center justify-center gap-1">
-                        <Users className="w-3 h-3 text-indigo-600" />
+                        <Users className="w-3 h-3 text-blue-600" />
                         <p className="font-bold text-slate-900 text-sm">{study.team}</p>
                       </div>
                       <p className="text-xs text-slate-500">Team</p>
@@ -223,7 +223,7 @@ const Clients = () => {
                     <ul className="space-y-2">
                       {study.results.map((result, idx) => (
                         <li key={idx} className="flex items-center text-slate-600">
-                          <CheckCircle2 className="w-4 h-4 text-indigo-600 mr-3 flex-shrink-0" />
+                          <CheckCircle2 className="w-4 h-4 text-blue-600 mr-3 flex-shrink-0" />
                           {result}
                         </li>
                       ))}
@@ -246,11 +246,11 @@ const Clients = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Testimonials</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Testimonials</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Client <span className="text-indigo-600">Feedback</span>
+                Client <span className="text-blue-600">Feedback</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -271,7 +271,7 @@ const Clients = () => {
                   <div>
                     <h4 className="font-bold text-slate-900">{testimonial.name}</h4>
                     <p className="text-sm text-slate-500">{testimonial.role}</p>
-                    <p className="text-sm font-medium text-indigo-600">{testimonial.company}</p>
+                    <p className="text-sm font-medium text-blue-600">{testimonial.company}</p>
                   </div>
                 </motion.div>
               </AnimatedItem>
@@ -290,11 +290,11 @@ const Clients = () => {
           <AnimatedSection className="text-center">
             <AnimatedItem>
               <h2 className="section-title text-white mb-6">
-                Ready to Join Our <span className="text-indigo-200">Success Stories</span>?
+                Ready to Join Our <span className="text-blue-200">Success Stories</span>?
               </h2>
             </AnimatedItem>
             <AnimatedItem>
-              <p className="text-xl text-indigo-100 mb-10 max-w-2xl mx-auto">
+              <p className="text-xl text-blue-100 mb-10 max-w-2xl mx-auto">
                 Let's discuss how we can help you achieve similar results for your business.
               </p>
             </AnimatedItem>

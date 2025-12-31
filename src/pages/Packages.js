@@ -23,7 +23,7 @@ const Packages = () => {
         >
             <div
                 className={`relative w-12 h-7 rounded-full transition-all duration-300 ${enabled
-                    ? 'bg-gradient-to-r from-indigo-500 to-indigo-600 shadow-inner'
+                    ? 'bg-gradient-to-r from-blue-500 to-blue-600 shadow-inner'
                     : 'bg-slate-200'
                     }`}
             >
@@ -33,7 +33,7 @@ const Packages = () => {
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
                 />
             </div>
-            <span className={`text-sm font-medium transition-colors ${enabled ? 'text-indigo-600' : 'text-slate-600'}`}>
+            <span className={`text-sm font-medium transition-colors ${enabled ? 'text-blue-600' : 'text-slate-600'}`}>
                 {label}
             </span>
         </button>
@@ -55,7 +55,7 @@ const Packages = () => {
     // Feature Item Component
     const FeatureItem = ({ children }) => (
         <li className="flex items-start gap-3 group">
-            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center flex-shrink-0 mt-0.5 text-white shadow-sm group-hover:scale-110 transition-transform">
+            <div className="w-6 h-6 rounded-full bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center flex-shrink-0 mt-0.5 text-white shadow-sm group-hover:scale-110 transition-transform">
                 <Check className="w-3.5 h-3.5" strokeWidth={3} />
             </div>
             <span className="text-slate-600 font-medium group-hover:text-slate-900 transition-colors">{children}</span>
@@ -80,7 +80,7 @@ const Packages = () => {
         <motion.div
             className={`relative rounded-3xl p-8 h-full flex flex-col
         ${featured
-                    ? 'bg-white border-2 border-indigo-500 shadow-2xl shadow-indigo-100'
+                    ? 'bg-white border-2 border-blue-500 shadow-2xl shadow-blue-100'
                     : 'bg-white border border-slate-200 shadow-xl shadow-slate-200/50'
                 }
         backdrop-blur-lg
@@ -101,7 +101,7 @@ const Packages = () => {
             {featured && (
                 <div className="absolute -top-4 left-1/2 -translate-x-1/2">
                     <motion.div
-                        className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 px-6 py-2 rounded-full text-sm font-bold text-white shadow-xl shadow-indigo-300/50 flex items-center gap-2"
+                        className="bg-gradient-to-r from-blue-600 to-cyan-500 px-6 py-2 rounded-full text-sm font-bold text-white shadow-xl shadow-blue-300/50 flex items-center gap-2"
                         animate={{ y: [0, -3, 0] }}
                         transition={{ duration: 2, repeat: Infinity }}
                     >
@@ -114,10 +114,10 @@ const Packages = () => {
             {/* Tier Badge */}
             <div className="flex items-center gap-3 mb-6">
                 <div className={`w-12 h-12 rounded-2xl flex items-center justify-center ${featured
-                    ? 'bg-indigo-50'
+                    ? 'bg-blue-50'
                     : 'bg-slate-50 border border-slate-100'
                     }`}>
-                    <Icon className={`w-6 h-6 ${featured ? 'text-indigo-600' : 'text-slate-500'}`} />
+                    <Icon className={`w-6 h-6 ${featured ? 'text-blue-600' : 'text-slate-500'}`} />
                 </div>
                 <div>
                     <p className="text-xs uppercase tracking-wider text-slate-500 font-bold">{tier}</p>
@@ -172,7 +172,7 @@ const Packages = () => {
                                             className="mt-3 pl-15"
                                         >
                                             <p className="text-xs text-slate-500 mb-2">{addon.description}</p>
-                                            <p className="text-sm font-bold text-indigo-600">{addon.price}</p>
+                                            <p className="text-sm font-bold text-blue-600">{addon.price}</p>
                                         </motion.div>
                                     )}
                                 </AnimatePresence>
@@ -187,8 +187,8 @@ const Packages = () => {
                 to={ctaLink || '/contact'}
                 className={`w-full py-4 rounded-xl font-semibold text-center transition-all duration-300 flex items-center justify-center gap-2 group
           ${featured
-                        ? 'bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 text-white hover:shadow-xl hover:shadow-indigo-300/50 hover:scale-[1.02]'
-                        : 'bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 hover:border-indigo-400'
+                        ? 'bg-gradient-to-r from-blue-600 to-cyan-500 text-white hover:shadow-xl hover:shadow-blue-300/50 hover:scale-[1.02]'
+                        : 'bg-slate-800 border border-slate-700 text-white hover:bg-slate-700 hover:border-blue-400'
                     }
         `}
             >
@@ -204,16 +204,16 @@ const Packages = () => {
             <section className="relative pt-32 pb-24 overflow-hidden">
                 {/* Enhanced Background Effects */}
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-indigo-200/30 rounded-full blur-[100px]" />
+                    <div className="absolute top-0 left-1/4 w-[600px] h-[600px] bg-blue-200/30 rounded-full blur-[100px]" />
                     <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-200/30 rounded-full blur-[100px]" />
-                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-indigo-100/20 via-violet-100/20 to-purple-100/20 rounded-full blur-[80px]" />
+                    <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-blue-100/20 via-violet-100/20 to-purple-100/20 rounded-full blur-[80px]" />
                 </div>
 
                 {/* Floating Decorative Elements */}
                 <div className="absolute inset-0 pointer-events-none overflow-hidden">
                     <FloatingElement className="absolute top-20 left-20" delay={0} amplitude={15}>
-                        <div className="w-16 h-16 bg-indigo-100 rounded-2xl shadow-lg flex items-center justify-center">
-                            <Zap className="w-8 h-8 text-indigo-500" />
+                        <div className="w-16 h-16 bg-blue-100 rounded-2xl shadow-lg flex items-center justify-center">
+                            <Zap className="w-8 h-8 text-blue-500" />
                         </div>
                     </FloatingElement>
                     <FloatingElement className="absolute top-32 right-24" delay={0.5} amplitude={20}>
@@ -231,15 +231,15 @@ const Packages = () => {
                 <div className="container-custom relative z-10">
                     <AnimatedSection className="text-center max-w-4xl mx-auto">
                         <AnimatedItem>
-                            <div className="inline-flex items-center gap-2 px-5 py-2 bg-indigo-50 border border-indigo-100 rounded-full mb-6">
-                                <Sparkles className="w-4 h-4 text-indigo-600" />
-                                <span className="text-indigo-600 font-semibold text-sm tracking-wide uppercase">Transparent Pricing</span>
+                            <div className="inline-flex items-center gap-2 px-5 py-2 bg-blue-50 border border-blue-100 rounded-full mb-6">
+                                <Sparkles className="w-4 h-4 text-blue-600" />
+                                <span className="text-blue-600 font-semibold text-sm tracking-wide uppercase">Transparent Pricing</span>
                             </div>
                         </AnimatedItem>
                         <AnimatedItem>
                             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-display text-slate-900 mb-8 leading-tight">
                                 Tailored Solutions for Every{' '}
-                                <span className="bg-gradient-to-r from-indigo-600 via-violet-600 to-purple-600 bg-clip-text text-transparent">Stage of Growth</span>
+                                <span className="bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">Stage of Growth</span>
                             </h1>
                         </AnimatedItem>
                         <AnimatedItem>
@@ -257,7 +257,7 @@ const Packages = () => {
                                     { icon: Users, text: "Dedicated Support" }
                                 ].map((item, idx) => (
                                     <div key={idx} className="flex items-center gap-2 text-slate-500">
-                                        <item.icon className="w-5 h-5 text-indigo-500" />
+                                        <item.icon className="w-5 h-5 text-blue-500" />
                                         <span className="font-medium">{item.text}</span>
                                     </div>
                                 ))}
@@ -369,7 +369,7 @@ const Packages = () => {
             <section className="section-padding bg-gradient-to-b from-slate-50 to-white relative overflow-hidden">
                 {/* Background Decoration */}
                 <div className="absolute inset-0 pointer-events-none">
-                    <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-indigo-200 to-transparent" />
+                    <div className="absolute top-1/2 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-200 to-transparent" />
                 </div>
 
                 <div className="container-custom relative z-10">
@@ -381,13 +381,13 @@ const Packages = () => {
                         ].map((stat, idx) => (
                             <AnimatedItem key={idx}>
                                 <motion.div
-                                    className="p-8 bg-white border border-slate-100 rounded-2xl shadow-lg shadow-slate-200/50 hover:shadow-xl hover:border-indigo-200 transition-all duration-300"
+                                    className="p-8 bg-white border border-slate-100 rounded-2xl shadow-lg shadow-slate-200/50 hover:shadow-xl hover:border-blue-200 transition-all duration-300"
                                     whileHover={{ y: -5, scale: 1.02 }}
                                 >
-                                    <div className="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-indigo-100 to-violet-100 rounded-xl flex items-center justify-center">
-                                        <stat.icon className="w-7 h-7 text-indigo-600" />
+                                    <div className="w-14 h-14 mx-auto mb-4 bg-gradient-to-br from-blue-100 to-violet-100 rounded-xl flex items-center justify-center">
+                                        <stat.icon className="w-7 h-7 text-blue-600" />
                                     </div>
-                                    <div className="text-5xl font-bold bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent mb-3">{stat.value}</div>
+                                    <div className="text-5xl font-bold bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent mb-3">{stat.value}</div>
                                     <p className="text-slate-600 font-medium">{stat.label}</p>
                                 </motion.div>
                             </AnimatedItem>

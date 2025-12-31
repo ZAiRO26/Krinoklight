@@ -130,7 +130,7 @@ const Home = () => {
           <div className="text-center max-w-5xl mx-auto">
             <FadeUp delay={0.2}>
               <h1 className="section-title-xl text-white mb-8 drop-shadow-lg">
-                Your <span className="headline-serif-italic text-indigo-400">Vision,</span>
+                Your <span className="headline-serif-italic text-blue-400">Vision,</span>
                 <br />
                 <SplitText
                   className="headline-serif-bold"
@@ -182,7 +182,7 @@ const Home = () => {
         >
           <div className="w-6 h-10 border-2 border-slate-300 rounded-full flex justify-center pt-2">
             <motion.div
-              className="w-1.5 h-3 bg-indigo-600 rounded-full"
+              className="w-1.5 h-3 bg-blue-600 rounded-full"
               animate={{ y: [0, 12, 0], opacity: [1, 0.5, 1] }}
               transition={{ duration: 2, repeat: Infinity }}
             />
@@ -195,11 +195,11 @@ const Home = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">What We Do</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">What We Do</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Comprehensive <span className="text-indigo-600">Digital Services</span>
+                Comprehensive <span className="text-blue-600">Digital Services</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
@@ -215,20 +215,20 @@ const Home = () => {
               <Card3DReveal key={service.title}>
                 <Link to={service.href} className="h-full block">
                   <motion.div
-                    className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-200 h-full flex flex-col group cursor-pointer transition-all duration-300"
+                    className="p-8 rounded-2xl bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-200 h-full flex flex-col group cursor-pointer transition-all duration-300"
                     whileHover={{ scale: 1.02 }}
                     transition={{ duration: 0.3 }}
                   >
-                    <div className="icon-container mb-6 bg-indigo-50 border border-indigo-100 text-indigo-600">
+                    <div className="icon-container mb-6 bg-blue-50 border border-blue-100 text-blue-600">
                       <service.icon className="w-6 h-6" />
                     </div>
-                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                       {service.title}
                     </h3>
                     <p className="text-slate-600 leading-relaxed flex-grow">
                       {service.desc}
                     </p>
-                    <div className="mt-6 flex items-center text-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="mt-6 flex items-center text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                       <span className="font-medium">Learn more</span>
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </div>
@@ -245,11 +245,11 @@ const Home = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Our Work</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Our Work</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Design, Engineering & <span className="text-indigo-600">Applied AI</span>
+                Design, Engineering & <span className="text-blue-600">Applied AI</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
@@ -263,7 +263,7 @@ const Home = () => {
             {caseStudies.map((study) => (
               <AnimatedItem key={study.id}>
                 <motion.div
-                  className="group cursor-pointer h-full flex flex-col rounded-3xl overflow-hidden bg-white border border-slate-200 hover:border-indigo-300 transition-all duration-500 shadow-lg hover:shadow-xl"
+                  className="group cursor-pointer h-full flex flex-col rounded-3xl overflow-hidden bg-white border border-slate-200 hover:border-blue-300 transition-all duration-500 shadow-lg hover:shadow-xl"
                   whileHover={{ y: -8 }}
                 >
                   {/* Image Section */}
@@ -278,7 +278,7 @@ const Home = () => {
                     {/* Impact Stat Badge - Top Right */}
                     <div className="absolute top-4 right-4">
                       <div className="bg-white/90 backdrop-blur-md border border-slate-200 px-4 py-2 rounded-xl text-center min-w-[100px] shadow-md">
-                        <p className="text-xl font-bold text-indigo-600 leading-none mb-1">{study.result}</p>
+                        <p className="text-xl font-bold text-blue-600 leading-none mb-1">{study.result}</p>
                         <p className="text-xs text-slate-500 font-medium uppercase tracking-wide">{study.resultText}</p>
                       </div>
                     </div>
@@ -288,13 +288,13 @@ const Home = () => {
                   <div className="p-8 flex-grow flex flex-col bg-white">
                     <div className="flex flex-wrap gap-2 mb-4">
                       {study.tags.map((tag, idx) => (
-                        <span key={idx} className="px-3 py-1 bg-indigo-50 text-indigo-600 text-xs font-medium rounded-full border border-indigo-100">
+                        <span key={idx} className="px-3 py-1 bg-blue-50 text-blue-600 text-xs font-medium rounded-full border border-blue-100">
                           {tag}
                         </span>
                       ))}
                     </div>
 
-                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors mb-4 leading-tight">
+                    <h3 className="text-2xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-4 leading-tight">
                       {study.title}
                     </h3>
 
@@ -302,7 +302,7 @@ const Home = () => {
                       {study.subtitle}
                     </p>
 
-                    <div className="mt-6 pt-6 border-t border-slate-100 flex items-center text-indigo-600 opacity-80 group-hover:opacity-100 transition-opacity">
+                    <div className="mt-6 pt-6 border-t border-slate-100 flex items-center text-blue-600 opacity-80 group-hover:opacity-100 transition-opacity">
                       <span className="font-medium text-sm">View details</span>
                       <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
                     </div>
@@ -328,11 +328,11 @@ const Home = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Who We Help</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Who We Help</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Industries We <span className="text-indigo-600">Serve</span>
+                Industries We <span className="text-blue-600">Serve</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -352,10 +352,10 @@ const Home = () => {
             ].map((industry, index) => (
               <AnimatedItem key={index}>
                 <motion.div
-                  className="flex flex-col items-center p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-indigo-200 hover:bg-white hover:shadow-lg transition-all duration-300 group"
+                  className="flex flex-col items-center p-6 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-lg transition-all duration-300 group"
                   whileHover={{ y: -5 }}
                 >
-                  <industry.icon className="w-10 h-10 text-indigo-600 mb-4 group-hover:scale-110 transition-transform" />
+                  <industry.icon className="w-10 h-10 text-blue-600 mb-4 group-hover:scale-110 transition-transform" />
                   <span className="text-slate-700 font-medium text-sm text-center">{industry.label}</span>
                 </motion.div>
               </AnimatedItem>
@@ -369,11 +369,11 @@ const Home = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">How We Work</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">How We Work</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Our Execution <span className="text-indigo-600">Process</span>
+                Our Execution <span className="text-blue-600">Process</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -389,14 +389,14 @@ const Home = () => {
             ].map((process, index) => (
               <AnimatedItem key={index}>
                 <motion.div
-                  className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-indigo-200 transition-all duration-300 h-full group relative"
+                  className="bg-white p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-xl hover:border-blue-200 transition-all duration-300 h-full group relative"
                   whileHover={{ y: -8 }}
                 >
-                  <div className="absolute top-6 right-6 text-4xl font-bold text-indigo-100 group-hover:text-indigo-200 transition-colors">
+                  <div className="absolute top-6 right-6 text-4xl font-bold text-blue-100 group-hover:text-blue-200 transition-colors">
                     {process.step}
                   </div>
-                  <process.icon className="w-12 h-12 text-indigo-600 mb-6 group-hover:scale-110 transition-transform" />
-                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-indigo-600 transition-colors">
+                  <process.icon className="w-12 h-12 text-blue-600 mb-6 group-hover:scale-110 transition-transform" />
+                  <h3 className="text-xl font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors">
                     {process.title}
                   </h3>
                   <p className="text-slate-600 text-sm leading-relaxed">
@@ -414,11 +414,11 @@ const Home = () => {
         <div className="container-custom">
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
-              <p className="text-indigo-600 font-medium tracking-widest uppercase mb-4">Our Expertise</p>
+              <p className="text-blue-600 font-medium tracking-widest uppercase mb-4">Our Expertise</p>
             </AnimatedItem>
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Tools & Tech <span className="text-indigo-600">Stack</span>
+                Tools & Tech <span className="text-blue-600">Stack</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -458,12 +458,12 @@ const Home = () => {
             ].map((stack, index) => (
               <AnimatedItem key={index}>
                 <motion.div
-                  className="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-indigo-200 hover:bg-white hover:shadow-lg transition-all duration-300 h-full group"
+                  className="bg-slate-50 p-8 rounded-2xl border border-slate-100 hover:border-blue-200 hover:bg-white hover:shadow-lg transition-all duration-300 h-full group"
                   whileHover={{ y: -5 }}
                 >
                   <div className="flex items-center mb-6">
-                    <stack.icon className="w-10 h-10 text-indigo-600 mr-4 group-hover:scale-110 transition-transform" />
-                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-indigo-600 transition-colors">
+                    <stack.icon className="w-10 h-10 text-blue-600 mr-4 group-hover:scale-110 transition-transform" />
+                    <h3 className="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                       {stack.category}
                     </h3>
                   </div>
@@ -471,7 +471,7 @@ const Home = () => {
                     {stack.techs.map((tech, idx) => (
                       <span
                         key={idx}
-                        className="px-3 py-1.5 bg-white text-slate-600 text-sm rounded-full border border-slate-200 hover:border-indigo-300 hover:text-indigo-600 transition-colors"
+                        className="px-3 py-1.5 bg-white text-slate-600 text-sm rounded-full border border-slate-200 hover:border-blue-300 hover:text-blue-600 transition-colors"
                       >
                         {tech}
                       </span>
@@ -489,7 +489,7 @@ const Home = () => {
         {/* Floating decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <FloatingElement className="absolute top-20 left-10" delay={0} amplitude={20}>
-            <div className="w-32 h-32 bg-indigo-200/20 rounded-full blur-2xl" />
+            <div className="w-32 h-32 bg-blue-200/20 rounded-full blur-2xl" />
           </FloatingElement>
           <FloatingElement className="absolute bottom-20 right-10" delay={1} amplitude={15}>
             <div className="w-48 h-48 bg-purple-200/20 rounded-full blur-3xl" />
@@ -500,7 +500,7 @@ const Home = () => {
           <AnimatedSection className="text-center mb-16">
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
-                Meet our <span className="text-indigo-600">Team</span>
+                Meet our <span className="text-blue-600">Team</span>
               </h2>
             </AnimatedItem>
           </AnimatedSection>
@@ -521,13 +521,13 @@ const Home = () => {
                     <motion.img
                       src={member.avatar}
                       alt={member.name}
-                      className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-slate-100 group-hover:border-indigo-500 transition-colors duration-300"
+                      className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-slate-100 group-hover:border-blue-500 transition-colors duration-300"
                       whileHover={{ scale: 1.1, rotate: 5 }}
                       transition={{ type: "spring", stiffness: 300 }}
                     />
                     <div>
-                      <h4 className="font-bold text-slate-900 text-lg group-hover:text-indigo-600 transition-colors duration-300">{member.name}</h4>
-                      <p className="text-sm text-indigo-500 font-medium">{member.role}</p>
+                      <h4 className="font-bold text-slate-900 text-lg group-hover:text-blue-600 transition-colors duration-300">{member.name}</h4>
+                      <p className="text-sm text-blue-500 font-medium">{member.role}</p>
                     </div>
                   </div>
                   <p className="text-slate-600 leading-relaxed">{member.description}</p>
@@ -539,11 +539,11 @@ const Home = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 lg:py-32 bg-gradient-to-br from-indigo-50 via-white to-purple-50 relative overflow-hidden">
+      <section className="py-24 lg:py-32 bg-gradient-to-br from-blue-50 via-white to-purple-50 relative overflow-hidden">
         {/* Decorative elements */}
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top_left,_rgba(123,143,163,0.05)_0%,_transparent_50%)]" />
-          <div className="absolute bottom-0 right-0 w-96 h-96 bg-indigo-100/30 rounded-full filter blur-[100px]" />
+          <div className="absolute bottom-0 right-0 w-96 h-96 bg-blue-100/30 rounded-full filter blur-[100px]" />
         </div>
 
         <div className="container-custom relative z-10">
@@ -551,7 +551,7 @@ const Home = () => {
             <AnimatedItem>
               <h2 className="section-title text-slate-900 mb-6">
                 Ready to Build Something <br className="hidden md:block" />
-                <span className="text-indigo-600">Amazing?</span>
+                <span className="text-blue-600">Amazing?</span>
               </h2>
             </AnimatedItem>
             <AnimatedItem>
