@@ -41,7 +41,7 @@ const Footer = () => {
     { icon: Linkedin, href: '#', label: 'LinkedIn' },
     { icon: Twitter, href: '#', label: 'Twitter' },
     { icon: Facebook, href: 'https://www.facebook.com/profile.php?id=61585833633573', label: 'Facebook' },
-    { icon: Instagram, href: '#', label: 'Instagram' },
+    { icon: Instagram, href: 'https://www.instagram.com/krinok.dev/', label: 'Instagram' },
     { icon: Youtube, href: '#', label: 'YouTube' },
   ];
 

@@ -272,7 +272,7 @@ const Contact = () => {
                       <Facebook className="w-4 h-4" />
                       <span className="text-sm">Facebook</span>
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-pink-500 hover:text-pink-600 transition-colors">
+                    <a href="https://www.instagram.com/krinok.dev/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg border border-slate-200 hover:border-pink-500 hover:text-pink-600 transition-colors">
                       <Instagram className="w-4 h-4" />
                       <span className="text-sm">Instagram</span>
                     </a>
