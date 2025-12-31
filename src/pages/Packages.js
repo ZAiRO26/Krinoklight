@@ -209,24 +209,6 @@ const Packages = () => {
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-gradient-to-r from-blue-100/20 via-violet-100/20 to-purple-100/20 rounded-full blur-[80px]" />
                 </div>
 
-                {/* Floating Decorative Elements */}
-                <div className="absolute inset-0 pointer-events-none overflow-hidden">
-                    <FloatingElement className="absolute top-20 left-20" delay={0} amplitude={15}>
-                        <div className="w-16 h-16 bg-blue-100 rounded-2xl shadow-lg flex items-center justify-center">
-                            <Zap className="w-8 h-8 text-blue-500" />
-                        </div>
-                    </FloatingElement>
-                    <FloatingElement className="absolute top-32 right-24" delay={0.5} amplitude={20}>
-                        <div className="w-20 h-20 bg-violet-100 rounded-full shadow-lg flex items-center justify-center">
-                            <Building2 className="w-10 h-10 text-violet-500" />
-                        </div>
-                    </FloatingElement>
-                    <FloatingElement className="absolute bottom-32 left-32" delay={1} amplitude={12}>
-                        <div className="w-14 h-14 bg-purple-100 rounded-xl shadow-lg flex items-center justify-center">
-                            <Bot className="w-7 h-7 text-purple-500" />
-                        </div>
-                    </FloatingElement>
-                </div>
 
                 <div className="container-custom relative z-10">
                     <AnimatedSection className="text-center max-w-4xl mx-auto">
