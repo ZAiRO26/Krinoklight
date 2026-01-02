@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Preview</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Premium Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- GSAP Animation Library + ScrollTrigger -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <style>
+        /* Typography */
+        h1,
+        h2,
+        h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Colors */
+        :root {
+            --primary: #4f46e5;
+            --secondary: #e0e7ff;
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .text-primary {
+            color: var(--primary);
+        }
+
+        /* Glassmorphism Navbar */
+        .glass-nav {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        /* Hero Gradient Background */
+        .gradient-bg {
+            background: radial-gradient(circle at 10% 20%, rgb(248, 240, 255) 0%, rgb(235, 245, 255) 90%);
+        }
+
+        /* Mesh Gradient Overlay */
+        .mesh-gradient {
+            background:
+                radial-gradient(at 40% 20%, hsla(280, 100%, 95%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 0%, hsla(210, 100%, 95%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 50%, hsla(320, 100%, 94%, 1) 0px, transparent 50%),
+                radial-gradient(at 80% 50%, hsla(240, 100%, 96%, 1) 0px, transparent 50%),
+                radial-gradient(at 0% 100%, hsla(260, 100%, 95%, 1) 0px, transparent 50%);
+        }
+
+        /* Pulsing CTA Animation */
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            }
+
+            50% {
+                box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .pulse-cta {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+
+        /* Morphing Blob Animation */
+        @keyframes morph {
+
+            0%,
+            100% {
+                border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            }
+
+            25% {
+                border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            }
+
+            50% {
+                border-radius: 50% 60% 30% 60% / 30% 60% 70% 40%;
+            }
+
+            75% {
+                border-radius: 60% 40% 60% 30% / 60% 30% 40% 60%;
+            }
+        }
+
+        .morphing-blob {
+            animation: morph 15s ease-in-out infinite;
+        }
+
+        /* Magnetic Button */
+        .magnetic-btn {
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Card Tilt Effect */
+        .tilt-card {
+            transform-style: preserve-3d;
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .tilt-card:hover {
+            transform: perspective(1000px) rotateX(5deg) rotateY(5deg) scale(1.02);
+        }
+
+        /* Text Reveal Animation */
+        .reveal-text {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+        }
+
+        /* Gradient Text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Shimmer Effect */
+        @keyframes shimmer {
+            0% {
+                background-position: -200% 0;
+            }
+
+            100% {
+                background-position: 200% 0;
+            }
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite;
+        }
+
+        /* Floating Animation */
+        @keyframes float-slow {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        .float-slow {
+            animation: float-slow 8s ease-in-out infinite;
+        }
+
+        @keyframes float-medium {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(-5deg);
+            }
+        }
+
+        .float-medium {
+            animation: float-medium 6s ease-in-out infinite;
+        }
+
+        /* Parallax Layer */
+        .parallax-layer {
+            will-change: transform;
+        }
+
+        /* Split Text for Animation */
+        .split-char {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(50px) rotateX(-90deg);
+        }
+
+        /* Counter Styles */
+        .counter-value {
+            font-variant-numeric: tabular-nums;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Glassmorphism Navbar -->
+    <nav class="fixed w-full z-50 glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Dynamic Logo -->
+                <div class="flex-shrink-0 flex items-center gap-3">
+                    <div
+                        class="w-10 h-10 bg-gradient-to-br from-gray-900 to-gray-700 rounded-full flex items-center justify-center text-white font-serif font-bold text-lg shadow-lg">
+                        <span id="nav-logo-initial">B</span>
+                    </div>
+                    <span id="nav-logo" class="text-2xl font-bold text-gray-900 tracking-tight">Your Brand</span>
+                </div>
+                <!-- Desktop Tabs -->
+                <div class="hidden md:flex space-x-8 items-center">
+                    <a href="#hero"
+                        class="nav-link text-sm font-medium text-gray-600 hover:text-black transition">Home</a>
+                    <a href="#about"
+                        class="nav-link text-sm font-medium text-gray-600 hover:text-black transition">About Us</a>
+                    <a href="#services"
+                        class="nav-link text-sm font-medium text-gray-600 hover:text-black transition">Services</a>
+                    <a href="#gallery"
+                        class="nav-link text-sm font-medium text-gray-600 hover:text-black transition">Gallery</a>
+                    <a href="#reviews"
+                        class="nav-link text-sm font-medium text-gray-600 hover:text-black transition">Reviews</a>
+                    <a href="#contact"
+                        class="magnetic-btn px-6 py-2.5 bg-black text-white rounded-full text-sm font-medium hover:bg-gray-800 transition shadow-lg hover:shadow-xl">Book
+                        Now</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gray-900 focus:outline-none p-2">
+                        <i class="fas fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 absolute w-full shadow-2xl">
+            <div class="px-4 pt-2 pb-6 space-y-1">
+                <a href="#hero"
+                    class="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition">Home</a>
+                <a href="#about"
+                    class="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition">About
+                    Us</a>
+                <a href="#services"
+                    class="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition">Services</a>
+                <a href="#gallery"
+                    class="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition">Gallery</a>
+                <a href="#reviews"
+                    class="block px-4 py-3 text-base font-medium text-gray-900 hover:bg-gray-50 rounded-lg transition">Reviews</a>
+                <a href="#contact"
+                    class="block px-4 py-3 text-base font-bold text-white bg-black rounded-lg text-center mt-4">Book
+                    Appointment</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Gradient Mesh Background -->
+    <section id="hero" class="relative min-h-screen flex items-center gradient-bg mesh-gradient overflow-hidden">
+        <!-- Animated Floating Blobs (Parallax) -->
+        <div
+            class="parallax-layer absolute top-20 right-10 w-72 h-72 bg-purple-300 opacity-40 blur-3xl morphing-blob float-slow">
+        </div>
+        <div class="parallax-layer absolute bottom-20 left-10 w-96 h-96 bg-blue-300 opacity-40 blur-3xl morphing-blob float-medium"
+            style="animation-delay: 2s;"></div>
+        <div class="parallax-layer absolute top-1/2 right-1/4 w-48 h-48 bg-pink-300 opacity-30 blur-2xl morphing-blob"
+            style="animation-delay: 4s;"></div>
+        <div class="parallax-layer absolute top-1/4 left-1/3 w-32 h-32 bg-indigo-300 opacity-30 blur-xl morphing-blob float-slow"
+            style="animation-delay: 1s;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center py-32">
+            <!-- Animated Badge -->
+            <div class="hero-badge inline-block mb-8 opacity-0">
+                <div
+                    class="tilt-card bg-white/80 backdrop-blur-sm py-3 px-6 rounded-full shadow-xl border border-white/50">
+                    <span class="inline-flex items-center gap-2 text-sm font-semibold">
+                        <span class="flex gap-0.5">
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                            <i class="fas fa-star text-yellow-500"></i>
+                        </span>
+                        <span class="text-gray-700">Top Rated in <span id="hero-city"
+                                class="font-bold text-gray-900">Your City</span></span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- Main Headline with Stagger Animation -->
+            <div class="hero-headline opacity-0">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-bold text-gray-900 tracking-tight mb-6 leading-tight">
+                    <span class="headline-word">The</span> <span class="headline-word">Best</span> <span id="hero-niche"
+                        class="headline-word gradient-text">Service</span>
+                    <br>
+                    <span class="headline-word">Experience.</span>
+                </h1>
+            </div>
+
+            <p
+                class="hero-subtitle opacity-0 mt-6 text-xl md:text-2xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">
+                Welcome to <span id="hero-business-name" class="font-bold text-gray-900">Your Business</span>.
+                We are rated <span id="hero-rating" class="font-bold text-gray-900">5.0</span>/5.0 stars by our happy
+                clients.
+                Premium quality, professional care.
+            </p>
+
+            <!-- CTA Buttons -->
+            <div class="hero-cta opacity-0 flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact"
+                    class="magnetic-btn pulse-cta px-10 py-5 bg-black text-white rounded-full font-bold text-lg hover:bg-gray-800 transition transform hover:-translate-y-1 shadow-2xl relative overflow-hidden group">
+                    <span class="relative z-10"><i class="fas fa-calendar-check mr-2"></i> Book an Appointment</span>
+                    <div class="absolute inset-0 shimmer"></div>
+                </a>
+                <a href="#gallery"
+                    class="magnetic-btn px-10 py-5 bg-white text-gray-900 border-2 border-gray-200 rounded-full font-bold text-lg hover:bg-gray-50 hover:border-gray-300 transition shadow-lg">
+                    <i class="fas fa-images mr-2"></i> View Gallery
+                </a>
+            </div>
+
+            <!-- Trust Indicators with Counter Animation -->
+            <div class="hero-trust opacity-0 mt-16 flex flex-wrap justify-center gap-8 text-gray-500">
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-shield-alt text-green-500"></i>
+                    <span class="text-sm font-medium">100% Satisfaction</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-award text-yellow-500"></i>
+                    <span class="text-sm font-medium">Award Winning</span>
+                </div>
+                <div class="flex items-center gap-2">
+                    <i class="fas fa-users text-blue-500"></i>
+                    <span class="text-sm font-medium"><span class="counter-value" data-target="500">0</span>+ Happy
+                        Clients</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator absolute bottom-10 left-1/2 -translate-x-1/2 opacity-0">
+            <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center pt-2">
+                <div class="w-1.5 h-3 bg-gray-400 rounded-full animate-bounce"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                <div class="about-content">
+                    <span
+                        class="section-label text-sm font-semibold text-indigo-600 uppercase tracking-wider opacity-0">About
+                        Us</span>
+                    <h2 class="section-title text-4xl md:text-5xl font-bold text-gray-900 mt-4 mb-6 opacity-0">
+                        Crafting Excellence in <span class="dynamic-niche gradient-text">Service</span>
+                    </h2>
+                    <p class="section-text text-lg text-gray-600 mb-8 leading-relaxed opacity-0">
+                        At <span class="dynamic-name font-semibold">Your Business</span>, we believe in delivering
+                        nothing short of excellence.
+                        Our team of experts brings years of experience and a passion for perfection to every client
+                        interaction.
+                    </p>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div class="stat-card tilt-card bg-gray-50 p-6 rounded-2xl opacity-0">
+                            <div class="text-3xl font-bold text-gray-900"><span class="counter-value"
+                                    data-target="10">0</span>+</div>
+                            <div class="text-sm text-gray-600 mt-1">Years Experience</div>
+                        </div>
+                        <div class="stat-card tilt-card bg-gray-50 p-6 rounded-2xl opacity-0">
+                            <div class="text-3xl font-bold text-gray-900"><span class="counter-value"
+                                    data-target="500">0</span>+</div>
+                            <div class="text-sm text-gray-600 mt-1">Happy Clients</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-image relative opacity-0">
+                    <div
+                        class="w-full h-96 bg-gradient-to-br from-gray-100 to-gray-200 rounded-3xl shadow-2xl flex items-center justify-center overflow-hidden">
+                        <span class="text-gray-400 font-bold text-xl">[ Premium Image ]</span>
+                    </div>
+                    <div
+                        class="verified-badge absolute -bottom-8 -left-8 bg-white p-6 rounded-2xl shadow-2xl border border-gray-100 opacity-0">
+                        <div class="flex items-center gap-3">
+                            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check text-green-600"></i>
+                            </div>
+                            <div>
+                                <div class="font-bold text-gray-900">Verified Business</div>
+                                <div class="text-sm text-gray-500">Google Certified</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-24 bg-gray-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span
+                    class="section-label text-sm font-semibold text-indigo-600 uppercase tracking-wider opacity-0">What
+                    We Offer</span>
+                <h2 class="section-title text-4xl md:text-5xl font-bold text-gray-900 mt-4 opacity-0">Our Premium
+                    Services</h2>
+                <p class="section-text text-lg text-gray-600 mt-4 max-w-2xl mx-auto opacity-0">
+                    Experience the finest <span class="dynamic-niche">service</span> in <span class="dynamic-city">your
+                        city</span>.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div
+                    class="service-card tilt-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 opacity-0">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-2xl flex items-center justify-center mb-6 transform transition-transform duration-300 group-hover:scale-110">
+                        <i class="fas fa-star text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Premium <span class="dynamic-niche">Service</span>
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">Our flagship offering delivers exceptional quality and
+                        attention to detail that sets us apart.</p>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div
+                    class="service-card tilt-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 opacity-0">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-gem text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">Luxury Experience</h3>
+                    <p class="text-gray-600 leading-relaxed">Indulge in our exclusive luxury treatments designed for
+                        those who appreciate the finer things.</p>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div
+                    class="service-card tilt-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 opacity-0">
+                    <div
+                        class="w-16 h-16 bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i class="fas fa-crown text-white text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">VIP Consultation</h3>
+                    <p class="text-gray-600 leading-relaxed">Personalized one-on-one sessions with our senior experts
+                        for tailored solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="py-24 bg-white overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span class="section-label text-sm font-semibold text-indigo-600 uppercase tracking-wider opacity-0">Our
+                    Work</span>
+                <h2 class="section-title text-4xl md:text-5xl font-bold text-gray-900 mt-4 opacity-0">Gallery</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div
+                    class="gallery-item col-span-2 row-span-2 bg-gradient-to-br from-gray-200 to-gray-300 rounded-3xl h-80 md:h-auto flex items-center justify-center shadow-xl hover:shadow-2xl transition cursor-pointer overflow-hidden group opacity-0">
+                    <span
+                        class="text-gray-500 font-semibold group-hover:scale-110 transition-transform duration-500">Featured
+                        Work</span>
+                </div>
+                <div
+                    class="gallery-item bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-40 flex items-center justify-center shadow-lg hover:shadow-xl transition cursor-pointer overflow-hidden group opacity-0">
+                    <span class="text-gray-400 text-sm group-hover:scale-110 transition-transform duration-500">Image
+                        1</span>
+                </div>
+                <div
+                    class="gallery-item bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-40 flex items-center justify-center shadow-lg hover:shadow-xl transition cursor-pointer overflow-hidden group opacity-0">
+                    <span class="text-gray-400 text-sm group-hover:scale-110 transition-transform duration-500">Image
+                        2</span>
+                </div>
+                <div
+                    class="gallery-item bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-40 flex items-center justify-center shadow-lg hover:shadow-xl transition cursor-pointer overflow-hidden group opacity-0">
+                    <span class="text-gray-400 text-sm group-hover:scale-110 transition-transform duration-500">Image
+                        3</span>
+                </div>
+                <div
+                    class="gallery-item bg-gradient-to-br from-gray-100 to-gray-200 rounded-2xl h-40 flex items-center justify-center shadow-lg hover:shadow-xl transition cursor-pointer overflow-hidden group opacity-0">
+                    <span class="text-gray-400 text-sm group-hover:scale-110 transition-transform duration-500">Image
+                        4</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="py-24 bg-gray-50 overflow-hidden">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <span
+                    class="section-label text-sm font-semibold text-indigo-600 uppercase tracking-wider opacity-0">Testimonials</span>
+                <h2 class="section-title text-4xl md:text-5xl font-bold text-gray-900 mt-4 opacity-0">Loved by Locals
+                </h2>
+                <p class="section-text text-lg text-gray-600 mt-4 opacity-0">Join hundreds of satisfied customers in
+                    <span class="dynamic-city font-semibold">Your City</span>.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Review 1 -->
+                <div
+                    class="review-card tilt-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 opacity-0">
+                    <div class="flex text-yellow-400 mb-6 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">"Absolutely amazing experience at <span
+                            class="dynamic-name font-semibold">this place</span>. The team is professional and the
+                        results are stunning!"</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center font-bold text-white text-lg">
+                            A</div>
+                        <div class="ml-4">
+                            <p class="font-bold text-gray-900">Anjali S.</p>
+                            <p class="text-sm text-gray-500">Local Guide • <span class="dynamic-city">City</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div
+                    class="review-card tilt-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 opacity-0">
+                    <div class="flex text-yellow-400 mb-6 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">"Best <span
+                            class="dynamic-niche font-semibold">service</span> in town. Highly recommend visiting them
+                        if you are in <span class="dynamic-city">the area</span>."</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center font-bold text-white text-lg">
+                            R</div>
+                        <div class="ml-4">
+                            <p class="font-bold text-gray-900">Rahul K.</p>
+                            <p class="text-sm text-gray-500">Verified Customer</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div
+                    class="review-card tilt-card bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 border border-gray-100 opacity-0">
+                    <div class="flex text-yellow-400 mb-6 text-xl">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 mb-8 leading-relaxed text-lg">"They really care about quality. I've been a
+                        regular customer for months now. Absolutely 5 stars!"</p>
+                    <div class="flex items-center">
+                        <div
+                            class="w-14 h-14 rounded-full bg-gradient-to-br from-purple-400 to-violet-500 flex items-center justify-center font-bold text-white text-lg">
+                            P</div>
+                        <div class="ml-4">
+                            <p class="font-bold text-gray-900">Priya M.</p>
+                            <p class="text-sm text-gray-500">Google Review</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact / CTA Section -->
+    <footer id="contact"
+        class="relative py-24 bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white overflow-hidden">
+        <!-- Animated Background Decoration -->
+        <div
+            class="parallax-layer absolute top-0 left-0 w-96 h-96 bg-indigo-600/20 rounded-full blur-3xl morphing-blob">
+        </div>
+        <div class="parallax-layer absolute bottom-0 right-0 w-96 h-96 bg-purple-600/20 rounded-full blur-3xl morphing-blob"
+            style="animation-delay: 5s;"></div>
+
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10 text-center">
+            <div class="footer-content">
+                <span class="section-label text-sm font-semibold text-indigo-400 uppercase tracking-wider opacity-0">Get
+                    In Touch</span>
+                <h2 class="section-title text-4xl md:text-5xl font-bold mt-4 mb-6 opacity-0">Ready to book with <span
+                        class="dynamic-name">Us</span>?</h2>
+                <p class="section-text text-xl text-gray-400 mb-12 max-w-2xl mx-auto opacity-0">Get in touch today to
+                    schedule your appointment or learn more about our premium services.</p>
+            </div>
+
+            <div class="footer-cta flex flex-col sm:flex-row justify-center gap-4 mb-16 opacity-0">
+                <a id="whatsapp-btn" href="#"
+                    class="magnetic-btn inline-flex items-center justify-center px-10 py-4 bg-green-500 hover:bg-green-600 text-white font-bold rounded-full transition shadow-xl hover:shadow-2xl transform hover:-translate-y-1 text-lg relative overflow-hidden group">
+                    <span class="relative z-10"><i class="fab fa-whatsapp mr-3 text-xl"></i> Chat on WhatsApp</span>
+                    <div class="absolute inset-0 shimmer"></div>
+                </a>
+                <a id="call-btn" href="#"
+                    class="magnetic-btn inline-flex items-center justify-center px-10 py-4 bg-white text-gray-900 hover:bg-gray-100 font-bold rounded-full transition shadow-xl text-lg">
+                    <i class="fas fa-phone mr-3"></i> Call Now
+                </a>
+            </div>
+
+            <div class="footer-bottom pt-12 border-t border-gray-700 opacity-0">
+                <p class="text-sm text-gray-500">© 2025 <span class="dynamic-name">Your Business</span>. All rights
+                    reserved.</p>
+                <p class="mt-2 text-xs text-gray-600">Designed with ❤️ by <span
+                        class="text-indigo-400 font-semibold">CodeTazos</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- GSAP Animation Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Register ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
+
+            // ========================================
+            // HERO SECTION ANIMATIONS
+            // ========================================
+
+            // Hero Timeline
+            const heroTL = gsap.timeline({ delay: 0.5 });
+
+            // Badge drops in
+            heroTL.to('.hero-badge', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'back.out(1.7)'
+            });
+
+            // Headline stagger animation
+            heroTL.to('.hero-headline', {
+                opacity: 1,
+                duration: 0.1
+            }, '-=0.3');
+
+            heroTL.from('.headline-word', {
+                opacity: 0,
+                y: 80,
+                rotationX: -90,
+                stagger: 0.15,
+                duration: 1,
+                ease: 'back.out(1.4)'
+            }, '-=0.1');
+
+            // Subtitle fades up
+            heroTL.to('.hero-subtitle', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, '-=0.5');
+
+            // CTA buttons slide in
+            heroTL.to('.hero-cta', {
+                opacity: 1,
+                y: 0,
+                duration: 0.8,
+                ease: 'power3.out'
+            }, '-=0.4');
+
+            // Trust indicators fade in
+            heroTL.to('.hero-trust', {
+                opacity: 1,
+                y: 0,
+                duration: 0.6,
+                ease: 'power2.out'
+            }, '-=0.3');
+
+            // Scroll indicator
+            heroTL.to('.scroll-indicator', {
+                opacity: 1,
+                duration: 0.5
+            }, '-=0.2');
+
+            // ========================================
+            // PARALLAX EFFECTS
+            // ========================================
+
+            gsap.utils.toArray('.parallax-layer').forEach((layer, i) => {
+                const speed = (i + 1) * 0.3;
+                gsap.to(layer, {
+                    y: () => window.innerHeight * speed * 0.5,
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '#hero',
+                        start: 'top top',
+                        end: 'bottom top',
+                        scrub: true
+                    }
+                });
+            });
+
+            // ========================================
+            // SECTION REVEAL ANIMATIONS
+            // ========================================
+
+            // Function to create section animations
+            function createSectionAnimation(section) {
+                const labels = section.querySelectorAll('.section-label');
+                const titles = section.querySelectorAll('.section-title');
+                const texts = section.querySelectorAll('.section-text');
+                const cards = section.querySelectorAll('.service-card, .review-card, .gallery-item, .stat-card');
+
+                const tl = gsap.timeline({
+                    scrollTrigger: {
+                        trigger: section,
+                        start: 'top 80%',
+                        end: 'top 20%',
+                        toggleActions: 'play none none reverse'
+                    }
+                });
+
+                if (labels.length) {
+                    tl.to(labels, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.5,
+                        ease: 'power2.out'
+                    });
+                }
+
+                if (titles.length) {
+                    tl.to(titles, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.7,
+                        ease: 'power3.out'
+                    }, '-=0.3');
+                }
+
+                if (texts.length) {
+                    tl.to(texts, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 0.6,
+                        ease: 'power2.out'
+                    }, '-=0.4');
+                }
+
+                if (cards.length) {
+                    tl.to(cards, {
+                        opacity: 1,
+                        y: 0,
+                        stagger: 0.15,
+                        duration: 0.8,
+                        ease: 'back.out(1.2)'
+                    }, '-=0.3');
+                }
+
+                return tl;
+            }
+
+            // Apply to all sections
+            document.querySelectorAll('#about, #services, #gallery, #reviews, #contact').forEach(createSectionAnimation);
+
+            // About section special animations
+            gsap.to('.about-image', {
+                opacity: 1,
+                x: 0,
+                duration: 1,
+                ease: 'power3.out',
+                scrollTrigger: {
+                    trigger: '#about',
+                    start: 'top 70%'
+                }
+            });
+
+            gsap.to('.verified-badge', {
+                opacity: 1,
+                scale: 1,
+                duration: 0.6,
+                ease: 'back.out(1.7)',
+                scrollTrigger: {
+                    trigger: '.about-image',
+                    start: 'top 60%'
+                },
+                delay: 0.5
+            });
+
+            // ========================================
+            // COUNTER ANIMATION
+            // ========================================
+
+            document.querySelectorAll('.counter-value').forEach(counter => {
+                const target = parseInt(counter.dataset.target);
+
+                ScrollTrigger.create({
+                    trigger: counter,
+                    start: 'top 85%',
+                    onEnter: () => {
+                        gsap.to(counter, {
+                            innerText: target,
+                            duration: 2,
+                            ease: 'power1.out',
+                            snap: { innerText: 1 },
+                            onUpdate: function () {
+                                counter.innerText = Math.round(this.targets()[0].innerText);
+                            }
+                        });
+                    },
+                    once: true
+                });
+            });
+
+            // ========================================
+            // MAGNETIC BUTTON EFFECT
+            // ========================================
+
+            document.querySelectorAll('.magnetic-btn').forEach(btn => {
+                btn.addEventListener('mousemove', (e) => {
+                    const rect = btn.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+
+                    gsap.to(btn, {
+                        x: x * 0.3,
+                        y: y * 0.3,
+                        duration: 0.3,
+                        ease: 'power2.out'
+                    });
+                });
+
+                btn.addEventListener('mouseleave', () => {
+                    gsap.to(btn, {
+                        x: 0,
+                        y: 0,
+                        duration: 0.5,
+                        ease: 'elastic.out(1, 0.3)'
+                    });
+                });
+            });
+
+            // ========================================
+            // NAVBAR SCROLL EFFECT
+            // ========================================
+
+            ScrollTrigger.create({
+                start: 100,
+                onUpdate: (self) => {
+                    const nav = document.querySelector('nav');
+                    if (self.direction === 1 && self.scroll() > 100) {
+                        gsap.to(nav, { y: -100, duration: 0.3 });
+                    } else {
+                        gsap.to(nav, { y: 0, duration: 0.3 });
+                    }
+                }
+            });
+
+            // ========================================
+            // MOBILE MENU
+            // ========================================
+
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                const isHidden = menu.classList.contains('hidden');
+
+                if (isHidden) {
+                    menu.classList.remove('hidden');
+                    gsap.from(menu, {
+                        opacity: 0,
+                        y: -20,
+                        duration: 0.3
+                    });
+                    gsap.from(menu.querySelectorAll('a'), {
+                        opacity: 0,
+                        x: -20,
+                        stagger: 0.05,
+                        duration: 0.3
+                    });
+                } else {
+                    gsap.to(menu, {
+                        opacity: 0,
+                        y: -20,
+                        duration: 0.2,
+                        onComplete: () => {
+                            menu.classList.add('hidden');
+                            gsap.set(menu, { opacity: 1, y: 0 });
+                        }
+                    });
+                }
+
+                const icon = btn.querySelector('i');
+                icon.classList.toggle('fa-bars');
+                icon.classList.toggle('fa-times');
+            });
+
+            // Close menu on link click
+            menu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                    btn.querySelector('i').classList.add('fa-bars');
+                    btn.querySelector('i').classList.remove('fa-times');
+                });
+            });
+
+            // ========================================
+            // DYNAMIC CONTENT INJECTION
+            // ========================================
+
+            const params = new URLSearchParams(window.location.search);
+
+            const data = {
+                name: params.get('name') || "Your Business Name",
+                city: params.get('city') || "Your City",
+                niche: params.get('niche') || "Service",
+                rating: params.get('rating') || "5.0",
+                phone: params.get('phone') || ""
+            };
+
+            // Update Logo Initial
+            const logoInitial = document.getElementById('nav-logo-initial');
+            if (logoInitial && data.name) {
+                logoInitial.innerText = data.name.charAt(0).toUpperCase();
+            }
+
+            // Inject data into specific IDs
+            const setText = (id, value) => {
+                const el = document.getElementById(id);
+                if (el) el.innerText = value;
+            };
+
+            setText('nav-logo', data.name);
+            setText('hero-city', data.city);
+            setText('hero-niche', data.niche);
+            setText('hero-business-name', data.name);
+            setText('hero-rating', data.rating);
+
+            // Inject data into ALL dynamic classes
+            const setClassText = (className, value) => {
+                document.querySelectorAll('.' + className).forEach(el => el.innerText = value);
+            };
+
+            setClassText('dynamic-name', data.name);
+            setClassText('dynamic-city', data.city);
+            setClassText('dynamic-niche', data.niche);
+            setClassText('dynamic-rating', data.rating);
+
+            // Update WhatsApp & Call Links
+            if (data.phone) {
+                const cleanPhone = data.phone.replace(/\D/g, '');
+                const waBtn = document.getElementById('whatsapp-btn');
+                const callBtn = document.getElementById('call-btn');
+
+                waBtn.href = `https://wa.me/${cleanPhone}?text=Hi, I saw your website and would like to book an appointment!`;
+                callBtn.href = `tel:+${cleanPhone}`;
+            }
+
+            // Dynamic Theme based on Niche
+            const nicheLower = data.niche.toLowerCase();
+            const root = document.documentElement;
+
+            if (nicheLower.includes('salon') || nicheLower.includes('makeup') || nicheLower.includes('beauty') || nicheLower.includes('boutique')) {
+                root.style.setProperty('--primary', '#db2777');
+            } else if (nicheLower.includes('gym') || nicheLower.includes('fitness')) {
+                root.style.setProperty('--primary', '#059669');
+            } else if (nicheLower.includes('restaurant') || nicheLower.includes('cafe') || nicheLower.includes('food')) {
+                root.style.setProperty('--primary', '#ea580c');
+            }
+
+            // Update page title
+            document.title = `${data.name} | Premium ${data.niche} in ${data.city}`;
+        });
+    </script>
+</body>
+
+</html>
