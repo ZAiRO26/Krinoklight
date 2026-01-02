@@ -1,14 +1,15 @@
 # SEO robots.txt for Krinok
+# Allow all search engines to crawl the entire site
 User-agent: *
 Allow: /
 
-# Disallow internal paths
+# Allow access to static assets (CSS, JS, images)
+# This is required for proper rendering by search engines
+Allow: /static/
+
+# Disallow internal/private paths only
 Disallow: /api/
 Disallow: /_next/
-Disallow: /static/
 
 # Sitemap location
 Sitemap: https://www.krinok.com/sitemap.xml
-
-# Crawl-delay for responsible crawling
-Crawl-delay: 1
