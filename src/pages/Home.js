@@ -6,6 +6,7 @@ import { motion } from 'framer-motion';
 import AnimatedSection, { AnimatedItem, FadeUp, FloatingElement, Card3DReveal } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
 import SplitText from '../components/SplitText';
+import SEO from '../components/SEO';
 
 // Lazy load Noise Sphere Hero (Original organic blue noise sphere with GLSL)
 const NoiseSphereHero = lazy(() => import('../components/NoiseSphereHero'));
@@ -116,6 +117,11 @@ const Home = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 overflow-hidden">
+      <SEO
+        title="Krinok - Your Vision, Engineered | Web Development & Marketing"
+        description="Krinok provides end-to-end digital product development and marketing services. Web development, mobile apps, AI solutions, and digital strategy for modern businesses."
+        path="/"
+      />
       {/* Hero Section with WebGL 3D Background - Hybrid Light Theme */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white">
         {/* Organic Blue Noise Sphere for Desktop / Smoky Effect for Mobile */}

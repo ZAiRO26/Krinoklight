@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, Clock, Briefcase, Users, Megaphone, ChevronDown, A
 import { motion, AnimatePresence } from 'framer-motion';
 import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
+import SEO from '../components/SEO';
 
 const Contact = () => {
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -133,6 +134,11 @@ const Contact = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <SEO
+        title="Contact Us - Krinok | Get in Touch"
+        description="Get in touch with Krinok for web development, mobile apps, AI solutions, and digital marketing services. Let's discuss your project."
+        path="/contact"
+      />
       {/* Hero Section */}
       <section className="bg-white pt-32 pb-20 relative overflow-hidden">
         <div className="absolute inset-0 pointer-events-none">

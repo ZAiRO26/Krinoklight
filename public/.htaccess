@@ -1,5 +1,16 @@
+# Force WWW and HTTPS (Critical for SEO - prevents duplicate content)
 <IfModule mod_rewrite.c>
   RewriteEngine On
+  
+  # Force HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
+  
+  # Force WWW (redirect non-www to www)
+  RewriteCond %{HTTP_HOST} ^krinok\.com$ [NC]
+  RewriteRule ^(.*)$ https://www.krinok.com/$1 [R=301,L]
+  
+  # React Router SPA - serve index.html for client-side routes
   RewriteBase /
   RewriteRule ^index\.html$ - [L]
   RewriteCond %{REQUEST_FILENAME} !-f
@@ -12,6 +23,7 @@
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
   Header set X-XSS-Protection "1; mode=block"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
 </IfModule>
 
 # Compression

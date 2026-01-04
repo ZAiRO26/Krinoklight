@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Code, Palette, Brain, Settings, Users, Lightbulb, CheckCircle2, Sparkles, Grid3X3 } from 'lucide-react';
 import AnimatedSection, { AnimatedItem, FadeUp } from '../components/AnimatedSection';
 import MagneticButton from '../components/MagneticButton';
+import SEO from '../components/SEO';
 
 const Services = () => {
   const services = [
@@ -115,6 +116,11 @@ const Services = () => {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      <SEO
+        title="Our Services - Krinok | Web Development, AI & Digital Marketing"
+        description="Explore Krinok's comprehensive services: Web development, mobile apps, AI solutions, UI/UX design, and digital marketing. We help businesses grow."
+        path="/services"
+      />
       {/* Hero Section */}
       <section className="pt-32 pb-16 relative overflow-hidden bg-white">
         {/* Subtle gradient background */}
