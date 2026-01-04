@@ -170,17 +170,18 @@ const Footer = () => {
             <h3 className="font-display font-bold text-slate-900 mb-6">Contact Us</h3>
             <div className="space-y-4">
               <div>
-                <p className="font-semibold text-slate-800 text-sm">Krinok Digital Solutions</p>
+                <p className="font-semibold text-slate-800 text-sm">KRINOK TECHNOLOGIES</p>
                 <p className="text-slate-500 text-sm leading-relaxed mt-1">
-                  Road no 1, entry, near Nagarjuna Circle Road, opp. Mpm Times Square mall, Banjara Hills, near Florists, Hyderabad 500034
+                  289-D V.P. Block, Near MP Mall, Pitampura<br />
+                  New Delhi, India - 110034
                 </p>
               </div>
               <div>
                 <a
-                  href="tel:+918178687129"
+                  href="tel:+919354785960"
                   className="text-slate-500 hover:text-blue-600 transition-colors text-sm flex items-center gap-2"
                 >
-                  <span>+91 81786 87129</span>
+                  <span>+91 9354785960</span>
                 </a>
               </div>
               <div>
@@ -192,7 +193,7 @@ const Footer = () => {
                 </a>
               </div>
               <motion.a
-                href="https://maps.google.com/maps?q=28.7047241617451772,77.14841268592422&z=15&output=embed"
+                href="https://maps.app.goo.gl/Ti1fePKj37B4xiTh8"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-600 hover:text-blue-700 transition-colors text-sm font-medium flex items-center gap-1 group"
