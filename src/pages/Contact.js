@@ -218,7 +218,7 @@ const Contact = () => {
                     <h3 className="font-bold text-slate-900 mb-1">Corporate Office</h3>
                     <p className="text-slate-600 text-sm">
                       KRINOK TECHNOLOGIES<br />
-                      289-D, Near MP Mall, Pitampura<br />
+                      289-D V.P. Block, Near MP Mall, Pitampura<br />
                       New Delhi, India - 110034
                     </p>
                   </div>
